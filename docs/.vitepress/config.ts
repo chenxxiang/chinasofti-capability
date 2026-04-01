@@ -36,6 +36,10 @@ export default defineConfig({
     search: {
       provider: 'local'
     },
-    socialLinks: []
+    socialLinks: [],
+    docFooter: {
+      prev: false,
+      next: false,
+    }
   }
 })
