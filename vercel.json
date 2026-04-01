@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run docs:build",
+  "buildCommand": "node node_modules/vitepress/bin/vitepress.js build docs",
   "outputDirectory": "docs/.vitepress/dist",
   "framework": null
 }
