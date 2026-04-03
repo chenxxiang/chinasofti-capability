@@ -1,9 +1,5 @@
 export const enSidebar = {
   '/en/': [
-    { text: 'Company Introduction', link: '/en/company' },
-    { text: 'Overseas Layout', link: '/en/overseas' },
-    { text: 'Mini-App Overview', link: '/en/miniapp-solution' },
-    { text: 'Competitive Advantages', link: '/en/advantage' },
     {
       text: 'Business Platform',
       items: [
