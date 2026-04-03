@@ -1,9 +1,5 @@
 export const zhSidebar = {
   '/zh/': [
-    { text: '公司介绍', link: '/zh/company' },
-    { text: '海外布局', link: '/zh/overseas' },
-    { text: '小程序总体方案', link: '/zh/miniapp-solution' },
-    { text: '竞争力与优势', link: '/zh/advantage' },
     {
       text: '业务平台',
       items: [

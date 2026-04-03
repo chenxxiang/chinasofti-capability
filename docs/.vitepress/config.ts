@@ -12,7 +12,10 @@ export default defineConfig({
       title: '中软国际能力库',
       description: '中软国际小程序能力库',
       themeConfig: {
-        nav: [{ text: '首页', link: '/zh/' }],
+        nav: [
+          { text: '← 返回首页', link: '/zh/' },
+          { text: '解决方案库', link: '/zh/business/cms/' },
+        ],
         sidebar: zhSidebar,
         outlineTitle: '本页目录',
         lastUpdatedText: '最后更新',
@@ -25,7 +28,10 @@ export default defineConfig({
       title: 'ChinaSofti Capability Library',
       description: 'ChinaSofti Mini-App Capability Library',
       themeConfig: {
-        nav: [{ text: 'Home', link: '/en/' }],
+        nav: [
+          { text: '← Home', link: '/en/' },
+          { text: 'Solutions', link: '/en/business/cms/' },
+        ],
         sidebar: enSidebar,
         outlineTitle: 'On This Page',
         lastUpdatedText: 'Last Updated',
