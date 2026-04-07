@@ -35,9 +35,9 @@
 
 ## 系统架构总览
 
-<div class="award-card" style="max-width:100%;padding:24px;">
-  <img src="/solutions/cms/images/arch.png" alt="系统架构总图" style="width:100%;border-radius:8px;" />
-  <div class="award-title" style="margin-top:12px;text-align:left;font-size:0.85rem;color:#64748b;">
+<div style="background:var(--card-bg,#fff);border:1px solid rgba(29,78,216,0.08);border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(29,78,216,0.10);">
+  <img src="/solutions/cms/images/arch.png" alt="系统架构总图" style="width:100%;border-radius:8px;display:block;" />
+  <div style="margin-top:12px;font-size:0.85rem;color:#64748b;line-height:1.6;">
     系统采用四层架构：前端功能层（客户端 App + 管理后台）→ 对接层 → 应用服务层（直播/互动/问答/激励）→ 支撑基础层（数据/云存储/安全合规）
   </div>
 </div>
