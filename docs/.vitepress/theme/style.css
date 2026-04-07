@@ -356,93 +356,142 @@
   font-weight: 700 !important;
 }
 
-/* ── 侧边栏 — Aurora Card 风格 ── */
+/* ── 侧边栏 — Aurora V4 风格 ── */
 .VPSidebar {
-  background: #f4f7ff !important;
+  background: linear-gradient(180deg, #f0f4ff 0%, #eef2ff 100%) !important;
   border-right: 1px solid rgba(29,78,216,0.08) !important;
-  padding-top: 24px !important;
+  padding-top: 20px !important;
 }
 
-/* 侧边栏顶部装饰带 */
+/* 侧边栏顶部彩色装饰带 */
 .VPSidebar::before {
   content: '';
   display: block;
-  height: 3px;
-  background: linear-gradient(90deg, #1d4ed8, #7c3aed, #06b6d4);
-  margin-bottom: 20px;
-  border-radius: 0 0 3px 3px;
+  height: 4px;
+  background: linear-gradient(90deg, #1d4ed8, #4f46e5, #7c3aed, #06b6d4);
+  margin: 0 0 24px 0;
+  border-radius: 0 0 4px 4px;
 }
 
-/* 分组标题 — 卡片样式 */
+/* 分组标题 — 渐变卡片按钮 */
 .VPSidebarItem.level-0 > .item {
-  background: linear-gradient(135deg, #1d4ed8, #4f46e5) !important;
-  border-radius: 10px !important;
-  margin: 6px 12px 4px !important;
-  padding: 2px 0 !important;
-  box-shadow: 0 4px 12px rgba(29,78,216,0.2) !important;
+  background: linear-gradient(135deg, #1d4ed8 0%, #4f46e5 100%) !important;
+  border-radius: 12px !important;
+  margin: 10px 12px 6px !important;
+  padding: 0 !important;
+  box-shadow: 0 4px 16px rgba(29,78,216,0.22), 0 1px 3px rgba(29,78,216,0.1) !important;
+  transition: all 0.25s !important;
+  position: relative;
+  overflow: hidden;
 }
-.VPSidebarItem.level-0 > .item > .text {
+.VPSidebarItem.level-0 > .item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  pointer-events: none;
+  border-radius: 12px;
+}
+.VPSidebarItem.level-0 > .item:hover {
+  box-shadow: 0 8px 24px rgba(29,78,216,0.32) !important;
+  transform: translateY(-1px);
+}
+.VPSidebarItem.level-0 > .item .text {
   color: #ffffff !important;
   font-weight: 700 !important;
-  font-size: 0.875rem !important;
-  padding: 10px 16px !important;
-  letter-spacing: 0.01em !important;
+  font-size: 0.85rem !important;
+  padding: 11px 16px !important;
+  letter-spacing: 0.02em !important;
 }
-.VPSidebarItem.level-0 > .item > .caret {
-  color: rgba(255,255,255,0.7) !important;
-  margin-right: 8px !important;
+.VPSidebarItem.level-0 > .item .caret {
+  color: rgba(255,255,255,0.75) !important;
+  margin-right: 10px !important;
+}
+.VPSidebarItem.level-0 > .item .caret-icon {
+  color: rgba(255,255,255,0.75) !important;
 }
 
-/* 二级折叠组标题 */
+/* 二级折叠组标题 — 药丸按钮 */
 .VPSidebarItem.level-1 > .item {
-  border-radius: 8px !important;
-  margin: 2px 8px !important;
-  transition: background 0.2s !important;
+  border-radius: 10px !important;
+  margin: 3px 10px !important;
+  padding: 0 !important;
+  transition: all 0.2s !important;
+  border: 1px solid transparent !important;
 }
 .VPSidebarItem.level-1 > .item:hover {
-  background: rgba(29,78,216,0.06) !important;
+  background: rgba(29,78,216,0.07) !important;
+  border-color: rgba(29,78,216,0.12) !important;
 }
-.VPSidebarItem.level-1 > .item > .text {
-  font-size: 0.875rem !important;
+.VPSidebarItem.level-1 > .item .text {
+  font-size: 0.87rem !important;
   font-weight: 600 !important;
-  color: #1e293b !important;
+  color: #334155 !important;
+  padding: 9px 14px !important;
+}
+.VPSidebarItem.level-1 > .item .caret {
+  margin-right: 8px !important;
+  color: #94a3b8 !important;
+}
+.VPSidebarItem.level-1 > .item .caret-icon {
+  color: #94a3b8 !important;
 }
 .VPSidebarItem.level-1.is-active > .item {
-  background: rgba(29,78,216,0.08) !important;
+  background: rgba(29,78,216,0.09) !important;
+  border-color: rgba(29,78,216,0.18) !important;
 }
-.VPSidebarItem.level-1.is-active > .item > .text {
+.VPSidebarItem.level-1.is-active > .item .text {
+  color: #1d4ed8 !important;
+}
+.VPSidebarItem.level-1.is-active > .item .caret-icon {
   color: #1d4ed8 !important;
 }
 
-/* 三级叶子节点链接 */
+/* 三级叶子节点链接 — 流畅滑入 */
 .VPSidebarItem.level-2 .link {
-  border-radius: 7px !important;
-  margin: 1px 4px !important;
+  border-radius: 8px !important;
+  margin: 2px 6px !important;
   padding: 7px 14px !important;
-  font-size: 0.84rem !important;
+  font-size: 0.83rem !important;
   color: #64748b !important;
   transition: all 0.2s !important;
+  display: block !important;
+  position: relative !important;
+}
+.VPSidebarItem.level-2 .link::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  background: #1d4ed8;
+  border-radius: 50%;
+  transition: all 0.2s;
 }
 .VPSidebarItem.level-2 .link:hover {
   background: rgba(29,78,216,0.07) !important;
   color: #1d4ed8 !important;
-  padding-left: 18px !important;
+  padding-left: 20px !important;
+}
+.VPSidebarItem.level-2 .link:hover::before {
+  width: 5px;
+  height: 5px;
+  left: 8px;
 }
 .VPSidebarItem.level-2.is-active .link {
-  background: rgba(29,78,216,0.10) !important;
+  background: linear-gradient(135deg, rgba(29,78,216,0.12), rgba(79,70,229,0.08)) !important;
   color: #1d4ed8 !important;
   font-weight: 600 !important;
-  border-left: 2px solid #1d4ed8 !important;
+  border-left: 3px solid #1d4ed8 !important;
   padding-left: 16px !important;
 }
-
-/* 侧边栏折叠图标 */
-.VPSidebarItem .caret-icon {
-  color: #94a3b8 !important;
-  transition: color 0.2s !important;
-}
-.VPSidebarItem.is-active .caret-icon {
-  color: #1d4ed8 !important;
+.VPSidebarItem.level-2.is-active .link::before {
+  width: 5px;
+  height: 5px;
+  background: #1d4ed8;
+  left: 8px;
 }
 
 /* ── 内容区 ── */
