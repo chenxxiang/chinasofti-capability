@@ -906,84 +906,56 @@
   font-size:0.88rem;color:rgba(255,255,255,0.8);margin:0;line-height:1.6;
 }
 
-/* ── 侧边栏增强 — 发光效果 ── */
+/* ── 侧边栏交互增强（基于原 Aurora V4 浅色主题）── */
 .VPSidebar {
-  background: linear-gradient(180deg, #070b1e 0%, #0d1033 40%, #0f1445 70%, #0a1a3e 100%) !important;
-  border-right: 1px solid rgba(99,102,241,0.15) !important;
+  transition: box-shadow 0.3s !important;
 }
-.VPSidebar::before {
-  background: linear-gradient(90deg, #1d4ed8, #7c3aed, #06b6d4, #f59e0b) !important;
-  height: 3px !important;
-  margin-bottom: 20px !important;
-}
-.VPSidebar::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 200px;
-  background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.12) 0%, transparent 70%);
-  pointer-events: none;
+.VPSidebar:hover {
+  box-shadow: 2px 0 24px rgba(29,78,216,0.06) !important;
 }
 
-/* 侧边栏分组标题 — 深色主题 */
+/* 分组标题 — 增强交互 */
 .VPSidebarItem.level-0 > .item {
-  background: linear-gradient(135deg, rgba(99,102,241,0.2) 0%, rgba(29,78,216,0.15) 100%) !important;
-  border: 1px solid rgba(99,102,241,0.25) !important;
-  box-shadow: 0 4px 20px rgba(99,102,241,0.15), inset 0 1px 0 rgba(255,255,255,0.05) !important;
-}
-.VPSidebarItem.level-0 > .item::after {
-  background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent) !important;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1) !important;
 }
 .VPSidebarItem.level-0 > .item:hover {
-  box-shadow: 0 8px 30px rgba(99,102,241,0.25) !important;
-  background: linear-gradient(135deg, rgba(99,102,241,0.28) 0%, rgba(29,78,216,0.2) 100%) !important;
+  transform: translateX(3px) !important;
 }
-.VPSidebarItem.level-0 > .item .text {
-  color: #c7d2fe !important;
-  text-shadow: 0 1px 8px rgba(99,102,241,0.3);
+.VPSidebarItem.level-0 > .item:active {
+  transform: translateX(1px) scale(0.98) !important;
+  transition-duration: 0.1s !important;
 }
 
-/* 二级侧边栏 */
+/* 二级标题 — 增强交互 */
 .VPSidebarItem.level-1 > .item {
-  border: 1px solid transparent !important;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1) !important;
 }
 .VPSidebarItem.level-1 > .item:hover {
-  background: rgba(99,102,241,0.1) !important;
-  border-color: rgba(99,102,241,0.2) !important;
+  transform: translateX(2px) !important;
+  background: rgba(29,78,216,0.06) !important;
+  border-color: rgba(29,78,216,0.15) !important;
 }
-.VPSidebarItem.level-1 > .item .text {
-  color: #94a3b8 !important;
+.VPSidebarItem.level-1 > .item:active {
+  transform: translateX(0) scale(0.98) !important;
+  transition-duration: 0.1s !important;
 }
 .VPSidebarItem.level-1.is-active > .item {
-  background: rgba(99,102,241,0.12) !important;
-  border-color: rgba(99,102,241,0.25) !important;
-}
-.VPSidebarItem.level-1.is-active > .item .text {
-  color: #a5b4fc !important;
-}
-.VPSidebarItem.level-1 > .item .caret,
-.VPSidebarItem.level-1 > .item .caret-icon {
-  color: #64748b !important;
-}
-.VPSidebarItem.level-1.is-active > .item .caret-icon {
-  color: #a5b4fc !important;
+  box-shadow: 0 2px 8px rgba(29,78,216,0.1) !important;
 }
 
-/* 三级叶子节点 — 深色主题 */
+/* 三级叶子节点 — 流畅交互 */
 .VPSidebarItem.level-2 .link {
-  color: #64748b !important;
-}
-.VPSidebarItem.level-2 .link::before {
-  background: #818cf8 !important;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1) !important;
 }
 .VPSidebarItem.level-2 .link:hover {
-  background: rgba(99,102,241,0.1) !important;
-  color: #a5b4fc !important;
+  transform: translateX(4px) !important;
+}
+.VPSidebarItem.level-2 .link:active {
+  transform: translateX(2px) scale(0.98) !important;
+  transition-duration: 0.1s !important;
 }
 .VPSidebarItem.level-2.is-active .link {
-  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(124,58,237,0.1)) !important;
-  color: #a5b4fc !important;
-  border-left: 3px solid #818cf8 !important;
+  box-shadow: 0 1px 6px rgba(29,78,216,0.08) !important;
 }
 
 /* ── 暗色模式适配 ── */
