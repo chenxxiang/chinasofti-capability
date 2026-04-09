@@ -66,12 +66,81 @@
 
 ## 系统架构总览
 
-<div class="cms-arch-wrapper">
-  <div class="cms-arch-glow"></div>
-  <img src="/solutions/cms/images/arch.png" alt="系统架构总图" class="cms-arch-img" />
-  <div class="cms-arch-caption">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-    系统采用四层架构：前端功能层（客户端 App + 管理后台）→ 对接层 → 应用服务层（直播/互动/问答/激励）→ 支撑基础层（数据/云存储/安全合规）
+<div class="cms-arch-container">
+  <div class="cms-arch-title">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    四层架构设计 — 前端功能层 / 对接层 / 应用服务层 / 支撑基础层
+  </div>
+
+  <div class="arch-layer arch-layer-frontend">
+    <div class="arch-layer-label">前端功能层</div>
+    <div class="arch-layer-body">
+      <div class="arch-frontend-groups">
+        <div class="arch-group-box">
+          <div class="arch-group-head arch-c-blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> 直播间互动功能组件</div>
+          <div class="arch-tag-grid"><span class="arch-tag">大咖直播</span><span class="arch-tag">直播间管理</span><span class="arch-tag">直播互动</span><span class="arch-tag">评论互动</span><span class="arch-tag">广播直播</span><span class="arch-tag">直播预约</span><span class="arch-tag">直播回放</span><span class="arch-tag">弹幕系统</span><span class="arch-tag">活动投票</span><span class="arch-tag">互动问答</span><span class="arch-tag">活动报名</span><span class="arch-tag">活动抽奖</span></div>
+        </div>
+        <div class="arch-group-box">
+          <div class="arch-group-head arch-c-blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg> 共创媒体频道广场</div>
+          <div class="arch-tag-grid"><span class="arch-tag">互动频道</span><span class="arch-tag">直播频道</span><span class="arch-tag">活动列表</span><span class="arch-tag">频道管理</span><span class="arch-tag">直播推荐</span><span class="arch-tag">活动推荐</span><span class="arch-tag">热门专题</span><span class="arch-tag">频道订阅</span></div>
+        </div>
+        <div class="arch-external-col">
+          <span class="arch-ext-item">搜索系统</span>
+          <span class="arch-ext-item">推荐系统</span>
+          <span class="arch-ext-item">用户中心</span>
+          <span class="arch-ext-item">消息中心</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arch-connector">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</div>
+
+  <div class="arch-layer arch-layer-bridge">
+    <div class="arch-layer-label">对接层</div>
+    <div class="arch-layer-body">
+      <div class="arch-bridge-grid">
+        <span class="arch-bridge-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/></svg>直播对接</span>
+        <span class="arch-bridge-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>内容对接</span>
+        <span class="arch-bridge-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>评论对接</span>
+        <span class="arch-bridge-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>互动对接</span>
+        <span class="arch-bridge-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>消息对接</span>
+        <span class="arch-bridge-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>推荐对接</span>
+        <span class="arch-bridge-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>审核对接</span>
+        <span class="arch-bridge-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>MQ 消息</span>
+        <span class="arch-bridge-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>统计对接</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="arch-connector">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</div>
+
+  <div class="arch-layer arch-layer-app">
+    <div class="arch-layer-label">应用服务层</div>
+    <div class="arch-layer-body">
+      <div class="arch-app-groups">
+        <div class="arch-app-box"><div class="arch-app-head" style="border-color:rgba(29,78,216,0.25);color:#1d4ed8;">直播应用</div><div class="arch-tag-grid"><span class="arch-tag">直播间管理</span><span class="arch-tag">直播间配置</span><span class="arch-tag">直播流管理</span><span class="arch-tag">评论管理</span><span class="arch-tag">弹幕管理</span><span class="arch-tag">广播管理</span><span class="arch-tag">直播数据</span><span class="arch-tag">直播回放</span><span class="arch-tag">推流配置</span></div></div>
+        <div class="arch-app-box"><div class="arch-app-head" style="border-color:rgba(124,58,237,0.25);color:#7c3aed;">互动活动</div><div class="arch-tag-grid"><span class="arch-tag">投票管理</span><span class="arch-tag">问卷管理</span><span class="arch-tag">报名管理</span><span class="arch-tag">抽奖管理</span><span class="arch-tag">征集管理</span><span class="arch-tag">二维码管理</span><span class="arch-tag">活动模板</span><span class="arch-tag">活动数据</span><span class="arch-tag">规则引擎</span></div></div>
+        <div class="arch-app-box"><div class="arch-app-head" style="border-color:rgba(8,145,178,0.25);color:#0891b2;">问答服务</div><div class="arch-tag-grid"><span class="arch-tag">问答库管理</span><span class="arch-tag">分类管理</span><span class="arch-tag">问题审核</span><span class="arch-tag">回答审核</span><span class="arch-tag">正能量库</span><span class="arch-tag">马甲管理</span><span class="arch-tag">热门问题</span><span class="arch-tag">问答推荐</span><span class="arch-tag">问答统计</span></div></div>
+        <div class="arch-app-box"><div class="arch-app-head" style="border-color:rgba(217,119,6,0.25);color:#d97706;">用户激励</div><div class="arch-tag-grid"><span class="arch-tag">积分任务</span><span class="arch-tag">等级管理</span><span class="arch-tag">成长值任务</span><span class="arch-tag">勋章管理</span><span class="arch-tag">商城运营</span><span class="arch-tag">商品管理</span><span class="arch-tag">订单管理</span><span class="arch-tag">券码发放</span><span class="arch-tag">积分流水</span></div></div>
+        <div class="arch-app-box"><div class="arch-app-head" style="border-color:rgba(225,29,72,0.25);color:#e11d48;">内容审核</div><div class="arch-tag-grid"><span class="arch-tag">机器审核</span><span class="arch-tag">人工审核</span><span class="arch-tag">审核记录</span><span class="arch-tag">敏感词库</span><span class="arch-tag">审核策略</span><span class="arch-tag">违规处理</span><span class="arch-tag">申诉管理</span><span class="arch-tag">审核报表</span><span class="arch-tag">黑白名单</span></div></div>
+        <div class="arch-app-box"><div class="arch-app-head" style="border-color:rgba(71,85,105,0.25);color:#475569;">广告系统</div><div class="arch-tag-grid"><span class="arch-tag">广告管理</span><span class="arch-tag">广告投放</span><span class="arch-tag">广告统计</span><span class="arch-tag">广告位管理</span><span class="arch-tag">投放策略</span><span class="arch-tag">素材管理</span><span class="arch-tag">效果分析</span><span class="arch-tag">频控管理</span><span class="arch-tag">收益报表</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arch-connector">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</div>
+
+  <div class="arch-layer arch-layer-infra">
+    <div class="arch-layer-label">支撑基础层</div>
+    <div class="arch-layer-body">
+      <div class="arch-infra-groups">
+        <div class="arch-app-box"><div class="arch-infra-head">数据服务</div><div class="arch-tag-grid"><span class="arch-tag">MySQL</span><span class="arch-tag">Redis</span><span class="arch-tag">Elasticsearch</span><span class="arch-tag">数据同步</span><span class="arch-tag">数据备份</span><span class="arch-tag">读写分离</span></div></div>
+        <div class="arch-app-box"><div class="arch-infra-head">基础设施</div><div class="arch-tag-grid"><span class="arch-tag">CDN 加速</span><span class="arch-tag">对象存储</span><span class="arch-tag">短信服务</span><span class="arch-tag">推送服务</span><span class="arch-tag">负载均衡</span><span class="arch-tag">容器服务</span></div></div>
+        <div class="arch-app-box"><div class="arch-infra-head">安全合规</div><div class="arch-tag-grid"><span class="arch-tag">内容安全</span><span class="arch-tag">数据加密</span><span class="arch-tag">权限管理</span><span class="arch-tag">操作审计</span><span class="arch-tag">访问控制</span><span class="arch-tag">合规检测</span></div></div>
+        <div class="arch-app-box"><div class="arch-infra-head">监控运维</div><div class="arch-tag-grid"><span class="arch-tag">行为追踪</span><span class="arch-tag">数据分析</span><span class="arch-tag">日志管理</span><span class="arch-tag">性能监控</span><span class="arch-tag">告警通知</span><span class="arch-tag">链路追踪</span></div></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -80,34 +149,38 @@
 ## 四大子系统
 
 <div class="cms-subsystem-grid">
-  <div class="cms-subsystem-card cms-sub-blue">
+  <a href="#直播发布系统" class="cms-subsystem-card cms-sub-blue">
     <div class="cms-sub-icon">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/><line x1="2" y1="20" x2="2.01" y2="20"/></svg>
     </div>
     <h4>直播发布系统</h4>
     <p>可视化直播间搭建、智能评论审核、广播直播接入</p>
-  </div>
-  <div class="cms-subsystem-card cms-sub-purple">
+    <span class="cms-sub-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
+  </a>
+  <a href="#互动活动系统" class="cms-subsystem-card cms-sub-purple">
     <div class="cms-sub-icon">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
     </div>
     <h4>互动活动系统</h4>
     <p>投票/问卷/报名/抽奖/征集/二维码 六大互动模块</p>
-  </div>
-  <div class="cms-subsystem-card cms-sub-cyan">
+    <span class="cms-sub-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
+  </a>
+  <a href="#问答管理系统" class="cms-subsystem-card cms-sub-cyan">
     <div class="cms-sub-icon">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     </div>
     <h4>问答管理系统</h4>
     <p>问答库管理、分类配置、AI 辅助审核</p>
-  </div>
-  <div class="cms-subsystem-card cms-sub-amber">
+    <span class="cms-sub-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
+  </a>
+  <a href="#用户激励系统" class="cms-subsystem-card cms-sub-amber">
     <div class="cms-sub-icon">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5.71 4 7 5.5 7 7v2m10 0h1.5a2.5 2.5 0 0 0 0-5C17.29 4 16 5.5 16 7v2m-8 0h8m-8 0v6a4 4 0 0 0 8 0V9"/></svg>
     </div>
     <h4>用户激励系统</h4>
     <p>积分/等级/成长值/勋章/积分商城 完整留存体系</p>
-  </div>
+    <span class="cms-sub-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
+  </a>
 </div>
 
 ---
@@ -392,3 +465,31 @@
     </div>
   </div>
 </div>
+
+<div id="cms-lightbox" class="cms-lightbox" onclick="this.classList.remove('cms-lightbox-active')">
+  <div class="cms-lightbox-close">&times;</div>
+  <img id="cms-lightbox-img" src="" alt="" />
+</div>
+
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const lightbox = document.getElementById('cms-lightbox')
+  const lightboxImg = document.getElementById('cms-lightbox-img')
+  if (!lightbox || !lightboxImg) return
+
+  document.querySelectorAll('.cms-screenshot-wrapper img').forEach(img => {
+    img.style.cursor = 'zoom-in'
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src
+      lightboxImg.alt = img.alt
+      lightbox.classList.add('cms-lightbox-active')
+    })
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightbox.classList.remove('cms-lightbox-active')
+  })
+})
+</script>

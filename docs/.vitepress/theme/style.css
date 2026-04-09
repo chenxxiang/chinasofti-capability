@@ -906,6 +906,162 @@
   font-size:0.88rem;color:rgba(255,255,255,0.8);margin:0;line-height:1.6;
 }
 
+/* ── 平滑滚动 + 锚点偏移 ── */
+html { scroll-behavior:smooth; }
+h2 { scroll-margin-top:80px; }
+
+/* ── 子系统卡片链接样式 ── */
+a.cms-subsystem-card {
+  text-decoration:none !important;color:inherit;display:block;position:relative;
+}
+a.cms-subsystem-card:hover { color:inherit; }
+.cms-sub-arrow {
+  position:absolute;top:14px;right:14px;
+  opacity:0;transform:translate(-4px,4px);
+  transition:all 0.3s;color:#94a3b8;
+}
+a.cms-subsystem-card:hover .cms-sub-arrow {
+  opacity:1;transform:translate(0,0);
+}
+
+/* ── HTML 架构图 ── */
+.cms-arch-container {
+  background:white;border-radius:18px;padding:24px 20px;
+  border:1px solid rgba(29,78,216,0.08);
+  box-shadow:0 8px 40px rgba(29,78,216,0.08);
+  overflow:hidden;
+}
+.cms-arch-title {
+  display:flex;align-items:center;gap:8px;justify-content:center;
+  font-size:0.8rem;color:#94a3b8;margin-bottom:18px;
+}
+.arch-layer {
+  border-radius:10px;padding:12px 12px 12px 46px;margin-bottom:0;
+  position:relative;
+}
+.arch-layer-label {
+  position:absolute;left:0;top:0;bottom:0;width:36px;
+  writing-mode:vertical-lr;text-orientation:upright;
+  font-size:0.66rem;font-weight:800;letter-spacing:0.1em;
+  border-radius:10px 0 0 10px;
+  color:white;display:flex;align-items:center;justify-content:center;
+}
+.arch-layer-body { }
+.arch-layer-frontend { background:linear-gradient(135deg,rgba(29,78,216,0.04),rgba(59,130,246,0.06));border:1px solid rgba(29,78,216,0.1); }
+.arch-layer-frontend .arch-layer-label { background:linear-gradient(180deg,#1d4ed8,#3b82f6); }
+.arch-layer-bridge { background:linear-gradient(135deg,rgba(79,70,229,0.04),rgba(124,58,237,0.06));border:1px solid rgba(79,70,229,0.1); }
+.arch-layer-bridge .arch-layer-label { background:linear-gradient(180deg,#4f46e5,#7c3aed); }
+.arch-layer-app { background:linear-gradient(135deg,rgba(8,145,178,0.04),rgba(6,182,212,0.06));border:1px solid rgba(8,145,178,0.1); }
+.arch-layer-app .arch-layer-label { background:linear-gradient(180deg,#0891b2,#06b6d4); }
+.arch-layer-infra { background:linear-gradient(135deg,rgba(71,85,105,0.04),rgba(100,116,139,0.06));border:1px solid rgba(71,85,105,0.12); }
+.arch-layer-infra .arch-layer-label { background:linear-gradient(180deg,#475569,#64748b); }
+
+.arch-connector { text-align:center;margin:3px 0;color:#cbd5e1;font-size:0.65rem;letter-spacing:5px; }
+
+/* 前端层分组 */
+.arch-frontend-groups { display:grid;grid-template-columns:1.2fr 1fr auto;gap:7px;align-items:stretch; }
+.arch-group-box {
+  background:rgba(255,255,255,0.7);border:1px solid rgba(29,78,216,0.08);
+  border-radius:7px;padding:8px;
+}
+.arch-group-head {
+  font-size:0.68rem;font-weight:800;margin-bottom:6px;
+  display:flex;align-items:center;gap:4px;
+  padding-bottom:5px;border-bottom:1px solid rgba(29,78,216,0.1);
+}
+.arch-c-blue { color:#1d4ed8; }
+
+/* 对接层九宫格 */
+.arch-bridge-grid { display:grid;grid-template-columns:repeat(9,1fr);gap:4px; }
+.arch-bridge-item {
+  font-size:0.62rem;font-weight:600;color:#4f46e5;background:white;
+  border:1px solid rgba(79,70,229,0.12);border-radius:6px;
+  padding:7px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;
+  text-align:center;transition:all 0.2s;
+}
+.arch-bridge-item:hover {
+  background:rgba(79,70,229,0.08);transform:translateY(-1px);
+  box-shadow:0 2px 8px rgba(79,70,229,0.1);
+}
+.arch-bridge-item svg { opacity:0.6; }
+
+/* 应用层 3x2 */
+.arch-app-groups { display:grid;grid-template-columns:repeat(3,1fr);gap:6px; }
+.arch-app-box {
+  background:rgba(255,255,255,0.7);border:1px solid rgba(8,145,178,0.1);
+  border-radius:7px;padding:8px;display:flex;flex-direction:column;
+}
+.arch-app-head {
+  font-size:0.66rem;font-weight:800;margin-bottom:6px;
+  padding-bottom:4px;border-bottom:2px solid;
+}
+.arch-app-box .arch-tag-grid { flex:1;align-content:start; }
+
+/* 支撑层 4x1 */
+.arch-infra-groups { display:grid;grid-template-columns:repeat(4,1fr);gap:6px; }
+.arch-infra-head {
+  font-size:0.66rem;font-weight:800;color:#475569;margin-bottom:6px;
+  padding-bottom:4px;border-bottom:2px solid rgba(71,85,105,0.18);
+}
+
+/* Tag 网格 — 填满 */
+.arch-tag-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:3px; }
+.arch-tag {
+  font-size:0.62rem;color:#475569;background:white;
+  border:1px solid rgba(0,0,0,0.06);border-radius:4px;
+  padding:4px 5px;text-align:center;
+  transition:all 0.2s;
+}
+.arch-tag:hover {
+  background:rgba(29,78,216,0.07);border-color:rgba(29,78,216,0.18);
+  color:#1d4ed8;transform:translateY(-1px);
+  box-shadow:0 2px 6px rgba(29,78,216,0.08);
+}
+
+/* 外部系统 */
+.arch-external-col { display:flex;flex-direction:column;gap:4px; }
+.arch-ext-item {
+  font-size:0.62rem;font-weight:600;color:#64748b;background:white;
+  border:1px dashed rgba(100,116,139,0.3);border-radius:6px;
+  padding:6px 9px;text-align:center;flex:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+}
+.arch-ext-item:hover {
+  border-style:solid;border-color:rgba(29,78,216,0.25);
+  color:#1d4ed8;background:rgba(29,78,216,0.03);
+}
+
+/* ── Lightbox 图片放大 ── */
+.cms-lightbox {
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;
+  opacity:0;transition:opacity 0.3s;
+  cursor:zoom-out;
+}
+.cms-lightbox-active {
+  display:flex !important;opacity:1;
+}
+.cms-lightbox img {
+  max-width:92vw;max-height:90vh;border-radius:8px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  animation:cms-lb-in 0.3s ease;
+}
+@keyframes cms-lb-in {
+  from{transform:scale(0.9);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+.cms-lightbox-close {
+  position:absolute;top:20px;right:28px;
+  font-size:2rem;color:rgba(255,255,255,0.7);cursor:pointer;
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;transition:all 0.2s;
+}
+.cms-lightbox-close:hover {
+  color:white;background:rgba(255,255,255,0.1);
+}
+
 /* ── 侧边栏交互增强（基于原 Aurora V4 浅色主题）── */
 .VPSidebar {
   transition: box-shadow 0.3s !important;
