@@ -8,24 +8,23 @@ import sys
 import os
 import json
 import zipfile
-import shutil
 import tempfile
 import re
 from xml.etree import ElementTree as ET
-
-NS = {
-    'a':   'http://schemas.openxmlformats.org/drawingml/2006/main',
-    'r':   'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
-    'p':   'http://schemas.openxmlformats.org/presentationml/2006/main',
-}
 
 def extract_text(slide_xml_path):
     """从单张幻灯片 XML 提取所有文字，返回 (title, body_lines)"""
     tree = ET.parse(slide_xml_path)
     root = tree.getroot()
-    texts = [t.text for t in root.iter('{http://schemas.openxmlformats.org/drawingml/2006/main}t') if t.text and t.text.strip()]
-    title = texts[0] if texts else ''
-    body = texts[1:] if len(texts) > 1 else []
+    NS_A = 'http://schemas.openxmlformats.org/drawingml/2006/main'
+    paragraphs = []
+    for para in root.iter(f'{{{NS_A}}}p'):
+        runs = [t.text for t in para.iter(f'{{{NS_A}}}t') if t.text]
+        text = ''.join(runs).strip()
+        if text:
+            paragraphs.append(text)
+    title = paragraphs[0] if paragraphs else ''
+    body = paragraphs[1:] if len(paragraphs) > 1 else []
     return title, body
 
 def extract_image_refs(rels_xml_path):
