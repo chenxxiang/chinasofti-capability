@@ -282,7 +282,7 @@
       点击 APP 右上角「<strong>+</strong>」进入添加设备页面，扫描或搜索设备快速完成配网入局，支持批量管理多台设备。
     </div>
     <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/lighting-add-device.png" alt="APP 添加设备" />
+      <img src="/solutions/iot/images/lighting-add-device.png" alt="APP 添加设备" style="height:240px;object-fit:cover;object-position:top;" />
     </div>
   </div>
   <div class="cms-feature-card">
@@ -296,9 +296,12 @@
       通过移动 APP <strong>控制灯光开关与亮度</strong>，支持设置日出 / 日落时间，灯光将按时间自动开闭，节能省心。
     </div>
     <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/lighting-app-control.png" alt="APP 控制截图" />
+      <img src="/solutions/iot/images/lighting-app-control.png" alt="APP 控制截图" style="height:240px;object-fit:cover;object-position:top;" />
     </div>
   </div>
+</div>
+
+<div class="cms-feature-grid" style="margin-top:20px;">
   <div class="cms-feature-card">
     <div class="cms-feature-header">
       <div class="cms-feature-hicon" style="background:linear-gradient(135deg,#4f46e5,#818cf8);">
@@ -307,7 +310,7 @@
       <span>语音音箱联动</span>
     </div>
     <div class="cms-feature-body">
-      设备添加后可联动智能语音音箱，支持「<strong>打开灯</strong>」「<strong>关闭灯</strong>」「<strong>3 点开灯</strong>」等自然语言指令实时控制。
+      设备添加后可联动智能语音音箱，支持「<strong>打开灯</strong>」「<strong>关闭灯</strong>」「<strong>3 点开灯</strong>」「<strong>3 点关灯</strong>」等自然语言指令实时控制，无需手动操作。
     </div>
   </div>
   <div class="cms-feature-card">
@@ -315,16 +318,13 @@
       <div class="cms-feature-hicon" style="background:linear-gradient(135deg,#059669,#10b981);">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
       </div>
-      <span>智能灯泡产品</span>
+      <span>产品规格参数</span>
     </div>
     <div class="cms-feature-body">
       <strong>适用场景：</strong>客厅 / 卧室 / 餐厅<br>
       <strong>操作方式：</strong>开关 · APP · 遥控器 · 语音<br>
       <strong>核心功能：</strong>开关 · 调亮调暗 · 定时<br>
       <strong>连接协议：</strong>Wi-Fi
-    </div>
-    <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/lighting-product.jpeg" alt="智能灯泡产品" />
     </div>
   </div>
 </div>
@@ -350,7 +350,7 @@
       智能门锁与安防系统通过统一 IoT 平台深度集成，实现<strong>远程监控、报警联动</strong>与家居设备协同控制。
     </div>
     <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/security-overview.png" alt="安防概览" />
+      <img src="/solutions/iot/images/security-overview.png" alt="安防概览" style="height:240px;object-fit:cover;object-position:top;" />
     </div>
   </div>
   <div class="cms-feature-card">
@@ -364,9 +364,12 @@
       支持<strong>手机 NFC 解锁</strong>，无需打开任何 APP，触碰门锁即刻开门；同时支持密码、指纹等多种开锁方式。
     </div>
     <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/security-doorlock.png" alt="智能门锁产品" />
+      <img src="/solutions/iot/images/security-doorlock.png" alt="智能门锁产品" style="height:240px;object-fit:cover;object-position:top;" />
     </div>
   </div>
+</div>
+
+<div class="cms-feature-grid" style="margin-top:20px;">
   <div class="cms-feature-card">
     <div class="cms-feature-header">
       <div class="cms-feature-hicon" style="background:linear-gradient(135deg,#4f46e5,#818cf8);">
@@ -378,7 +381,7 @@
       手机靠近门锁即触发 <strong>NFC 解锁</strong>，无需解锁屏幕或打开 APP，极速完成，适合双手不便时使用。
     </div>
     <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/security-doorlock-nfc.png" alt="NFC 解锁" />
+      <img src="/solutions/iot/images/security-doorlock-nfc.png" alt="NFC 解锁" style="height:240px;object-fit:cover;object-position:top;" />
     </div>
   </div>
   <div class="cms-feature-card">
@@ -392,7 +395,7 @@
       APP 远程生成<strong>临时密码</strong>发送给访客，实现无钥匙开门；随时查询开门记录、用户管理及电量状态。
     </div>
     <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/security-doorlock-app.png" alt="开门记录 APP" />
+      <img src="/solutions/iot/images/security-doorlock-app.png" alt="开门记录 APP" style="height:240px;object-fit:cover;object-position:top;" />
     </div>
   </div>
 </div>
@@ -418,7 +421,7 @@
       高灵敏度烟感探测器，通过 <strong>4G 信号</strong>接入 IoT 平台，实时上报烟雾浓度数据，触发阈值即刻启动报警流程。
     </div>
     <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/smoke-detector.png" alt="烟感探测器" />
+      <img src="/solutions/iot/images/smoke-detector.png" alt="烟感探测器" style="height:240px;object-fit:cover;object-position:top;" />
     </div>
   </div>
   <div class="cms-feature-card">
@@ -426,12 +429,15 @@
       <div class="cms-feature-hicon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
       </div>
-      <span>声光报警</span>
+      <span>联动响应流程</span>
     </div>
     <div class="cms-feature-body">
-      警情发生时，<strong>声光报警器</strong>立即指示报警位置，精准显示报警时间与防区编号，现场第一时间响应。联动控制风机/水泵等执行设备。
+      <strong>探测器 → 信号增强 → 报警主机 → IoT 平台 → APP 通知</strong>，多级联动确保报警信息实时送达，并可联动风机 / 水泵等执行设备。
     </div>
   </div>
+</div>
+
+<div class="cms-feature-grid" style="margin-top:20px;">
   <div class="cms-feature-card">
     <div class="cms-feature-header">
       <div class="cms-feature-hicon" style="background:linear-gradient(135deg,#4f46e5,#818cf8);">
@@ -440,7 +446,7 @@
       <span>电话 + 短信双通知</span>
     </div>
     <div class="cms-feature-body">
-      警情触发后自动<strong>拨打电话并发送短信</strong>至用户手机，确保第一时间送达；支持多联系人配置。
+      警情触发后自动<strong>拨打电话并发送短信</strong>至用户手机，确保第一时间送达；支持多联系人配置，不遗漏任何警情。
     </div>
   </div>
   <div class="cms-feature-card">
@@ -477,7 +483,7 @@
       具备<strong>超细分度计量精度</strong>，支持预付费模式，余额不足时自动断水并向用户发送余额提醒通知。
     </div>
     <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/water-meter.png" alt="智慧水表" />
+      <img src="/solutions/iot/images/water-meter.png" alt="智慧水表" style="height:240px;object-fit:cover;object-position:top;" />
     </div>
   </div>
   <div class="cms-feature-card">
@@ -491,9 +497,12 @@
       完整展示<strong>4G 信号传输 → 远程手机充值 → 定时抄表 → 数据报表</strong>数据流与管理闭环。
     </div>
     <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/water-meter-diagram.png" alt="水表系统示意" />
+      <img src="/solutions/iot/images/water-meter-diagram.png" alt="水表系统示意" style="height:240px;object-fit:cover;object-position:top;" />
     </div>
   </div>
+</div>
+
+<div class="cms-feature-grid" style="margin-top:20px;">
   <div class="cms-feature-card">
     <div class="cms-feature-header">
       <div class="cms-feature-hicon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
@@ -502,7 +511,7 @@
       <span>移动支付 &amp; 充值</span>
     </div>
     <div class="cms-feature-body">
-      用户通过手机 APP 完成<strong>水费充值</strong>，支持预付费与阶梯费率，无需线下缴费，充值到账即时生效。
+      用户通过手机 APP 完成<strong>水费充值</strong>，支持预付费与阶梯费率，无需线下缴费，充值到账即时生效。余额不足自动发送提醒。
     </div>
   </div>
   <div class="cms-feature-card">
@@ -533,13 +542,10 @@
       <div class="cms-feature-hicon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       </div>
-      <span>Web 管控台界面</span>
+      <span>统一运营门户</span>
     </div>
     <div class="cms-feature-body">
-      统一的设备运营管理入口，支持<strong>混合应用开发模式</strong>（Hybrid Application），可视化配置与管理平台设备资源。
-    </div>
-    <div class="cms-screenshot-wrapper">
-      <img src="/solutions/iot/images/web-console.png" alt="Web 管控台" />
+      统一的设备运营管理入口，支持<strong>混合应用开发模式</strong>（Hybrid Application），可视化配置与管理所有接入设备资源，实现跨品牌统一纳管。
     </div>
   </div>
   <div class="cms-feature-card">
@@ -550,7 +556,7 @@
       <span>OTA 固件升级</span>
     </div>
     <div class="cms-feature-body">
-      通过管控台下发 <strong>OTA 升级任务</strong>，支持批量设备固件更新，Smart Wi-Fi 配置与 SoC 芯片集成全流程管理。
+      通过管控台下发 <strong>OTA 升级任务</strong>，支持批量设备固件更新；Smart Wi-Fi 配置一键推送，SoC 芯片集成全流程可视化管理。
     </div>
   </div>
   <div class="cms-feature-card">
@@ -561,18 +567,18 @@
       <span>平台运行监控</span>
     </div>
     <div class="cms-feature-body">
-      实时监控<strong>平台健康状态与风险分析</strong>，平台健康检查 + 风险预警双保险，保障 IoT 平台 7×24 小时稳定运行。
+      实时监控<strong>平台健康状态</strong>，平台健康检查 + 风险预警双保险，异常告警自动推送，保障 IoT 平台 7×24 小时稳定运行。
     </div>
   </div>
   <div class="cms-feature-card">
     <div class="cms-feature-header">
       <div class="cms-feature-hicon" style="background:linear-gradient(135deg,#059669,#10b981);">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
       </div>
       <span>硬件聚合 &amp; 协议适配</span>
     </div>
     <div class="cms-feature-body">
-      支持<strong>多品牌硬件聚合接入</strong>，跨通信协议适配，固件开发支持一体化，加速智能设备上市周期。
+      支持<strong>多品牌硬件聚合接入</strong>，跨通信协议自动适配，固件开发工具链一体化，大幅缩短智能设备从研发到上市的周期。
     </div>
   </div>
 </div>
