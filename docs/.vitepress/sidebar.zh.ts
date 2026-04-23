@@ -48,6 +48,15 @@ export const zhSidebar = {
             { text: 'DEMO', link: '/zh/business/ai-agent/demo' },
           ]
         },
+        {
+          text: '餐饮点餐聚合平台', collapsed: true,
+          items: [
+            { text: '概览', link: '/zh/business/ordering/' },
+            { text: '方案', link: '/zh/business/ordering/plan' },
+            { text: '报价', link: '/zh/business/ordering/pricing' },
+            { text: 'DEMO', link: '/zh/business/ordering/demo' },
+          ]
+        },
       ]
     },
     {
