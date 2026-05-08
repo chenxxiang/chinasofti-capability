@@ -452,6 +452,27 @@ function initTabs() {
     </div>
   </div>
 
+  <!-- 质量认证体系 -->
+  <div class="sec reveal">
+    <div class="sec-header">
+      <div class="sec-label-wrap">
+        <div class="sec-eyebrow">Credentials</div>
+        <div class="sec-title">质量认证体系</div>
+      </div>
+    </div>
+    <div class="cert-grid stagger">
+      <div class="cert-card"><img src="/images/certs/iso9001-cert.jpeg" alt="ISO 9001"><div class="cert-label">ISO 9001:2015 · 质量管理体系</div></div>
+      <div class="cert-card"><img src="/images/certs/iso14001-cert.jpeg" alt="ISO 14001"><div class="cert-label">ISO 14001:2015 · 环境管理体系</div></div>
+      <div class="cert-card"><img src="/images/certs/iso45001-cert.jpeg" alt="ISO 45001"><div class="cert-label">ISO 45001:2018 · 职业健康安全管理体系</div></div>
+      <div class="cert-card"><img src="/images/certs/cmmi5-cert.jpeg" alt="CMMI 5"><div class="cert-label">CMMI Maturity Level 5 · 软件能力成熟度</div></div>
+      <div class="cert-card"><img src="/images/certs/sdca-delivery-cert.jpeg" alt="SDCA"><div class="cert-label">SDCA 软件服务商交付能力证书 · 一级</div></div>
+      <div class="cert-card"><img src="/images/certs/enterprise-credit-3a.png" alt="企业信用3A"><div class="cert-label">企业信用等级证书 · 3A 级</div></div>
+      <div class="cert-card"><img src="/images/certs/cloud-mgmt-cert.jpeg" alt="云管理"><div class="cert-label">云管理服务能力评估证书 · 卓越级</div></div>
+      <div class="cert-card"><img src="/images/certs/gartner-top100.png" alt="Gartner"><div class="cert-label">Gartner 全球 IT 服务市场份额 TOP 100</div></div>
+      <div class="cert-card"><img src="/images/certs/china-it-top100.png" alt="中国软件百强"><div class="cert-label">2020 软件和信息技术服务竞争力百强企业</div></div>
+    </div>
+  </div>
+
 </div>
 
 <footer class="au-footer">
@@ -731,4 +752,102 @@ function initTabs() {
 .footer-l { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 0.95rem; }
 .footer-l span { background: linear-gradient(90deg, #818cf8, #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .footer-r { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+
+/* CERT GRID */
+.cert-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.cert-card { background: var(--card-bg); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(29,78,216,0.07); transition: all .3s; backdrop-filter: blur(8px); cursor: default; }
+.cert-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.cert-card img { width: 100%; height: 200px; object-fit: contain; display: block; background: #f8faff; padding: 16px; box-sizing: border-box; }
+.cert-label { padding: 12px 16px; font-size: 0.8rem; font-weight: 600; color: var(--text2); text-align: center; line-height: 1.5; border-top: 1px solid rgba(29,78,216,0.07); }
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .au-nav { padding: 0 32px; }
+  .page-body { padding: 0 32px 80px; }
+  .hero { padding: 90px 32px 70px; }
+  .cap-strip { padding: 18px 32px; }
+  .au-footer { padding: 36px 32px; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .industry-grid { grid-template-columns: repeat(2,1fr); }
+  .award-grid-v4 { grid-template-columns: repeat(3,1fr); }
+  .hw-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: repeat(3,1fr); }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .au-nav { padding: 0 16px; height: 58px; }
+  .nav-logo { font-size: 0.9rem; gap: 8px; }
+  .logo-chip { padding: 4px 8px; font-size: 0.6rem; }
+  .nav-links { display: none; }
+  .nav-cta { padding: 7px 14px; font-size: 0.75rem; }
+
+  .hero { padding: 72px 16px 56px; min-height: auto; }
+  .hero-pill { font-size: 0.62rem; padding: 6px 14px; margin-bottom: 20px; }
+  .hero h1 { font-size: 2rem; margin-bottom: 16px; }
+  .hero-sub { font-size: 0.88rem; max-width: 100%; }
+  .hero-badges { gap: 8px; margin-top: 20px; }
+  .h-badge { font-size: 0.72rem; padding: 7px 11px; }
+  .scroll-hint { display: none; }
+
+  .cap-strip { padding: 14px 16px; gap: 0; }
+  .cap-item { padding: 6px 12px; font-size: 0.78rem; border-right: none; width: 50%; justify-content: center; }
+  .cap-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
+
+  .page-body { padding: 0 16px 56px; }
+  .sec { padding: 40px 0; }
+  .sec-header { margin-bottom: 28px; }
+  .sec-eyebrow { font-size: 0.65rem; }
+  .sec-title { font-size: 1.3rem; }
+
+  .stats-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .stat-card { padding: 20px 14px; border-radius: 14px; }
+  .stat-val { font-size: 2rem; }
+  .stat-val .u { font-size: 1rem; }
+  .stat-lab { font-size: 0.75rem; margin-top: 8px; }
+
+  .timeline::before { left: 62px; }
+  .tl-year { min-width: 54px; font-size: 0.78rem; padding-top: 12px; }
+  .tl-connector { width: 30px; padding-top: 14px; }
+  .tl-dot { width: 13px; height: 13px; }
+  .tl-card { font-size: 0.85rem; padding: 12px 14px; border-radius: 10px; }
+  .tl-item { margin-bottom: 14px; }
+
+  .tab-bar { flex-direction: column; gap: 6px; }
+  .tab-btn { font-size: 0.85rem; padding: 9px 16px; }
+  .tab-panel.active { grid-template-columns: 1fr; gap: 12px; }
+  .tab-panel.c3.active { grid-template-columns: 1fr; }
+  .r-head { font-size: 0.92rem; padding: 14px 18px; }
+  .r-body { font-size: 0.88rem; padding: 16px 18px; }
+
+  .industry-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .ind-card { padding: 16px 12px; gap: 10px; border-radius: 12px; }
+  .ind-icon { width: 40px; height: 40px; font-size: 1.2rem; border-radius: 10px; }
+  .ind-name { font-size: 0.88rem; }
+  .ind-desc { font-size: 0.75rem; }
+
+  .m-logo { width: 88px; height: 60px; }
+
+  .hw-grid { grid-template-columns: 1fr; gap: 16px; }
+  .hw-intro { padding: 24px 20px; }
+  .hw-intro-title { font-size: 1.05rem; }
+  .hw-intro-text { font-size: 0.88rem; }
+  .chart-card { padding: 24px 16px; }
+  .bar-chart { height: 120px; gap: 8px; }
+  .bar-val { font-size: 0.65rem; }
+  .bar-year { font-size: 0.65rem; }
+
+  .award-grid-v4 { grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .a-card { padding: 16px 10px; border-radius: 14px; }
+  .a-img { max-height: 80px; }
+  .a-title { font-size: 0.72rem; }
+
+  .cert-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .cert-card img { height: 150px; padding: 12px; }
+  .cert-label { font-size: 0.72rem; padding: 10px 12px; }
+
+  .au-footer { padding: 24px 16px; flex-direction: column; gap: 8px; text-align: center; }
+  .footer-l { font-size: 0.88rem; }
+  .footer-r { font-size: 0.72rem; }
+}
 </style>
