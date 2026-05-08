@@ -777,10 +777,11 @@ function initTabs() {
 /* MOBILE */
 @media (max-width: 768px) {
   .au-nav { padding: 0 16px; height: 58px; }
-  .nav-logo { font-size: 0.9rem; gap: 8px; }
+  .nav-logo { font-size: 0.82rem; gap: 8px; }
   .logo-chip { padding: 4px 8px; font-size: 0.6rem; }
-  .nav-links { display: none; }
-  .nav-cta { padding: 7px 14px; font-size: 0.75rem; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 0.76rem; }
+  .nav-cta { padding: 7px 10px; font-size: 0.72rem; }
 
   .hero { padding: 72px 16px 56px; min-height: auto; }
   .hero-pill { font-size: 0.62rem; padding: 6px 14px; margin-bottom: 20px; }
@@ -790,9 +791,10 @@ function initTabs() {
   .h-badge { font-size: 0.72rem; padding: 7px 11px; }
   .scroll-hint { display: none; }
 
-  .cap-strip { padding: 14px 16px; gap: 0; }
-  .cap-item { padding: 6px 12px; font-size: 0.78rem; border-right: none; width: 50%; justify-content: center; }
+  .cap-strip { padding: 12px 16px; gap: 0; }
+  .cap-item { padding: 6px 8px; font-size: 0.68rem; border-right: none; width: 50%; justify-content: center; white-space: normal; text-align: center; overflow: hidden; line-height: 1.3; }
   .cap-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
+  .cap-icon { font-size: 1rem; flex-shrink: 0; }
 
   .page-body { padding: 0 16px 56px; }
   .sec { padding: 40px 0; }
@@ -849,5 +851,11 @@ function initTabs() {
   .au-footer { padding: 24px 16px; flex-direction: column; gap: 8px; text-align: center; }
   .footer-l { font-size: 0.88rem; }
   .footer-r { font-size: 0.72rem; }
+}
+
+/* SMALL PHONE — hide nav links entirely below 600px */
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .au-nav { justify-content: space-between; }
 }
 </style>
