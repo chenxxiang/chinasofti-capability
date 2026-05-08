@@ -2,12 +2,14 @@
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import HomeAurora from './HomeAurora.vue'
+import HomeAuroraEn from './HomeAuroraEn.vue'
 
 const { frontmatter } = useData()
 </script>
 
 <template>
   <HomeAurora v-if="frontmatter.layout === 'home-aurora'" />
+  <HomeAuroraEn v-else-if="frontmatter.layout === 'home-aurora-en'" />
   <DefaultTheme.Layout v-else>
     <template #nav-bar-title-before>
       <span class="vp-logo-chip">CSI</span>
