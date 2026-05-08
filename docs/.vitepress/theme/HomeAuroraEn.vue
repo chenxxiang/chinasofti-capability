@@ -9,6 +9,7 @@ onMounted(() => {
   initBarChart()
   initTilt()
   initTabs()
+  initHamburger()
 })
 
 function initParticles() {
@@ -161,6 +162,21 @@ function initTabs() {
     })
   })
 }
+
+function initHamburger() {
+  const btn = document.getElementById('nav-hamburger-en')
+  const drawer = document.getElementById('nav-drawer-en')
+  if (!btn || !drawer) return
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation()
+    drawer.classList.toggle('open')
+    btn.classList.toggle('open')
+  })
+  document.addEventListener('click', () => {
+    drawer.classList.remove('open')
+    btn.classList.remove('open')
+  })
+}
 </script>
 
 <template>
@@ -178,7 +194,15 @@ function initTabs() {
     <a href="/en/business/cms/">Solutions</a>
   </div>
   <button class="nav-cta" onclick="window.location.href='/zh/'">中文</button>
+  <button class="nav-hamburger" id="nav-hamburger-en" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-drawer" id="nav-drawer-en">
+  <a href="/en/">Home</a>
+  <a href="/en/business/cms/">Solutions</a>
+  <a href="/zh/" class="nav-drawer-lang">切换中文</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -853,9 +877,63 @@ function initTabs() {
   .footer-r { font-size: 0.72rem; }
 }
 
-/* SMALL PHONE — hide nav links entirely below 600px */
+/* HAMBURGER + DRAWER */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 4px;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text1);
+  border-radius: 2px;
+  transition: all .25s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.nav-drawer {
+  display: none;
+  position: fixed;
+  top: 58px;
+  left: 0;
+  right: 0;
+  z-index: 299;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(29,78,216,0.12);
+  flex-direction: column;
+  padding: 8px 0;
+}
+.nav-drawer.open { display: flex; }
+.nav-drawer a {
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text2);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(29,78,216,0.06);
+  transition: background .2s, color .2s;
+}
+.nav-drawer a:last-child { border-bottom: none; }
+.nav-drawer a:hover, .nav-drawer a.router-link-active { color: var(--blue); background: rgba(29,78,216,0.04); }
+.nav-drawer-lang { color: var(--blue) !important; }
+
+/* SMALL PHONE — hide nav links, show hamburger */
 @media (max-width: 600px) {
   .nav-links { display: none; }
   .au-nav { justify-content: space-between; }
+  .nav-hamburger { display: flex; }
 }
 </style>

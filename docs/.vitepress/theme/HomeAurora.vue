@@ -9,6 +9,7 @@ onMounted(() => {
   initBarChart()
   initTilt()
   initTabs()
+  initHamburger()
 })
 
 function initParticles() {
@@ -161,6 +162,21 @@ function initTabs() {
     })
   })
 }
+
+function initHamburger() {
+  const btn = document.getElementById('nav-hamburger-zh')
+  const drawer = document.getElementById('nav-drawer-zh')
+  if (!btn || !drawer) return
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation()
+    drawer.classList.toggle('open')
+    btn.classList.toggle('open')
+  })
+  document.addEventListener('click', () => {
+    drawer.classList.remove('open')
+    btn.classList.remove('open')
+  })
+}
 </script>
 
 <template>
@@ -178,7 +194,15 @@ function initTabs() {
     <a href="/zh/business/cms/">解决方案</a>
   </div>
   <button class="nav-cta" onclick="window.location.href='/en/'">English</button>
+  <button class="nav-hamburger" id="nav-hamburger-zh" aria-label="菜单">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-drawer" id="nav-drawer-zh">
+  <a href="/zh/">首页</a>
+  <a href="/zh/business/cms/">解决方案</a>
+  <a href="/en/" class="nav-drawer-lang">English</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -853,9 +877,10 @@ function initTabs() {
   .footer-r { font-size: 0.72rem; }
 }
 
-/* SMALL PHONE — hide nav links entirely below 600px */
+/* SMALL PHONE — hide nav links, show hamburger */
 @media (max-width: 600px) {
   .nav-links { display: none; }
   .au-nav { justify-content: space-between; }
+  .nav-hamburger { display: flex; }
 }
 </style>
