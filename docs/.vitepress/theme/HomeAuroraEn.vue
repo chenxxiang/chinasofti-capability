@@ -247,13 +247,13 @@ function initHamburger() {
       </div>
     </div>
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="8">0</span><span class="u">万+</span></div><div class="stat-lab">Total Employees</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="170">0</span><span class="u">亿</span></div><div class="stat-lab">Annual Revenue (CNY)</div></div>
+      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="80">0</span><span class="u">K+</span></div><div class="stat-lab">Total Employees</div></div>
+      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="17">0</span><span class="u">B</span></div><div class="stat-lab">Annual Revenue (CNY)</div></div>
       <div class="stat-card"><div class="stat-val"><span class="counting" data-target="70">0</span><span class="u">+</span></div><div class="stat-lab">Cities Worldwide</div></div>
       <div class="stat-card"><div class="stat-val">Top<span class="u"> 73</span></div><div class="stat-lab">Gartner Global Ranking</div></div>
       <div class="stat-card"><div class="stat-val">Top<span class="u"> 15</span></div><div class="stat-lab">China Software Top 100</div></div>
       <div class="stat-card"><div class="stat-val"><span class="counting" data-target="30">0</span><span class="u">%+</span></div><div class="stat-lab">Overseas Revenue CAGR</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="98">0</span><span class="u">亿</span></div><div class="stat-lab">Cumulative Huawei Contracts (CNY)</div></div>
+      <div class="stat-card"><div class="stat-val">9.8<span class="u">B</span></div><div class="stat-lab">Cumulative Huawei Contracts (CNY)</div></div>
       <div class="stat-card"><div class="stat-val"><span class="counting" data-target="1000">0</span><span class="u">+</span></div><div class="stat-lab">Global Clients</div></div>
     </div>
   </div>
@@ -416,18 +416,18 @@ function initHamburger() {
         <div class="hw-intro-title">Deep Strategic Collaboration Across the Full Value Chain</div>
         <div class="hw-intro-text">
           ChinaSofti is one of Huawei's most important strategic partners, with a collaboration dating back to 2006 spanning software development, IT operations, overseas delivery, and digital transformation across the full value chain.<br><br>
-          Cumulative contract value has surpassed <span class="hw-num">98</span> billion CNY, covering HarmonyOS, cloud computing, AI applications, and Super App — making ChinaSofti Huawei's core IT partner for global expansion.
+          Cumulative contract value has surpassed <span class="hw-num">9.8</span> billion CNY, covering HarmonyOS, cloud computing, AI applications, and Super App — making ChinaSofti Huawei's core IT partner for global expansion.
         </div>
       </div>
       <div class="chart-card">
         <div class="chart-title">📈 Huawei Contract Growth Trend (CNY billion)</div>
         <div class="bar-chart" id="barChart">
-          <div class="bar-col"><div class="bar-val">5.72</div><div class="bar-body" data-h="10"></div><div class="bar-year">2015</div></div>
-          <div class="bar-col"><div class="bar-val">12.48</div><div class="bar-body" data-h="22"></div><div class="bar-year">2017</div></div>
-          <div class="bar-col"><div class="bar-val">28.63</div><div class="bar-body" data-h="40"></div><div class="bar-year">2019</div></div>
-          <div class="bar-col"><div class="bar-val">56.31</div><div class="bar-body" data-h="60"></div><div class="bar-year">2021</div></div>
-          <div class="bar-col"><div class="bar-val">81.24</div><div class="bar-body" data-h="80"></div><div class="bar-year">2023</div></div>
-          <div class="bar-col"><div class="bar-val">98.77</div><div class="bar-body" data-h="100"></div><div class="bar-year">2024</div></div>
+          <div class="bar-col"><div class="bar-val">0.57B</div><div class="bar-area"><div class="bar-body" data-h="10"></div></div><div class="bar-year">2015</div></div>
+          <div class="bar-col"><div class="bar-val">1.25B</div><div class="bar-area"><div class="bar-body" data-h="22"></div></div><div class="bar-year">2017</div></div>
+          <div class="bar-col"><div class="bar-val">2.86B</div><div class="bar-area"><div class="bar-body" data-h="40"></div></div><div class="bar-year">2019</div></div>
+          <div class="bar-col"><div class="bar-val">5.63B</div><div class="bar-area"><div class="bar-body" data-h="60"></div></div><div class="bar-year">2021</div></div>
+          <div class="bar-col"><div class="bar-val">8.12B</div><div class="bar-area"><div class="bar-body" data-h="80"></div></div><div class="bar-year">2023</div></div>
+          <div class="bar-col"><div class="bar-val">9.88B</div><div class="bar-area"><div class="bar-body" data-h="100"></div></div><div class="bar-year">2024</div></div>
         </div>
       </div>
     </div>
@@ -680,7 +680,7 @@ function initHamburger() {
 
 /* TIMELINE */
 .timeline { position: relative; padding-left: 4px; }
-.timeline::before { content: ''; position: absolute; left: 96px; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(to bottom, var(--blue), rgba(99,102,241,0.08)); border-radius: 2px; }
+.timeline::before { content: ''; position: absolute; left: 107px; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(to bottom, var(--blue), rgba(99,102,241,0.08)); border-radius: 2px; }
 .tl-item { display: flex; gap: 0; margin-bottom: 22px; align-items: flex-start; }
 .tl-year { min-width: 84px; text-align: right; font-size: 0.9rem; font-weight: 800; color: var(--blue); padding-top: 14px; letter-spacing: -0.01em; }
 .tl-connector { width: 40px; display: flex; justify-content: center; padding-top: 16px; flex-shrink: 0; position: relative; }
@@ -736,12 +736,13 @@ function initHamburger() {
 .hw-num { display: inline-block; font-size: 2.2rem; font-weight: 900; background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .chart-card { background: var(--card-bg); border-radius: var(--radius); padding: 36px; box-shadow: var(--shadow); border: 1px solid rgba(29,78,216,0.07); backdrop-filter: blur(8px); }
 .chart-title { font-size: 0.85rem; font-weight: 700; color: var(--text2); margin-bottom: 28px; letter-spacing: 0.04em; }
-.bar-chart { display: flex; align-items: flex-end; gap: 14px; height: 160px; }
-.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; }
-.bar-val { font-size: 0.72rem; font-weight: 800; color: var(--blue); white-space: nowrap; }
+.bar-chart { display: flex; align-items: stretch; gap: 14px; height: 160px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.bar-val { font-size: 0.68rem; font-weight: 800; color: var(--blue); white-space: nowrap; flex-shrink: 0; padding-bottom: 4px; }
+.bar-area { flex: 1; display: flex; align-items: flex-end; width: 100%; }
 .bar-body { width: 100%; border-radius: 8px 8px 0 0; height: 0%; background: linear-gradient(to top, var(--blue), #818cf8, #c4b5fd); transition: height .9s cubic-bezier(.16,1,.3,1); position: relative; overflow: hidden; }
 .bar-body::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 45%; background: linear-gradient(to bottom, rgba(255,255,255,0.22), transparent); }
-.bar-year { font-size: 0.72rem; color: var(--text3); font-weight: 600; }
+.bar-year { font-size: 0.68rem; color: var(--text3); font-weight: 600; flex-shrink: 0; padding-top: 5px; }
 
 /* AWARDS */
 .award-grid-v4 { display: grid; grid-template-columns: repeat(5,1fr); gap: 18px; }
@@ -832,7 +833,7 @@ function initHamburger() {
   .stat-val .u { font-size: 1rem; }
   .stat-lab { font-size: 0.75rem; margin-top: 8px; }
 
-  .timeline::before { left: 62px; }
+  .timeline::before { left: 72px; }
   .tl-year { min-width: 54px; font-size: 0.78rem; padding-top: 12px; }
   .tl-connector { width: 30px; padding-top: 14px; }
   .tl-dot { width: 13px; height: 13px; }
