@@ -2,60 +2,36 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  initParticles()
+  initMapTabs()
+  initMapPins()
   initReveal()
-  initCounters()
   initHamburger()
 })
 
-function initParticles() {
-  const canvas = document.getElementById('ov-canvas')
-  if (!canvas) return
-  const ctx = canvas.getContext('2d')
-  let W, H, particles = [], mouse = { x: -999, y: -999 }
-  const N = 100, CONN = 120
-  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight }
-  function Particle() {
-    this.x = Math.random() * W; this.y = Math.random() * H
-    this.vx = (Math.random() - .5) * 0.5; this.vy = (Math.random() - .5) * 0.5
-    this.r = Math.random() * 1.5 + 0.5
-  }
-  Particle.prototype.update = function () {
-    this.x += this.vx; this.y += this.vy
-    if (this.x < 0 || this.x > W) this.vx *= -1
-    if (this.y < 0 || this.y > H) this.vy *= -1
-  }
-  function init() { resize(); particles = []; for (let i = 0; i < N; i++) particles.push(new Particle()) }
-  function draw() {
-    ctx.clearRect(0, 0, W, H)
-    const allPts = [...particles, { x: mouse.x, y: mouse.y, isMouse: true }]
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i]; p.update()
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(148,163,248,0.7)'; ctx.fill()
-      for (let j = i + 1; j < allPts.length; j++) {
-        const q = allPts[j], dx = p.x - q.x, dy = p.y - q.y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-        if (dist < CONN) {
-          const alpha = (1 - dist / CONN) * (q.isMouse ? 0.6 : 0.18)
-          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y)
-          ctx.strokeStyle = `rgba(148,163,248,${alpha})`
-          ctx.lineWidth = q.isMouse ? 1.2 : 0.6; ctx.stroke()
-        }
-      }
-    }
-    requestAnimationFrame(draw)
-  }
-  window.addEventListener('resize', init)
-  const hero = canvas.closest('.ov-hero')
-  if (hero) {
-    hero.addEventListener('mousemove', e => {
-      const r = canvas.getBoundingClientRect()
-      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top
+function initMapTabs() {
+  const tabs = document.querySelectorAll('.ov-map-tab')
+  const panels = document.querySelectorAll('.ov-map-panel')
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'))
+      panels.forEach(p => p.classList.remove('active'))
+      tab.classList.add('active')
+      const target = document.getElementById(tab.dataset.panel)
+      if (target) target.classList.add('active')
     })
-    hero.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999 })
-  }
-  init(); draw()
+  })
+}
+
+function initMapPins() {
+  document.querySelectorAll('.ov-map-pin').forEach(pin => {
+    pin.addEventListener('click', () => {
+      const target = document.getElementById(pin.dataset.target)
+      if (!target) return
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      target.classList.add('ov-region-flash')
+      setTimeout(() => target.classList.remove('ov-region-flash'), 1400)
+    })
+  })
 }
 
 function initReveal() {
@@ -65,28 +41,6 @@ function initReveal() {
     })
   }, { threshold: 0.06 })
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
-}
-
-function initCounters() {
-  function animCount(el) {
-    const target = +el.dataset.target
-    const dur = 1600, start = performance.now();
-    (function tick(now) {
-      const p = Math.min((now - start) / dur, 1)
-      const ease = 1 - Math.pow(1 - p, 4)
-      el.textContent = Math.round(ease * target)
-      if (p < 1) requestAnimationFrame(tick)
-      else el.textContent = target
-    })(performance.now())
-  }
-  const hero = document.querySelector('.ov-hero-stats')
-  if (hero) {
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.querySelectorAll('.counting').forEach(animCount)
-      })
-    }, { threshold: 0.1 }).observe(hero)
-  }
 }
 
 function initHamburger() {
@@ -132,36 +86,87 @@ function initHamburger() {
   <a href="/en/" class="nav-drawer-lang">English</a>
 </div>
 
-<!-- HERO -->
-<div class="ov-hero">
-  <canvas id="ov-canvas"></canvas>
-  <div class="hero-orb orb-a"></div>
-  <div class="hero-orb orb-b"></div>
-  <div class="hero-orb orb-c"></div>
-  <div class="ov-hero-inner">
-    <div class="hero-pill"><span class="pill-dot"></span>Global Footprint · 全球战略布局</div>
-    <h1 class="ov-h1">覆盖全球<br><span class="shine">五大战略区域</span></h1>
-    <p class="ov-hero-sub">深耕华为生态18年 · 境外分支覆盖东南亚、港澳大湾区、中东、印度、日本五大核心市场</p>
-    <div class="ov-hero-stats">
-      <div class="ov-hs">
-        <div class="ov-hs-num"><span class="counting" data-target="11">0</span></div>
-        <div class="ov-hs-lab">境外分支机构</div>
+<!-- MAP SECTION -->
+<div class="ov-map-section">
+  <div class="ov-map-topbar">
+    <div class="ov-map-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      全球战略布局
+    </div>
+    <div class="ov-map-tabs">
+      <button class="ov-map-tab active" data-panel="map-global">🌏 全球布局</button>
+      <button class="ov-map-tab" data-panel="map-domestic">🇨🇳 国内布局</button>
+    </div>
+  </div>
+
+  <!-- GLOBAL MAP -->
+  <div class="ov-map-panel active" id="map-global">
+    <div class="ov-map-wrap">
+      <img src="/images/overseas/global-map.png" alt="全球布局地图" class="ov-map-img" />
+
+      <!-- 东南亚 / Malaysia -->
+      <div class="ov-map-pin" data-target="region-sea" style="left:64.5%;top:55.5%;">
+        <div class="ov-pin-dot" style="--pc:#10b981;"></div>
+        <div class="ov-pin-pulse" style="--pc:#10b981;"></div>
+        <div class="ov-pin-tooltip">
+          <div class="ov-pt-name">东南亚</div>
+          <div class="ov-pt-sub">马来西亚 · 新加坡 · 印尼</div>
+        </div>
       </div>
-      <div class="ov-hs-div"></div>
-      <div class="ov-hs">
-        <div class="ov-hs-num"><span class="counting" data-target="47">0</span></div>
-        <div class="ov-hs-lab">全球服务城市</div>
+
+      <!-- 港澳大湾区 -->
+      <div class="ov-map-pin" data-target="region-gba" style="left:71%;top:41%;">
+        <div class="ov-pin-dot" style="--pc:#ef4444;"></div>
+        <div class="ov-pin-pulse" style="--pc:#ef4444;"></div>
+        <div class="ov-pin-tooltip">
+          <div class="ov-pt-name">港澳大湾区</div>
+          <div class="ov-pt-sub">香港</div>
+        </div>
       </div>
-      <div class="ov-hs-div"></div>
-      <div class="ov-hs">
-        <div class="ov-hs-num">1000<span class="ov-hs-plus">+</span></div>
-        <div class="ov-hs-lab">中方派驻员工</div>
+
+      <!-- 中东 -->
+      <div class="ov-map-pin" data-target="region-me" style="left:51%;top:38%;">
+        <div class="ov-pin-dot" style="--pc:#f59e0b;"></div>
+        <div class="ov-pin-pulse" style="--pc:#f59e0b;"></div>
+        <div class="ov-pin-tooltip">
+          <div class="ov-pt-name">中东</div>
+          <div class="ov-pt-sub">沙特 · 阿联酋</div>
+        </div>
       </div>
-      <div class="ov-hs-div"></div>
-      <div class="ov-hs">
-        <div class="ov-hs-num">2700<span class="ov-hs-plus">+</span></div>
-        <div class="ov-hs-lab">全球企业客户</div>
+
+      <!-- 印度 -->
+      <div class="ov-map-pin" data-target="region-india" style="left:58%;top:44%;">
+        <div class="ov-pin-dot" style="--pc:#a78bfa;"></div>
+        <div class="ov-pin-pulse" style="--pc:#a78bfa;"></div>
+        <div class="ov-pin-tooltip">
+          <div class="ov-pt-name">印度</div>
+          <div class="ov-pt-sub">班加罗尔</div>
+        </div>
       </div>
+
+      <!-- 日本 -->
+      <div class="ov-map-pin" data-target="region-japan" style="left:76.5%;top:29%;">
+        <div class="ov-pin-dot" style="--pc:#06b6d4;"></div>
+        <div class="ov-pin-pulse" style="--pc:#06b6d4;"></div>
+        <div class="ov-pin-tooltip">
+          <div class="ov-pt-name">日本</div>
+          <div class="ov-pt-sub">东京</div>
+        </div>
+      </div>
+    </div>
+    <div class="ov-map-legend">
+      <span class="ov-leg-item" style="--lc:#10b981;">东南亚</span>
+      <span class="ov-leg-item" style="--lc:#ef4444;">港澳大湾区</span>
+      <span class="ov-leg-item" style="--lc:#f59e0b;">中东</span>
+      <span class="ov-leg-item" style="--lc:#a78bfa;">印度</span>
+      <span class="ov-leg-item" style="--lc:#06b6d4;">日本</span>
+    </div>
+  </div>
+
+  <!-- DOMESTIC MAP -->
+  <div class="ov-map-panel" id="map-domestic">
+    <div class="ov-map-wrap">
+      <img src="/images/overseas/domestic-map.png" alt="国内布局地图" class="ov-map-img" />
     </div>
   </div>
 </div>
@@ -190,198 +195,178 @@ function initHamburger() {
   </div>
 </div>
 
-<!-- BODY -->
+<!-- REGION SECTIONS -->
 <div class="page-body">
 
-  <!-- REGION CARDS -->
-  <div class="sec reveal">
-    <div class="sec-header">
-      <div class="sec-label-wrap">
-        <div class="sec-eyebrow">Regional Offices</div>
-        <div class="sec-title">五大战略区域</div>
+  <!-- 东南亚 -->
+  <div id="region-sea" class="ov-region-sec reveal">
+    <div class="ov-region-photo">
+      <img src="/images/overseas/sea-photo.jpeg" alt="东南亚·吉隆坡" />
+      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#059669,#10b981);">🌏 东南亚</div>
+    </div>
+    <div class="ov-region-content">
+      <div class="ov-region-eyebrow" style="color:#10b981;">Southeast Asia · 3 个实体</div>
+      <h2 class="ov-region-title">东南亚区域</h2>
+      <div class="ov-region-badge-row">
+        <span class="ov-region-badge" style="--rb:#10b981;">260+ 本地员工</span>
+      </div>
+      <div class="ov-entities">
+        <div class="ov-entity">
+          <span class="ov-edot" style="background:#10b981;"></span>
+          <div>
+            <div class="ov-ename">CSI Interfusion SDN. BHD</div>
+            <div class="ov-eloc">📍 马来西亚 · 吉隆坡</div>
+          </div>
+        </div>
+        <div class="ov-entity">
+          <span class="ov-edot" style="background:#10b981;"></span>
+          <div>
+            <div class="ov-ename">CSI Interfusion Singapore</div>
+            <div class="ov-eloc">📍 新加坡</div>
+          </div>
+        </div>
+        <div class="ov-entity">
+          <span class="ov-edot" style="background:#10b981;"></span>
+          <div>
+            <div class="ov-ename">PT CSI Interfusion Technology Service JAKARTA</div>
+            <div class="ov-eloc">📍 印度尼西亚 · 雅加达</div>
+          </div>
+        </div>
+      </div>
+      <div class="ov-svc-label">核心服务</div>
+      <div class="ov-tags">
+        <span>Telco 管理服务</span><span>金融 SuperApp</span><span>EKyc</span>
+        <span>全面风险管理</span><span>智慧城市/园区</span><span>云平台产品</span>
       </div>
     </div>
+  </div>
 
-    <div class="ov-region-grid">
-
-      <!-- 东南亚 -->
-      <div class="ov-region-card">
-        <div class="ov-rc-head" style="background:linear-gradient(135deg,#059669,#10b981);">
-          <div class="ov-rc-flag">🌏</div>
-          <div class="ov-rc-info">
-            <div class="ov-rc-title">东南亚区域</div>
-            <div class="ov-rc-sub">Southeast Asia · 3 个实体</div>
-          </div>
-          <div class="ov-rc-badge">260+ 本地员工</div>
-        </div>
-        <div class="ov-rc-body">
-          <div class="ov-entities">
-            <div class="ov-entity">
-              <span class="ov-edot" style="background:#059669;"></span>
-              <div>
-                <div class="ov-ename">CSI Interfusion SDN. BHD</div>
-                <div class="ov-eloc">📍 马来西亚 · 吉隆坡</div>
-              </div>
-            </div>
-            <div class="ov-entity">
-              <span class="ov-edot" style="background:#059669;"></span>
-              <div>
-                <div class="ov-ename">CSI Interfusion Singapore</div>
-                <div class="ov-eloc">📍 新加坡</div>
-              </div>
-            </div>
-            <div class="ov-entity">
-              <span class="ov-edot" style="background:#059669;"></span>
-              <div>
-                <div class="ov-ename">PT CSI Interfusion Technology Service JAKARTA</div>
-                <div class="ov-eloc">📍 印度尼西亚 · 雅加达</div>
-              </div>
-            </div>
-          </div>
-          <div class="ov-svc-section">
-            <div class="ov-svc-label">核心服务</div>
-            <div class="ov-tags">
-              <span>Telco 管理服务</span><span>金融 SuperApp</span><span>EKyc</span>
-              <span>全面风险管理</span><span>智慧城市/园区</span><span>云平台产品</span>
-            </div>
+  <!-- 港澳大湾区 -->
+  <div id="region-gba" class="ov-region-sec ov-region-sec-rev reveal">
+    <div class="ov-region-photo">
+      <img src="/images/overseas/gba-photo.jpeg" alt="港澳大湾区·香港" />
+      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#dc2626,#f87171);">🇭🇰 港澳大湾区</div>
+    </div>
+    <div class="ov-region-content">
+      <div class="ov-region-eyebrow" style="color:#ef4444;">Greater Bay Area · 1 个实体</div>
+      <h2 class="ov-region-title">港澳大湾区</h2>
+      <div class="ov-region-badge-row">
+        <span class="ov-region-badge" style="--rb:#ef4444;">160+ 员工</span>
+      </div>
+      <div class="ov-entities">
+        <div class="ov-entity">
+          <span class="ov-edot" style="background:#dc2626;"></span>
+          <div>
+            <div class="ov-ename">Chinasoft International Technology Service (Hong Kong)</div>
+            <div class="ov-eloc">📍 香港</div>
           </div>
         </div>
       </div>
+      <div class="ov-svc-label">核心服务</div>
+      <div class="ov-tags">
+        <span>IDS集成认证支持</span><span>台区ECU/HPLC</span><span>大数据/BES/OCS</span>
+        <span>应用开发测试</span><span>云转售/SI</span><span>智慧城市/园区</span>
+      </div>
+    </div>
+  </div>
 
-      <!-- 港澳大湾区 -->
-      <div class="ov-region-card">
-        <div class="ov-rc-head" style="background:linear-gradient(135deg,#dc2626,#f87171);">
-          <div class="ov-rc-flag">🇭🇰</div>
-          <div class="ov-rc-info">
-            <div class="ov-rc-title">港澳大湾区</div>
-            <div class="ov-rc-sub">Greater Bay Area · 1 个实体</div>
+  <!-- 中东 -->
+  <div id="region-me" class="ov-region-sec reveal">
+    <div class="ov-region-photo">
+      <img src="/images/overseas/me-photo.jpeg" alt="中东·利雅得" />
+      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#d97706,#f59e0b);">🕌 中东</div>
+    </div>
+    <div class="ov-region-content">
+      <div class="ov-region-eyebrow" style="color:#f59e0b;">Middle East · 2 个实体</div>
+      <h2 class="ov-region-title">中东区域</h2>
+      <div class="ov-region-badge-row">
+        <span class="ov-region-badge" style="--rb:#f59e0b;">50+ 员工</span>
+      </div>
+      <div class="ov-entities">
+        <div class="ov-entity">
+          <span class="ov-edot" style="background:#d97706;"></span>
+          <div>
+            <div class="ov-ename">CSI Joint Advanced Technologies</div>
+            <div class="ov-eloc">📍 沙特阿拉伯 · 利雅得（10+ 员工）</div>
           </div>
-          <div class="ov-rc-badge">160+ 员工</div>
         </div>
-        <div class="ov-rc-body">
-          <div class="ov-entities">
-            <div class="ov-entity">
-              <span class="ov-edot" style="background:#dc2626;"></span>
-              <div>
-                <div class="ov-ename">Chinasoft International Technology Service (Hong Kong)</div>
-                <div class="ov-eloc">📍 香港</div>
-              </div>
-            </div>
-          </div>
-          <div class="ov-svc-section">
-            <div class="ov-svc-label">核心服务</div>
-            <div class="ov-tags">
-              <span>IDS集成认证支持</span><span>台区ECU/HPLC</span><span>大数据/BES/OCS</span>
-              <span>应用开发测试</span><span>云转售/SI</span><span>智慧城市/园区</span>
-            </div>
+        <div class="ov-entity">
+          <span class="ov-edot" style="background:#d97706;"></span>
+          <div>
+            <div class="ov-ename">CSI INTERFUSION MIDDLE EAST TECHNOLOGY SERVICE</div>
+            <div class="ov-eloc">📍 阿联酋 · 阿布扎比（40+ 员工）</div>
           </div>
         </div>
       </div>
+      <div class="ov-svc-label">核心服务</div>
+      <div class="ov-tags">
+        <span>HW云/云转售/SI</span><span>IDS集成验证</span><span>数字化运营</span>
+        <span>政府应用开发</span><span>智慧城市/园区</span><span>软件运维</span>
+      </div>
+    </div>
+  </div>
 
-      <!-- 中东 -->
-      <div class="ov-region-card">
-        <div class="ov-rc-head" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
-          <div class="ov-rc-flag">🕌</div>
-          <div class="ov-rc-info">
-            <div class="ov-rc-title">中东区域</div>
-            <div class="ov-rc-sub">Middle East · 2 个实体</div>
-          </div>
-          <div class="ov-rc-badge">50+ 员工</div>
-        </div>
-        <div class="ov-rc-body">
-          <div class="ov-entities">
-            <div class="ov-entity">
-              <span class="ov-edot" style="background:#d97706;"></span>
-              <div>
-                <div class="ov-ename">CSI Joint Advanced Technologies</div>
-                <div class="ov-eloc">📍 沙特阿拉伯 · 利雅得（10+ 员工）</div>
-              </div>
-            </div>
-            <div class="ov-entity">
-              <span class="ov-edot" style="background:#d97706;"></span>
-              <div>
-                <div class="ov-ename">CSI INTERFUSION MIDDLE EAST TECHNOLOGY SERVICE</div>
-                <div class="ov-eloc">📍 阿联酋 · 阿布扎比（40+ 员工）</div>
-              </div>
-            </div>
-          </div>
-          <div class="ov-svc-section">
-            <div class="ov-svc-label">核心服务</div>
-            <div class="ov-tags">
-              <span>HW云/云转售/SI</span><span>IDS集成验证</span><span>数字化运营</span>
-              <span>政府应用开发</span><span>智慧城市/园区</span><span>软件运维</span>
-            </div>
+  <!-- 印度 -->
+  <div id="region-india" class="ov-region-sec ov-region-sec-rev reveal">
+    <div class="ov-region-photo">
+      <img src="/images/overseas/india-photo.jpeg" alt="印度·班加罗尔" />
+      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">🇮🇳 印度</div>
+    </div>
+    <div class="ov-region-content">
+      <div class="ov-region-eyebrow" style="color:#a78bfa;">India · 1 个实体</div>
+      <h2 class="ov-region-title">印度区域</h2>
+      <div class="ov-region-badge-row">
+        <span class="ov-region-badge" style="--rb:#a78bfa;">80+ 员工</span>
+      </div>
+      <div class="ov-entities">
+        <div class="ov-entity">
+          <span class="ov-edot" style="background:#7c3aed;"></span>
+          <div>
+            <div class="ov-ename">CSI Interfusion India</div>
+            <div class="ov-eloc">📍 印度 · 班加罗尔</div>
           </div>
         </div>
       </div>
+      <div class="ov-svc-label">核心服务</div>
+      <div class="ov-tags">
+        <span>Microsoft ISV</span><span>Android开发/UI定制</span><span>远程测试服务</span>
+        <span>运营商集成管理</span><span>CRM/BSS系统维护</span>
+      </div>
+    </div>
+  </div>
 
-      <!-- 印度 -->
-      <div class="ov-region-card">
-        <div class="ov-rc-head" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <div class="ov-rc-flag">🇮🇳</div>
-          <div class="ov-rc-info">
-            <div class="ov-rc-title">印度区域</div>
-            <div class="ov-rc-sub">India · 1 个实体</div>
-          </div>
-          <div class="ov-rc-badge">80+ 员工</div>
-        </div>
-        <div class="ov-rc-body">
-          <div class="ov-entities">
-            <div class="ov-entity">
-              <span class="ov-edot" style="background:#7c3aed;"></span>
-              <div>
-                <div class="ov-ename">CSI Interfusion India</div>
-                <div class="ov-eloc">📍 印度 · 班加罗尔</div>
-              </div>
-            </div>
-          </div>
-          <div class="ov-svc-section">
-            <div class="ov-svc-label">核心服务</div>
-            <div class="ov-tags">
-              <span>Microsoft ISV</span><span>Android开发/UI定制</span><span>远程测试服务</span>
-              <span>运营商集成管理</span><span>CRM/BSS系统维护</span>
-            </div>
+  <!-- 日本 -->
+  <div id="region-japan" class="ov-region-sec reveal">
+    <div class="ov-region-photo">
+      <img src="/images/overseas/japan-photo.jpeg" alt="日本·东京" />
+      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">🇯🇵 日本</div>
+    </div>
+    <div class="ov-region-content">
+      <div class="ov-region-eyebrow" style="color:#06b6d4;">Japan · 1 个实体</div>
+      <h2 class="ov-region-title">日本区域</h2>
+      <div class="ov-region-badge-row">
+        <span class="ov-region-badge" style="--rb:#06b6d4;">60+ 驻日</span>
+        <span class="ov-region-badge" style="--rb:#06b6d4;">1000+ 远程</span>
+      </div>
+      <div class="ov-entities">
+        <div class="ov-entity">
+          <span class="ov-edot" style="background:#0891b2;"></span>
+          <div>
+            <div class="ov-ename">東京信華 &amp; 日本創智</div>
+            <div class="ov-eloc">📍 日本 · 东京（另有大连/长沙/西安/北京/上海远程团队 1000+ 人）</div>
           </div>
         </div>
       </div>
-
-      <!-- 日本 (spans full width) -->
-      <div class="ov-region-card ov-card-wide">
-        <div class="ov-rc-head" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <div class="ov-rc-flag">🇯🇵</div>
-          <div class="ov-rc-info">
-            <div class="ov-rc-title">日本区域</div>
-            <div class="ov-rc-sub">Japan · 1 个实体</div>
-          </div>
-          <div class="ov-rc-badge">60+ 驻日 + 1000+ 远程</div>
+      <div class="ov-jp-row">
+        <div>
+          <div class="ov-svc-label">客户行业</div>
+          <div class="ov-tags"><span>金融</span><span>制造</span><span>流通</span><span>传媒</span></div>
         </div>
-        <div class="ov-rc-body ov-rc-body-wide">
-          <div class="ov-entities">
-            <div class="ov-entity">
-              <span class="ov-edot" style="background:#0891b2;"></span>
-              <div>
-                <div class="ov-ename">東京信華 &amp; 日本創智</div>
-                <div class="ov-eloc">📍 日本 · 东京（另有大连/长沙/西安/北京/上海远程团队 1000+ 人）</div>
-              </div>
-            </div>
-          </div>
-          <div class="ov-jp-cols">
-            <div class="ov-svc-section">
-              <div class="ov-svc-label">客户行业</div>
-              <div class="ov-tags">
-                <span>金融</span><span>制造</span><span>流通</span><span>传媒</span>
-              </div>
-            </div>
-            <div class="ov-svc-section">
-              <div class="ov-svc-label">核心服务</div>
-              <div class="ov-tags">
-                <span>系统开发测试</span><span>测试外包</span><span>人才派遣服务</span>
-              </div>
-            </div>
-          </div>
+        <div>
+          <div class="ov-svc-label">核心服务</div>
+          <div class="ov-tags"><span>系统开发测试</span><span>测试外包</span><span>人才派遣服务</span></div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -444,42 +429,116 @@ function initHamburger() {
 </template>
 
 <style>
-/* HERO */
-.ov-hero {
+/* ===== MAP SECTION ===== */
+.ov-map-section {
   position: relative; z-index: 1;
-  background: linear-gradient(140deg, #08091a 0%, #0f0c2e 30%, #1a1060 55%, #0c2d6e 78%, #063a5a 100%);
-  padding: 110px 72px 90px; overflow: hidden; min-height: 460px;
+  background: linear-gradient(160deg, #08091e 0%, #0d1235 50%, #091828 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
-#ov-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.6; }
-.ov-hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(99,102,241,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99,102,241,0.07) 1px, transparent 1px);
-  background-size: 64px 64px;
-  animation: gridDrift 25s linear infinite;
-}
-.ov-hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
-.ov-h1 {
-  font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 900; line-height: 1.06;
-  letter-spacing: -0.03em; color: #fff; margin: 0 0 18px;
-}
-.ov-hero-sub {
-  font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.8;
-  max-width: 600px; margin-bottom: 40px;
-}
-.ov-hero-stats { display: flex; align-items: center; flex-wrap: wrap; gap: 0; }
-.ov-hs { text-align: center; padding: 0 36px; }
-.ov-hs:first-child { padding-left: 0; }
-.ov-hs-num {
-  font-size: 3rem; font-weight: 900; color: #fff;
-  line-height: 1; letter-spacing: -0.04em;
-}
-.ov-hs-plus { font-size: 1.5rem; font-weight: 700; color: rgba(255,255,255,0.65); }
-.ov-hs-lab { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 6px; font-weight: 500; }
-.ov-hs-div { width: 1px; height: 50px; background: rgba(255,255,255,0.15); flex-shrink: 0; }
 
-/* COVERAGE STRIP */
+.ov-map-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 64px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-wrap: wrap; gap: 12px;
+}
+.ov-map-title {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 1.15rem; font-weight: 800; color: #f1f5f9;
+  letter-spacing: -0.01em;
+}
+.ov-map-title svg { color: #60a5fa; flex-shrink: 0; }
+
+.ov-map-tabs {
+  display: flex; gap: 8px; background: rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 4px;
+}
+.ov-map-tab {
+  padding: 8px 20px; border-radius: 7px; border: none; cursor: pointer;
+  font-size: 0.88rem; font-weight: 700; transition: all .2s;
+  background: transparent; color: rgba(255,255,255,0.55);
+}
+.ov-map-tab.active {
+  background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+  color: #fff; box-shadow: 0 4px 14px rgba(29,78,216,0.4);
+}
+.ov-map-tab:hover:not(.active) { background: rgba(255,255,255,0.08); color: #fff; }
+
+/* MAP PANELS */
+.ov-map-panel { display: none; }
+.ov-map-panel.active { display: block; }
+
+.ov-map-wrap {
+  position: relative; max-width: 1200px; margin: 0 auto;
+  padding: 32px 64px 0;
+}
+.ov-map-img {
+  width: 100%; display: block; border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.08);
+  min-height: 200px; object-fit: contain;
+}
+
+/* MAP PINS */
+.ov-map-pin {
+  position: absolute; transform: translate(-50%, -50%);
+  cursor: pointer; z-index: 10;
+}
+.ov-pin-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--pc); position: relative; z-index: 2;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.25), 0 2px 8px rgba(0,0,0,0.4);
+  transition: transform .2s;
+}
+.ov-map-pin:hover .ov-pin-dot { transform: scale(1.4); }
+.ov-pin-pulse {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--pc); opacity: 0.5;
+  animation: pinPulse 2s ease-out infinite;
+  z-index: 1;
+}
+@keyframes pinPulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+
+/* TOOLTIP */
+.ov-pin-tooltip {
+  position: absolute; bottom: calc(100% + 10px); left: 50%;
+  transform: translateX(-50%);
+  background: rgba(8, 10, 30, 0.95); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+  padding: 8px 14px; white-space: nowrap;
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+.ov-pin-tooltip::after {
+  content: ''; position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: rgba(8,10,30,0.95);
+}
+.ov-map-pin:hover .ov-pin-tooltip { opacity: 1; }
+.ov-pt-name { font-size: 0.86rem; font-weight: 800; color: #f1f5f9; }
+.ov-pt-sub { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+/* LEGEND */
+.ov-map-legend {
+  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+  padding: 16px 64px 28px;
+}
+.ov-leg-item {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.75);
+}
+.ov-leg-item::before {
+  content: ''; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--lc); flex-shrink: 0;
+  box-shadow: 0 0 6px var(--lc);
+}
+
+/* ===== COVERAGE STRIP ===== */
 .ov-cov-strip {
   position: relative; z-index: 1;
   background: linear-gradient(135deg, #1d4ed8, #4f46e5, #7c3aed);
@@ -502,64 +561,92 @@ function initHamburger() {
 .ov-cov-icon { font-size: 1.1rem; }
 .ov-cov-text strong { color: #fff; font-weight: 800; }
 
-/* REGION GRID */
-.ov-region-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.ov-card-wide { grid-column: span 2; }
-
-.ov-region-card {
-  background: var(--card-bg); border-radius: var(--radius);
-  box-shadow: var(--shadow); border: 1px solid rgba(29,78,216,0.09);
-  overflow: hidden; transition: box-shadow .3s, transform .3s;
+/* ===== REGION SECTIONS ===== */
+.ov-region-sec {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-lg); margin-bottom: 48px;
+  background: var(--card-bg); border: 1px solid rgba(29,78,216,0.09);
   backdrop-filter: blur(8px);
+  transition: box-shadow .35s, transform .35s;
 }
-.ov-region-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.ov-region-sec:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(29,78,216,0.13); }
 
-.ov-rc-head {
-  display: flex; align-items: center; gap: 16px;
-  padding: 20px 24px; color: #fff; position: relative; overflow: hidden;
+/* Reversed: photo on right */
+.ov-region-sec-rev { direction: rtl; }
+.ov-region-sec-rev > * { direction: ltr; }
+
+.ov-region-photo {
+  position: relative; min-height: 340px; overflow: hidden; flex-shrink: 0;
 }
-.ov-rc-head::after {
-  content: ''; position: absolute; right: -28px; top: -28px;
-  width: 110px; height: 110px; border-radius: 50%;
-  background: rgba(255,255,255,0.08); pointer-events: none;
+.ov-region-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  display: block; transition: transform .5s ease;
 }
-.ov-rc-flag { font-size: 2.2rem; flex-shrink: 0; position: relative; z-index: 1; line-height: 1; }
-.ov-rc-info { flex: 1; position: relative; z-index: 1; }
-.ov-rc-title { font-size: 1.1rem; font-weight: 800; line-height: 1.2; }
-.ov-rc-sub { font-size: 0.78rem; color: rgba(255,255,255,0.72); margin-top: 3px; }
-.ov-rc-badge {
-  background: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.28); border-radius: 20px;
-  padding: 5px 14px; font-size: 0.78rem; font-weight: 700;
-  white-space: nowrap; flex-shrink: 0; position: relative; z-index: 1;
+.ov-region-sec:hover .ov-region-photo img { transform: scale(1.04); }
+.ov-photo-badge {
+  position: absolute; top: 20px; left: 20px;
+  color: #fff; font-size: 0.84rem; font-weight: 800;
+  padding: 6px 16px; border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+}
+.ov-region-sec-rev .ov-photo-badge { left: auto; right: 20px; }
+
+.ov-region-content {
+  padding: 40px 44px; display: flex; flex-direction: column; justify-content: center;
+}
+.ov-region-eyebrow {
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.ov-region-title {
+  font-size: 1.7rem; font-weight: 900; color: var(--text1);
+  margin: 0 0 14px; letter-spacing: -0.02em; line-height: 1.1;
+}
+.ov-region-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.ov-region-badge {
+  background: color-mix(in srgb, var(--rb) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--rb) 30%, transparent);
+  color: var(--rb); border-radius: 20px;
+  padding: 4px 14px; font-size: 0.8rem; font-weight: 700;
 }
 
-.ov-rc-body { padding: 22px 24px; }
-.ov-rc-body-wide {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;
+/* fallback for older browsers */
+.ov-region-badge {
+  background: rgba(29,78,216,0.1);
+  border: 1px solid rgba(29,78,216,0.25);
+  color: var(--rb, #1d4ed8);
 }
 
-.ov-entities { margin-bottom: 20px; display: flex; flex-direction: column; gap: 13px; }
+.ov-entities { margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px; }
 .ov-entity { display: flex; align-items: flex-start; gap: 11px; }
 .ov-edot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
 .ov-ename { font-size: 0.9rem; font-weight: 700; color: var(--text1); line-height: 1.4; }
 .ov-eloc { font-size: 0.78rem; color: var(--text3); margin-top: 2px; }
 
-.ov-svc-section { }
 .ov-svc-label {
   font-size: 0.64rem; font-weight: 800; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--blue); margin-bottom: 10px;
 }
-.ov-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.ov-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 0; }
 .ov-tags span {
   background: rgba(29,78,216,0.06); border: 1px solid rgba(29,78,216,0.13);
   border-radius: 20px; padding: 4px 12px; font-size: 0.78rem;
   color: var(--text2); font-weight: 500;
 }
 
-.ov-jp-cols { display: flex; gap: 36px; flex-wrap: wrap; }
+.ov-jp-row { display: flex; gap: 32px; flex-wrap: wrap; }
 
-/* ACHIEVEMENTS */
+/* Flash animation when pin clicked */
+@keyframes regionFlash {
+  0%,100% { box-shadow: var(--shadow-lg); }
+  25% { box-shadow: 0 0 0 4px rgba(59,130,246,0.5), var(--shadow-lg); }
+  75% { box-shadow: 0 0 0 8px rgba(59,130,246,0.25), var(--shadow-lg); }
+}
+.ov-region-flash { animation: regionFlash 1.4s ease; }
+
+/* ===== ACHIEVEMENTS ===== */
 .ov-achieve-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .ov-achieve-card {
   display: flex; gap: 20px; align-items: flex-start;
@@ -577,19 +664,20 @@ function initHamburger() {
 .ov-ach-title { font-size: 1.02rem; font-weight: 800; color: var(--text1); margin-bottom: 10px; }
 .ov-ach-desc { font-size: 0.9rem; color: var(--text2); line-height: 1.75; }
 
-/* TABLET */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .ov-hero { padding: 90px 32px 70px; }
+  .ov-map-topbar { padding: 18px 32px 14px; }
+  .ov-map-wrap { padding: 24px 32px 0; }
+  .ov-map-legend { padding: 14px 32px 20px; }
   .ov-cov-strip { padding: 18px 32px; }
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
-  .ov-hero { padding: 72px 16px 56px; min-height: auto; }
-  .ov-hero-sub { font-size: 0.88rem; }
-  .ov-hs { padding: 10px 18px; }
-  .ov-hs-num { font-size: 2.2rem; }
-  .ov-hs-div { height: 38px; }
+  .ov-map-topbar { padding: 16px 20px 12px; }
+  .ov-map-wrap { padding: 16px 16px 0; }
+  .ov-map-legend { padding: 12px 16px 18px; gap: 12px; }
+  .ov-map-tabs { gap: 4px; }
+  .ov-map-tab { padding: 7px 14px; font-size: 0.82rem; }
 
   .ov-cov-strip { padding: 10px 16px; }
   .ov-cov-item {
@@ -600,19 +688,22 @@ function initHamburger() {
   .ov-cov-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
   .ov-cov-item:last-child { width: 100%; border-bottom: none; justify-content: center; }
 
-  .ov-region-grid { grid-template-columns: 1fr; }
-  .ov-card-wide { grid-column: span 1; }
-  .ov-rc-body-wide { grid-template-columns: 1fr; }
-  .ov-rc-badge { font-size: 0.7rem; padding: 4px 10px; }
+  /* Stack region sections */
+  .ov-region-sec { grid-template-columns: 1fr; direction: ltr; }
+  .ov-region-sec-rev { direction: ltr; }
+  .ov-region-photo { min-height: 220px; }
+  .ov-region-content { padding: 28px 24px; }
+  .ov-region-title { font-size: 1.35rem; }
+  .ov-photo-badge { left: 16px !important; right: auto !important; }
 
   .ov-achieve-grid { grid-template-columns: 1fr; }
+  .ov-jp-row { flex-direction: column; gap: 16px; }
 }
 
-/* SMALL PHONE */
 @media (max-width: 600px) {
-  .ov-hero { padding: 64px 16px 48px; }
-  .ov-hs { padding: 8px 12px; }
-  .ov-hs-num { font-size: 1.7rem; }
-  .ov-hs-div { height: 30px; }
+  .ov-map-topbar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .ov-map-legend { gap: 8px; }
+  .ov-region-photo { min-height: 180px; }
+  .ov-region-content { padding: 22px 18px; }
 }
 </style>
