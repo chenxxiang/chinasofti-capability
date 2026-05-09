@@ -191,6 +191,7 @@ function initHamburger() {
   </div>
   <div class="nav-links">
     <a href="/zh/" class="active">首页</a>
+    <a href="/zh/overseas/">海外布局</a>
     <a href="/zh/business/cms/">解决方案</a>
   </div>
   <button class="nav-cta" onclick="window.location.href='/en/'">English</button>
@@ -200,6 +201,7 @@ function initHamburger() {
 </nav>
 <div class="nav-drawer" id="nav-drawer-zh">
   <a href="/zh/">首页</a>
+  <a href="/zh/overseas/">海外布局</a>
   <a href="/zh/business/cms/">解决方案</a>
   <a href="/en/" class="nav-drawer-lang">English</a>
 </div>
