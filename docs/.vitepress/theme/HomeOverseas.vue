@@ -4,6 +4,7 @@ import { onMounted } from 'vue'
 onMounted(() => {
   initMapTabs()
   initMapPins()
+  initWorldMap()
   initReveal()
   initHamburger()
 })
@@ -41,6 +42,115 @@ function initReveal() {
     })
   }, { threshold: 0.06 })
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
+}
+
+function initWorldMap() {
+  const canvas = document.getElementById('ov-world-canvas')
+  if (!canvas) return
+
+  function draw(img) {
+    const dpr = window.devicePixelRatio || 1
+    const cssW = canvas.parentElement.offsetWidth
+    const cssH = Math.round(cssW * 500 / 960)
+    canvas.width = cssW * dpr
+    canvas.height = cssH * dpr
+    canvas.style.width = cssW + 'px'
+    canvas.style.height = cssH + 'px'
+
+    const ctx = canvas.getContext('2d')
+    ctx.scale(dpr, dpr)
+
+    // Sample source image at medium resolution for land/ocean detection
+    const SW = 640, SH = 333
+    const tmp = document.createElement('canvas')
+    tmp.width = SW; tmp.height = SH
+    const tc = tmp.getContext('2d')
+    tc.drawImage(img, 0, 0, SW, SH)
+    const pd = tc.getImageData(0, 0, SW, SH).data
+
+    function px(x, y) {
+      const ix = Math.max(0, Math.min(SW - 1, Math.round(x)))
+      const iy = Math.max(0, Math.min(SH - 1, Math.round(y)))
+      const i = (iy * SW + ix) * 4
+      return [pd[i], pd[i+1], pd[i+2], pd[i+3]]
+    }
+
+    // Ocean: blue-dominant pixels; also treat near-white/very-light as ocean bg
+    function isOcean(r, g, b, a) {
+      if (a < 30) return true
+      const isBlueDom = b > r + 8 && b > g - 20 && b > 70
+      const isVeryLight = r > 230 && g > 230 && b > 230
+      return isBlueDom || isVeryLight
+    }
+
+    // Ocean gradient background
+    const grad = ctx.createLinearGradient(0, 0, 0, cssH)
+    grad.addColorStop(0, '#bdd6ea')
+    grad.addColorStop(1, '#a8c8e0')
+    ctx.fillStyle = grad
+    ctx.beginPath()
+    roundRect(ctx, 0, 0, cssW, cssH, 14)
+    ctx.fill()
+
+    // Subtle grid lines
+    ctx.strokeStyle = 'rgba(70,120,175,0.13)'
+    ctx.lineWidth = 0.7
+    ;[[0, cssH/2, cssW, cssH/2], [cssW/2, 0, cssW/2, cssH]].forEach(([x1,y1,x2,y2]) => {
+      ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke()
+    })
+    ctx.strokeStyle = 'rgba(70,120,175,0.07)'
+    ctx.lineWidth = 0.5
+    ;[cssH*0.333, cssH*0.667].forEach(y => {
+      ctx.setLineDash([4,6]); ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(cssW,y); ctx.stroke()
+    })
+    ;[cssW*0.333, cssW*0.667].forEach(x => {
+      ctx.setLineDash([4,6]); ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,cssH); ctx.stroke()
+    })
+    ctx.setLineDash([])
+
+    // Draw land as dot grid
+    const gap = Math.max(5, Math.round(cssW / 140))
+    const dotR = gap * 0.34
+    ctx.fillStyle = '#6fa4c0'
+
+    for (let cx = 0; cx <= cssW; cx += gap) {
+      for (let cy = 0; cy <= cssH; cy += gap) {
+        const sx = (cx / cssW) * SW
+        const sy = (cy / cssH) * SH
+        const [r, g, b, a] = px(sx, sy)
+        if (!isOcean(r, g, b, a)) {
+          ctx.beginPath()
+          ctx.arc(cx, cy, dotR, 0, Math.PI * 2)
+          ctx.fill()
+        }
+      }
+    }
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.moveTo(x + r, y)
+    ctx.lineTo(x + w - r, y)
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r)
+    ctx.lineTo(x + w, y + h - r)
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h)
+    ctx.lineTo(x + r, y + h)
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r)
+    ctx.lineTo(x, y + r)
+    ctx.quadraticCurveTo(x, y, x + r, y)
+    ctx.closePath()
+  }
+
+  const img = new Image()
+  img.src = '/images/overseas/global-map.png'
+  img.onload = () => {
+    draw(img)
+    // Redraw on resize
+    let resizeTimer
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(() => draw(img), 150)
+    })
+  }
 }
 
 function initHamburger() {
@@ -99,80 +209,14 @@ function initHamburger() {
     </div>
   </div>
 
-  <!-- GLOBAL MAP: SVG drawn world map -->
+  <!-- GLOBAL MAP: Canvas dot-grid, sampled from global-map.png -->
   <div class="ov-map-panel active" id="map-global">
     <div class="ov-map-frame">
       <div class="ov-world-wrap">
-        <svg viewBox="0 0 960 500" class="ov-world-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-          <defs>
-            <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#c2d9ef"/>
-              <stop offset="100%" stop-color="#b8d0e8"/>
-            </linearGradient>
-          </defs>
-          <!-- Ocean -->
-          <rect width="960" height="500" fill="url(#oceanGrad)" rx="12"/>
-          <!-- Latitude lines -->
-          <line x1="0" y1="167" x2="960" y2="167" stroke="rgba(80,130,190,0.15)" stroke-width="0.8" stroke-dasharray="4,4"/>
-          <line x1="0" y1="250" x2="960" y2="250" stroke="rgba(80,130,190,0.22)" stroke-width="1"/>
-          <line x1="0" y1="333" x2="960" y2="333" stroke="rgba(80,130,190,0.15)" stroke-width="0.8" stroke-dasharray="4,4"/>
-          <!-- Longitude lines -->
-          <line x1="480" y1="0" x2="480" y2="500" stroke="rgba(80,130,190,0.18)" stroke-width="0.8" stroke-dasharray="4,4"/>
-          <line x1="640" y1="0" x2="640" y2="500" stroke="rgba(80,130,190,0.1)" stroke-width="0.6" stroke-dasharray="3,5"/>
-          <line x1="800" y1="0" x2="800" y2="500" stroke="rgba(80,130,190,0.1)" stroke-width="0.6" stroke-dasharray="3,5"/>
+        <canvas id="ov-world-canvas" class="ov-world-svg"></canvas>
 
-          <!-- === CONTINENTS === -->
-          <!-- North America -->
-          <path d="M 42,75 L 68,52 L 95,45 L 138,48 L 178,58 L 210,78 L 230,115 L 238,152 L 230,188 L 210,218 L 190,238 L 168,250 L 148,242 L 152,225 L 162,198 L 150,175 L 128,162 L 105,148 L 85,130 L 62,108 Z" fill="#8fb5cc"/>
-          <!-- Greenland -->
-          <path d="M 282,20 L 328,8 L 362,18 L 366,40 L 345,58 L 308,66 L 282,52 Z" fill="#8fb5cc"/>
-          <!-- South America -->
-          <path d="M 188,242 L 232,226 L 265,240 L 280,272 L 276,314 L 260,357 L 238,402 L 216,442 L 196,443 L 178,412 L 168,372 L 170,326 L 178,278 Z" fill="#8fb5cc"/>
-          <!-- Europe -->
-          <path d="M 418,50 L 456,38 L 500,40 L 530,54 L 538,76 L 520,98 L 494,112 L 466,116 L 440,106 L 425,88 L 422,66 Z" fill="#8fb5cc"/>
-          <!-- Scandinavia -->
-          <path d="M 452,24 L 480,14 L 506,26 L 510,52 L 494,64 L 466,58 L 450,42 Z" fill="#8fb5cc"/>
-          <!-- Iceland -->
-          <path d="M 378,36 L 398,30 L 412,40 L 408,52 L 388,56 L 374,46 Z" fill="#8fb5cc"/>
-          <!-- Africa -->
-          <path d="M 428,118 L 510,106 L 548,122 L 562,162 L 564,206 L 550,250 L 534,294 L 508,338 L 476,362 L 450,360 L 428,326 L 418,272 L 416,218 L 425,168 Z" fill="#8fb5cc"/>
-          <!-- Arabian Peninsula -->
-          <path d="M 548,152 L 612,146 L 640,162 L 637,200 L 614,218 L 580,220 L 554,206 L 544,180 Z" fill="#8fb5cc"/>
-          <!-- Asia main body -->
-          <path d="M 524,50 L 592,30 L 672,32 L 750,40 L 822,46 L 878,54 L 910,84 L 902,120 L 870,150 L 840,164 L 808,174 L 780,190 L 760,210 L 736,222 L 710,220 L 683,210 L 656,198 L 628,187 L 600,178 L 575,166 L 550,152 L 528,130 L 514,102 L 518,72 Z" fill="#8fb5cc"/>
-          <!-- Indian Subcontinent -->
-          <path d="M 626,180 L 667,173 L 706,183 L 720,212 L 714,252 L 695,273 L 673,276 L 652,255 L 635,228 L 626,202 Z" fill="#8fb5cc"/>
-          <!-- SE Asia Peninsula (Malay) -->
-          <path d="M 716,202 L 748,206 L 762,232 L 756,258 L 736,266 L 718,254 L 712,228 Z" fill="#8fb5cc"/>
-          <!-- Sumatra -->
-          <path d="M 725,252 L 758,240 L 774,255 L 770,274 L 748,282 L 728,270 Z" fill="#8fb5cc"/>
-          <!-- Borneo -->
-          <path d="M 782,232 L 810,226 L 822,244 L 816,270 L 790,275 L 776,257 Z" fill="#8fb5cc"/>
-          <!-- Java -->
-          <path d="M 760,270 L 792,264 L 806,274 L 800,284 L 766,284 Z" fill="#8fb5cc"/>
-          <!-- Philippines -->
-          <path d="M 802,192 L 816,180 L 828,188 L 826,206 L 814,215 L 802,208 Z" fill="#8fb5cc"/>
-          <!-- Taiwan -->
-          <path d="M 816,166 L 826,160 L 832,168 L 828,180 L 818,178 Z" fill="#8fb5cc"/>
-          <!-- Japan (Honshu) -->
-          <path d="M 856,94 L 890,86 L 906,98 L 900,122 L 874,132 L 856,120 Z" fill="#8fb5cc"/>
-          <!-- Japan (Kyushu) -->
-          <path d="M 848,130 L 862,125 L 868,134 L 860,142 L 848,138 Z" fill="#8fb5cc"/>
-          <!-- Korea -->
-          <path d="M 810,120 L 824,118 L 832,130 L 826,144 L 810,142 Z" fill="#8fb5cc"/>
-          <!-- Australia -->
-          <path d="M 768,278 L 846,260 L 902,268 L 926,298 L 924,336 L 900,360 L 858,367 L 808,353 L 774,325 L 766,300 Z" fill="#8fb5cc"/>
-          <!-- New Zealand -->
-          <path d="M 920,328 L 936,320 L 944,335 L 934,350 L 920,346 Z" fill="#8fb5cc"/>
-          <path d="M 914,355 L 930,347 L 940,364 L 928,378 L 912,376 Z" fill="#8fb5cc"/>
-          <!-- Madagascar -->
-          <path d="M 560,264 L 572,256 L 580,272 L 576,298 L 562,302 L 555,282 Z" fill="#8fb5cc"/>
-          <!-- Sri Lanka -->
-          <path d="M 704,268 L 712,265 L 716,274 L 710,281 L 702,276 Z" fill="#8fb5cc"/>
-        </svg>
-
-        <!-- Interactive markers (positioned as % of SVG viewBox 960×500) -->
-        <!-- 东南亚: Malaysia (103°E,4°N) → x=754,y=239 → 78.5%,47.8% -->
+        <!-- Markers: positioned relative to canvas, equirectangular proj 960×500 -->
+        <!-- 东南亚: Malaysia (103°E,4°N) → 78.5%,47.8% -->
         <div class="ov-map-pin" data-target="region-sea" style="left:78.5%;top:47.8%;">
           <div class="ov-pin-dot" style="--pc:#10b981;"></div>
           <div class="ov-pin-pulse" style="--pc:#10b981;"></div>
@@ -181,8 +225,7 @@ function initHamburger() {
             <div class="ov-pt-sub">马来西亚 · 新加坡 · 印尼</div>
           </div>
         </div>
-
-        <!-- 港澳大湾区: HK (114°E,22°N) → x=784,y=189 → 81.7%,37.8% -->
+        <!-- 港澳大湾区: HK (114°E,22°N) → 81.7%,37.8% -->
         <div class="ov-map-pin" data-target="region-gba" style="left:81.7%;top:37.8%;">
           <div class="ov-pin-dot" style="--pc:#ef4444;"></div>
           <div class="ov-pin-pulse" style="--pc:#ef4444;"></div>
@@ -191,8 +234,7 @@ function initHamburger() {
             <div class="ov-pt-sub">香港</div>
           </div>
         </div>
-
-        <!-- 中东: UAE/Saudi center (47°E,24°N) → x=605,y=183 → 63%,36.6% -->
+        <!-- 中东: (47°E,24°N) → 63%,36.6% -->
         <div class="ov-map-pin" data-target="region-me" style="left:63%;top:36.6%;">
           <div class="ov-pin-dot" style="--pc:#f59e0b;"></div>
           <div class="ov-pin-pulse" style="--pc:#f59e0b;"></div>
@@ -201,8 +243,7 @@ function initHamburger() {
             <div class="ov-pt-sub">沙特 · 阿联酋</div>
           </div>
         </div>
-
-        <!-- 印度: Bangalore (77°E,13°N) → x=685,y=214 → 71.4%,42.8% -->
+        <!-- 印度: Bangalore (77°E,13°N) → 71.4%,42.8% -->
         <div class="ov-map-pin" data-target="region-india" style="left:71.4%;top:42.8%;">
           <div class="ov-pin-dot" style="--pc:#a78bfa;"></div>
           <div class="ov-pin-pulse" style="--pc:#a78bfa;"></div>
@@ -211,8 +252,7 @@ function initHamburger() {
             <div class="ov-pt-sub">班加罗尔</div>
           </div>
         </div>
-
-        <!-- 日本: Tokyo (139.7°E,35.7°N) → x=852,y=151 → 88.8%,30.2% -->
+        <!-- 日本: Tokyo (139.7°E,35.7°N) → 88.8%,30.2% -->
         <div class="ov-map-pin" data-target="region-japan" style="left:88.8%;top:30.2%;">
           <div class="ov-pin-dot" style="--pc:#06b6d4;"></div>
           <div class="ov-pin-pulse" style="--pc:#06b6d4;"></div>
@@ -234,13 +274,9 @@ function initHamburger() {
     </div>
   </div>
 
-  <!-- DOMESTIC MAP -->
+  <!-- DOMESTIC MAP: full-width, no side padding, sharpened -->
   <div class="ov-map-panel" id="map-domestic">
-    <div class="ov-map-frame">
-      <div class="ov-world-wrap ov-domestic-wrap">
-        <img src="/images/overseas/domestic-map.png" alt="国内布局地图" class="ov-domestic-img" />
-      </div>
-    </div>
+    <img src="/images/overseas/domestic-map.png" alt="国内布局地图" class="ov-domestic-img" />
   </div>
 </div>
 
@@ -544,10 +580,9 @@ function initHamburger() {
 
 .ov-map-frame { padding: 28px 64px 0; max-width: 1280px; margin: 0 auto; }
 
-/* SVG world map container */
+/* Canvas dot-map container */
 .ov-world-wrap {
-  position: relative;
-  width: 100%;
+  position: relative; width: 100%;
   border-radius: 14px; overflow: hidden;
   box-shadow: 0 6px 32px rgba(30,80,140,0.13);
   border: 1px solid #d0e0ef;
@@ -556,11 +591,11 @@ function initHamburger() {
   display: block; width: 100%; height: auto;
 }
 
-/* Domestic map */
-.ov-domestic-wrap { background: #f0f6fb; }
+/* Domestic map: full-width, no frame padding, sharpened */
+.ov-map-panel#map-domestic { background: #eef4fb; }
 .ov-domestic-img {
-  width: 100%; display: block; object-fit: contain;
-  max-height: 440px;
+  display: block; width: 100%; height: auto;
+  filter: contrast(1.15) saturate(1.1) brightness(1.03);
 }
 
 /* MAP PINS */
