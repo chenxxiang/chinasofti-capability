@@ -1,5 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
+import { feature, mesh } from 'topojson-client'
+import worldData from 'world-atlas/countries-110m.json'
 
 onMounted(() => {
   initMapTabs()
@@ -48,10 +50,11 @@ function initWorldMap() {
   const canvas = document.getElementById('ov-world-canvas')
   if (!canvas) return
 
-  function draw(img) {
+  function draw() {
     const dpr = window.devicePixelRatio || 1
     const cssW = canvas.parentElement.offsetWidth
     const cssH = Math.round(cssW * 500 / 960)
+
     canvas.width = cssW * dpr
     canvas.height = cssH * dpr
     canvas.style.width = cssW + 'px'
@@ -60,97 +63,88 @@ function initWorldMap() {
     const ctx = canvas.getContext('2d')
     ctx.scale(dpr, dpr)
 
-    // Sample source image at medium resolution for land/ocean detection
-    const SW = 640, SH = 333
-    const tmp = document.createElement('canvas')
-    tmp.width = SW; tmp.height = SH
-    const tc = tmp.getContext('2d')
-    tc.drawImage(img, 0, 0, SW, SH)
-    const pd = tc.getImageData(0, 0, SW, SH).data
-
-    function px(x, y) {
-      const ix = Math.max(0, Math.min(SW - 1, Math.round(x)))
-      const iy = Math.max(0, Math.min(SH - 1, Math.round(y)))
-      const i = (iy * SW + ix) * 4
-      return [pd[i], pd[i+1], pd[i+2], pd[i+3]]
-    }
-
-    // Ocean: blue-dominant pixels; also treat near-white/very-light as ocean bg
-    function isOcean(r, g, b, a) {
-      if (a < 30) return true
-      const isBlueDom = b > r + 8 && b > g - 20 && b > 70
-      const isVeryLight = r > 230 && g > 230 && b > 230
-      return isBlueDom || isVeryLight
+    // Equirectangular projection — matches marker % positions
+    function project([lon, lat]) {
+      return [(lon + 180) / 360 * cssW, (90 - lat) / 180 * cssH]
     }
 
     // Ocean gradient background
     const grad = ctx.createLinearGradient(0, 0, 0, cssH)
-    grad.addColorStop(0, '#bdd6ea')
-    grad.addColorStop(1, '#a8c8e0')
+    grad.addColorStop(0, '#bdd8ec')
+    grad.addColorStop(1, '#a8c8df')
     ctx.fillStyle = grad
-    ctx.beginPath()
-    roundRect(ctx, 0, 0, cssW, cssH, 14)
-    ctx.fill()
+    ctx.fillRect(0, 0, cssW, cssH)
 
-    // Subtle grid lines
-    ctx.strokeStyle = 'rgba(70,120,175,0.13)'
-    ctx.lineWidth = 0.7
-    ;[[0, cssH/2, cssW, cssH/2], [cssW/2, 0, cssW/2, cssH]].forEach(([x1,y1,x2,y2]) => {
-      ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke()
+    // Subtle lat/lon grid
+    ctx.setLineDash([3, 6])
+    ctx.strokeStyle = 'rgba(55,110,170,0.12)'
+    ctx.lineWidth = 0.6
+    ;[cssH / 3, cssH * 2 / 3].forEach(y => {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(cssW, y); ctx.stroke()
     })
-    ctx.strokeStyle = 'rgba(70,120,175,0.07)'
-    ctx.lineWidth = 0.5
-    ;[cssH*0.333, cssH*0.667].forEach(y => {
-      ctx.setLineDash([4,6]); ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(cssW,y); ctx.stroke()
-    })
-    ;[cssW*0.333, cssW*0.667].forEach(x => {
-      ctx.setLineDash([4,6]); ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,cssH); ctx.stroke()
+    ;[cssW / 3, cssW * 2 / 3].forEach(x => {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, cssH); ctx.stroke()
     })
     ctx.setLineDash([])
+    ctx.strokeStyle = 'rgba(55,110,170,0.2)'
+    ctx.lineWidth = 0.7
+    ctx.beginPath(); ctx.moveTo(0, cssH / 2); ctx.lineTo(cssW, cssH / 2); ctx.stroke()
+    ctx.beginPath(); ctx.moveTo(cssW / 2, 0); ctx.lineTo(cssW / 2, cssH); ctx.stroke()
 
-    // Draw land as dot grid
-    const gap = Math.max(5, Math.round(cssW / 140))
-    const dotR = gap * 0.34
-    ctx.fillStyle = '#6fa4c0'
-
-    for (let cx = 0; cx <= cssW; cx += gap) {
-      for (let cy = 0; cy <= cssH; cy += gap) {
-        const sx = (cx / cssW) * SW
-        const sy = (cy / cssH) * SH
-        const [r, g, b, a] = px(sx, sy)
-        if (!isOcean(r, g, b, a)) {
-          ctx.beginPath()
-          ctx.arc(cx, cy, dotR, 0, Math.PI * 2)
-          ctx.fill()
-        }
+    // GeoJSON ring → canvas path
+    function applyRing(ring) {
+      const [x0, y0] = project(ring[0])
+      ctx.moveTo(x0, y0)
+      for (let i = 1; i < ring.length; i++) {
+        const [x, y] = project(ring[i])
+        ctx.lineTo(x, y)
       }
+      ctx.closePath()
     }
-  }
+    function applyGeom(geom) {
+      if (!geom) return
+      if (geom.type === 'Polygon') geom.coordinates.forEach(applyRing)
+      else if (geom.type === 'MultiPolygon') geom.coordinates.forEach(p => p.forEach(applyRing))
+    }
 
-  function roundRect(ctx, x, y, w, h, r) {
-    ctx.moveTo(x + r, y)
-    ctx.lineTo(x + w - r, y)
-    ctx.quadraticCurveTo(x + w, y, x + w, y + r)
-    ctx.lineTo(x + w, y + h - r)
-    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h)
-    ctx.lineTo(x + r, y + h)
-    ctx.quadraticCurveTo(x, y + h, x, y + h - r)
-    ctx.lineTo(x, y + r)
-    ctx.quadraticCurveTo(x, y, x + r, y)
-    ctx.closePath()
-  }
+    // ── Land fill (world-atlas + topojson-client) ──
+    const land = feature(worldData, worldData.objects.land)
+    ctx.fillStyle = '#7aadc4'
+    ctx.beginPath()
+    if (land.type === 'Feature') applyGeom(land.geometry)
+    else land.features?.forEach(f => applyGeom(f.geometry))
+    ctx.fill('evenodd')
 
-  const img = new Image()
-  img.src = '/images/overseas/global-map.png'
-  img.onload = () => {
-    draw(img)
-    // Redraw on resize
-    let resizeTimer
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer)
-      resizeTimer = setTimeout(() => draw(img), 150)
+    // ── Coastline outline ──
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)'
+    ctx.lineWidth = 0.7
+    ctx.beginPath()
+    if (land.type === 'Feature') applyGeom(land.geometry)
+    else land.features?.forEach(f => applyGeom(f.geometry))
+    ctx.stroke()
+
+    // ── Internal country borders ──
+    const borders = mesh(worldData, worldData.objects.countries, (a, b) => a !== b)
+    const borderCoords = borders.type === 'MultiLineString' ? borders.coordinates
+      : (borders.geometry?.coordinates ?? [])
+    ctx.strokeStyle = 'rgba(255,255,255,0.3)'
+    ctx.lineWidth = 0.4
+    ctx.beginPath()
+    borderCoords.forEach(line => {
+      if (!line.length) return
+      const [x0, y0] = project(line[0])
+      ctx.moveTo(x0, y0)
+      for (let i = 1; i < line.length; i++) {
+        const [x, y] = project(line[i])
+        ctx.lineTo(x, y)
+      }
     })
+    ctx.stroke()
   }
+
+  draw()
+  let timer
+  window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(draw, 150) })
 }
 
 function initHamburger() {
@@ -274,9 +268,11 @@ function initHamburger() {
     </div>
   </div>
 
-  <!-- DOMESTIC MAP: full-width, no side padding, sharpened -->
+  <!-- DOMESTIC MAP: constrained to page-body width -->
   <div class="ov-map-panel" id="map-domestic">
-    <img src="/images/overseas/domestic-map.png" alt="国内布局地图" class="ov-domestic-img" />
+    <div class="ov-domestic-frame">
+      <img src="/images/overseas/domestic-map.png" alt="国内布局地图" class="ov-domestic-img" />
+    </div>
   </div>
 </div>
 
@@ -591,11 +587,17 @@ function initHamburger() {
   display: block; width: 100%; height: auto;
 }
 
-/* Domestic map: full-width, no frame padding, sharpened */
-.ov-map-panel#map-domestic { background: #eef4fb; }
+/* Domestic map: same width as page-body cards */
+.ov-map-panel#map-domestic { background: #eef4fb; padding: 28px 0 32px; }
+.ov-domestic-frame {
+  max-width: 1100px; margin: 0 auto; padding: 0 64px;
+}
 .ov-domestic-img {
   display: block; width: 100%; height: auto;
-  filter: contrast(1.15) saturate(1.1) brightness(1.03);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(30,80,140,0.12);
+  border: 1px solid #d0e0ef;
+  filter: contrast(1.12) saturate(1.08) brightness(1.02);
 }
 
 /* MAP PINS */

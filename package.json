@@ -12,7 +12,11 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-"devDependencies": {
+  "devDependencies": {
     "vitepress": "^1.6.4"
+  },
+  "dependencies": {
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
   }
 }
