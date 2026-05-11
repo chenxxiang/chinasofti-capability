@@ -90,7 +90,7 @@ function initHamburger() {
 <div class="ov-map-section">
   <div class="ov-map-topbar">
     <div class="ov-map-title">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
       全球战略布局
     </div>
     <div class="ov-map-tabs">
@@ -99,74 +99,147 @@ function initHamburger() {
     </div>
   </div>
 
-  <!-- GLOBAL MAP -->
+  <!-- GLOBAL MAP: SVG drawn world map -->
   <div class="ov-map-panel active" id="map-global">
-    <div class="ov-map-wrap">
-      <img src="/images/overseas/global-map.png" alt="全球布局地图" class="ov-map-img" />
+    <div class="ov-map-frame">
+      <div class="ov-world-wrap">
+        <svg viewBox="0 0 960 500" class="ov-world-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c2d9ef"/>
+              <stop offset="100%" stop-color="#b8d0e8"/>
+            </linearGradient>
+          </defs>
+          <!-- Ocean -->
+          <rect width="960" height="500" fill="url(#oceanGrad)" rx="12"/>
+          <!-- Latitude lines -->
+          <line x1="0" y1="167" x2="960" y2="167" stroke="rgba(80,130,190,0.15)" stroke-width="0.8" stroke-dasharray="4,4"/>
+          <line x1="0" y1="250" x2="960" y2="250" stroke="rgba(80,130,190,0.22)" stroke-width="1"/>
+          <line x1="0" y1="333" x2="960" y2="333" stroke="rgba(80,130,190,0.15)" stroke-width="0.8" stroke-dasharray="4,4"/>
+          <!-- Longitude lines -->
+          <line x1="480" y1="0" x2="480" y2="500" stroke="rgba(80,130,190,0.18)" stroke-width="0.8" stroke-dasharray="4,4"/>
+          <line x1="640" y1="0" x2="640" y2="500" stroke="rgba(80,130,190,0.1)" stroke-width="0.6" stroke-dasharray="3,5"/>
+          <line x1="800" y1="0" x2="800" y2="500" stroke="rgba(80,130,190,0.1)" stroke-width="0.6" stroke-dasharray="3,5"/>
 
-      <!-- 东南亚 / Malaysia -->
-      <div class="ov-map-pin" data-target="region-sea" style="left:64.5%;top:55.5%;">
-        <div class="ov-pin-dot" style="--pc:#10b981;"></div>
-        <div class="ov-pin-pulse" style="--pc:#10b981;"></div>
-        <div class="ov-pin-tooltip">
-          <div class="ov-pt-name">东南亚</div>
-          <div class="ov-pt-sub">马来西亚 · 新加坡 · 印尼</div>
+          <!-- === CONTINENTS === -->
+          <!-- North America -->
+          <path d="M 42,75 L 68,52 L 95,45 L 138,48 L 178,58 L 210,78 L 230,115 L 238,152 L 230,188 L 210,218 L 190,238 L 168,250 L 148,242 L 152,225 L 162,198 L 150,175 L 128,162 L 105,148 L 85,130 L 62,108 Z" fill="#8fb5cc"/>
+          <!-- Greenland -->
+          <path d="M 282,20 L 328,8 L 362,18 L 366,40 L 345,58 L 308,66 L 282,52 Z" fill="#8fb5cc"/>
+          <!-- South America -->
+          <path d="M 188,242 L 232,226 L 265,240 L 280,272 L 276,314 L 260,357 L 238,402 L 216,442 L 196,443 L 178,412 L 168,372 L 170,326 L 178,278 Z" fill="#8fb5cc"/>
+          <!-- Europe -->
+          <path d="M 418,50 L 456,38 L 500,40 L 530,54 L 538,76 L 520,98 L 494,112 L 466,116 L 440,106 L 425,88 L 422,66 Z" fill="#8fb5cc"/>
+          <!-- Scandinavia -->
+          <path d="M 452,24 L 480,14 L 506,26 L 510,52 L 494,64 L 466,58 L 450,42 Z" fill="#8fb5cc"/>
+          <!-- Iceland -->
+          <path d="M 378,36 L 398,30 L 412,40 L 408,52 L 388,56 L 374,46 Z" fill="#8fb5cc"/>
+          <!-- Africa -->
+          <path d="M 428,118 L 510,106 L 548,122 L 562,162 L 564,206 L 550,250 L 534,294 L 508,338 L 476,362 L 450,360 L 428,326 L 418,272 L 416,218 L 425,168 Z" fill="#8fb5cc"/>
+          <!-- Arabian Peninsula -->
+          <path d="M 548,152 L 612,146 L 640,162 L 637,200 L 614,218 L 580,220 L 554,206 L 544,180 Z" fill="#8fb5cc"/>
+          <!-- Asia main body -->
+          <path d="M 524,50 L 592,30 L 672,32 L 750,40 L 822,46 L 878,54 L 910,84 L 902,120 L 870,150 L 840,164 L 808,174 L 780,190 L 760,210 L 736,222 L 710,220 L 683,210 L 656,198 L 628,187 L 600,178 L 575,166 L 550,152 L 528,130 L 514,102 L 518,72 Z" fill="#8fb5cc"/>
+          <!-- Indian Subcontinent -->
+          <path d="M 626,180 L 667,173 L 706,183 L 720,212 L 714,252 L 695,273 L 673,276 L 652,255 L 635,228 L 626,202 Z" fill="#8fb5cc"/>
+          <!-- SE Asia Peninsula (Malay) -->
+          <path d="M 716,202 L 748,206 L 762,232 L 756,258 L 736,266 L 718,254 L 712,228 Z" fill="#8fb5cc"/>
+          <!-- Sumatra -->
+          <path d="M 725,252 L 758,240 L 774,255 L 770,274 L 748,282 L 728,270 Z" fill="#8fb5cc"/>
+          <!-- Borneo -->
+          <path d="M 782,232 L 810,226 L 822,244 L 816,270 L 790,275 L 776,257 Z" fill="#8fb5cc"/>
+          <!-- Java -->
+          <path d="M 760,270 L 792,264 L 806,274 L 800,284 L 766,284 Z" fill="#8fb5cc"/>
+          <!-- Philippines -->
+          <path d="M 802,192 L 816,180 L 828,188 L 826,206 L 814,215 L 802,208 Z" fill="#8fb5cc"/>
+          <!-- Taiwan -->
+          <path d="M 816,166 L 826,160 L 832,168 L 828,180 L 818,178 Z" fill="#8fb5cc"/>
+          <!-- Japan (Honshu) -->
+          <path d="M 856,94 L 890,86 L 906,98 L 900,122 L 874,132 L 856,120 Z" fill="#8fb5cc"/>
+          <!-- Japan (Kyushu) -->
+          <path d="M 848,130 L 862,125 L 868,134 L 860,142 L 848,138 Z" fill="#8fb5cc"/>
+          <!-- Korea -->
+          <path d="M 810,120 L 824,118 L 832,130 L 826,144 L 810,142 Z" fill="#8fb5cc"/>
+          <!-- Australia -->
+          <path d="M 768,278 L 846,260 L 902,268 L 926,298 L 924,336 L 900,360 L 858,367 L 808,353 L 774,325 L 766,300 Z" fill="#8fb5cc"/>
+          <!-- New Zealand -->
+          <path d="M 920,328 L 936,320 L 944,335 L 934,350 L 920,346 Z" fill="#8fb5cc"/>
+          <path d="M 914,355 L 930,347 L 940,364 L 928,378 L 912,376 Z" fill="#8fb5cc"/>
+          <!-- Madagascar -->
+          <path d="M 560,264 L 572,256 L 580,272 L 576,298 L 562,302 L 555,282 Z" fill="#8fb5cc"/>
+          <!-- Sri Lanka -->
+          <path d="M 704,268 L 712,265 L 716,274 L 710,281 L 702,276 Z" fill="#8fb5cc"/>
+        </svg>
+
+        <!-- Interactive markers (positioned as % of SVG viewBox 960×500) -->
+        <!-- 东南亚: Malaysia (103°E,4°N) → x=754,y=239 → 78.5%,47.8% -->
+        <div class="ov-map-pin" data-target="region-sea" style="left:78.5%;top:47.8%;">
+          <div class="ov-pin-dot" style="--pc:#10b981;"></div>
+          <div class="ov-pin-pulse" style="--pc:#10b981;"></div>
+          <div class="ov-pin-tooltip">
+            <div class="ov-pt-name">东南亚</div>
+            <div class="ov-pt-sub">马来西亚 · 新加坡 · 印尼</div>
+          </div>
+        </div>
+
+        <!-- 港澳大湾区: HK (114°E,22°N) → x=784,y=189 → 81.7%,37.8% -->
+        <div class="ov-map-pin" data-target="region-gba" style="left:81.7%;top:37.8%;">
+          <div class="ov-pin-dot" style="--pc:#ef4444;"></div>
+          <div class="ov-pin-pulse" style="--pc:#ef4444;"></div>
+          <div class="ov-pin-tooltip">
+            <div class="ov-pt-name">港澳大湾区</div>
+            <div class="ov-pt-sub">香港</div>
+          </div>
+        </div>
+
+        <!-- 中东: UAE/Saudi center (47°E,24°N) → x=605,y=183 → 63%,36.6% -->
+        <div class="ov-map-pin" data-target="region-me" style="left:63%;top:36.6%;">
+          <div class="ov-pin-dot" style="--pc:#f59e0b;"></div>
+          <div class="ov-pin-pulse" style="--pc:#f59e0b;"></div>
+          <div class="ov-pin-tooltip">
+            <div class="ov-pt-name">中东</div>
+            <div class="ov-pt-sub">沙特 · 阿联酋</div>
+          </div>
+        </div>
+
+        <!-- 印度: Bangalore (77°E,13°N) → x=685,y=214 → 71.4%,42.8% -->
+        <div class="ov-map-pin" data-target="region-india" style="left:71.4%;top:42.8%;">
+          <div class="ov-pin-dot" style="--pc:#a78bfa;"></div>
+          <div class="ov-pin-pulse" style="--pc:#a78bfa;"></div>
+          <div class="ov-pin-tooltip">
+            <div class="ov-pt-name">印度</div>
+            <div class="ov-pt-sub">班加罗尔</div>
+          </div>
+        </div>
+
+        <!-- 日本: Tokyo (139.7°E,35.7°N) → x=852,y=151 → 88.8%,30.2% -->
+        <div class="ov-map-pin" data-target="region-japan" style="left:88.8%;top:30.2%;">
+          <div class="ov-pin-dot" style="--pc:#06b6d4;"></div>
+          <div class="ov-pin-pulse" style="--pc:#06b6d4;"></div>
+          <div class="ov-pin-tooltip">
+            <div class="ov-pt-name">日本</div>
+            <div class="ov-pt-sub">东京</div>
+          </div>
         </div>
       </div>
 
-      <!-- 港澳大湾区 -->
-      <div class="ov-map-pin" data-target="region-gba" style="left:71%;top:41%;">
-        <div class="ov-pin-dot" style="--pc:#ef4444;"></div>
-        <div class="ov-pin-pulse" style="--pc:#ef4444;"></div>
-        <div class="ov-pin-tooltip">
-          <div class="ov-pt-name">港澳大湾区</div>
-          <div class="ov-pt-sub">香港</div>
-        </div>
+      <div class="ov-map-legend">
+        <span class="ov-leg-item" style="--lc:#10b981;">东南亚</span>
+        <span class="ov-leg-item" style="--lc:#ef4444;">港澳大湾区</span>
+        <span class="ov-leg-item" style="--lc:#f59e0b;">中东</span>
+        <span class="ov-leg-item" style="--lc:#a78bfa;">印度</span>
+        <span class="ov-leg-item" style="--lc:#06b6d4;">日本</span>
+        <span class="ov-leg-tip">点击标记跳转至区域详情</span>
       </div>
-
-      <!-- 中东 -->
-      <div class="ov-map-pin" data-target="region-me" style="left:51%;top:38%;">
-        <div class="ov-pin-dot" style="--pc:#f59e0b;"></div>
-        <div class="ov-pin-pulse" style="--pc:#f59e0b;"></div>
-        <div class="ov-pin-tooltip">
-          <div class="ov-pt-name">中东</div>
-          <div class="ov-pt-sub">沙特 · 阿联酋</div>
-        </div>
-      </div>
-
-      <!-- 印度 -->
-      <div class="ov-map-pin" data-target="region-india" style="left:58%;top:44%;">
-        <div class="ov-pin-dot" style="--pc:#a78bfa;"></div>
-        <div class="ov-pin-pulse" style="--pc:#a78bfa;"></div>
-        <div class="ov-pin-tooltip">
-          <div class="ov-pt-name">印度</div>
-          <div class="ov-pt-sub">班加罗尔</div>
-        </div>
-      </div>
-
-      <!-- 日本 -->
-      <div class="ov-map-pin" data-target="region-japan" style="left:76.5%;top:29%;">
-        <div class="ov-pin-dot" style="--pc:#06b6d4;"></div>
-        <div class="ov-pin-pulse" style="--pc:#06b6d4;"></div>
-        <div class="ov-pin-tooltip">
-          <div class="ov-pt-name">日本</div>
-          <div class="ov-pt-sub">东京</div>
-        </div>
-      </div>
-    </div>
-    <div class="ov-map-legend">
-      <span class="ov-leg-item" style="--lc:#10b981;">东南亚</span>
-      <span class="ov-leg-item" style="--lc:#ef4444;">港澳大湾区</span>
-      <span class="ov-leg-item" style="--lc:#f59e0b;">中东</span>
-      <span class="ov-leg-item" style="--lc:#a78bfa;">印度</span>
-      <span class="ov-leg-item" style="--lc:#06b6d4;">日本</span>
     </div>
   </div>
 
   <!-- DOMESTIC MAP -->
   <div class="ov-map-panel" id="map-domestic">
-    <div class="ov-map-wrap">
-      <img src="/images/overseas/domestic-map.png" alt="国内布局地图" class="ov-map-img" />
+    <div class="ov-map-frame">
+      <div class="ov-world-wrap ov-domestic-wrap">
+        <img src="/images/overseas/domestic-map.png" alt="国内布局地图" class="ov-domestic-img" />
+      </div>
     </div>
   </div>
 </div>
@@ -432,51 +505,62 @@ function initHamburger() {
 /* ===== MAP SECTION ===== */
 .ov-map-section {
   position: relative; z-index: 1;
-  background: linear-gradient(160deg, #08091e 0%, #0d1235 50%, #091828 100%);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: #eef4fb;
+  border-bottom: 1px solid #dde8f2;
 }
 
 .ov-map-topbar {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 64px 18px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 64px 16px;
+  border-bottom: 1px solid #dde8f2;
+  background: #fff;
   flex-wrap: wrap; gap: 12px;
 }
 .ov-map-title {
   display: flex; align-items: center; gap: 10px;
-  font-size: 1.15rem; font-weight: 800; color: #f1f5f9;
+  font-size: 1.1rem; font-weight: 800; color: var(--text1);
   letter-spacing: -0.01em;
 }
-.ov-map-title svg { color: #60a5fa; flex-shrink: 0; }
 
 .ov-map-tabs {
-  display: flex; gap: 8px; background: rgba(255,255,255,0.06);
+  display: flex; gap: 6px; background: #f0f5fb;
   border-radius: 10px; padding: 4px;
+  border: 1px solid #dde8f2;
 }
 .ov-map-tab {
-  padding: 8px 20px; border-radius: 7px; border: none; cursor: pointer;
-  font-size: 0.88rem; font-weight: 700; transition: all .2s;
-  background: transparent; color: rgba(255,255,255,0.55);
+  padding: 7px 18px; border-radius: 7px; border: none; cursor: pointer;
+  font-size: 0.86rem; font-weight: 700; transition: all .2s;
+  background: transparent; color: #64748b;
 }
 .ov-map-tab.active {
   background: linear-gradient(135deg, #1d4ed8, #4f46e5);
-  color: #fff; box-shadow: 0 4px 14px rgba(29,78,216,0.4);
+  color: #fff; box-shadow: 0 3px 10px rgba(29,78,216,0.3);
 }
-.ov-map-tab:hover:not(.active) { background: rgba(255,255,255,0.08); color: #fff; }
+.ov-map-tab:hover:not(.active) { background: rgba(29,78,216,0.08); color: #1d4ed8; }
 
 /* MAP PANELS */
 .ov-map-panel { display: none; }
 .ov-map-panel.active { display: block; }
 
-.ov-map-wrap {
-  position: relative; max-width: 1200px; margin: 0 auto;
-  padding: 32px 64px 0;
+.ov-map-frame { padding: 28px 64px 0; max-width: 1280px; margin: 0 auto; }
+
+/* SVG world map container */
+.ov-world-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 6px 32px rgba(30,80,140,0.13);
+  border: 1px solid #d0e0ef;
 }
-.ov-map-img {
-  width: 100%; display: block; border-radius: 12px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.08);
-  min-height: 200px; object-fit: contain;
+.ov-world-svg {
+  display: block; width: 100%; height: auto;
+}
+
+/* Domestic map */
+.ov-domestic-wrap { background: #f0f6fb; }
+.ov-domestic-img {
+  width: 100%; display: block; object-fit: contain;
+  max-height: 440px;
 }
 
 /* MAP PINS */
@@ -485,57 +569,64 @@ function initHamburger() {
   cursor: pointer; z-index: 10;
 }
 .ov-pin-dot {
-  width: 14px; height: 14px; border-radius: 50%;
+  width: 13px; height: 13px; border-radius: 50%;
   background: var(--pc); position: relative; z-index: 2;
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.25), 0 2px 8px rgba(0,0,0,0.4);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.7), 0 2px 8px rgba(0,0,0,0.25);
   transition: transform .2s;
 }
-.ov-map-pin:hover .ov-pin-dot { transform: scale(1.4); }
+.ov-map-pin:hover .ov-pin-dot { transform: scale(1.45); }
 .ov-pin-pulse {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--pc); opacity: 0.5;
-  animation: pinPulse 2s ease-out infinite;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--pc); opacity: 0.55;
+  animation: pinPulse 2.2s ease-out infinite;
   z-index: 1;
 }
 @keyframes pinPulse {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.55; }
+  100% { transform: translate(-50%, -50%) scale(3.2); opacity: 0; }
 }
 
 /* TOOLTIP */
 .ov-pin-tooltip {
-  position: absolute; bottom: calc(100% + 10px); left: 50%;
+  position: absolute; bottom: calc(100% + 11px); left: 50%;
   transform: translateX(-50%);
-  background: rgba(8, 10, 30, 0.95); backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+  background: rgba(15, 30, 70, 0.92); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 9px;
   padding: 8px 14px; white-space: nowrap;
-  opacity: 0; pointer-events: none; transition: opacity .2s;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  opacity: 0; pointer-events: none; transition: opacity .18s;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.28);
 }
 .ov-pin-tooltip::after {
   content: ''; position: absolute; top: 100%; left: 50%;
   transform: translateX(-50%);
-  border: 5px solid transparent; border-top-color: rgba(8,10,30,0.95);
+  border: 5px solid transparent; border-top-color: rgba(15,30,70,0.92);
 }
 .ov-map-pin:hover .ov-pin-tooltip { opacity: 1; }
 .ov-pt-name { font-size: 0.86rem; font-weight: 800; color: #f1f5f9; }
-.ov-pt-sub { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-top: 2px; }
+.ov-pt-sub { font-size: 0.72rem; color: rgba(255,255,255,0.58); margin-top: 2px; }
 
 /* LEGEND */
 .ov-map-legend {
-  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
-  padding: 16px 64px 28px;
+  display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+  padding: 14px 0 22px;
 }
 .ov-leg-item {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.75);
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; font-weight: 600; color: #475569;
 }
 .ov-leg-item::before {
-  content: ''; width: 10px; height: 10px; border-radius: 50%;
+  content: ''; width: 9px; height: 9px; border-radius: 50%;
   background: var(--lc); flex-shrink: 0;
-  box-shadow: 0 0 6px var(--lc);
+  box-shadow: 0 0 5px var(--lc);
+}
+.ov-leg-tip {
+  margin-left: auto; font-size: 0.74rem; color: #94a3b8;
+  display: flex; align-items: center; gap: 5px;
+}
+.ov-leg-tip::before {
+  content: '↑'; font-size: 0.8rem;
 }
 
 /* ===== COVERAGE STRIP ===== */
@@ -666,16 +757,17 @@ function initHamburger() {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .ov-map-topbar { padding: 18px 32px 14px; }
-  .ov-map-wrap { padding: 24px 32px 0; }
-  .ov-map-legend { padding: 14px 32px 20px; }
+  .ov-map-topbar { padding: 16px 32px 14px; }
+  .ov-map-frame { padding: 20px 32px 0; }
+  .ov-map-legend { padding: 12px 0 18px; }
   .ov-cov-strip { padding: 18px 32px; }
 }
 
 @media (max-width: 768px) {
-  .ov-map-topbar { padding: 16px 20px 12px; }
-  .ov-map-wrap { padding: 16px 16px 0; }
-  .ov-map-legend { padding: 12px 16px 18px; gap: 12px; }
+  .ov-map-topbar { padding: 14px 20px 12px; }
+  .ov-map-frame { padding: 14px 16px 0; }
+  .ov-map-legend { padding: 10px 0 16px; gap: 10px; }
+  .ov-leg-tip { display: none; }
   .ov-map-tabs { gap: 4px; }
   .ov-map-tab { padding: 7px 14px; font-size: 0.82rem; }
 
@@ -702,6 +794,7 @@ function initHamburger() {
 
 @media (max-width: 600px) {
   .ov-map-topbar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .ov-map-frame { padding: 12px 12px 0; }
   .ov-map-legend { gap: 8px; }
   .ov-region-photo { min-height: 180px; }
   .ov-region-content { padding: 22px 18px; }
