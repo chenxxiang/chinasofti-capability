@@ -4,6 +4,7 @@ import DefaultTheme from 'vitepress/theme'
 import HomeAurora from './HomeAurora.vue'
 import HomeAuroraEn from './HomeAuroraEn.vue'
 import HomeOverseas from './HomeOverseas.vue'
+import HomeMiniapp from './HomeMiniapp.vue'
 
 const { frontmatter } = useData()
 </script>
@@ -12,6 +13,7 @@ const { frontmatter } = useData()
   <HomeAurora v-if="frontmatter.layout === 'home-aurora'" />
   <HomeAuroraEn v-else-if="frontmatter.layout === 'home-aurora-en'" />
   <HomeOverseas v-else-if="frontmatter.layout === 'home-overseas'" />
+  <HomeMiniapp v-else-if="frontmatter.layout === 'home-miniapp'" />
   <DefaultTheme.Layout v-else>
     <template #nav-bar-title-before>
       <span class="vp-logo-chip">CSI</span>
