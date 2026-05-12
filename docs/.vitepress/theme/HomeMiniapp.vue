@@ -583,98 +583,119 @@ function initCounters() {
       </div>
     </div>
 
-    <!-- 运维模式 -->
-    <div class="mn-ops-grid">
-      <div class="mn-ops-card">
-        <div class="mn-ops-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+  </section>
+
+  <!-- UCD 设计能力 -->
+  <section class="mn-sec reveal" id="ucd">
+    <div class="mn-sec-header">
+      <div class="mn-eyebrow">UCD Design · 设计能力</div>
+      <h2 class="mn-sec-title">用户中心设计（UCD）能力</h2>
+    </div>
+
+    <div class="mn-ucd-feat-grid">
+      <div class="mn-ucd-feat-card">
+        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
-        <h4>Prime Contract</h4>
-        <p>中软国际作为主承包商，提供端到端解决方案，包含软件 License、集成、管理、专业服务及带 SLA 的维保。</p>
+        <h4>全流程 UCD 设计</h4>
+        <p>需求分析 → 交互 / 视觉设计 → 可用性测试 → 设计复盘，六阶段完整闭环，确保以用户为中心贯穿全程</p>
       </div>
-      <div class="mn-ops-card">
-        <div class="mn-ops-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <div class="mn-ucd-feat-card">
+        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
-        <h4>Sub Contract</h4>
-        <p>作为子承包商配合客户体系，提供专项定制开发、系统集成及运维赋能，灵活嵌入客户现有合作框架。</p>
+        <h4>3D 可视化大屏</h4>
+        <p>结合 Unity3D / ThreeJS 构建沉浸式大屏，煤矿、智慧园区、电厂等多个行业均有实际交付案例</p>
       </div>
-      <div class="mn-ops-card">
-        <div class="mn-ops-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/></svg>
+      <div class="mn-ucd-feat-card">
+        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
         </div>
-        <h4>运维赋能</h4>
-        <p>外购件运维赋能流程，接收问题单 → 诊断 → 解决并验证，与客户及上游产品方三方联动关闭问题。</p>
+        <h4>数字人设计</h4>
+        <p>参与华为虚拟数字人"云笙"研制，输出人物建模、骨骼绑定、表情驱动等完整 3D 角色技术</p>
+      </div>
+      <div class="mn-ucd-feat-card">
+        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#059669,#10b981);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h4>专家评估 &amp; 用户测评</h4>
+        <p>AQ 专家走查 + 真实用户测试报告，量化设计改进效果，系统性提升产品体验质量</p>
+      </div>
+    </div>
+
+    <!-- 设计作品展示 -->
+    <div class="mn-ucd-gallery">
+      <div class="mn-ucd-gal-col">
+        <div class="mn-ucd-gal-item">
+          <img src="/solutions/miniapp/images/ucd-ecommerce-ui.jpg" alt="电商 UI 设计" />
+          <div class="mn-ucd-gal-cap">电商平台 UI</div>
+        </div>
+        <div class="mn-ucd-gal-item">
+          <img src="/solutions/miniapp/images/ucd-wallet-ui.png" alt="钱包 App 设计" />
+          <div class="mn-ucd-gal-cap">移动钱包 App</div>
+        </div>
+      </div>
+      <div class="mn-ucd-gal-col">
+        <div class="mn-ucd-gal-item">
+          <img src="/solutions/miniapp/images/ucd-digital-human.jpg" alt="虚拟数字人" style="object-position:center;" />
+          <div class="mn-ucd-gal-cap">虚拟数字人</div>
+        </div>
+        <div class="mn-ucd-gal-item">
+          <img src="/solutions/miniapp/images/ucd-ecommerce-detail.jpg" alt="界面精细化" />
+          <div class="mn-ucd-gal-cap">界面精细化</div>
+        </div>
+      </div>
+      <div class="mn-ucd-gal-col mn-ucd-gal-wide">
+        <div class="mn-ucd-gal-item mn-ucd-gal-full">
+          <img src="/solutions/miniapp/images/ucd-dashboard.png" alt="3D 可视化大屏" style="object-position:center;" />
+          <div class="mn-ucd-gal-cap">3D 可视化大屏</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- UCD 设计 + 项目管理 -->
-  <section class="mn-sec reveal" id="capability">
+  <!-- 项目管理能力 -->
+  <section class="mn-sec reveal" id="pm">
     <div class="mn-sec-header">
-      <div class="mn-eyebrow">Capability · 交付能力</div>
-      <h2 class="mn-sec-title">设计与项目管理能力</h2>
+      <div class="mn-eyebrow">Project Management · 项目管理</div>
+      <h2 class="mn-sec-title">项目管理能力</h2>
     </div>
 
-    <div class="mn-cap-grid">
-      <!-- UCD -->
-      <div class="mn-cap-block">
-        <div class="mn-cap-title">
-          <div class="mn-cap-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          </div>
-          UCD 设计能力
+    <div class="mn-pm-cards">
+      <div class="mn-pm-card" style="border-top-color:#1d4ed8;">
+        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
-        <div class="mn-cap-items">
-          <div class="mn-cap-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>全流程 UCD 设计</strong>：需求分析 → 交互 / 视觉设计 → 可用性测试 → 设计复盘，六阶段闭环</span>
-          </div>
-          <div class="mn-cap-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>3D 可视化大屏</strong>：结合 Unity3D / ThreeJS，煤矿、智慧园区、电厂等项目均有交付案例</span>
-          </div>
-          <div class="mn-cap-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>数字人设计</strong>：参与华为虚拟数字人"云笙"研制，输出人物模型、骨骼绑定等 3D 技术</span>
-          </div>
-          <div class="mn-cap-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>专家评估 / 用户体验测评</strong>：AQ 测试 + 测试报告，量化设计改进效果</span>
-          </div>
-        </div>
+        <h4>进度管理</h4>
+        <p>里程碑制定、计划排期、变更评审机制，保障计划可控</p>
       </div>
-
-      <!-- 项目管理 -->
-      <div class="mn-cap-block">
-        <div class="mn-cap-title">
-          <div class="mn-cap-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          项目管理能力
+      <div class="mn-pm-card" style="border-top-color:#7c3aed;">
+        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <div class="mn-cap-items">
-          <div class="mn-cap-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>进度管理</strong>：里程碑制定、计划排期、变更评审机制，保障计划可控</span>
-          </div>
-          <div class="mn-cap-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>沟通管理</strong>：晨会 + 评审 + 专题 + 总结 + 质量会议，AAR 机制沉淀经验</span>
-          </div>
-          <div class="mn-cap-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>风险管理</strong>：风险跟踪表 + 例会审视 + 邮件日追踪，确保风险全程闭环</span>
-          </div>
-          <div class="mn-cap-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>质量策划</strong>：现状分析 → 目标策划 → 过程裁剪，输出项目质量计划</span>
-          </div>
-          <div class="mn-cap-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>流程看护</strong>：CP1/CP2/CP3 全周期检查点，准出准入标准，度量分析</span>
-          </div>
+        <h4>沟通管理</h4>
+        <p>晨会 + 评审 + 专题 + 质量会议，AAR 机制沉淀经验</p>
+      </div>
+      <div class="mn-pm-card" style="border-top-color:#0891b2;">
+        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
+        <h4>风险管理</h4>
+        <p>风险跟踪表 + 例会审视 + 邮件日追踪，确保风险全程闭环</p>
+      </div>
+      <div class="mn-pm-card" style="border-top-color:#d97706;">
+        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h4>质量策划</h4>
+        <p>现状分析 → 目标策划 → 过程裁剪，输出项目质量计划</p>
+      </div>
+      <div class="mn-pm-card" style="border-top-color:#059669;">
+        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#059669,#10b981);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>流程看护</h4>
+        <p>CP1/CP2/CP3 全周期检查点，准出准入标准，度量分析</p>
       </div>
     </div>
 
@@ -1052,27 +1073,68 @@ function initCounters() {
 .mn-ops-card h4 { font-size: 1rem; font-weight: 800; color: var(--text1); margin: 0 0 8px; }
 .mn-ops-card p { font-size: 0.86rem; color: var(--text2); line-height: 1.7; margin: 0; }
 
-/* ── CAPABILITY ── */
-.mn-cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 36px; }
-.mn-cap-block {
-  background: var(--card-bg); border-radius: var(--radius); padding: 32px 28px;
-  box-shadow: var(--shadow); border: 1px solid rgba(29,78,216,0.08); backdrop-filter: blur(8px);
+/* ── UCD DESIGN ── */
+.mn-ucd-feat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 28px;
 }
-.mn-cap-title {
-  display: flex; align-items: center; gap: 14px;
-  font-size: 1.05rem; font-weight: 800; color: var(--text1); margin-bottom: 22px;
+.mn-ucd-feat-card {
+  background: var(--card-bg); border-radius: var(--radius); padding: 26px 22px;
+  box-shadow: var(--shadow); border: 1px solid rgba(124,58,237,0.1);
+  backdrop-filter: blur(8px); transition: all .3s;
 }
-.mn-cap-icon {
-  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+.mn-ucd-feat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.mn-ucd-feat-icon {
+  width: 48px; height: 48px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  margin-bottom: 14px; box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
-.mn-cap-items { display: flex; flex-direction: column; gap: 14px; }
-.mn-cap-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 0.87rem; color: var(--text2); line-height: 1.6;
+.mn-ucd-feat-card h4 { font-size: 0.96rem; font-weight: 800; color: var(--text1); margin: 0 0 8px; }
+.mn-ucd-feat-card p { font-size: 0.83rem; color: var(--text2); line-height: 1.7; margin: 0; }
+
+.mn-ucd-gallery {
+  display: flex; gap: 14px; height: 420px; border-radius: 16px; overflow: hidden;
 }
-.mn-cap-item svg { flex-shrink: 0; margin-top: 3px; }
+.mn-ucd-gal-col {
+  flex: 1; display: flex; flex-direction: column; gap: 14px;
+}
+.mn-ucd-gal-wide { flex: 1.7; }
+.mn-ucd-gal-item {
+  flex: 1; position: relative; overflow: hidden; border-radius: 12px;
+  border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.mn-ucd-gal-full { flex: 1; height: 100%; }
+.mn-ucd-gal-item img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
+  transition: transform .4s ease;
+}
+.mn-ucd-gal-item:hover img { transform: scale(1.03); }
+.mn-ucd-gal-cap {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,0.72), transparent);
+  font-size: 0.76rem; color: #fff; font-weight: 700; letter-spacing: 0.02em;
+}
+
+/* ── PROJECT MANAGEMENT ── */
+.mn-pm-cards {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 36px;
+}
+.mn-pm-card {
+  background: var(--card-bg); border-radius: var(--radius); padding: 22px 18px;
+  border-top: 3px solid; box-shadow: var(--shadow);
+  border-left: 1px solid rgba(29,78,216,0.08);
+  border-right: 1px solid rgba(29,78,216,0.08);
+  border-bottom: 1px solid rgba(29,78,216,0.08);
+  transition: all .3s; backdrop-filter: blur(8px);
+}
+.mn-pm-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.mn-pm-card-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.mn-pm-card h4 { font-size: 0.92rem; font-weight: 800; color: var(--text1); margin: 0 0 8px; }
+.mn-pm-card p { font-size: 0.81rem; color: var(--text2); line-height: 1.65; margin: 0; }
+
 .mn-cap-img { margin-top: 4px; }
 .mn-cap-img img {
   width: 100%; border-radius: 12px; border: 1px solid var(--border);
@@ -1104,13 +1166,18 @@ function initCounters() {
   .mn-arch-card { flex-direction: column; }
   .mn-arch-card-left { flex-direction: row; min-width: unset; padding: 16px 20px; }
   .mn-arch-num-badge { display: none; }
-  .mn-ops-grid { grid-template-columns: 1fr; }
-  .mn-cap-grid { grid-template-columns: 1fr; }
+  .mn-ucd-feat-grid { grid-template-columns: 1fr 1fr; }
+  .mn-ucd-gallery { flex-direction: column; height: auto; }
+  .mn-ucd-gal-col { height: 260px; }
+  .mn-ucd-gal-wide { flex: unset; height: 220px; }
+  .mn-pm-cards { grid-template-columns: 1fr 1fr; }
   .mn-tab-bar { flex-direction: column; width: 100%; }
   .mn-tab-bar .mn-tab { justify-content: center; }
 }
 @media (max-width: 560px) {
   .mn-cards-grid { grid-template-columns: 1fr; }
   .mn-sec-title { font-size: 1.4rem; }
+  .mn-ucd-feat-grid { grid-template-columns: 1fr; }
+  .mn-pm-cards { grid-template-columns: 1fr; }
 }
 </style>
