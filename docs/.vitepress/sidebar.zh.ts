@@ -1,6 +1,12 @@
 export const zhSidebar = {
   '/zh/': [
     {
+      text: '小程序总体方案',
+      items: [
+        { text: '总体解决方案', link: '/zh/miniapp-solution' },
+      ]
+    },
+    {
       text: '业务平台',
       items: [
         {
