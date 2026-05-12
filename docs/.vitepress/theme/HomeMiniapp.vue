@@ -435,13 +435,13 @@ function initCounters() {
         </div>
         <!-- 生活服务截图 -->
         <div class="mn-screenshots-row">
-          <div class="mn-ss-item mn-ss-wide">
-            <img src="/solutions/miniapp/images/app-coverage.png" alt="Super App 多场景覆盖能力" />
-            <div class="mn-ss-cap">Super App 多行业场景覆盖</div>
+          <div class="mn-ss-item">
+            <img src="/solutions/miniapp/images/life-venue.png" alt="智慧场馆预订" />
+            <div class="mn-ss-cap">智慧场馆预订</div>
           </div>
-          <div class="mn-ss-item mn-ss-wide">
-            <img src="/solutions/miniapp/images/sdk-integration.png" alt="小程序 SDK 集成架构" />
-            <div class="mn-ss-cap">小程序 SDK 集成架构</div>
+          <div class="mn-ss-item">
+            <img src="/solutions/miniapp/images/life-ecommerce.png" alt="在线商城" />
+            <div class="mn-ss-cap">在线商城</div>
           </div>
         </div>
       </div>
@@ -485,13 +485,13 @@ function initCounters() {
         </div>
         <!-- 智慧城市截图 -->
         <div class="mn-screenshots-row">
-          <div class="mn-ss-item mn-ss-wide">
-            <img src="/solutions/miniapp/images/city-mgmt.png" alt="智慧城市运营管理系统" />
-            <div class="mn-ss-cap">智慧城市运营管理系统</div>
+          <div class="mn-ss-item">
+            <img src="/solutions/miniapp/images/city-property.png" alt="物业缴费管理" />
+            <div class="mn-ss-cap">物业缴费管理</div>
           </div>
-          <div class="mn-ss-item mn-ss-wide">
-            <img src="/solutions/miniapp/images/quality-flow.png" alt="城市服务质量管控流程" />
-            <div class="mn-ss-cap">城市服务质量管控流程</div>
+          <div class="mn-ss-item">
+            <img src="/solutions/miniapp/images/city-qrcode.png" alt="二维码收款" />
+            <div class="mn-ss-cap">二维码收款</div>
           </div>
         </div>
       </div>
@@ -551,7 +551,7 @@ function initCounters() {
       </div>
     </div>
 
-    <!-- 两大流程图并排展示 -->
+    <!-- 两大流程图分行展示 -->
     <div class="mn-flow-imgs">
       <div class="mn-flow-img-block">
         <div class="mn-flow-img-header">
@@ -564,7 +564,7 @@ function initCounters() {
           </div>
         </div>
         <div class="mn-flow-img-wrap">
-          <img src="/solutions/miniapp/images/delivery-flow.png" alt="端到端交付流程" />
+          <img src="/solutions/miniapp/images/delivery-flow-new.png" alt="端到端交付流程" />
         </div>
       </div>
       <div class="mn-flow-img-block">
@@ -578,7 +578,7 @@ function initCounters() {
           </div>
         </div>
         <div class="mn-flow-img-wrap">
-          <img src="/solutions/miniapp/images/customization-flow.png" alt="标准化产品定制流程" />
+          <img src="/solutions/miniapp/images/customization-flow-new.png" alt="标准化产品定制流程" />
         </div>
       </div>
     </div>
@@ -678,10 +678,10 @@ function initCounters() {
       </div>
     </div>
 
-    <!-- 沟通管理截图 -->
+    <!-- 流程看护体系截图 -->
     <div class="mn-cap-img reveal">
-      <img src="/solutions/miniapp/images/communication-mgmt.png" alt="项目沟通管理体系" />
-      <div class="mn-img-cap">项目沟通管理体系</div>
+      <img src="/solutions/miniapp/images/process-monitoring.png" alt="流程看护体系" />
+      <div class="mn-img-cap">流程看护体系</div>
     </div>
   </section>
 
@@ -850,7 +850,7 @@ function initCounters() {
 }
 .mn-arch-card-left {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 10px; padding: 28px 24px; min-width: 130px;
+  gap: 8px; padding: 18px 20px; min-width: 118px;
   background: var(--lg);
   position: relative; overflow: hidden;
 }
@@ -865,7 +865,7 @@ function initCounters() {
   letter-spacing: -0.05em;
 }
 .mn-arch-layer-icon {
-  width: 52px; height: 52px; border-radius: 14px;
+  width: 44px; height: 44px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
   background: rgba(255,255,255,0.18);
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
@@ -876,17 +876,17 @@ function initCounters() {
 .mn-arch-layer-en { font-size: 0.55rem; color: rgba(255,255,255,0.6); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
 
 .mn-arch-card-body {
-  flex: 1; padding: 22px 28px; display: flex; flex-direction: column; gap: 14px; justify-content: center;
+  flex: 1; padding: 16px 24px; display: flex; flex-direction: column; gap: 10px; justify-content: center;
 }
 .mn-arch-group { display: flex; align-items: flex-start; gap: 12px; }
 .mn-arch-group-lbl {
-  font-size: 0.72rem; font-weight: 800; min-width: 68px;
-  letter-spacing: 0.04em; padding-top: 5px; text-transform: uppercase;
+  font-size: 0.74rem; font-weight: 800; min-width: 68px;
+  letter-spacing: 0.04em; padding-top: 4px; text-transform: uppercase;
   white-space: nowrap;
 }
-.mn-arch-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.mn-arch-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .mn-arch-chips span {
-  padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 500;
+  padding: 4px 13px; border-radius: 999px; font-size: 0.86rem; font-weight: 500;
   background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); color: var(--text2);
   transition: background .2s;
 }
@@ -897,8 +897,8 @@ function initCounters() {
 :root:not(.dark) .mn-arch-chips span:hover { background: rgba(0,0,0,0.08); }
 
 .mn-arch-conn {
-  display: flex; align-items: center; justify-content: center; padding: 4px 0;
-  gap: 0; flex-direction: column; height: 36px;
+  display: flex; align-items: center; justify-content: center; padding: 2px 0;
+  gap: 0; flex-direction: column; height: 24px;
 }
 .mn-arch-conn-line {
   width: 2px; flex: 1;
@@ -1004,9 +1004,9 @@ function initCounters() {
 .mn-flow-arrow {
   font-size: 1.4rem; color: #94a3b8; margin-top: 12px; padding: 0 4px; flex-shrink: 0;
 }
-/* ── FLOW IMAGES (full open side-by-side) ── */
+/* ── FLOW IMAGES (stacked, one per row) ── */
 .mn-flow-imgs {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 44px;
+  display: grid; grid-template-columns: 1fr; gap: 28px; margin-bottom: 44px;
 }
 .mn-flow-img-block {
   background: var(--card-bg); border-radius: 16px;
