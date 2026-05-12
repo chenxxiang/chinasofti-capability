@@ -14,6 +14,7 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: '首页', link: '/zh/' },
+          { text: '小程序方案', link: '/zh/miniapp-solution' },
           { text: '解决方案', link: '/zh/business/cms/' },
         ],
         sidebar: zhSidebar,
