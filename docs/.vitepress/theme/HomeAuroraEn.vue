@@ -191,6 +191,8 @@ function initHamburger() {
   </div>
   <div class="nav-links">
     <a href="/en/" class="active">Home</a>
+    <a href="/en/overseas">Overseas</a>
+    <a href="/en/miniapp-solution">Mini-App</a>
     <a href="/en/business/cms/">Solutions</a>
   </div>
   <button class="nav-cta" onclick="window.location.href='/zh/'">中文</button>
@@ -200,6 +202,8 @@ function initHamburger() {
 </nav>
 <div class="nav-drawer" id="nav-drawer-en">
   <a href="/en/">Home</a>
+  <a href="/en/overseas">Overseas</a>
+  <a href="/en/miniapp-solution">Mini-App</a>
   <a href="/en/business/cms/">Solutions</a>
   <a href="/zh/" class="nav-drawer-lang">切换中文</a>
 </div>
