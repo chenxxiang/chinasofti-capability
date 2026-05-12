@@ -201,45 +201,113 @@ function initCounters() {
       <h2 class="mn-sec-title">四层能力架构全景</h2>
     </div>
     <div class="mn-arch-wrap">
-      <div class="mn-arch-layer" style="--lc:#3b82f6;--lb:rgba(59,130,246,0.13);">
-        <div class="mn-arch-label">
-          <div class="mn-arch-cn">终端接入层</div>
-          <div class="mn-arch-en">CLIENT</div>
+
+      <!-- Layer 1 -->
+      <div class="mn-arch-card" style="--lc:#3b82f6;--lg:linear-gradient(135deg,#1d4ed8,#3b82f6);--lbg:rgba(59,130,246,0.06);--lbd:rgba(59,130,246,0.22);">
+        <div class="mn-arch-card-left">
+          <div class="mn-arch-num-badge">01</div>
+          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <div class="mn-arch-layer-text">
+            <div class="mn-arch-layer-cn">终端接入层</div>
+            <div class="mn-arch-layer-en">CLIENT LAYER</div>
+          </div>
         </div>
-        <div class="mn-arch-tags">
-          <span>Android SDK</span><span>iOS SDK</span><span>小程序运行时</span><span>原生 JS API</span><span>H5 容器</span><span>响应式布局</span>
-        </div>
-      </div>
-      <div class="mn-arch-arrow">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</div>
-      <div class="mn-arch-layer" style="--lc:#a78bfa;--lb:rgba(167,139,250,0.13);">
-        <div class="mn-arch-label">
-          <div class="mn-arch-cn">平台能力层</div>
-          <div class="mn-arch-en">PLATFORM</div>
-        </div>
-        <div class="mn-arch-tags">
-          <span>统一身份认证</span><span>移动支付</span><span>LBS 定位</span><span>推送通知</span><span>生物识别</span><span>小程序沙箱</span><span>数据分析</span><span>社交分享</span><span>安全加固</span>
-        </div>
-      </div>
-      <div class="mn-arch-arrow">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</div>
-      <div class="mn-arch-layer" style="--lc:#06b6d4;--lb:rgba(6,182,212,0.13);">
-        <div class="mn-arch-label">
-          <div class="mn-arch-cn">应用服务层</div>
-          <div class="mn-arch-en">APPLICATION</div>
-        </div>
-        <div class="mn-arch-tags">
-          <span>电子钱包</span><span>理财投资</span><span>财富管理</span><span>虚拟货币</span><span>消费金融</span><span>保险服务</span><span>智慧健身</span><span>智慧导览</span><span>数字藏品</span><span>车辆管理</span><span>智慧城市</span><span>个性化推荐</span>
+        <div class="mn-arch-card-body">
+          <div class="mn-arch-group">
+            <div class="mn-arch-group-lbl" style="color:#3b82f6;">移动端</div>
+            <div class="mn-arch-chips"><span>Android SDK</span><span>iOS SDK</span><span>小程序运行时</span><span>原生 JS API</span></div>
+          </div>
+          <div class="mn-arch-group">
+            <div class="mn-arch-group-lbl" style="color:#3b82f6;">Web 端</div>
+            <div class="mn-arch-chips"><span>H5 容器</span><span>响应式布局</span><span>PWA 支持</span></div>
+          </div>
         </div>
       </div>
-      <div class="mn-arch-arrow">▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾ ▾</div>
-      <div class="mn-arch-layer" style="--lc:#f59e0b;--lb:rgba(245,158,11,0.13);">
-        <div class="mn-arch-label">
-          <div class="mn-arch-cn">基础设施层</div>
-          <div class="mn-arch-en">INFRA</div>
+
+      <div class="mn-arch-conn">
+        <div class="mn-arch-conn-line" style="--cc:#3b82f6;"></div>
+        <div class="mn-arch-conn-dot" style="background:#3b82f6;"></div>
+        <div class="mn-arch-conn-line" style="--cc:#a78bfa;"></div>
+      </div>
+
+      <!-- Layer 2 -->
+      <div class="mn-arch-card" style="--lc:#a78bfa;--lg:linear-gradient(135deg,#7c3aed,#a78bfa);--lbg:rgba(167,139,250,0.06);--lbd:rgba(167,139,250,0.22);">
+        <div class="mn-arch-card-left">
+          <div class="mn-arch-num-badge">02</div>
+          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div class="mn-arch-layer-text">
+            <div class="mn-arch-layer-cn">平台能力层</div>
+            <div class="mn-arch-layer-en">PLATFORM LAYER</div>
+          </div>
         </div>
-        <div class="mn-arch-tags">
-          <span>华为公有云</span><span>华为混合云</span><span>On-premise</span><span>Azure</span><span>AWS</span><span>Google Cloud</span><span>APP Cube 平台</span><span>银行 / MM 后台</span>
+        <div class="mn-arch-card-body">
+          <div class="mn-arch-group">
+            <div class="mn-arch-group-lbl" style="color:#a78bfa;">安全 &amp; 身份</div>
+            <div class="mn-arch-chips"><span>统一身份认证</span><span>生物识别</span><span>安全加固</span><span>小程序沙箱</span></div>
+          </div>
+          <div class="mn-arch-group">
+            <div class="mn-arch-group-lbl" style="color:#a78bfa;">服务能力</div>
+            <div class="mn-arch-chips"><span>移动支付</span><span>LBS 定位</span><span>推送通知</span><span>数据分析</span><span>社交分享</span></div>
+          </div>
         </div>
       </div>
+
+      <div class="mn-arch-conn">
+        <div class="mn-arch-conn-line" style="--cc:#a78bfa;"></div>
+        <div class="mn-arch-conn-dot" style="background:#a78bfa;"></div>
+        <div class="mn-arch-conn-line" style="--cc:#06b6d4;"></div>
+      </div>
+
+      <!-- Layer 3 -->
+      <div class="mn-arch-card" style="--lc:#06b6d4;--lg:linear-gradient(135deg,#0891b2,#06b6d4);--lbg:rgba(6,182,212,0.06);--lbd:rgba(6,182,212,0.22);">
+        <div class="mn-arch-card-left">
+          <div class="mn-arch-num-badge">03</div>
+          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <div class="mn-arch-layer-text">
+            <div class="mn-arch-layer-cn">应用服务层</div>
+            <div class="mn-arch-layer-en">APPLICATION LAYER</div>
+          </div>
+        </div>
+        <div class="mn-arch-card-body">
+          <div class="mn-arch-group">
+            <div class="mn-arch-group-lbl" style="color:#06b6d4;">金融类</div>
+            <div class="mn-arch-chips"><span>电子钱包</span><span>理财投资</span><span>财富管理</span><span>虚拟货币</span><span>消费金融</span><span>保险服务</span></div>
+          </div>
+          <div class="mn-arch-group">
+            <div class="mn-arch-group-lbl" style="color:#06b6d4;">生活 &amp; 城市类</div>
+            <div class="mn-arch-chips"><span>智慧健身</span><span>智慧导览</span><span>数字藏品</span><span>车辆管理</span><span>智慧城市</span><span>个性化推荐</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mn-arch-conn">
+        <div class="mn-arch-conn-line" style="--cc:#06b6d4;"></div>
+        <div class="mn-arch-conn-dot" style="background:#06b6d4;"></div>
+        <div class="mn-arch-conn-line" style="--cc:#f59e0b;"></div>
+      </div>
+
+      <!-- Layer 4 -->
+      <div class="mn-arch-card" style="--lc:#f59e0b;--lg:linear-gradient(135deg,#d97706,#f59e0b);--lbg:rgba(245,158,11,0.06);--lbd:rgba(245,158,11,0.22);">
+        <div class="mn-arch-card-left">
+          <div class="mn-arch-num-badge">04</div>
+          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+          <div class="mn-arch-layer-text">
+            <div class="mn-arch-layer-cn">基础设施层</div>
+            <div class="mn-arch-layer-en">INFRASTRUCTURE LAYER</div>
+          </div>
+        </div>
+        <div class="mn-arch-card-body">
+          <div class="mn-arch-group">
+            <div class="mn-arch-group-lbl" style="color:#f59e0b;">云平台</div>
+            <div class="mn-arch-chips"><span>华为公有云</span><span>华为混合云</span><span>On-premise</span><span>Azure</span><span>AWS</span><span>Google Cloud</span></div>
+          </div>
+          <div class="mn-arch-group">
+            <div class="mn-arch-group-lbl" style="color:#f59e0b;">业务平台</div>
+            <div class="mn-arch-chips"><span>APP Cube 平台</span><span>银行 / MM 后台</span><span>第三方 API</span></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -365,6 +433,17 @@ function initCounters() {
             <p>积分奖励、签到、任务系统，配合收藏、分享、捐款等社交化功能，提升用户黏性与留存。</p>
           </div>
         </div>
+        <!-- 生活服务截图 -->
+        <div class="mn-screenshots-row">
+          <div class="mn-ss-item mn-ss-wide">
+            <img src="/solutions/miniapp/images/app-coverage.png" alt="Super App 多场景覆盖能力" />
+            <div class="mn-ss-cap">Super App 多行业场景覆盖</div>
+          </div>
+          <div class="mn-ss-item mn-ss-wide">
+            <img src="/solutions/miniapp/images/sdk-integration.png" alt="小程序 SDK 集成架构" />
+            <div class="mn-ss-cap">小程序 SDK 集成架构</div>
+          </div>
+        </div>
       </div>
 
       <!-- 城市 -->
@@ -402,6 +481,17 @@ function initCounters() {
             <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
             <h4>智慧园区</h4>
             <p>园区门禁、会议预约、设施报修、访客管理，提升园区运营效率与入驻企业体验。</p>
+          </div>
+        </div>
+        <!-- 智慧城市截图 -->
+        <div class="mn-screenshots-row">
+          <div class="mn-ss-item mn-ss-wide">
+            <img src="/solutions/miniapp/images/city-mgmt.png" alt="智慧城市运营管理系统" />
+            <div class="mn-ss-cap">智慧城市运营管理系统</div>
+          </div>
+          <div class="mn-ss-item mn-ss-wide">
+            <img src="/solutions/miniapp/images/quality-flow.png" alt="城市服务质量管控流程" />
+            <div class="mn-ss-cap">城市服务质量管控流程</div>
           </div>
         </div>
       </div>
@@ -461,15 +551,35 @@ function initCounters() {
       </div>
     </div>
 
-    <!-- 两图 -->
-    <div class="mn-two-imgs">
-      <div class="mn-img-card">
-        <img src="/solutions/miniapp/images/delivery-flow.png" alt="端到端交付流程" />
-        <div class="mn-img-cap">端到端交付流程</div>
+    <!-- 两大流程图并排展示 -->
+    <div class="mn-flow-imgs">
+      <div class="mn-flow-img-block">
+        <div class="mn-flow-img-header">
+          <div class="mn-flow-img-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div>
+            <div class="mn-flow-img-title">端到端交付流程</div>
+            <div class="mn-flow-img-sub">M 平台部署 · SDK 集成 · 小程序上线全链路</div>
+          </div>
+        </div>
+        <div class="mn-flow-img-wrap">
+          <img src="/solutions/miniapp/images/delivery-flow.png" alt="端到端交付流程" />
+        </div>
       </div>
-      <div class="mn-img-card">
-        <img src="/solutions/miniapp/images/customization-flow.png" alt="标准化产品定制流程" />
-        <div class="mn-img-cap">标准化产品定制流程</div>
+      <div class="mn-flow-img-block">
+        <div class="mn-flow-img-header">
+          <div class="mn-flow-img-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="mn-flow-img-title">标准化产品定制流程</div>
+            <div class="mn-flow-img-sub">基于 MM App 基线 · 快速定制 · 多语言 GUI 适配</div>
+          </div>
+        </div>
+        <div class="mn-flow-img-wrap">
+          <img src="/solutions/miniapp/images/customization-flow.png" alt="标准化产品定制流程" />
+        </div>
       </div>
     </div>
 
@@ -724,27 +834,83 @@ function initCounters() {
 
 /* ── ARCH ── */
 .mn-arch-wrap { display: flex; flex-direction: column; gap: 0; }
-.mn-arch-layer {
-  display: flex; align-items: flex-start; gap: 20px; padding: 16px 24px;
-  background: var(--lb); border-left: 4px solid var(--lc);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+
+.mn-arch-card {
+  display: flex; align-items: stretch; gap: 0;
+  background: var(--lbg);
+  border: 1px solid var(--lbd);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 0 0 1px var(--lbd);
+  transition: box-shadow .3s, transform .3s;
 }
-.mn-arch-wrap .mn-arch-layer:first-child { border-radius: 12px 12px 0 0; }
-.mn-arch-wrap .mn-arch-layer:last-child { border-radius: 0 0 12px 12px; border-bottom: none; }
-.mn-arch-label { min-width: 80px; }
-.mn-arch-cn { font-size: 0.88rem; font-weight: 800; color: var(--text1); }
-.mn-arch-en { font-size: 0.6rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; }
-.mn-arch-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.mn-arch-tags span {
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 8px; padding: 5px 14px; font-size: 0.8rem; color: var(--text2);
+.mn-arch-card:hover {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1), 0 0 0 1px var(--lbd);
+  transform: translateY(-2px);
 }
-.dark .mn-arch-tags span { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
-:root:not(.dark) .mn-arch-layer { background: var(--lb); }
-:root:not(.dark) .mn-arch-tags span { background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.07); }
-.mn-arch-arrow {
-  text-align: center; color: #94a3b8; font-size: 0.8rem; letter-spacing: 3px;
-  padding: 6px 0; background: var(--card-bg);
+.mn-arch-card-left {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; padding: 28px 24px; min-width: 130px;
+  background: var(--lg);
+  position: relative; overflow: hidden;
+}
+.mn-arch-card-left::after {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.06'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.mn-arch-num-badge {
+  font-size: 2rem; font-weight: 900; color: rgba(255,255,255,0.2);
+  line-height: 1; position: absolute; top: 12px; right: 14px;
+  letter-spacing: -0.05em;
+}
+.mn-arch-layer-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  position: relative; z-index: 1;
+}
+.mn-arch-layer-text { text-align: center; position: relative; z-index: 1; }
+.mn-arch-layer-cn { font-size: 0.95rem; font-weight: 900; color: #fff; letter-spacing: 0.02em; }
+.mn-arch-layer-en { font-size: 0.55rem; color: rgba(255,255,255,0.6); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+
+.mn-arch-card-body {
+  flex: 1; padding: 22px 28px; display: flex; flex-direction: column; gap: 14px; justify-content: center;
+}
+.mn-arch-group { display: flex; align-items: flex-start; gap: 12px; }
+.mn-arch-group-lbl {
+  font-size: 0.72rem; font-weight: 800; min-width: 68px;
+  letter-spacing: 0.04em; padding-top: 5px; text-transform: uppercase;
+  white-space: nowrap;
+}
+.mn-arch-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.mn-arch-chips span {
+  padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 500;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); color: var(--text2);
+  transition: background .2s;
+}
+.mn-arch-chips span:hover { background: rgba(255,255,255,0.14); }
+:root:not(.dark) .mn-arch-chips span {
+  background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); color: var(--text2);
+}
+:root:not(.dark) .mn-arch-chips span:hover { background: rgba(0,0,0,0.08); }
+
+.mn-arch-conn {
+  display: flex; align-items: center; justify-content: center; padding: 4px 0;
+  gap: 0; flex-direction: column; height: 36px;
+}
+.mn-arch-conn-line {
+  width: 2px; flex: 1;
+  background: linear-gradient(to bottom, var(--cc), transparent);
+}
+.mn-arch-conn-line:last-child {
+  background: linear-gradient(to bottom, transparent, var(--cc));
+}
+.mn-arch-conn-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid white; box-shadow: 0 0 6px currentColor;
+  flex-shrink: 0;
 }
 
 /* ── TABS ── */
@@ -838,17 +1004,39 @@ function initCounters() {
 .mn-flow-arrow {
   font-size: 1.4rem; color: #94a3b8; margin-top: 12px; padding: 0 4px; flex-shrink: 0;
 }
-.mn-two-imgs {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px;
+/* ── FLOW IMAGES (full open side-by-side) ── */
+.mn-flow-imgs {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 44px;
 }
-.mn-img-card img {
-  width: 100%; border-radius: 12px; border: 1px solid var(--border);
-  box-shadow: var(--shadow); display: block;
+.mn-flow-img-block {
+  background: var(--card-bg); border-radius: 16px;
+  border: 1px solid rgba(29,78,216,0.09);
+  box-shadow: var(--shadow-lg); overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
 }
-.mn-img-cap {
-  font-size: 0.82rem; color: var(--text3); text-align: center;
-  margin-top: 10px; font-weight: 600;
+.mn-flow-img-block:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(29,78,216,0.12); }
+.mn-flow-img-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px; border-bottom: 1px solid var(--border);
+  background: var(--vp-c-bg-soft, #f8fafc);
 }
+.mn-flow-img-icon {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.mn-flow-img-title { font-size: 1rem; font-weight: 800; color: var(--text1); }
+.mn-flow-img-sub { font-size: 0.76rem; color: var(--text3); margin-top: 3px; }
+.mn-flow-img-wrap { padding: 16px; }
+.mn-flow-img-wrap img {
+  width: 100%; display: block;
+  border-radius: 10px; border: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+/* wide screenshot items */
+.mn-ss-wide { width: 340px; }
+.mn-ss-wide img { height: 220px !important; object-position: center !important; }
 .mn-ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .mn-ops-card {
   background: var(--card-bg); border-radius: var(--radius); padding: 28px 24px;
@@ -912,7 +1100,10 @@ function initCounters() {
   .mn-flow-step { flex-direction: row; text-align: left; gap: 16px; align-items: flex-start; }
   .mn-flow-num { flex-shrink: 0; margin-bottom: 0; }
   .mn-flow-arrow { display: none; }
-  .mn-two-imgs { grid-template-columns: 1fr; }
+  .mn-flow-imgs { grid-template-columns: 1fr; }
+  .mn-arch-card { flex-direction: column; }
+  .mn-arch-card-left { flex-direction: row; min-width: unset; padding: 16px 20px; }
+  .mn-arch-num-badge { display: none; }
   .mn-ops-grid { grid-template-columns: 1fr; }
   .mn-cap-grid { grid-template-columns: 1fr; }
   .mn-tab-bar { flex-direction: column; width: 100%; }
