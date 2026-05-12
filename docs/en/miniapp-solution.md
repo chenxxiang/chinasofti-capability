@@ -1,1 +1,4 @@
-# Mini-App Overview
+---
+layout: home-miniapp-en
+title: ChinaSofti · Mini-App Solution
+---
