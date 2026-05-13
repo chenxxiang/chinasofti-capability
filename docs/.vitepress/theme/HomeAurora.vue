@@ -192,6 +192,7 @@ function initHamburger() {
   <div class="nav-links">
     <a href="/zh/" class="active">首页</a>
     <a href="/zh/miniapp/">小程序方案</a>
+    <a href="/zh/cases/">成功案例</a>
     <a href="/zh/overseas/">海外布局</a>
     <a href="/zh/business/cms/">解决方案</a>
   </div>
@@ -203,6 +204,7 @@ function initHamburger() {
 <div class="nav-drawer" id="nav-drawer-zh">
   <a href="/zh/">首页</a>
   <a href="/zh/miniapp/">小程序方案</a>
+  <a href="/zh/cases/">成功案例</a>
   <a href="/zh/overseas/">海外布局</a>
   <a href="/zh/business/cms/">解决方案</a>
   <a href="/en/" class="nav-drawer-lang">English</a>
