@@ -119,28 +119,14 @@
     </div>
   </div>
 
-  <!-- 平台全景预览 -->
-  <div class="ai-portal-overview reveal">
-    <div class="ai-preview-label">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      AI BootCamp 服务平台全景
-    </div>
-    <div class="ai-browser-frame">
-      <div class="ai-browser-bar">
-        <span class="ai-browser-dot" style="background:#ef4444;"></span>
-        <span class="ai-browser-dot" style="background:#f59e0b;"></span>
-        <span class="ai-browser-dot" style="background:#10b981;"></span>
-        <span class="ai-browser-url">aibc.jointforce.com/portal/</span>
-      </div>
-      <img src="/ai/hero-portal.png" alt="AI BootCamp 服务平台首页" />
-    </div>
-  </div>
-
   <!-- AI创新工坊详情 -->
   <div class="ai-section reveal" id="workshop">
     <div class="ai-section-eyebrow" style="color:#1d4ed8;">核心产品 · 场景创新</div>
     <h2 class="ai-section-title">AI 创新工坊</h2>
     <p class="ai-section-sub">高强度沉浸式实战营，依托真实业务与数据，短期集中共创、快速搭建原型，实现技术赋能与轻量化方案落地</p>
+    <div class="ai-service-banner">
+      <img src="/ai/portal-service-1.png" alt="AI创新工坊" />
+    </div>
 
     <!-- 四大原则 -->
     <div class="ai-principle-grid">
@@ -166,23 +152,6 @@
       </div>
     </div>
 
-    <!-- Workshop平台界面截图 -->
-    <div class="ai-platform-preview">
-      <div class="ai-preview-label">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        AI创新工坊 · 核心理念与方法论
-      </div>
-      <div class="ai-browser-frame">
-        <div class="ai-browser-bar">
-          <span class="ai-browser-dot" style="background:#ef4444;"></span>
-          <span class="ai-browser-dot" style="background:#f59e0b;"></span>
-          <span class="ai-browser-dot" style="background:#10b981;"></span>
-          <span class="ai-browser-url">aibc.jointforce.com/portal/workshop/</span>
-        </div>
-        <img src="/ai/workshop-hero.png" alt="AI创新工坊 — 核心原则" />
-      </div>
-    </div>
-
     <!-- 三大应用场景 -->
     <h3 class="ai-sub-title">三大典型应用场景</h3>
     <div class="ai-scene-grid">
@@ -204,6 +173,9 @@
             BOM 选型助手原型，实测准确率比传统人工方式提升 35%
           </div>
         </div>
+        <div class="ai-scene-img-wrap">
+          <img src="/ai/workshop-scenario-1.png" alt="快速场景验证与MVP开发" />
+        </div>
       </div>
       <div class="ai-scene-card ai-scene-purple">
         <div class="ai-scene-header">
@@ -222,6 +194,9 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             价值评估 + 难度评分 + 三年建设路径规划完整交付
           </div>
+        </div>
+        <div class="ai-scene-img-wrap">
+          <img src="/ai/workshop-scenario-2.png" alt="AI变革蓝图规划" />
         </div>
       </div>
       <div class="ai-scene-card ai-scene-cyan">
@@ -242,18 +217,9 @@
             从数百需求中筛选出 30 个高价值场景
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- 场景实战截图展示 -->
-    <div class="ai-screenshot-row">
-      <div class="ai-screenshot-item">
-        <img src="/ai/workshop-scenes.png" alt="三大典型应用场景" />
-        <div class="ai-screenshot-cap">三大典型应用场景概览</div>
-      </div>
-      <div class="ai-screenshot-item">
-        <img src="/ai/workshop-results.png" alt="AI变革蓝图规划与AI创新大赛" />
-        <div class="ai-screenshot-cap">AI变革蓝图规划 · AI创新大赛</div>
+        <div class="ai-scene-img-wrap">
+          <img src="/ai/workshop-scenario-3.png" alt="AI创新大赛" />
+        </div>
       </div>
     </div>
 
@@ -294,6 +260,9 @@
     <h3 class="ai-sub-title">创新落地成果</h3>
     <div class="ai-result-grid">
       <div class="ai-result-card" style="--rc:#1d4ed8;--rc-rgb:29,78,216;">
+        <div class="ai-result-img-wrap">
+          <img src="/ai/workshop-outcome-police1.png" alt="智能警务接警助手" />
+        </div>
         <div class="ai-result-industry">政务</div>
         <div class="ai-result-title">智能警务接警助手</div>
         <div class="ai-result-pain">
@@ -312,6 +281,9 @@
         </div>
       </div>
       <div class="ai-result-card" style="--rc:#d97706;--rc-rgb:217,119,6;">
+        <div class="ai-result-img-wrap">
+          <img src="/ai/workshop-outcome-powertrade1.png" alt="电力交易策略助手" />
+        </div>
         <div class="ai-result-industry">能源</div>
         <div class="ai-result-title">电力交易策略助手</div>
         <div class="ai-result-pain">
@@ -337,6 +309,9 @@
     <div class="ai-section-eyebrow" style="color:#7c3aed;">核心产品 · 人才赋能</div>
     <h2 class="ai-section-title">AI 精英赋能</h2>
     <p class="ai-section-sub">通过系统化课程与实战演练，打造适配 AI 时代的复合型人才团队，筑牢企业 AI 变革的组织根基</p>
+    <div class="ai-service-banner">
+      <img src="/ai/portal-service-2.png" alt="AI精英赋能" />
+    </div>
 
     <!-- 721法则 -->
     <div class="ai-law-card">
@@ -349,27 +324,13 @@
       </div>
     </div>
 
-    <!-- Enablement平台人才体系截图 -->
-    <div class="ai-platform-preview">
-      <div class="ai-preview-label">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        AI精英赋能 · 人才培养体系
-      </div>
-      <div class="ai-browser-frame">
-        <div class="ai-browser-bar">
-          <span class="ai-browser-dot" style="background:#ef4444;"></span>
-          <span class="ai-browser-dot" style="background:#f59e0b;"></span>
-          <span class="ai-browser-dot" style="background:#10b981;"></span>
-          <span class="ai-browser-url">aibc.jointforce.com/portal/enablement/</span>
-        </div>
-        <img src="/ai/enablement-stages.png" alt="三大人才画像 — M型·T型·AI赋能一线" />
-      </div>
-    </div>
-
     <!-- 三类人才画像 -->
     <h3 class="ai-sub-title">三大人才画像</h3>
     <div class="ai-persona-grid">
       <div class="ai-persona-card">
+        <div class="ai-persona-img-wrap">
+          <img src="/ai/enablement-persona-1.png" alt="M型管理者能力画像" />
+        </div>
         <div class="ai-persona-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
@@ -378,6 +339,9 @@
         <div class="ai-persona-tags"><span>全局认知</span><span>AI工具应用</span><span>跨界融合</span></div>
       </div>
       <div class="ai-persona-card">
+        <div class="ai-persona-img-wrap">
+          <img src="/ai/enablement-persona-2.png" alt="T形领域专家能力画像" />
+        </div>
         <div class="ai-persona-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
         </div>
@@ -386,6 +350,9 @@
         <div class="ai-persona-tags"><span>深度专业</span><span>AI辅助办公</span><span>领域精通</span></div>
       </div>
       <div class="ai-persona-card">
+        <div class="ai-persona-img-wrap">
+          <img src="/ai/enablement-persona-3.png" alt="AI赋能一线员工能力画像" />
+        </div>
         <div class="ai-persona-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
@@ -439,21 +406,13 @@
       </div>
     </div>
 
-    <!-- 五阶体系平台截图 -->
-    <div class="ai-platform-preview">
-      <div class="ai-preview-label">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        五阶实战体系 · 平台全景呈现
-      </div>
-      <div class="ai-browser-frame">
-        <div class="ai-browser-bar">
-          <span class="ai-browser-dot" style="background:#ef4444;"></span>
-          <span class="ai-browser-dot" style="background:#f59e0b;"></span>
-          <span class="ai-browser-dot" style="background:#10b981;"></span>
-          <span class="ai-browser-url">aibc.jointforce.com/portal/enablement/</span>
-        </div>
-        <img src="/ai/enablement-course.png" alt="五阶实战锻造体系" />
-      </div>
+    <!-- 五阶配图 -->
+    <div class="ai-timeline-imgs">
+      <img src="/ai/enablement-timeline-1.png" alt="认知觉醒" />
+      <img src="/ai/enablement-timeline-2.png" alt="场景设计" />
+      <img src="/ai/enablement-timeline-3.png" alt="技能提升" />
+      <img src="/ai/enablement-timeline-4.png" alt="贴近行业" />
+      <img src="/ai/enablement-timeline-5.png" alt="实战演练" />
     </div>
 
     <!-- 课程4天模块 -->
@@ -490,6 +449,7 @@
     <div class="ai-consult-grid">
       <div class="ai-consult-card">
         <div class="ai-consult-step">Strategy</div>
+        <div class="ai-consult-illus"><img src="/ai/portal-consult-1.png" alt="战略对齐" /></div>
         <div class="ai-consult-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
         </div>
@@ -498,6 +458,7 @@
       </div>
       <div class="ai-consult-card">
         <div class="ai-consult-step">Blueprint</div>
+        <div class="ai-consult-illus"><img src="/ai/portal-consult-2.png" alt="场景规划" /></div>
         <div class="ai-consult-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
@@ -506,6 +467,7 @@
       </div>
       <div class="ai-consult-card">
         <div class="ai-consult-step">Enablement</div>
+        <div class="ai-consult-illus"><img src="/ai/portal-consult-3.png" alt="能力构建" /></div>
         <div class="ai-consult-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
@@ -514,6 +476,7 @@
       </div>
       <div class="ai-consult-card">
         <div class="ai-consult-step">Delivery</div>
+        <div class="ai-consult-illus"><img src="/ai/portal-consult-4.png" alt="价值落地" /></div>
         <div class="ai-consult-icon" style="background:linear-gradient(135deg,#059669,#10b981);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
@@ -528,22 +491,6 @@
     <div class="ai-section-eyebrow">实战验证</div>
     <h2 class="ai-section-title">标杆客户成果</h2>
     <p class="ai-section-sub">覆盖医疗、金融、政务、制造、能源五大行业，持续验证 AI 变革赋能价值</p>
-    <!-- 平台客户案例截图 -->
-    <div class="ai-platform-preview" style="margin-bottom:28px;">
-      <div class="ai-preview-label">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-        平台标杆客户案例 · 实战展示
-      </div>
-      <div class="ai-browser-frame">
-        <div class="ai-browser-bar">
-          <span class="ai-browser-dot" style="background:#ef4444;"></span>
-          <span class="ai-browser-dot" style="background:#f59e0b;"></span>
-          <span class="ai-browser-dot" style="background:#10b981;"></span>
-          <span class="ai-browser-url">aibc.jointforce.com/portal/</span>
-        </div>
-        <img src="/ai/clients.png" alt="平台标杆客户案例" style="max-height:320px;object-fit:cover;object-position:top;" />
-      </div>
-    </div>
     <div class="ai-case-grid">
       <div class="ai-case-card" style="--acc:#1d4ed8;">
         <div class="ai-case-industry">医疗</div>
@@ -893,18 +840,18 @@ onMounted(() => {
   .au-footer { padding:24px 16px; flex-direction:column; gap:8px; text-align:center; }
 }
 
-/* ===== PLATFORM PREVIEW & BROWSER FRAME ===== */
-.ai-portal-overview { padding-top:48px; }
-.ai-platform-preview { margin-top:28px; }
-.ai-preview-label { display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#64748b; margin-bottom:14px; }
-.ai-browser-frame { background:white; border-radius:16px; border:1px solid rgba(29,78,216,0.12); box-shadow:0 8px 36px rgba(29,78,216,0.10); overflow:hidden; }
-.ai-browser-bar { background:#f8fafc; border-bottom:1px solid rgba(0,0,0,0.07); padding:10px 16px; display:flex; align-items:center; gap:8px; }
-.ai-browser-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
-.ai-browser-url { margin-left:6px; flex:1; background:#fff; border:1px solid rgba(0,0,0,0.09); border-radius:6px; padding:4px 12px; font-size:0.72rem; color:#94a3b8; font-family:'SF Mono',Consolas,monospace; }
-.ai-browser-frame > img { width:100%; display:block; }
-.ai-screenshot-row { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:24px; }
-.ai-screenshot-item { background:white; border-radius:14px; overflow:hidden; border:1px solid rgba(29,78,216,0.09); box-shadow:0 4px 20px rgba(29,78,216,0.07); }
-.ai-screenshot-item img { width:100%; display:block; height:220px; object-fit:cover; object-position:top; }
-.ai-screenshot-cap { padding:10px 16px; font-size:0.78rem; font-weight:600; color:#64748b; border-top:1px solid rgba(0,0,0,0.06); }
-@media (max-width:768px) { .ai-screenshot-row { grid-template-columns:1fr; } .ai-browser-url { display:none; } }
+/* ===== CARD IMAGES ===== */
+.ai-service-banner { border-radius:14px; overflow:hidden; margin-bottom:32px; box-shadow:0 4px 24px rgba(29,78,216,0.08); border:1px solid rgba(29,78,216,0.08); }
+.ai-service-banner img { width:100%; display:block; }
+.ai-scene-img-wrap { padding:0 16px 16px; }
+.ai-scene-img-wrap img { width:100%; display:block; border-radius:10px; }
+.ai-result-img-wrap { margin:-28px -26px 18px; overflow:hidden; border-radius:14px 14px 0 0; }
+.ai-result-img-wrap img { width:100%; display:block; height:170px; object-fit:cover; object-position:center; }
+.ai-persona-img-wrap { margin:-28px -24px 20px; overflow:hidden; border-radius:14px 14px 0 0; }
+.ai-persona-img-wrap img { width:100%; display:block; height:180px; object-fit:cover; object-position:top; }
+.ai-timeline-imgs { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:18px 0 8px; }
+.ai-timeline-imgs img { width:100%; display:block; border-radius:10px; aspect-ratio:400/283; object-fit:cover; box-shadow:0 2px 10px rgba(29,78,216,0.08); }
+.ai-consult-illus { width:88px; height:88px; margin:0 auto 12px; overflow:hidden; border-radius:12px; }
+.ai-consult-illus img { width:100%; height:100%; object-fit:contain; display:block; }
+@media (max-width:768px) { .ai-timeline-imgs { grid-template-columns:repeat(3,1fr); } }
 </style>
