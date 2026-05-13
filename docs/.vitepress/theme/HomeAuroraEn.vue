@@ -521,6 +521,7 @@ function initHamburger() {
 }
 
 :root {
+  color-scheme: light;
   --blue: #1d4ed8; --blue-l: #3b82f6; --blue-pale: #eff6ff;
   --purple: #7c3aed; --cyan: #06b6d4; --indigo: #4f46e5;
   --text1: #0f172a; --text2: #334155; --text3: #94a3b8;
@@ -940,5 +941,32 @@ function initHamburger() {
   .nav-links { display: none; }
   .au-nav { justify-content: space-between; }
   .nav-hamburger { display: flex; }
+}
+/* ── Force light mode for Aurora page in dark OS/browser ── */
+html.dark .stat-card,
+html.dark .a-card,
+html.dark .r-card,
+html.dark .ind-card,
+html.dark .chart-card,
+html.dark .hw-intro,
+html.dark .tl-card,
+html.dark .cert-card,
+html.dark .m-logo {
+  background: rgba(255,255,255,0.92) !important;
+  border-color: rgba(29,78,216,0.07) !important;
+}
+html.dark .stat-val,
+html.dark .ind-name,
+html.dark .sec-title,
+html.dark .hw-intro-title,
+html.dark .r-head {
+  color: #0f172a !important;
+}
+html.dark .stat-lab,
+html.dark .ind-desc,
+html.dark .r-body,
+html.dark .tl-card,
+html.dark .hw-intro-text {
+  color: #334155 !important;
 }
 </style>
