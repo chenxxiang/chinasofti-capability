@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted } from 'vue'
+import NavBar from './NavBar.vue'
 
 onMounted(() => {
   initReveal()
   initTabs()
-  initHamburger()
   initCounters()
 })
 
@@ -30,20 +30,6 @@ function initTabs() {
   })
 }
 
-function initHamburger() {
-  const btn = document.getElementById('nav-hamburger-mn')
-  const drawer = document.getElementById('nav-drawer-mn')
-  if (!btn || !drawer) return
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation()
-    drawer.classList.toggle('open')
-    btn.classList.toggle('open')
-  })
-  document.addEventListener('click', () => {
-    drawer.classList.remove('open')
-    btn.classList.remove('open')
-  })
-}
 
 function initCounters() {
   const obs = new IntersectionObserver(entries => {
@@ -71,33 +57,7 @@ function initCounters() {
 <div class="mn-mesh-bg"></div>
 
 <!-- NAV -->
-<nav class="au-nav">
-  <div class="nav-logo">
-    <span class="logo-chip">CSI</span>
-    中软国际 · 能力库
-  </div>
-  <div class="nav-links">
-    <a href="/zh/">首页</a>
-    <a href="/zh/miniapp/" class="active">小程序方案</a>
-    <a href="/zh/cases/">成功案例</a>
-    <a href="/zh/ai/">AI创新工坊</a>
-    <a href="/zh/overseas/">海外布局</a>
-    <a href="/zh/business/cms/">解决方案</a>
-  </div>
-  <button class="nav-cta" onclick="window.location.href='/en/'">English</button>
-  <button class="nav-hamburger" id="nav-hamburger-mn" aria-label="菜单">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="nav-drawer" id="nav-drawer-mn">
-  <a href="/zh/">首页</a>
-  <a href="/zh/miniapp/">小程序方案</a>
-  <a href="/zh/cases/">成功案例</a>
-    <a href="/zh/ai/">AI创新工坊</a>
-  <a href="/zh/overseas/">海外布局</a>
-  <a href="/zh/business/cms/">解决方案</a>
-  <a href="/en/" class="nav-drawer-lang">English</a>
-</div>
+<NavBar active="solutions" />
 
 <!-- HERO -->
 <section class="mn-hero">
