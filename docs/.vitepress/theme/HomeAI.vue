@@ -119,6 +119,23 @@
     </div>
   </div>
 
+  <!-- 平台全景预览 -->
+  <div class="ai-portal-overview reveal">
+    <div class="ai-preview-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      AI BootCamp 服务平台全景
+    </div>
+    <div class="ai-browser-frame">
+      <div class="ai-browser-bar">
+        <span class="ai-browser-dot" style="background:#ef4444;"></span>
+        <span class="ai-browser-dot" style="background:#f59e0b;"></span>
+        <span class="ai-browser-dot" style="background:#10b981;"></span>
+        <span class="ai-browser-url">aibc.jointforce.com/portal/</span>
+      </div>
+      <img src="/ai/hero-portal.png" alt="AI BootCamp 服务平台首页" />
+    </div>
+  </div>
+
   <!-- AI创新工坊详情 -->
   <div class="ai-section reveal" id="workshop">
     <div class="ai-section-eyebrow" style="color:#1d4ed8;">核心产品 · 场景创新</div>
@@ -146,6 +163,23 @@
         <div class="ai-principle-num" style="color:#d97706;">04</div>
         <div class="ai-principle-title">成果落地</div>
         <div class="ai-principle-desc">产出可演示、可验证、可复用的 AI 原型与方案，为规模化落地奠定基础</div>
+      </div>
+    </div>
+
+    <!-- Workshop平台界面截图 -->
+    <div class="ai-platform-preview">
+      <div class="ai-preview-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        AI创新工坊 · 核心理念与方法论
+      </div>
+      <div class="ai-browser-frame">
+        <div class="ai-browser-bar">
+          <span class="ai-browser-dot" style="background:#ef4444;"></span>
+          <span class="ai-browser-dot" style="background:#f59e0b;"></span>
+          <span class="ai-browser-dot" style="background:#10b981;"></span>
+          <span class="ai-browser-url">aibc.jointforce.com/portal/workshop/</span>
+        </div>
+        <img src="/ai/workshop-hero.png" alt="AI创新工坊 — 核心原则" />
       </div>
     </div>
 
@@ -208,6 +242,18 @@
             从数百需求中筛选出 30 个高价值场景
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- 场景实战截图展示 -->
+    <div class="ai-screenshot-row">
+      <div class="ai-screenshot-item">
+        <img src="/ai/workshop-scenes.png" alt="三大典型应用场景" />
+        <div class="ai-screenshot-cap">三大典型应用场景概览</div>
+      </div>
+      <div class="ai-screenshot-item">
+        <img src="/ai/workshop-results.png" alt="AI变革蓝图规划与AI创新大赛" />
+        <div class="ai-screenshot-cap">AI变革蓝图规划 · AI创新大赛</div>
       </div>
     </div>
 
@@ -303,6 +349,23 @@
       </div>
     </div>
 
+    <!-- Enablement平台人才体系截图 -->
+    <div class="ai-platform-preview">
+      <div class="ai-preview-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        AI精英赋能 · 人才培养体系
+      </div>
+      <div class="ai-browser-frame">
+        <div class="ai-browser-bar">
+          <span class="ai-browser-dot" style="background:#ef4444;"></span>
+          <span class="ai-browser-dot" style="background:#f59e0b;"></span>
+          <span class="ai-browser-dot" style="background:#10b981;"></span>
+          <span class="ai-browser-url">aibc.jointforce.com/portal/enablement/</span>
+        </div>
+        <img src="/ai/enablement-stages.png" alt="三大人才画像 — M型·T型·AI赋能一线" />
+      </div>
+    </div>
+
     <!-- 三类人才画像 -->
     <h3 class="ai-sub-title">三大人才画像</h3>
     <div class="ai-persona-grid">
@@ -373,6 +436,23 @@
           <div class="ai-stage-title">实战演练</div>
           <div class="ai-stage-desc">在真实课题中完成 MVP 设计与价值验证，产出可落地的 AI 原型方案</div>
         </div>
+      </div>
+    </div>
+
+    <!-- 五阶体系平台截图 -->
+    <div class="ai-platform-preview">
+      <div class="ai-preview-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        五阶实战体系 · 平台全景呈现
+      </div>
+      <div class="ai-browser-frame">
+        <div class="ai-browser-bar">
+          <span class="ai-browser-dot" style="background:#ef4444;"></span>
+          <span class="ai-browser-dot" style="background:#f59e0b;"></span>
+          <span class="ai-browser-dot" style="background:#10b981;"></span>
+          <span class="ai-browser-url">aibc.jointforce.com/portal/enablement/</span>
+        </div>
+        <img src="/ai/enablement-course.png" alt="五阶实战锻造体系" />
       </div>
     </div>
 
@@ -448,6 +528,22 @@
     <div class="ai-section-eyebrow">实战验证</div>
     <h2 class="ai-section-title">标杆客户成果</h2>
     <p class="ai-section-sub">覆盖医疗、金融、政务、制造、能源五大行业，持续验证 AI 变革赋能价值</p>
+    <!-- 平台客户案例截图 -->
+    <div class="ai-platform-preview" style="margin-bottom:28px;">
+      <div class="ai-preview-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        平台标杆客户案例 · 实战展示
+      </div>
+      <div class="ai-browser-frame">
+        <div class="ai-browser-bar">
+          <span class="ai-browser-dot" style="background:#ef4444;"></span>
+          <span class="ai-browser-dot" style="background:#f59e0b;"></span>
+          <span class="ai-browser-dot" style="background:#10b981;"></span>
+          <span class="ai-browser-url">aibc.jointforce.com/portal/</span>
+        </div>
+        <img src="/ai/clients.png" alt="平台标杆客户案例" style="max-height:320px;object-fit:cover;object-position:top;" />
+      </div>
+    </div>
     <div class="ai-case-grid">
       <div class="ai-case-card" style="--acc:#1d4ed8;">
         <div class="ai-case-industry">医疗</div>
@@ -796,4 +892,19 @@ onMounted(() => {
   .ai-cta-btns { flex-direction:row; width:100%; }
   .au-footer { padding:24px 16px; flex-direction:column; gap:8px; text-align:center; }
 }
+
+/* ===== PLATFORM PREVIEW & BROWSER FRAME ===== */
+.ai-portal-overview { padding-top:48px; }
+.ai-platform-preview { margin-top:28px; }
+.ai-preview-label { display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#64748b; margin-bottom:14px; }
+.ai-browser-frame { background:white; border-radius:16px; border:1px solid rgba(29,78,216,0.12); box-shadow:0 8px 36px rgba(29,78,216,0.10); overflow:hidden; }
+.ai-browser-bar { background:#f8fafc; border-bottom:1px solid rgba(0,0,0,0.07); padding:10px 16px; display:flex; align-items:center; gap:8px; }
+.ai-browser-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.ai-browser-url { margin-left:6px; flex:1; background:#fff; border:1px solid rgba(0,0,0,0.09); border-radius:6px; padding:4px 12px; font-size:0.72rem; color:#94a3b8; font-family:'SF Mono',Consolas,monospace; }
+.ai-browser-frame > img { width:100%; display:block; }
+.ai-screenshot-row { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:24px; }
+.ai-screenshot-item { background:white; border-radius:14px; overflow:hidden; border:1px solid rgba(29,78,216,0.09); box-shadow:0 4px 20px rgba(29,78,216,0.07); }
+.ai-screenshot-item img { width:100%; display:block; height:220px; object-fit:cover; object-position:top; }
+.ai-screenshot-cap { padding:10px 16px; font-size:0.78rem; font-weight:600; color:#64748b; border-top:1px solid rgba(0,0,0,0.06); }
+@media (max-width:768px) { .ai-screenshot-row { grid-template-columns:1fr; } .ai-browser-url { display:none; } }
 </style>
