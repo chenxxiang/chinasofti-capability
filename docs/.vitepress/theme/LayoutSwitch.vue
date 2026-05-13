@@ -7,6 +7,7 @@ import HomeOverseas from './HomeOverseas.vue'
 import HomeOverseasEn from './HomeOverseasEn.vue'
 import HomeMiniapp from './HomeMiniapp.vue'
 import HomeMiniappEn from './HomeMiniappEn.vue'
+import HomeCases from './HomeCases.vue'
 
 const { frontmatter } = useData()
 </script>
@@ -18,6 +19,7 @@ const { frontmatter } = useData()
   <HomeOverseasEn v-else-if="frontmatter.layout === 'home-overseas-en'" />
   <HomeMiniapp v-else-if="frontmatter.layout === 'home-miniapp'" />
   <HomeMiniappEn v-else-if="frontmatter.layout === 'home-miniapp-en'" />
+  <HomeCases v-else-if="frontmatter.layout === 'home-cases-zh'" />
   <DefaultTheme.Layout v-else>
     <template #nav-bar-title-before>
       <span class="vp-logo-chip">CSI</span>
