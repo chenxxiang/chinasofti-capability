@@ -340,9 +340,6 @@
 <script setup>
 import { onMounted } from 'vue'
 onMounted(() => {
-  document.documentElement.style.background = '#07061a'
-  document.body.style.background = '#07061a'
-
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) } })
   }, { threshold: 0.06 })
@@ -354,24 +351,19 @@ onMounted(() => {
 })
 </script>
 
-<style>
-html, body { background: #07061a !important; }
-</style>
-
 <style scoped>
 /* ===== PAGE & MESH ===== */
 .cases-page {
   font-family: 'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;
-  background:
-    radial-gradient(ellipse 70% 55% at 15% 20%, rgba(99,102,241,0.65) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 85% 10%, rgba(168,85,247,0.55) 0%, transparent 55%),
-    radial-gradient(ellipse 75% 60% at 55% 90%, rgba(6,182,212,0.50) 0%, transparent 58%),
-    radial-gradient(ellipse 55% 45% at 5% 78%, rgba(16,185,129,0.32) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 50% at 92% 60%, rgba(245,158,11,0.28) 0%, transparent 55%),
-    #07061a;
-  color: #e2e8f0; overflow-x: hidden; min-height: 100vh; position: relative;
+  background: #f0f4ff;
+  color: #0f172a; overflow-x: hidden; min-height: 100vh; position: relative;
 }
-.mesh-bg { position: fixed; inset: 0; pointer-events: none; background: transparent; z-index: 0; }
+.mesh-bg {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% -10%, rgba(29,78,216,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 110%, rgba(124,58,237,0.06) 0%, transparent 60%);
+}
 
 /* ===== NAV ===== */
 .au-nav {
@@ -431,16 +423,14 @@ html, body { background: #07061a !important; }
 
 /* ===== CASE CARD ===== */
 .case-card {
-  background: rgba(255,255,255,0.86);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid rgba(255,255,255,0.65);
+  background: white;
+  border: 1px solid rgba(29,78,216,0.09);
   border-left: 5px solid var(--accent);
   border-radius: 22px; overflow: hidden;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.90), 0 10px 48px rgba(0,0,0,0.14), 0 0 0 1px rgba(var(--accent-rgb),0.06);
+  box-shadow: 0 4px 24px rgba(29,78,216,0.08);
   transition: transform .3s, box-shadow .3s;
 }
-.case-card:hover { transform:translateY(-5px); box-shadow:inset 0 1px 0 rgba(255,255,255,0.95),0 24px 64px rgba(0,0,0,0.18),0 0 48px rgba(var(--accent-rgb),0.12); }
+.case-card:hover { transform:translateY(-5px); box-shadow:0 16px 48px rgba(var(--accent-rgb),0.15); }
 
 /* ===== CASE LAYOUT ===== */
 .case-top { display:grid; grid-template-columns:1fr 1fr; gap:0; }
@@ -487,7 +477,7 @@ html, body { background: #07061a !important; }
 .partner-tag svg { color:var(--accent); flex-shrink:0; }
 
 /* ===== SCREENS PANEL ===== */
-.case-screens { padding:32px 28px; background:rgba(var(--accent-rgb),0.03); display:flex; flex-direction:column; justify-content:center; }
+.case-screens { padding:32px 28px; background:rgba(var(--accent-rgb),0.04); display:flex; flex-direction:column; justify-content:center; }
 
 /* Phone screenshots */
 .phone-screens { flex-direction:row; align-items:flex-start; gap:12px; }
@@ -505,10 +495,10 @@ html, body { background: #07061a !important; }
 .b-addr { font-size:0.68rem; color:#64748b; font-weight:500; margin-left:4px; font-family:monospace; }
 
 /* ===== FOOTER ===== */
-.au-footer { position:relative; z-index:1; background:rgba(7,6,26,0.70); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border-top:1px solid rgba(255,255,255,0.08); padding:44px 72px; display:flex; justify-content:space-between; align-items:center; }
-.footer-l { color:rgba(241,245,249,0.70); font-weight:700; font-size:0.95rem; }
-.footer-l span { background:linear-gradient(90deg,#a5b4fc,#67e8f9); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.footer-r { color:rgba(241,245,249,0.30); font-size:0.8rem; }
+.au-footer { position:relative; z-index:1; background:white; border-top:1px solid rgba(29,78,216,0.08); padding:44px 72px; display:flex; justify-content:space-between; align-items:center; }
+.footer-l { color:#334155; font-weight:700; font-size:0.95rem; }
+.footer-l span { background:linear-gradient(90deg,#1d4ed8,#7c3aed); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.footer-r { color:#94a3b8; font-size:0.8rem; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
