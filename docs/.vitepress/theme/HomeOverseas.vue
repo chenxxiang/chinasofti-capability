@@ -2,13 +2,13 @@
 import { onMounted } from 'vue'
 import { feature, mesh } from 'topojson-client'
 import worldData from 'world-atlas/countries-110m.json'
+import NavBar from './NavBar.vue'
 
 onMounted(() => {
   initMapTabs()
   initMapPins()
   initWorldMap()
   initReveal()
-  initHamburger()
 })
 
 function initMapTabs() {
@@ -147,20 +147,7 @@ function initWorldMap() {
   window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(draw, 150) })
 }
 
-function initHamburger() {
-  const btn = document.getElementById('nav-hamburger-ov')
-  const drawer = document.getElementById('nav-drawer-ov')
-  if (!btn || !drawer) return
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation()
-    drawer.classList.toggle('open')
-    btn.classList.toggle('open')
-  })
-  document.addEventListener('click', () => {
-    drawer.classList.remove('open')
-    btn.classList.remove('open')
-  })
-}
+
 </script>
 
 <template>
@@ -168,33 +155,7 @@ function initHamburger() {
 <div class="mesh-bg"></div>
 
 <!-- NAV -->
-<nav class="au-nav">
-  <div class="nav-logo">
-    <span class="logo-chip">CSI</span>
-    中软国际 · 能力库
-  </div>
-  <div class="nav-links">
-    <a href="/zh/">首页</a>
-    <a href="/zh/miniapp/">小程序方案</a>
-    <a href="/zh/cases/">成功案例</a>
-    <a href="/zh/ai/">AI创新工坊</a>
-    <a href="/zh/overseas/" class="active">海外布局</a>
-    <a href="/zh/business/cms/">解决方案</a>
-  </div>
-  <button class="nav-cta" onclick="window.location.href='/en/'">English</button>
-  <button class="nav-hamburger" id="nav-hamburger-ov" aria-label="菜单">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="nav-drawer" id="nav-drawer-ov">
-  <a href="/zh/">首页</a>
-  <a href="/zh/miniapp/">小程序方案</a>
-  <a href="/zh/cases/">成功案例</a>
-    <a href="/zh/ai/">AI创新工坊</a>
-  <a href="/zh/overseas/">海外布局</a>
-  <a href="/zh/business/cms/">解决方案</a>
-  <a href="/en/" class="nav-drawer-lang">English</a>
-</div>
+<NavBar active="overseas" />
 
 <!-- MAP SECTION -->
 <div class="ov-map-section">

@@ -2,34 +2,7 @@
 <div class="cases-page">
 <div class="mesh-bg"></div>
 
-<!-- NAV -->
-<nav class="au-nav">
-  <div class="nav-logo">
-    <span class="logo-chip">CSI</span>
-    中软国际 · 能力库
-  </div>
-  <div class="nav-links">
-    <a href="/zh/">首页</a>
-    <a href="/zh/miniapp/">小程序方案</a>
-    <a href="/zh/cases/" class="active">成功案例</a>
-    <a href="/zh/ai/">AI创新工坊</a>
-    <a href="/zh/overseas/">海外布局</a>
-    <a href="/zh/business/cms/">解决方案</a>
-  </div>
-  <button class="nav-cta" onclick="window.location.href='/en/'">English</button>
-  <button class="nav-hamburger" id="nav-hamburger-cases" aria-label="菜单">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="nav-drawer" id="nav-drawer-cases">
-  <a href="/zh/">首页</a>
-  <a href="/zh/miniapp/">小程序方案</a>
-  <a href="/zh/cases/">成功案例</a>
-  <a href="/zh/ai/">AI创新工坊</a>
-  <a href="/zh/overseas/">海外布局</a>
-  <a href="/zh/business/cms/">解决方案</a>
-  <a href="/en/" class="nav-drawer-lang">English</a>
-</div>
+<NavBar active="cases" />
 
 <!-- HERO -->
 <div class="cases-hero">
@@ -341,15 +314,12 @@
 
 <script setup>
 import { onMounted } from 'vue'
+import NavBar from './NavBar.vue'
 onMounted(() => {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) } })
   }, { threshold: 0.06 })
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
-
-  const btn = document.getElementById('nav-hamburger-cases')
-  const drawer = document.getElementById('nav-drawer-cases')
-  if (btn && drawer) btn.addEventListener('click', () => { btn.classList.toggle('open'); drawer.classList.toggle('open') })
 })
 </script>
 
