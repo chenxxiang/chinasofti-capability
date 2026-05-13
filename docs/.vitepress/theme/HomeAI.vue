@@ -125,7 +125,7 @@
     <h2 class="ai-section-title">AI 创新工坊</h2>
     <p class="ai-section-sub">高强度沉浸式实战营，依托真实业务与数据，短期集中共创、快速搭建原型，实现技术赋能与轻量化方案落地</p>
     <div class="ai-service-banner">
-      <img src="/ai/portal-service-1.png" alt="AI创新工坊" />
+      <img :src="'/ai/portal-service-1.png'" alt="AI创新工坊" />
     </div>
 
     <!-- 四大原则 -->
@@ -174,7 +174,7 @@
           </div>
         </div>
         <div class="ai-scene-img-wrap">
-          <img src="/ai/workshop-scenario-1.png" alt="快速场景验证与MVP开发" />
+          <img :src="'/ai/workshop-scenario-1.png'" alt="快速场景验证与MVP开发" />
         </div>
       </div>
       <div class="ai-scene-card ai-scene-purple">
@@ -196,7 +196,7 @@
           </div>
         </div>
         <div class="ai-scene-img-wrap">
-          <img src="/ai/workshop-scenario-2.png" alt="AI变革蓝图规划" />
+          <img :src="'/ai/workshop-scenario-2.png'" alt="AI变革蓝图规划" />
         </div>
       </div>
       <div class="ai-scene-card ai-scene-cyan">
@@ -218,7 +218,7 @@
           </div>
         </div>
         <div class="ai-scene-img-wrap">
-          <img src="/ai/workshop-scenario-3.png" alt="AI创新大赛" />
+          <img :src="'/ai/workshop-scenario-3.png'" alt="AI创新大赛" />
         </div>
       </div>
     </div>
@@ -261,7 +261,7 @@
     <div class="ai-result-grid">
       <div class="ai-result-card" style="--rc:#1d4ed8;--rc-rgb:29,78,216;">
         <div class="ai-result-img-wrap">
-          <img src="/ai/workshop-outcome-police1.png" alt="智能警务接警助手" />
+          <img :src="'/ai/workshop-outcome-police1.png'" alt="智能警务接警助手" />
         </div>
         <div class="ai-result-industry">政务</div>
         <div class="ai-result-title">智能警务接警助手</div>
@@ -282,7 +282,7 @@
       </div>
       <div class="ai-result-card" style="--rc:#d97706;--rc-rgb:217,119,6;">
         <div class="ai-result-img-wrap">
-          <img src="/ai/workshop-outcome-powertrade1.png" alt="电力交易策略助手" />
+          <img :src="'/ai/workshop-outcome-powertrade1.png'" alt="电力交易策略助手" />
         </div>
         <div class="ai-result-industry">能源</div>
         <div class="ai-result-title">电力交易策略助手</div>
@@ -310,7 +310,7 @@
     <h2 class="ai-section-title">AI 精英赋能</h2>
     <p class="ai-section-sub">通过系统化课程与实战演练，打造适配 AI 时代的复合型人才团队，筑牢企业 AI 变革的组织根基</p>
     <div class="ai-service-banner">
-      <img src="/ai/portal-service-2.png" alt="AI精英赋能" />
+      <img :src="'/ai/portal-service-2.png'" alt="AI精英赋能" />
     </div>
 
     <!-- 721法则 -->
@@ -329,7 +329,7 @@
     <div class="ai-persona-grid">
       <div class="ai-persona-card">
         <div class="ai-persona-img-wrap">
-          <img src="/ai/enablement-persona-1.png" alt="M型管理者能力画像" />
+          <img :src="'/ai/enablement-persona-1.png'" alt="M型管理者能力画像" />
         </div>
         <div class="ai-persona-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -340,7 +340,7 @@
       </div>
       <div class="ai-persona-card">
         <div class="ai-persona-img-wrap">
-          <img src="/ai/enablement-persona-2.png" alt="T形领域专家能力画像" />
+          <img :src="'/ai/enablement-persona-2.png'" alt="T形领域专家能力画像" />
         </div>
         <div class="ai-persona-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -351,7 +351,7 @@
       </div>
       <div class="ai-persona-card">
         <div class="ai-persona-img-wrap">
-          <img src="/ai/enablement-persona-3.png" alt="AI赋能一线员工能力画像" />
+          <img :src="'/ai/enablement-persona-3.png'" alt="AI赋能一线员工能力画像" />
         </div>
         <div class="ai-persona-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -408,11 +408,11 @@
 
     <!-- 五阶配图 -->
     <div class="ai-timeline-imgs">
-      <img src="/ai/enablement-timeline-1.png" alt="认知觉醒" />
-      <img src="/ai/enablement-timeline-2.png" alt="场景设计" />
-      <img src="/ai/enablement-timeline-3.png" alt="技能提升" />
-      <img src="/ai/enablement-timeline-4.png" alt="贴近行业" />
-      <img src="/ai/enablement-timeline-5.png" alt="实战演练" />
+      <img :src="'/ai/enablement-timeline-1.png'" alt="认知觉醒" />
+      <img :src="'/ai/enablement-timeline-2.png'" alt="场景设计" />
+      <img :src="'/ai/enablement-timeline-3.png'" alt="技能提升" />
+      <img :src="'/ai/enablement-timeline-4.png'" alt="贴近行业" />
+      <img :src="'/ai/enablement-timeline-5.png'" alt="实战演练" />
     </div>
 
     <!-- 课程4天模块 -->
@@ -449,7 +449,7 @@
     <div class="ai-consult-grid">
       <div class="ai-consult-card">
         <div class="ai-consult-step">Strategy</div>
-        <div class="ai-consult-illus"><img src="/ai/portal-consult-1.png" alt="战略对齐" /></div>
+        <div class="ai-consult-illus"><img :src="'/ai/portal-consult-1.png'" alt="战略对齐" /></div>
         <div class="ai-consult-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
         </div>
@@ -458,7 +458,7 @@
       </div>
       <div class="ai-consult-card">
         <div class="ai-consult-step">Blueprint</div>
-        <div class="ai-consult-illus"><img src="/ai/portal-consult-2.png" alt="场景规划" /></div>
+        <div class="ai-consult-illus"><img :src="'/ai/portal-consult-2.png'" alt="场景规划" /></div>
         <div class="ai-consult-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
@@ -467,7 +467,7 @@
       </div>
       <div class="ai-consult-card">
         <div class="ai-consult-step">Enablement</div>
-        <div class="ai-consult-illus"><img src="/ai/portal-consult-3.png" alt="能力构建" /></div>
+        <div class="ai-consult-illus"><img :src="'/ai/portal-consult-3.png'" alt="能力构建" /></div>
         <div class="ai-consult-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
@@ -476,7 +476,7 @@
       </div>
       <div class="ai-consult-card">
         <div class="ai-consult-step">Delivery</div>
-        <div class="ai-consult-illus"><img src="/ai/portal-consult-4.png" alt="价值落地" /></div>
+        <div class="ai-consult-illus"><img :src="'/ai/portal-consult-4.png'" alt="价值落地" /></div>
         <div class="ai-consult-icon" style="background:linear-gradient(135deg,#059669,#10b981);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
