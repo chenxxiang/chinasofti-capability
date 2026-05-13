@@ -63,7 +63,7 @@ function initParticles() {
 }
 
 function initTypewriter() {
-  const text = '深耕华为生态 18 年，面向中东与东南亚市场，提供专业小程序与 Super App 端到端定制交付解决方案'
+  const text = '中国领先的 IT 服务商，深耕全球多国市场，提供政务、金融、电信、能源全行业端到端数字化解决方案'
   const el = document.getElementById('typed-text')
   const cursor = document.getElementById('typed-cursor')
   if (!el) return
@@ -428,12 +428,12 @@ function initHamburger() {
       <div class="chart-card">
         <div class="chart-title">📈 华为合作合同额增长趋势（亿元）</div>
         <div class="bar-chart" id="barChart">
-          <div class="bar-col"><div class="bar-val">5.72</div><div class="bar-body" data-h="10"></div><div class="bar-year">2015</div></div>
-          <div class="bar-col"><div class="bar-val">12.48</div><div class="bar-body" data-h="22"></div><div class="bar-year">2017</div></div>
-          <div class="bar-col"><div class="bar-val">28.63</div><div class="bar-body" data-h="40"></div><div class="bar-year">2019</div></div>
-          <div class="bar-col"><div class="bar-val">56.31</div><div class="bar-body" data-h="60"></div><div class="bar-year">2021</div></div>
-          <div class="bar-col"><div class="bar-val">81.24</div><div class="bar-body" data-h="80"></div><div class="bar-year">2023</div></div>
-          <div class="bar-col"><div class="bar-val">98.77</div><div class="bar-body" data-h="100"></div><div class="bar-year">2024</div></div>
+          <div class="bar-col"><div class="bar-val">5.72</div><div class="bar-area"><div class="bar-body" data-h="10"></div></div><div class="bar-year">2015</div></div>
+          <div class="bar-col"><div class="bar-val">12.48</div><div class="bar-area"><div class="bar-body" data-h="22"></div></div><div class="bar-year">2017</div></div>
+          <div class="bar-col"><div class="bar-val">28.63</div><div class="bar-area"><div class="bar-body" data-h="40"></div></div><div class="bar-year">2019</div></div>
+          <div class="bar-col"><div class="bar-val">56.31</div><div class="bar-area"><div class="bar-body" data-h="60"></div></div><div class="bar-year">2021</div></div>
+          <div class="bar-col"><div class="bar-val">81.24</div><div class="bar-area"><div class="bar-body" data-h="80"></div></div><div class="bar-year">2023</div></div>
+          <div class="bar-col"><div class="bar-val">98.77</div><div class="bar-area"><div class="bar-body" data-h="100"></div></div><div class="bar-year">2024</div></div>
         </div>
       </div>
     </div>
@@ -448,16 +448,16 @@ function initHamburger() {
       </div>
     </div>
     <div class="award-grid-v4 stagger">
-      <div class="a-card"><img class="a-img" src="/images/company/s8_a2ed0028.png" alt="荣誉"><div class="a-title">Gartner 全球 IT 服务百强 Top 73</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_e5fc62b9.png" alt="荣誉"><div class="a-title">中国软件百强 Top 15</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_3d1e9016.png" alt="荣誉"><div class="a-title">可信云服务认证</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_a2d25b85.png" alt="荣誉"><div class="a-title">国家高新技术企业</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_32714726.png" alt="荣誉"><div class="a-title">CMMI Level 5</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_50df6042.png" alt="荣誉"><div class="a-title">ISO 27001 认证</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_6c3400f9.jpg" alt="荣誉"><div class="a-title">最佳 IT 外包服务商</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_e1534be7.jpg" alt="荣誉"><div class="a-title">软件出口创新企业</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_92c2179c.jpg" alt="荣誉"><div class="a-title">中国电子信息百强</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_f8c74e34.png" alt="荣誉"><div class="a-title">大湾区最佳数字化奖</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_a2ed0028.png" alt="荣誉"><div class="a-title">开源大模型+ 软件创新应用典型案例</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_e5fc62b9.png" alt="荣誉"><div class="a-title">软件行业典型示范案例</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_3d1e9016.png" alt="荣誉"><div class="a-title">软件行业数字化转型示范案例</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_a2d25b85.png" alt="荣誉"><div class="a-title">数字经济标杆企业</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_32714726.png" alt="荣誉"><div class="a-title">2024 年产业数字化创新案例</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_50df6042.png" alt="荣誉"><div class="a-title">中国软件产业典型产品</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_6c3400f9.jpg" alt="荣誉"><div class="a-title">软件行业数字化转型示范案例</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_e1534be7.jpg" alt="荣誉"><div class="a-title">软件行业典型示范案例</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_92c2179c.jpg" alt="荣誉"><div class="a-title">软件行业人工智能领军企业</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_f8c74e34.png" alt="荣誉"><div class="a-title">OpenHarmony 杰出贡献单位</div></div>
     </div>
   </div>
 
@@ -507,7 +507,7 @@ function initHamburger() {
 
 <footer class="au-footer">
   <span class="footer-l">中软国际 · <span>ChinaSofti International</span></span>
-  <span class="footer-r">chinasofti-capability.vercel.app · © 2025</span>
+  <span class="footer-r">chinasofti-capability.vercel.app · © 2026</span>
 </footer>
 
 </div>
@@ -742,12 +742,13 @@ function initHamburger() {
 .hw-num { display: inline-block; font-size: 2.2rem; font-weight: 900; background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .chart-card { background: var(--card-bg); border-radius: var(--radius); padding: 36px; box-shadow: var(--shadow); border: 1px solid rgba(29,78,216,0.07); backdrop-filter: blur(8px); }
 .chart-title { font-size: 0.85rem; font-weight: 700; color: var(--text2); margin-bottom: 28px; letter-spacing: 0.04em; }
-.bar-chart { display: flex; align-items: flex-end; gap: 14px; height: 160px; }
-.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; }
-.bar-val { font-size: 0.72rem; font-weight: 800; color: var(--blue); white-space: nowrap; }
+.bar-chart { display: flex; align-items: stretch; gap: 14px; height: 160px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.bar-val { font-size: 0.72rem; font-weight: 800; color: var(--blue); white-space: nowrap; flex-shrink: 0; padding-bottom: 4px; }
+.bar-area { flex: 1; display: flex; align-items: flex-end; width: 100%; }
 .bar-body { width: 100%; border-radius: 8px 8px 0 0; height: 0%; background: linear-gradient(to top, var(--blue), #818cf8, #c4b5fd); transition: height .9s cubic-bezier(.16,1,.3,1); position: relative; overflow: hidden; }
 .bar-body::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 45%; background: linear-gradient(to bottom, rgba(255,255,255,0.22), transparent); }
-.bar-year { font-size: 0.72rem; color: var(--text3); font-weight: 600; }
+.bar-year { font-size: 0.72rem; color: var(--text3); font-weight: 600; flex-shrink: 0; padding-top: 5px; }
 
 /* AWARDS */
 .award-grid-v4 { display: grid; grid-template-columns: repeat(5,1fr); gap: 18px; }

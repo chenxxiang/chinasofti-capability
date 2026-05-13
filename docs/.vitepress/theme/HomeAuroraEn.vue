@@ -63,7 +63,7 @@ function initParticles() {
 }
 
 function initTypewriter() {
-  const text = '18 years deep in the Huawei ecosystem — delivering end-to-end Super App and mini-program solutions across the Middle East and Southeast Asia'
+  const text = "China's leading IT service provider — delivering end-to-end digital solutions across government, finance, telecom, and energy in markets worldwide"
   const el = document.getElementById('typed-text')
   const cursor = document.getElementById('typed-cursor')
   if (!el) return
@@ -235,8 +235,8 @@ function initHamburger() {
   <div class="cap-item"><span class="cap-icon">📱</span>Super App Full-Stack</div>
   <div class="cap-item"><span class="cap-icon">☁️</span>HarmonyOS Ecosystem</div>
   <div class="cap-item"><span class="cap-icon">🤖</span>AI Agent Deployment</div>
-  <div class="cap-item"><span class="cap-icon">🔐</span>Enterprise Security & Compliance</div>
-  <div class="cap-item"><span class="cap-icon">🌐</span>Multi-language Localization</div>
+  <div class="cap-item"><span class="cap-icon">🔐</span>Security & Compliance</div>
+  <div class="cap-item"><span class="cap-icon">🌐</span>Multi-language</div>
 </div>
 
 <!-- BODY -->
@@ -446,16 +446,16 @@ function initHamburger() {
       </div>
     </div>
     <div class="award-grid-v4 stagger">
-      <div class="a-card"><img class="a-img" src="/images/company/s8_a2ed0028.png" alt="Award"><div class="a-title">Gartner Global IT Services Top 73</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_e5fc62b9.png" alt="Award"><div class="a-title">China Software Top 15</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_3d1e9016.png" alt="Award"><div class="a-title">Trusted Cloud Service Certification</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_a2d25b85.png" alt="Award"><div class="a-title">National High-Tech Enterprise</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_32714726.png" alt="Award"><div class="a-title">CMMI Level 5</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_50df6042.png" alt="Award"><div class="a-title">ISO 27001 Certified</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_6c3400f9.jpg" alt="Award"><div class="a-title">Best IT Outsourcing Service Provider</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_e1534be7.jpg" alt="Award"><div class="a-title">Software Export Innovation Enterprise</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_92c2179c.jpg" alt="Award"><div class="a-title">China Electronics & IT Top 100</div></div>
-      <div class="a-card"><img class="a-img" src="/images/company/s8_f8c74e34.png" alt="Award"><div class="a-title">GBA Best Digitalization Award</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_a2ed0028.png" alt="Award"><div class="a-title">Open Source LLM Innovation Showcase</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_e5fc62b9.png" alt="Award"><div class="a-title">Software Industry Benchmark Case</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_3d1e9016.png" alt="Award"><div class="a-title">Software Digital Transformation Case</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_a2d25b85.png" alt="Award"><div class="a-title">Digital Economy Benchmark Enterprise</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_32714726.png" alt="Award"><div class="a-title">2024 Industry Digitalization Innovation Case</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_50df6042.png" alt="Award"><div class="a-title">China Software Industry Iconic Product</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_6c3400f9.jpg" alt="Award"><div class="a-title">Software Digital Transformation Case</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_e1534be7.jpg" alt="Award"><div class="a-title">Software Industry Showcase Case</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_92c2179c.jpg" alt="Award"><div class="a-title">Software Industry AI Leader Enterprise</div></div>
+      <div class="a-card"><img class="a-img" src="/images/company/s8_f8c74e34.png" alt="Award"><div class="a-title">OpenHarmony Outstanding Contribution</div></div>
     </div>
   </div>
 
@@ -505,7 +505,7 @@ function initHamburger() {
 
 <footer class="au-footer">
   <span class="footer-l">ChinaSofti · <span>中软国际</span></span>
-  <span class="footer-r">chinasofti-capability.vercel.app · © 2025</span>
+  <span class="footer-r">chinasofti-capability.vercel.app · © 2026</span>
 </footer>
 
 </div>
