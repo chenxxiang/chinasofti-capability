@@ -15,6 +15,7 @@ export default defineConfig({
         nav: [
           { text: '首页', link: '/zh/' },
           { text: '解决方案', link: '/zh/business/cms/' },
+          { text: '成功案例', link: '/zh/cases/' },
         ],
         sidebar: zhSidebar,
         outlineTitle: '本页目录',
