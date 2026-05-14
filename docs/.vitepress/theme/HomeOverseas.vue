@@ -8,6 +8,7 @@ onMounted(() => {
   initMapTabs()
   initMapPins()
   initWorldMap()
+  initChinaMap()
   initReveal()
 })
 
@@ -45,6 +46,65 @@ function initReveal() {
   }, { threshold: 0.06 })
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
 }
+
+// ── Domestic city data ──────────────────────────────────────────────────────
+const DEV1000_CITIES = [
+  { name: '北京', lon: 116.4, lat: 39.9 },
+  { name: '天津', lon: 117.2, lat: 39.1 },
+  { name: '沈阳', lon: 123.4, lat: 41.8 },
+  { name: '大连', lon: 121.6, lat: 38.9 },
+  { name: '青岛', lon: 120.4, lat: 36.1 },
+  { name: '济南', lon: 117.0, lat: 36.7 },
+  { name: '上海', lon: 121.5, lat: 31.2 },
+  { name: '苏州', lon: 120.6, lat: 31.3 },
+  { name: '南京', lon: 118.8, lat: 32.1 },
+  { name: '合肥', lon: 117.3, lat: 31.8 },
+  { name: '杭州', lon: 120.2, lat: 30.3 },
+  { name: '武汉', lon: 114.3, lat: 30.6 },
+  { name: '西安', lon: 108.9, lat: 34.3 },
+  { name: '成都', lon: 104.1, lat: 30.7 },
+  { name: '重庆', lon: 106.5, lat: 29.6 },
+  { name: '广州', lon: 113.3, lat: 23.1 },
+  { name: '深圳', lon: 114.1, lat: 22.5 },
+]
+
+const OFFICE_CITIES = [
+  { name: '哈尔滨',   lon: 126.6, lat: 45.8 },
+  { name: '长春',     lon: 125.3, lat: 43.9 },
+  { name: '沈抚新区', lon: 123.5, lat: 41.4 },
+  { name: '太原',     lon: 112.5, lat: 37.9 },
+  { name: '石家庄',   lon: 114.5, lat: 38.1 },
+  { name: '唐山',     lon: 118.2, lat: 39.6 },
+  { name: '包头',     lon: 110.0, lat: 40.7 },
+  { name: '呼和浩特', lon: 111.7, lat: 40.8 },
+  { name: '银川',     lon: 106.3, lat: 38.5 },
+  { name: '兰州',     lon: 103.8, lat: 36.1 },
+  { name: '天水',     lon: 105.7, lat: 34.6 },
+  { name: '西宁',     lon: 101.8, lat: 36.6 },
+  { name: '郑州',     lon: 113.6, lat: 34.7 },
+  { name: '洛阳',     lon: 112.4, lat: 34.7 },
+  { name: '南昌',     lon: 115.9, lat: 28.7 },
+  { name: '长沙',     lon: 113.0, lat: 28.2 },
+  { name: '衡阳',     lon: 112.6, lat: 26.9 },
+  { name: '贵阳',     lon: 106.7, lat: 26.6 },
+  { name: '桂林',     lon: 110.3, lat: 25.3 },
+  { name: '昆明',     lon: 102.7, lat: 25.0 },
+  { name: '厦门',     lon: 118.1, lat: 24.5 },
+  { name: '福州',     lon: 119.3, lat: 26.1 },
+  { name: '南平',     lon: 118.2, lat: 26.6 },
+]
+
+const JIEFANG_CITIES = [
+  { name: '喀什',     lon: 75.9,  lat: 39.5 },
+  { name: '乌鲁木齐', lon: 87.6,  lat: 43.8 },
+  { name: '拉萨',     lon: 91.1,  lat: 29.7 },
+  { name: '嘉兴',     lon: 120.8, lat: 30.7 },
+  { name: '宁波',     lon: 121.6, lat: 29.9 },
+  { name: '东莞',     lon: 113.8, lat: 23.0 },
+  { name: '珠海',     lon: 113.6, lat: 22.3 },
+  { name: '香港',     lon: 114.2, lat: 22.3 },
+  { name: '海口',     lon: 110.3, lat: 20.0 },
+]
 
 function initWorldMap() {
   const canvas = document.getElementById('ov-world-canvas')
@@ -147,6 +207,136 @@ function initWorldMap() {
   window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(draw, 150) })
 }
 
+async function initChinaMap() {
+  const canvas = document.getElementById('ov-china-canvas')
+  if (!canvas) return
+
+  let chinaData
+  try {
+    const res = await fetch('/data/china-provinces.json')
+    chinaData = await res.json()
+  } catch { return }
+
+  // Equirectangular projection fitted to China's extent
+  const MIN_LON = 72, MAX_LON = 138, MIN_LAT = 17, MAX_LAT = 55
+
+  let cssW = 0, cssH = 0, dpr = 1, bgCanvas = null, animId = null
+
+  function project([lon, lat]) {
+    return [
+      (lon - MIN_LON) / (MAX_LON - MIN_LON) * cssW,
+      (MAX_LAT - lat) / (MAX_LAT - MIN_LAT) * cssH,
+    ]
+  }
+
+  function drawGeom(ctx, geom) {
+    if (!geom) return
+    const polys = geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates
+    polys.forEach(poly =>
+      poly.forEach(ring => {
+        const [x0, y0] = project(ring[0])
+        ctx.moveTo(x0, y0)
+        for (let i = 1; i < ring.length; i++) {
+          const [x, y] = project(ring[i])
+          ctx.lineTo(x, y)
+        }
+        ctx.closePath()
+      })
+    )
+  }
+
+  function renderBackground() {
+    bgCanvas = document.createElement('canvas')
+    bgCanvas.width  = cssW * dpr
+    bgCanvas.height = cssH * dpr
+    const bgCtx = bgCanvas.getContext('2d')
+    bgCtx.scale(dpr, dpr)
+
+    const grad = bgCtx.createLinearGradient(0, 0, 0, cssH)
+    grad.addColorStop(0, '#bdd8ec')
+    grad.addColorStop(1, '#a8c8df')
+    bgCtx.fillStyle = grad
+    bgCtx.fillRect(0, 0, cssW, cssH)
+
+    bgCtx.fillStyle = '#6fa8d0'
+    bgCtx.beginPath()
+    chinaData.features.forEach(f => drawGeom(bgCtx, f.geometry))
+    bgCtx.fill('evenodd')
+
+    bgCtx.strokeStyle = 'rgba(255,255,255,0.45)'
+    bgCtx.lineWidth = 0.6
+    bgCtx.beginPath()
+    chinaData.features.forEach(f => drawGeom(bgCtx, f.geometry))
+    bgCtx.stroke()
+  }
+
+  const TIERS = [
+    { cities: DEV1000_CITIES,  rgb: '239,68,68',  r: 5, pulse: true  },
+    { cities: OFFICE_CITIES,   rgb: '59,130,246', r: 4, pulse: true  },
+    { cities: JIEFANG_CITIES,  rgb: '245,158,11', r: 3, pulse: false },
+  ]
+
+  let frame = 0
+
+  function tick(ctx) {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    ctx.drawImage(bgCanvas, 0, 0, cssW, cssH)
+
+    const t = frame / 60
+
+    TIERS.forEach(({ cities, rgb, r, pulse }) => {
+      cities.forEach((city, i) => {
+        const [cx, cy] = project([city.lon, city.lat])
+
+        if (pulse) {
+          const ph = (t * 0.5 + i * 0.17) % 1
+          ctx.beginPath()
+          ctx.arc(cx, cy, r + ph * r * 3.5, 0, Math.PI * 2)
+          ctx.strokeStyle = `rgba(${rgb},${(1 - ph) * 0.55})`
+          ctx.lineWidth = 1.5
+          ctx.stroke()
+        }
+
+        ctx.beginPath()
+        ctx.arc(cx, cy, r, 0, Math.PI * 2)
+        ctx.fillStyle = `rgb(${rgb})`
+        ctx.fill()
+        ctx.strokeStyle = 'rgba(255,255,255,0.65)'
+        ctx.lineWidth = 1
+        ctx.stroke()
+      })
+    })
+
+    frame++
+    animId = requestAnimationFrame(() => tick(ctx))
+  }
+
+  function setup() {
+    dpr  = window.devicePixelRatio || 1
+    cssW = canvas.parentElement.offsetWidth
+    cssH = Math.round(cssW * 0.70)
+
+    canvas.width  = cssW * dpr
+    canvas.height = cssH * dpr
+    canvas.style.width  = cssW + 'px'
+    canvas.style.height = cssH + 'px'
+
+    renderBackground()
+
+    if (animId) cancelAnimationFrame(animId)
+    frame = 0
+    const ctx = canvas.getContext('2d')
+    tick(ctx)
+  }
+
+  setup()
+
+  let resizeTimer
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(setup, 150)
+  })
+}
 
 </script>
 
@@ -235,10 +425,17 @@ function initWorldMap() {
     </div>
   </div>
 
-  <!-- DOMESTIC MAP: constrained to page-body width -->
+  <!-- DOMESTIC MAP: Canvas China provinces map -->
   <div class="ov-map-panel" id="map-domestic">
-    <div class="ov-domestic-frame">
-      <img src="/images/overseas/domestic-map.png" alt="国内布局地图" class="ov-domestic-img" />
+    <div class="ov-map-frame">
+      <div class="ov-world-wrap">
+        <canvas id="ov-china-canvas" class="ov-world-svg"></canvas>
+      </div>
+      <div class="ov-map-legend">
+        <span class="ov-leg-item" style="--lc:#ef4444;">研发人员 1000+ 城市</span>
+        <span class="ov-leg-item" style="--lc:#3b82f6;">国内办公机构覆盖城市</span>
+        <span class="ov-leg-item" style="--lc:#f59e0b;">解放号服务覆盖城市</span>
+      </div>
     </div>
   </div>
 </div>
@@ -545,18 +742,6 @@ function initWorldMap() {
   display: block; width: 100%; height: auto;
 }
 
-/* Domestic map: same width as page-body cards */
-.ov-map-panel#map-domestic { background: #eef4fb; padding: 28px 0 32px; }
-.ov-domestic-frame {
-  max-width: 1100px; margin: 0 auto; padding: 0 64px;
-}
-.ov-domestic-img {
-  display: block; width: 100%; height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(30,80,140,0.12);
-  border: 1px solid #d0e0ef;
-  filter: contrast(1.12) saturate(1.08) brightness(1.02);
-}
 
 /* MAP PINS */
 .ov-map-pin {
