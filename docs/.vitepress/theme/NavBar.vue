@@ -15,56 +15,6 @@ const open = ref(false)
     <a href="/zh/"         :class="['csi-link', active==='home'     && 'is-active']">首页</a>
     <a href="/zh/overseas/":class="['csi-link', active==='overseas' && 'is-active']">海外布局</a>
     <a href="/zh/ai/"      :class="['csi-link', active==='ai'       && 'is-active']">AI创新工坊</a>
-    <!-- Cases Dropdown -->
-    <div class="csi-dropdown" :class="active==='cases' && 'is-active'">
-      <div class="csi-dropdown-trigger csi-link">
-        成功案例
-        <svg class="csi-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="csi-dropdown-panel">
-        <div class="csi-panel-arrow"></div>
-        <div class="csi-panel-inner">
-          <a href="/zh/cases/" class="csi-sol-item">
-            <div class="csi-sol-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="csi-sol-text">
-              <div class="csi-sol-title">企业小程序案例</div>
-              <div class="csi-sol-desc">金融级 · 华为平台 · 蚂蚁 mPaaS</div>
-            </div>
-            <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-          </a>
-          <a href="/zh/cases/cloud/" class="csi-sol-item">
-            <div class="csi-sol-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-            </div>
-            <div class="csi-sol-text">
-              <div class="csi-sol-title">云原生迁移案例</div>
-              <div class="csi-sol-desc">企业上云 · 架构现代化实践</div>
-            </div>
-          </a>
-          <a href="/zh/cases/campus/" class="csi-sol-item">
-            <div class="csi-sol-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <div class="csi-sol-text">
-              <div class="csi-sol-title">智慧园区案例 <span class="csi-badge-soon">征集中</span></div>
-              <div class="csi-sol-desc">IoT + AI · 数字化园区落地</div>
-            </div>
-          </a>
-          <a href="/zh/cases/odc/" class="csi-sol-item">
-            <div class="csi-sol-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div class="csi-sol-text">
-              <div class="csi-sol-title">ODC 交付案例 <span class="csi-badge-soon">征集中</span></div>
-              <div class="csi-sol-desc">离岸开发 · 专属团队交付实践</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-
     <!-- Solutions Dropdown -->
     <div class="csi-dropdown" :class="active==='solutions' && 'is-active'">
       <div class="csi-dropdown-trigger csi-link">
@@ -120,6 +70,56 @@ const open = ref(false)
         </div>
       </div>
     </div>
+
+    <!-- Cases Dropdown -->
+    <div class="csi-dropdown" :class="active==='cases' && 'is-active'">
+      <div class="csi-dropdown-trigger csi-link">
+        成功案例
+        <svg class="csi-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="csi-dropdown-panel">
+        <div class="csi-panel-arrow"></div>
+        <div class="csi-panel-inner">
+          <a href="/zh/cases/" class="csi-sol-item">
+            <div class="csi-sol-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="csi-sol-text">
+              <div class="csi-sol-title">企业小程序案例</div>
+              <div class="csi-sol-desc">金融级 · 华为平台 · 蚂蚁 mPaaS</div>
+            </div>
+            <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/cases/cloud/" class="csi-sol-item">
+            <div class="csi-sol-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+            </div>
+            <div class="csi-sol-text">
+              <div class="csi-sol-title">云原生迁移案例</div>
+              <div class="csi-sol-desc">企业上云 · 架构现代化实践</div>
+            </div>
+          </a>
+          <a href="/zh/cases/campus/" class="csi-sol-item">
+            <div class="csi-sol-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="csi-sol-text">
+              <div class="csi-sol-title">智慧园区案例</div>
+              <div class="csi-sol-desc">IoT + AI · 数字化园区落地</div>
+            </div>
+          </a>
+          <a href="/zh/cases/odc/" class="csi-sol-item">
+            <div class="csi-sol-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="csi-sol-text">
+              <div class="csi-sol-title">ODC 交付案例</div>
+              <div class="csi-sol-desc">离岸开发 · 专属团队交付实践</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <a href="/en/" class="csi-nav-en">English</a>
@@ -133,16 +133,16 @@ const open = ref(false)
   <a href="/zh/" class="csi-drawer-link" @click="open=false">首页</a>
   <a href="/zh/overseas/" class="csi-drawer-link" @click="open=false">海外布局</a>
   <a href="/zh/ai/" class="csi-drawer-link" @click="open=false">AI创新工坊</a>
-  <div class="csi-drawer-sep">成功案例</div>
-  <a href="/zh/cases/" class="csi-drawer-link csi-drawer-sub" @click="open=false">小程序迁移案例</a>
-  <a href="/zh/cases/cloud/" class="csi-drawer-link csi-drawer-sub" @click="open=false">云原生迁移案例</a>
-  <a href="/zh/cases/campus/" class="csi-drawer-link csi-drawer-sub" @click="open=false">智慧园区案例</a>
-  <a href="/zh/cases/odc/" class="csi-drawer-link csi-drawer-sub" @click="open=false">ODC 交付案例</a>
   <div class="csi-drawer-sep">海外解决方案</div>
   <a href="/zh/miniapp/" class="csi-drawer-link csi-drawer-sub" @click="open=false">企业小程序方案</a>
   <a href="/zh/cloud/" class="csi-drawer-link csi-drawer-sub" @click="open=false">云原生与基础设施</a>
   <a href="/zh/campus/" class="csi-drawer-link csi-drawer-sub" @click="open=false">智慧园区解决方案</a>
   <a href="/zh/odc/" class="csi-drawer-link csi-drawer-sub" @click="open=false">ODC 离岸开发中心</a>
+  <div class="csi-drawer-sep">成功案例</div>
+  <a href="/zh/cases/" class="csi-drawer-link csi-drawer-sub" @click="open=false">小程序迁移案例</a>
+  <a href="/zh/cases/cloud/" class="csi-drawer-link csi-drawer-sub" @click="open=false">云原生迁移案例</a>
+  <a href="/zh/cases/campus/" class="csi-drawer-link csi-drawer-sub" @click="open=false">智慧园区案例</a>
+  <a href="/zh/cases/odc/" class="csi-drawer-link csi-drawer-sub" @click="open=false">ODC 交付案例</a>
   <a href="/en/" class="csi-drawer-link csi-drawer-en">English</a>
 </div>
 </template>
@@ -197,6 +197,12 @@ const open = ref(false)
 .csi-dropdown-trigger { user-select: none; }
 .csi-chevron { transition: transform .2s; flex-shrink: 0; }
 .csi-dropdown:hover .csi-chevron { transform: rotate(180deg); }
+.csi-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: -20px; right: -20px;
+  height: 14px;
+}
 
 .csi-dropdown-panel {
   position: absolute; top: calc(100% + 10px); left: 50%;

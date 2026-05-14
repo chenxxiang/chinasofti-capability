@@ -275,188 +275,209 @@ function initCounters() {
     </div>
   </section>
 
-  <!-- 三大类小程序 tabs -->
+  <!-- 四大类小程序方案目录 -->
   <section class="mn-sec reveal" id="scenarios">
     <div class="mn-sec-header">
-      <div class="mn-eyebrow">Scenarios · 应用场景</div>
-      <h2 class="mn-sec-title">三大类小程序场景</h2>
+      <div class="mn-eyebrow">Directory · 方案目录</div>
+      <h2 class="mn-sec-title">四大类小程序方案</h2>
     </div>
+
+    <!-- 目录跳转横幅 -->
+    <a href="/zh/business/cms/" class="mn-dir-banner">
+      <div class="mn-dir-banner-left">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <div>
+          <div class="mn-dir-banner-title">浏览完整解决方案目录</div>
+          <div class="mn-dir-banner-sub">16 个模块方案 · 含概览、方案、报价、DEMO</div>
+        </div>
+      </div>
+      <div class="mn-dir-banner-arrow">
+        前往目录
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
 
     <div class="mn-tabs-wrap">
       <div class="mn-tab-bar">
-        <button class="mn-tab active" data-panel="tab-fin">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-          金融 &amp; 支付类
+        <button class="mn-tab active" data-panel="tab-biz">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          业务平台
         </button>
         <button class="mn-tab" data-panel="tab-life">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-          生活服务类
+          生活类
         </button>
-        <button class="mn-tab" data-panel="tab-city">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10z"/></svg>
-          智慧城市类
+        <button class="mn-tab" data-panel="tab-fin">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          金融类
+        </button>
+        <button class="mn-tab" data-panel="tab-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          社交娱乐类
         </button>
       </div>
 
-      <!-- 金融 -->
-      <div class="mn-panel active" id="tab-fin">
+      <!-- 业务平台 -->
+      <div class="mn-panel active" id="tab-biz">
         <div class="mn-panel-intro">
-          基于 Mobile Money App 基线，覆盖电子钱包、理财投资、个人财富管理、虚拟货币等核心金融场景，支持多语言 GUI 定制，配套完整合规安全体系。
+          覆盖内容分发、积分激励、IoT 接入、小程序迁移、AI 智能体、餐饮聚合等企业核心业务场景，提供完整端到端方案。
         </div>
-        <div class="mn-cards-grid">
-          <div class="mn-card mn-card-blue">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
-            <h4>电子钱包</h4>
-            <p>账户充值、二维码支付、转账，内置多重安全设置（MPIN / 生物识别），支持交易历史查看。</p>
-          </div>
-          <div class="mn-card mn-card-blue">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-            <h4>理财投资</h4>
-            <p>多样化产品展示，在线交易操作，实时收益查看，投资组合管理，MPIN 二次确认保障安全。</p>
-          </div>
-          <div class="mn-card mn-card-blue">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
-            <h4>个人财富管理</h4>
-            <p>收支跟踪、预算管理、财务报告，按分类汇总支出/收入，帮助用户全面掌控财务状况。</p>
-          </div>
-          <div class="mn-card mn-card-blue">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-            <h4>虚拟货币交易</h4>
-            <p>多币种资产管理，K 线实时行情，一键买卖，MPIN 安全确认，持仓记录清晰可查。</p>
-          </div>
-          <div class="mn-card mn-card-blue">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-            <h4>消费金融</h4>
-            <p>信用额度管理、分期还款、账单查询，结合用户画像实现个性化授信与风控策略。</p>
-          </div>
-          <div class="mn-card mn-card-blue">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h4>保险服务</h4>
-            <p>保险产品展示与购买、理赔申请、保单管理，覆盖健康险、财产险等多险种场景。</p>
-          </div>
-        </div>
-        <!-- 虚拟货币截图展示 -->
-        <div class="mn-screenshots-row">
-          <div class="mn-ss-item">
-            <img src="/solutions/miniapp/images/virtual-currency-list.jpg" alt="虚拟货币列表" />
-            <div class="mn-ss-cap">币种列表</div>
-          </div>
-          <div class="mn-ss-item">
-            <img src="/solutions/miniapp/images/virtual-currency-detail.jpg" alt="行情走势" />
-            <div class="mn-ss-cap">行情走势</div>
-          </div>
-          <div class="mn-ss-item">
-            <img src="/solutions/miniapp/images/virtual-currency-buy.jpg" alt="购买确认" />
-            <div class="mn-ss-cap">购买确认</div>
-          </div>
-          <div class="mn-ss-item">
-            <img src="/solutions/miniapp/images/virtual-currency-sell.jpg" alt="售卖操作" />
-            <div class="mn-ss-cap">售卖操作</div>
-          </div>
-          <div class="mn-ss-item">
-            <img src="/solutions/miniapp/images/wealth-mgmt.png" alt="财富管理" />
-            <div class="mn-ss-cap">财富管理</div>
-          </div>
+        <div class="mn-dir-grid">
+          <a href="/zh/business/cms/" class="mn-dir-card mn-dir-blue">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.87v6.26a1 1 0 0 1-1.447.894L15 14"/><rect x="2" y="6" width="13" height="12" rx="2"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>内容分发平台</h4>
+              <p>多端 CMS · 直播 · 版权管理</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/business/loyalty/" class="mn-dir-card mn-dir-blue">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>Loyalty</h4>
+              <p>积分体系 · 任务激励 · 用户忠诚度</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/business/iot/" class="mn-dir-card mn-dir-blue">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>物联网平台</h4>
+              <p>IoT 设备接入 · 智能监控 · 数据采集</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/business/migration/" class="mn-dir-card mn-dir-blue">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>企业小程序方案</h4>
+              <p>华为/蚂蚁平台 · 迁移交付 · 全流程</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/business/ai-agent/" class="mn-dir-card mn-dir-blue">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>AI 智能体</h4>
+              <p>智能问答 · 自动化流程 · RAG 知识库</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/business/ordering/" class="mn-dir-card mn-dir-blue">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>餐饮点餐聚合平台</h4>
+              <p>多品牌聚合 · 堂食外卖 · 订单管理</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
         </div>
       </div>
 
-      <!-- 生活 -->
+      <!-- 生活类 -->
       <div class="mn-panel" id="tab-life">
         <div class="mn-panel-intro">
-          覆盖智慧健身、导览、预订、数字藏品、电商交易等高频生活场景，快速接入 Super App 生态，触达更广用户群体。
+          覆盖 EV 充电、交通出行、电商购物、餐饮、票务等高频生活场景，快速接入 Super App 生态，触达更广用户群体。
         </div>
-        <div class="mn-cards-grid">
-          <div class="mn-card mn-card-purple">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
-            <h4>智慧健身</h4>
-            <p>运动计划、健身数据追踪、课程预约，LBS 推荐附近场馆，激励用户坚持健身目标。</p>
-          </div>
-          <div class="mn-card mn-card-purple">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10z"/></svg></div>
-            <h4>智慧导览</h4>
-            <p>景区/园区地图导航，兴趣点推荐，AR 导览辅助，语音讲解一键触发，提升游客体验。</p>
-          </div>
-          <div class="mn-card mn-card-purple">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <h4>智慧预订</h4>
-            <p>酒店/餐厅/场馆在线预订，日历选座，即时确认，支持会员积分抵扣，闭环订单管理。</p>
-          </div>
-          <div class="mn-card mn-card-purple">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-            <h4>数字藏品</h4>
-            <p>NFT/数字藏品展示、限量发行、购买与转赠，区块链存证保障版权真实性。</p>
-          </div>
-          <div class="mn-card mn-card-purple">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
-            <h4>电商交易</h4>
-            <p>商品展示、购物车、在线支付，结合社交分享裂变传播，提升用户活跃与 GMV 转化。</p>
-          </div>
-          <div class="mn-card mn-card-purple">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <h4>用户激励</h4>
-            <p>积分奖励、签到、任务系统，配合收藏、分享、捐款等社交化功能，提升用户黏性与留存。</p>
-          </div>
-        </div>
-        <!-- 生活服务截图 -->
-        <div class="mn-screenshots-row">
-          <div class="mn-ss-item">
-            <img src="/solutions/miniapp/images/life-venue.png" alt="智慧场馆预订" />
-            <div class="mn-ss-cap">智慧场馆预订</div>
-          </div>
-          <div class="mn-ss-item">
-            <img src="/solutions/miniapp/images/life-ecommerce.png" alt="在线商城" />
-            <div class="mn-ss-cap">在线商城</div>
-          </div>
+        <div class="mn-dir-grid">
+          <a href="/zh/lifestyle/charging/" class="mn-dir-card mn-dir-purple">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.19M15 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3.19"/><line x1="23" y1="13" x2="23" y2="11"/><polyline points="11 6 7 12 13 12 9 18"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>充电平台</h4>
+              <p>EV 充电网络 · 桩管理 · 扫码支付</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/lifestyle/transit/" class="mn-dir-card mn-dir-purple">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>交通卡</h4>
+              <p>公交/地铁 · NFC 支付 · 乘车码</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/lifestyle/ecommerce/" class="mn-dir-card mn-dir-purple">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>电商交易平台</h4>
+              <p>商品管理 · 购物车 · 在线支付</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/lifestyle/catering/" class="mn-dir-card mn-dir-purple">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>餐饮点餐聚合平台</h4>
+              <p>外卖堂食一体 · 多门店聚合</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/lifestyle/ticketing/" class="mn-dir-card mn-dir-purple">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>票务系统</h4>
+              <p>演出/景区 · 选座 · 电子票核验</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
         </div>
       </div>
 
-      <!-- 城市 -->
-      <div class="mn-panel" id="tab-city">
+      <!-- 金融类 -->
+      <div class="mn-panel" id="tab-fin">
         <div class="mn-panel-intro">
-          车辆管理、城市公共服务、用户行为分析与个性化推荐，赋能城市数字化治理与居民精细化服务。
+          基于合规安全体系，覆盖区块链存证、财富管理投资、E-KYC 身份核验等核心金融场景，支持多语言 GUI 定制。
         </div>
-        <div class="mn-cards-grid">
-          <div class="mn-card mn-card-cyan">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-            <h4>车辆管理</h4>
-            <p>车辆注册、年检提醒、违章查询，结合 LBS 实现智能停车引导，接入城市交通数据平台。</p>
-          </div>
-          <div class="mn-card mn-card-cyan">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="13" width="6" height="8"/></svg></div>
-            <h4>智慧城市服务</h4>
-            <p>政务事项在线办理、公用事业缴费、城市公告推送，实现一窗通办，提升居民服务满意度。</p>
-          </div>
-          <div class="mn-card mn-card-cyan">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <h4>客户分析</h4>
-            <p>用户行为埋点、标签画像分析，帮助运营方深入理解用户，制定精准营销策略。</p>
-          </div>
-          <div class="mn-card mn-card-cyan">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-            <h4>个性化推荐</h4>
-            <p>AI 推荐引擎，根据用户画像精准触达，提升活跃度与转化率，构建智慧运营闭环。</p>
-          </div>
-          <div class="mn-card mn-card-cyan">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
-            <h4>社交理财</h4>
-            <p>理财社区，用户分享收益心得，跟单投资，联合购买，构建金融社交生态。</p>
-          </div>
-          <div class="mn-card mn-card-cyan">
-            <div class="mn-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-            <h4>智慧园区</h4>
-            <p>园区门禁、会议预约、设施报修、访客管理，提升园区运营效率与入驻企业体验。</p>
-          </div>
+        <div class="mn-dir-grid mn-dir-grid-3">
+          <a href="/zh/finance/blockchain/" class="mn-dir-card mn-dir-cyan">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3" stroke-linecap="round"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>区块链平台集成</h4>
+              <p>链上存证 · 数字资产 · 智能合约</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/finance/wealth/" class="mn-dir-card mn-dir-cyan">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>财富管理</h4>
+              <p>投资理财 · 组合管理 · 收益追踪</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/finance/ekyc/" class="mn-dir-card mn-dir-cyan">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>E-KYC</h4>
+              <p>身份核验 · 人脸识别 · 合规认证</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
         </div>
-        <!-- 智慧城市截图 -->
-        <div class="mn-screenshots-row">
-          <div class="mn-ss-item">
-            <img src="/solutions/miniapp/images/city-property.png" alt="物业缴费管理" />
-            <div class="mn-ss-cap">物业缴费管理</div>
-          </div>
-          <div class="mn-ss-item">
-            <img src="/solutions/miniapp/images/city-qrcode.png" alt="二维码收款" />
-            <div class="mn-ss-cap">二维码收款</div>
-          </div>
+      </div>
+
+      <!-- 社交娱乐类 -->
+      <div class="mn-panel" id="tab-social">
+        <div class="mn-panel-intro">
+          即时通讯与游戏接入，打造高互动社交娱乐生态，支持私信、群聊、直播互动、游戏竞技等场景深度集成。
+        </div>
+        <div class="mn-dir-grid mn-dir-grid-2">
+          <a href="/zh/social/im/" class="mn-dir-card mn-dir-amber">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>即时通讯平台 IM</h4>
+              <p>私信群聊 · 红包 · 直播互动</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+          <a href="/zh/social/game/" class="mn-dir-card mn-dir-amber">
+            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.556 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.444-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></div>
+            <div class="mn-dir-info">
+              <h4>游戏接入与管理平台</h4>
+              <p>游戏中心 · 积分竞技 · 运营后台</p>
+            </div>
+            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -963,6 +984,59 @@ function initCounters() {
   font-size: 0.78rem; color: var(--text3); text-align: center; margin-top: 8px; font-weight: 600;
 }
 
+/* ── DIRECTORY BANNER ── */
+.mn-dir-banner {
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(135deg, #1d4ed8, #4f46e5, #7c3aed);
+  border-radius: 14px; padding: 18px 24px; margin-bottom: 28px;
+  text-decoration: none; color: #fff;
+  box-shadow: 0 6px 24px rgba(29,78,216,0.3);
+  transition: transform .2s, box-shadow .2s;
+}
+.mn-dir-banner:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(29,78,216,0.4); }
+.mn-dir-banner-left { display: flex; align-items: center; gap: 16px; }
+.mn-dir-banner-left svg { flex-shrink: 0; opacity: 0.9; }
+.mn-dir-banner-title { font-size: 1.02rem; font-weight: 800; margin-bottom: 4px; }
+.mn-dir-banner-sub { font-size: 0.78rem; opacity: 0.8; }
+.mn-dir-banner-arrow {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 8px; padding: 9px 18px;
+  font-size: 0.86rem; font-weight: 700; white-space: nowrap; flex-shrink: 0;
+  transition: background .2s;
+}
+.mn-dir-banner:hover .mn-dir-banner-arrow { background: rgba(255,255,255,0.28); }
+
+/* ── DIRECTORY CARDS ── */
+.mn-dir-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 8px; }
+.mn-dir-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.mn-dir-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.mn-dir-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 18px; border-radius: 12px; text-decoration: none; color: inherit;
+  background: var(--card-bg); border: 1px solid var(--border);
+  box-shadow: var(--shadow); transition: all .2s; backdrop-filter: blur(8px);
+}
+.mn-dir-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.mn-dir-icon {
+  width: 44px; height: 44px; border-radius: 11px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.mn-dir-info { flex: 1; min-width: 0; }
+.mn-dir-info h4 { font-size: 0.9rem; font-weight: 800; color: var(--text1); margin: 0 0 4px; }
+.mn-dir-info p { font-size: 0.75rem; color: var(--text2); margin: 0; line-height: 1.5; }
+.mn-dir-arrow { color: #94a3b8; flex-shrink: 0; transition: transform .15s, color .15s; }
+.mn-dir-card:hover .mn-dir-arrow { transform: translate(2px,-2px); color: #1d4ed8; }
+.mn-dir-blue .mn-dir-icon { background: linear-gradient(135deg,#1d4ed8,#3b82f6); }
+.mn-dir-blue:hover { border-color: rgba(29,78,216,0.2); }
+.mn-dir-purple .mn-dir-icon { background: linear-gradient(135deg,#7c3aed,#a78bfa); }
+.mn-dir-purple:hover { border-color: rgba(124,58,237,0.2); }
+.mn-dir-cyan .mn-dir-icon { background: linear-gradient(135deg,#0891b2,#06b6d4); }
+.mn-dir-cyan:hover { border-color: rgba(8,145,178,0.2); }
+.mn-dir-amber .mn-dir-icon { background: linear-gradient(135deg,#d97706,#f59e0b); }
+.mn-dir-amber:hover { border-color: rgba(217,119,6,0.2); }
+
 /* ── DELIVERY ── */
 .mn-delivery-intro {
   font-size: 0.95rem; color: var(--text2); line-height: 1.8;
@@ -1122,6 +1196,9 @@ function initCounters() {
   .mn-stat-item:last-child { border-bottom: none; }
   .mn-compare-grid { grid-template-columns: 1fr; }
   .mn-cards-grid { grid-template-columns: 1fr 1fr; }
+  .mn-dir-grid { grid-template-columns: 1fr 1fr; }
+  .mn-dir-grid-2 { grid-template-columns: 1fr; }
+  .mn-dir-grid-3 { grid-template-columns: 1fr 1fr; }
   .mn-flow-steps { flex-direction: column; align-items: stretch; }
   .mn-flow-step { flex-direction: row; text-align: left; gap: 16px; align-items: flex-start; }
   .mn-flow-num { flex-shrink: 0; margin-bottom: 0; }
@@ -1140,6 +1217,8 @@ function initCounters() {
 }
 @media (max-width: 560px) {
   .mn-cards-grid { grid-template-columns: 1fr; }
+  .mn-dir-grid, .mn-dir-grid-3 { grid-template-columns: 1fr; }
+  .mn-dir-banner { flex-direction: column; align-items: flex-start; gap: 12px; }
   .mn-sec-title { font-size: 1.4rem; }
   .mn-ucd-feat-grid { grid-template-columns: 1fr; }
   .mn-pm-cards { grid-template-columns: 1fr; }
