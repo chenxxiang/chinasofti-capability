@@ -113,7 +113,7 @@ function initWorldMap() {
   function draw() {
     const dpr = window.devicePixelRatio || 1
     const cssW = canvas.parentElement.offsetWidth
-    const cssH = Math.round(cssW * 0.52)
+    const cssH = Math.round(cssW * 0.43)
 
     canvas.width = cssW * dpr
     canvas.height = cssH * dpr
@@ -123,8 +123,8 @@ function initWorldMap() {
     const ctx = canvas.getContext('2d')
     ctx.scale(dpr, dpr)
 
-    // Eurasia-focused crop — proportioned so China isn't stretched
-    const W0 = -20, W1 = 160, H0 = 66, H1 = -12
+    // lon 180°, lat 64° (-12S→52N, Russia mostly cropped), canvas 0.43 → correct ratio at 35°N
+    const W0 = -20, W1 = 160, H0 = 52, H1 = -12
     function project([lon, lat]) {
       let l = lon
       if (l < W0) l += 360
@@ -171,7 +171,7 @@ function initWorldMap() {
     }
 
     const land = feature(worldData, worldData.objects.land)
-    ctx.fillStyle = '#7aadc4'
+    ctx.fillStyle = '#6fa8d0'
     ctx.beginPath()
     if (land.type === 'Feature') applyGeom(land.geometry)
     else land.features?.forEach(f => applyGeom(f.geometry))
@@ -392,7 +392,7 @@ function initHamburger() {
 </script>
 
 <template>
-<div class="au-page">
+<div class="au-page ov-page">
 <div class="mesh-bg"></div>
 
 <!-- NAV -->
@@ -438,9 +438,9 @@ function initHamburger() {
       <div class="ov-world-wrap">
         <canvas id="ov-world-canvas" class="ov-world-svg"></canvas>
 
-        <!-- Eurasia crop: x=(lon+20)/180, y=(66-lat)/78. bounds -20°W–160°E, 66°N–12°S -->
-        <!-- SE Asia: KL (103°E,4°N) → 68.3%,79.5% -->
-        <div class="ov-map-pin" data-target="region-sea" style="left:68.3%;top:79.5%;">
+        <!-- Eurasia crop: x=(lon+20)/180, y=(52-lat)/64. bounds -20°W–160°E, 52°N–12°S -->
+        <!-- SE Asia: KL (103°E,4°N) → 68.3%,75.0% -->
+        <div class="ov-map-pin" data-target="region-sea" style="left:68.3%;top:75.0%;">
           <div class="ov-pin-dot" style="--pc:#10b981;"></div>
           <div class="ov-pin-pulse" style="--pc:#10b981;"></div>
           <div class="ov-pin-label">SE Asia</div>
@@ -449,8 +449,8 @@ function initHamburger() {
             <div class="ov-pt-sub">Malaysia · Singapore · Indonesia</div>
           </div>
         </div>
-        <!-- GBA: HK (114°E,22°N) → 74.4%,56.4% -->
-        <div class="ov-map-pin" data-target="region-gba" style="left:74.4%;top:56.4%;">
+        <!-- GBA: HK (114°E,22°N) → 74.4%,46.9% -->
+        <div class="ov-map-pin" data-target="region-gba" style="left:74.4%;top:46.9%;">
           <div class="ov-pin-dot" style="--pc:#ef4444;"></div>
           <div class="ov-pin-pulse" style="--pc:#ef4444;"></div>
           <div class="ov-pin-label">GBA</div>
@@ -459,8 +459,8 @@ function initHamburger() {
             <div class="ov-pt-sub">Hong Kong</div>
           </div>
         </div>
-        <!-- Middle East: Riyadh (47°E,24°N) → 37.2%,53.8% -->
-        <div class="ov-map-pin" data-target="region-me" style="left:37.2%;top:53.8%;">
+        <!-- Middle East: Riyadh (47°E,24°N) → 37.2%,43.8% -->
+        <div class="ov-map-pin" data-target="region-me" style="left:37.2%;top:43.8%;">
           <div class="ov-pin-dot" style="--pc:#f59e0b;"></div>
           <div class="ov-pin-pulse" style="--pc:#f59e0b;"></div>
           <div class="ov-pin-label">Middle East</div>
@@ -469,8 +469,8 @@ function initHamburger() {
             <div class="ov-pt-sub">Saudi Arabia · UAE</div>
           </div>
         </div>
-        <!-- India: Bangalore (77°E,13°N) → 53.9%,67.9% -->
-        <div class="ov-map-pin" data-target="region-india" style="left:53.9%;top:67.9%;">
+        <!-- India: Bangalore (77°E,13°N) → 53.9%,60.9% -->
+        <div class="ov-map-pin" data-target="region-india" style="left:53.9%;top:60.9%;">
           <div class="ov-pin-dot" style="--pc:#a78bfa;"></div>
           <div class="ov-pin-pulse" style="--pc:#a78bfa;"></div>
           <div class="ov-pin-label">India</div>
@@ -479,8 +479,8 @@ function initHamburger() {
             <div class="ov-pt-sub">Bangalore</div>
           </div>
         </div>
-        <!-- Japan: Tokyo (139.7°E,35.7°N) → 88.7%,38.8% -->
-        <div class="ov-map-pin" data-target="region-japan" style="left:88.7%;top:38.8%;">
+        <!-- Japan: Tokyo (139.7°E,35.7°N) → 88.7%,25.5% -->
+        <div class="ov-map-pin" data-target="region-japan" style="left:88.7%;top:25.5%;">
           <div class="ov-pin-dot" style="--pc:#06b6d4;"></div>
           <div class="ov-pin-pulse" style="--pc:#06b6d4;"></div>
           <div class="ov-pin-label">Japan</div>
@@ -762,18 +762,33 @@ function initHamburger() {
 </template>
 
 <style>
+/* ===== OVERSEAS PAGE TONE ===== */
+.ov-page {
+  background: #c4d4e8;
+}
+.ov-page .mesh-bg {
+  background: linear-gradient(145deg, #afc8e2 0%, #c0d4eb 40%, #b8cce4 70%, #bdd0e9 100%);
+}
+.ov-page .mesh-bg::before {
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 15%, rgba(30,80,180,0.14), transparent 60%),
+    radial-gradient(ellipse 55% 65% at 85% 75%, rgba(29,78,216,0.12), transparent 60%),
+    radial-gradient(ellipse 45% 45% at 60% 35%, rgba(59,130,246,0.09), transparent 50%);
+}
+
 /* ===== MAP SECTION ===== */
 .ov-map-section {
   position: relative; z-index: 1;
-  background: #eef4fb;
-  border-bottom: 1px solid #dde8f2;
+  background: rgba(180, 210, 240, 0.45);
+  border-bottom: 1px solid rgba(29,78,216,0.12);
 }
 
 .ov-map-topbar {
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px 64px 16px;
-  border-bottom: 1px solid #dde8f2;
-  background: #fff;
+  border-bottom: 1px solid rgba(29,78,216,0.1);
+  background: rgba(210, 228, 248, 0.85);
+  backdrop-filter: blur(8px);
   flex-wrap: wrap; gap: 12px;
 }
 .ov-map-title {
@@ -783,9 +798,9 @@ function initHamburger() {
 }
 
 .ov-map-tabs {
-  display: flex; gap: 6px; background: #f0f5fb;
+  display: flex; gap: 6px; background: rgba(180,210,245,0.6);
   border-radius: 10px; padding: 4px;
-  border: 1px solid #dde8f2;
+  border: 1px solid rgba(29,78,216,0.15);
 }
 .ov-map-tab {
   padding: 7px 18px; border-radius: 7px; border: none; cursor: pointer;
