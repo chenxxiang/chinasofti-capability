@@ -329,7 +329,10 @@ async function initChinaMap() {
     tick(ctx)
   }
 
-  setup()
+  // Panel is display:none at mount time — re-setup when tab is clicked
+  document.querySelectorAll('[data-panel="map-domestic"]').forEach(tab => {
+    tab.addEventListener('click', () => setTimeout(setup, 20))
+  })
 
   let resizeTimer
   window.addEventListener('resize', () => {
