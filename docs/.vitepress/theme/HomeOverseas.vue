@@ -123,9 +123,13 @@ function initWorldMap() {
     const ctx = canvas.getContext('2d')
     ctx.scale(dpr, dpr)
 
-    // Equirectangular projection — matches marker % positions
+    // Pacific-centered equirectangular (150°E center = Chinese standard world map)
+    const CTR = 150
     function project([lon, lat]) {
-      return [(lon + 180) / 360 * cssW, (90 - lat) / 180 * cssH]
+      let l = lon - CTR
+      if (l < -180) l += 360
+      if (l >  180) l -= 360
+      return [(l + 180) / 360 * cssW, (90 - lat) / 180 * cssH]
     }
 
     // Ocean gradient background
@@ -151,13 +155,16 @@ function initWorldMap() {
     ctx.beginPath(); ctx.moveTo(0, cssH / 2); ctx.lineTo(cssW, cssH / 2); ctx.stroke()
     ctx.beginPath(); ctx.moveTo(cssW / 2, 0); ctx.lineTo(cssW / 2, cssH); ctx.stroke()
 
-    // GeoJSON ring → canvas path
+    // GeoJSON ring → canvas path (with antimeridian break detection)
     function applyRing(ring) {
       const [x0, y0] = project(ring[0])
       ctx.moveTo(x0, y0)
+      let prevX = x0
       for (let i = 1; i < ring.length; i++) {
         const [x, y] = project(ring[i])
-        ctx.lineTo(x, y)
+        if (Math.abs(x - prevX) > cssW / 2) ctx.moveTo(x, y)
+        else ctx.lineTo(x, y)
+        prevX = x
       }
       ctx.closePath()
     }
@@ -194,9 +201,12 @@ function initWorldMap() {
       if (!line.length) return
       const [x0, y0] = project(line[0])
       ctx.moveTo(x0, y0)
+      let prevX = x0
       for (let i = 1; i < line.length; i++) {
         const [x, y] = project(line[i])
-        ctx.lineTo(x, y)
+        if (Math.abs(x - prevX) > cssW / 2) ctx.moveTo(x, y)
+        else ctx.lineTo(x, y)
+        prevX = x
       }
     })
     ctx.stroke()
@@ -217,8 +227,8 @@ async function initChinaMap() {
     chinaData = await res.json()
   } catch { return }
 
-  // Equirectangular projection fitted to China's extent
-  const MIN_LON = 72, MAX_LON = 138, MIN_LAT = 17, MAX_LAT = 55
+  // Wider bounds — shows surrounding context, China appears proportionate
+  const MIN_LON = 58, MAX_LON = 152, MIN_LAT = 6, MAX_LAT = 62
 
   let cssW = 0, cssH = 0, dpr = 1, bgCanvas = null, animId = null
 
@@ -278,11 +288,34 @@ async function initChinaMap() {
 
   let frame = 0
 
+  // Precompute which city labels to show (collision avoidance), called in setup()
+  let labelSlots = []
+  function computeLabels() {
+    const tmpCtx = document.createElement('canvas').getContext('2d')
+    tmpCtx.font = '500 9px -apple-system,BlinkMacSystemFont,sans-serif'
+    const placed = []
+    labelSlots = []
+    TIERS.forEach(({ cities, r }) => {
+      cities.forEach(city => {
+        const [cx, cy] = project([city.lon, city.lat])
+        const fw = tmpCtx.measureText(city.name).width
+        const lx = cx - fw / 2 - 1, ly = cy + r + 4
+        const lw = fw + 2, lh = 10
+        const ok = !placed.some(([px, py, pw, ph]) =>
+          lx < px + pw && lx + lw > px && ly < py + ph && ly + lh > py
+        )
+        if (ok) placed.push([lx, ly, lw, lh])
+        labelSlots.push({ cx, cy, name: city.name, r, show: ok })
+      })
+    })
+  }
+
   function tick(ctx) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx.drawImage(bgCanvas, 0, 0, cssW, cssH)
 
     const t = frame / 60
+    let si = 0
 
     TIERS.forEach(({ cities, rgb, r, pulse }) => {
       cities.forEach((city, i) => {
@@ -304,6 +337,16 @@ async function initChinaMap() {
         ctx.strokeStyle = 'rgba(255,255,255,0.65)'
         ctx.lineWidth = 1
         ctx.stroke()
+
+        // City label (precomputed collision avoidance)
+        const slot = labelSlots[si++]
+        if (slot?.show) {
+          ctx.fillStyle = 'rgba(255,255,255,0.88)'
+          ctx.font = '500 9px -apple-system,BlinkMacSystemFont,sans-serif'
+          ctx.textAlign = 'center'
+          ctx.textBaseline = 'top'
+          ctx.fillText(city.name, cx, cy + r + 4)
+        }
       })
     })
 
@@ -314,7 +357,7 @@ async function initChinaMap() {
   function setup() {
     dpr  = window.devicePixelRatio || 1
     cssW = canvas.parentElement.offsetWidth
-    cssH = Math.round(cssW * 0.70)
+    cssH = Math.round(cssW * 0.60)
 
     canvas.width  = cssW * dpr
     canvas.height = cssH * dpr
@@ -322,6 +365,7 @@ async function initChinaMap() {
     canvas.style.height = cssH + 'px'
 
     renderBackground()
+    computeLabels()
 
     if (animId) cancelAnimationFrame(animId)
     frame = 0
@@ -369,47 +413,52 @@ async function initChinaMap() {
       <div class="ov-world-wrap">
         <canvas id="ov-world-canvas" class="ov-world-svg"></canvas>
 
-        <!-- Markers: positioned relative to canvas, equirectangular proj 960×500 -->
-        <!-- 东南亚: Malaysia (103°E,4°N) → 78.5%,47.8% -->
-        <div class="ov-map-pin" data-target="region-sea" style="left:78.5%;top:47.8%;">
+        <!-- Markers: Pacific-centered proj (150°E center). x=(lon+30)/360, y=(90-lat)/180 -->
+        <!-- 东南亚: KL (103°E,4°N) → 36.9%,47.8% -->
+        <div class="ov-map-pin" data-target="region-sea" style="left:36.9%;top:47.8%;">
           <div class="ov-pin-dot" style="--pc:#10b981;"></div>
           <div class="ov-pin-pulse" style="--pc:#10b981;"></div>
+          <div class="ov-pin-label" style="color:#10b981;">东南亚</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">东南亚</div>
             <div class="ov-pt-sub">马来西亚 · 新加坡 · 印尼</div>
           </div>
         </div>
-        <!-- 港澳大湾区: HK (114°E,22°N) → 81.7%,37.8% -->
-        <div class="ov-map-pin" data-target="region-gba" style="left:81.7%;top:37.8%;">
+        <!-- 港澳大湾区: HK (114°E,22°N) → 40.0%,37.8% -->
+        <div class="ov-map-pin" data-target="region-gba" style="left:40.0%;top:37.8%;">
           <div class="ov-pin-dot" style="--pc:#ef4444;"></div>
           <div class="ov-pin-pulse" style="--pc:#ef4444;"></div>
+          <div class="ov-pin-label" style="color:#ef4444;">大湾区</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">港澳大湾区</div>
             <div class="ov-pt-sub">香港</div>
           </div>
         </div>
-        <!-- 中东: (47°E,24°N) → 63%,36.6% -->
-        <div class="ov-map-pin" data-target="region-me" style="left:63%;top:36.6%;">
+        <!-- 中东: Riyadh (47°E,24°N) → 21.4%,36.7% -->
+        <div class="ov-map-pin" data-target="region-me" style="left:21.4%;top:36.7%;">
           <div class="ov-pin-dot" style="--pc:#f59e0b;"></div>
           <div class="ov-pin-pulse" style="--pc:#f59e0b;"></div>
+          <div class="ov-pin-label" style="color:#f59e0b;">中东</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">中东</div>
             <div class="ov-pt-sub">沙特 · 阿联酋</div>
           </div>
         </div>
-        <!-- 印度: Bangalore (77°E,13°N) → 71.4%,42.8% -->
-        <div class="ov-map-pin" data-target="region-india" style="left:71.4%;top:42.8%;">
+        <!-- 印度: Bangalore (77°E,13°N) → 29.7%,42.8% -->
+        <div class="ov-map-pin" data-target="region-india" style="left:29.7%;top:42.8%;">
           <div class="ov-pin-dot" style="--pc:#a78bfa;"></div>
           <div class="ov-pin-pulse" style="--pc:#a78bfa;"></div>
+          <div class="ov-pin-label" style="color:#a78bfa;">印度</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">印度</div>
             <div class="ov-pt-sub">班加罗尔</div>
           </div>
         </div>
-        <!-- 日本: Tokyo (139.7°E,35.7°N) → 88.8%,30.2% -->
-        <div class="ov-map-pin" data-target="region-japan" style="left:88.8%;top:30.2%;">
+        <!-- 日本: Tokyo (139.7°E,35.7°N) → 47.1%,30.2% -->
+        <div class="ov-map-pin" data-target="region-japan" style="left:47.1%;top:30.2%;">
           <div class="ov-pin-dot" style="--pc:#06b6d4;"></div>
           <div class="ov-pin-pulse" style="--pc:#06b6d4;"></div>
+          <div class="ov-pin-label" style="color:#06b6d4;">日本</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">日本</div>
             <div class="ov-pt-sub">东京</div>
@@ -789,6 +838,15 @@ async function initChinaMap() {
 .ov-map-pin:hover .ov-pin-tooltip { opacity: 1; }
 .ov-pt-name { font-size: 0.86rem; font-weight: 800; color: #f1f5f9; }
 .ov-pt-sub { font-size: 0.72rem; color: rgba(255,255,255,0.58); margin-top: 2px; }
+
+/* Permanent region label below pin */
+.ov-pin-label {
+  position: absolute; top: calc(100% + 7px); left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.68rem; font-weight: 700; white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0,0,30,0.7);
+  pointer-events: none;
+}
 
 /* LEGEND */
 .ov-map-legend {
