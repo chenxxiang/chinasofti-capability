@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
+import NavBar from './NavBar.vue'
 
 onMounted(() => {
   initParticles()
@@ -163,20 +164,6 @@ function initTabs() {
   })
 }
 
-function initHamburger() {
-  const btn = document.getElementById('nav-hamburger-en')
-  const drawer = document.getElementById('nav-drawer-en')
-  if (!btn || !drawer) return
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation()
-    drawer.classList.toggle('open')
-    btn.classList.toggle('open')
-  })
-  document.addEventListener('click', () => {
-    drawer.classList.remove('open')
-    btn.classList.remove('open')
-  })
-}
 </script>
 
 <template>
@@ -184,29 +171,7 @@ function initHamburger() {
 <div class="mesh-bg"></div>
 
 <!-- NAV -->
-<nav class="au-nav">
-  <div class="nav-logo">
-    <span class="logo-chip">CSI</span>
-    ChinaSofti · Capability Library
-  </div>
-  <div class="nav-links">
-    <a href="/en/" class="active">Home</a>
-    <a href="/en/overseas">Overseas</a>
-    <a href="/en/miniapp-solution">Mini-App</a>
-    <a href="/en/business/cms/">Solutions</a>
-  </div>
-  <button class="nav-cta" onclick="window.location.href='/zh/'">中文</button>
-  <button class="nav-hamburger" id="nav-hamburger-en" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="nav-drawer" id="nav-drawer-en">
-  <a href="/en/">Home</a>
-  <a href="/en/overseas">Overseas</a>
-  <a href="/en/miniapp-solution">Mini-App</a>
-  <a href="/en/business/cms/">Solutions</a>
-  <a href="/zh/" class="nav-drawer-lang">切换中文</a>
-</div>
+<NavBar active="home" />
 
 <!-- HERO -->
 <div class="hero">
@@ -262,6 +227,50 @@ function initHamburger() {
     </div>
   </div>
 
+  <!-- Industries -->
+  <div class="sec reveal">
+    <div class="sec-header">
+      <div class="sec-label-wrap">
+        <div class="sec-eyebrow">Industries</div>
+        <div class="sec-title">Sectors We Serve</div>
+      </div>
+    </div>
+    <div class="industry-grid stagger">
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#1d4ed8,#3b82f6);--ind-grad:linear-gradient(135deg,rgba(29,78,216,0.06),transparent);--ind-shadow:rgba(29,78,216,0.28);">
+        <div class="ind-icon">🏦</div>
+        <div><div class="ind-name">Finance · Banking · Insurance</div><div class="ind-desc">Mobile banking, e-wallets, and insurance mini-programs — serving digital transformation for multiple Middle East and Southeast Asian banks</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0891b2,#06b6d4);--ind-grad:linear-gradient(135deg,rgba(6,182,212,0.06),transparent);--ind-shadow:rgba(6,182,212,0.28);">
+        <div class="ind-icon">📡</div>
+        <div><div class="ind-name">Telecom · Carriers</div><div class="ind-desc">Carrier Super Apps, 5G service platforms, and traffic operations systems — deeply embedded in the Huawei telecom ecosystem</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7c3aed,#a78bfa);--ind-grad:linear-gradient(135deg,rgba(124,58,237,0.06),transparent);--ind-shadow:rgba(124,58,237,0.28);">
+        <div class="ind-icon">🏛️</div>
+        <div><div class="ind-name">Government · Smart City</div><div class="ind-desc">One-stop government apps, digital citizen services, and cross-agency data integration — covering multiple Middle East government projects</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#d97706,#f59e0b);--ind-grad:linear-gradient(135deg,rgba(217,119,6,0.06),transparent);--ind-shadow:rgba(217,119,6,0.28);">
+        <div class="ind-icon">🏭</div>
+        <div><div class="ind-name">Manufacturing · Industrial IoT</div><div class="ind-desc">Factory digitization, device IoT onboarding, and supply chain visibility — deeply integrated with the Huawei Industrial Internet ecosystem</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#059669,#10b981);--ind-grad:linear-gradient(135deg,rgba(5,150,105,0.06),transparent);--ind-shadow:rgba(5,150,105,0.28);">
+        <div class="ind-icon">🛒</div>
+        <div><div class="ind-name">Retail · E-Commerce</div><div class="ind-desc">Shopping mini-programs, loyalty systems, and targeted marketing — helping retail brands expand rapidly across Southeast Asia</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#dc2626,#f87171);--ind-grad:linear-gradient(135deg,rgba(220,38,38,0.06),transparent);--ind-shadow:rgba(220,38,38,0.25);">
+        <div class="ind-icon">🏥</div>
+        <div><div class="ind-name">Healthcare</div><div class="ind-desc">Hospital apps, appointment booking, and health management platforms — HIPAA-compliant with multi-language localization support</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0f766e,#14b8a6);--ind-grad:linear-gradient(135deg,rgba(15,118,110,0.06),transparent);--ind-shadow:rgba(15,118,110,0.25);">
+        <div class="ind-icon">🎓</div>
+        <div><div class="ind-name">Education · Training</div><div class="ind-desc">Online classrooms, learning management systems, and certification platforms — supporting the Huawei ICT talent ecosystem</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7e22ce,#c084fc);--ind-grad:linear-gradient(135deg,rgba(126,34,206,0.06),transparent);--ind-shadow:rgba(126,34,206,0.25);">
+        <div class="ind-icon">✈️</div>
+        <div><div class="ind-name">Transport · Mobility</div><div class="ind-desc">Mobility aggregation Super Apps, ticket booking, and real-time navigation — covering public transit digitalization scenarios</div></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Milestones -->
   <div class="sec reveal">
     <div class="sec-header">
@@ -304,50 +313,6 @@ function initHamburger() {
       <div class="r-card"><div class="r-head">🌏 Hong Kong · International Gateway</div><div class="r-body">The group's listed entity, focused on fintech, cross-border payment, and Super App delivery. The central hub for global expansion strategy.</div></div>
       <div class="r-card"><div class="r-head">🕌 Middle East · Strategic Growth Market</div><div class="r-body">Live projects in Saudi Arabia, UAE, Kuwait and more, serving national banks and telecom operators, and deeply involved in digital government initiatives.</div></div>
       <div class="r-card"><div class="r-head">🌴 Southeast Asia · High-Growth Region</div><div class="r-body">Active in Malaysia, Indonesia, Thailand and beyond, delivering end-to-end Super App solutions. Overseas business CAGR exceeds 30%.</div></div>
-    </div>
-  </div>
-
-  <!-- Industries -->
-  <div class="sec reveal">
-    <div class="sec-header">
-      <div class="sec-label-wrap">
-        <div class="sec-eyebrow">Industries</div>
-        <div class="sec-title">Sectors We Serve</div>
-      </div>
-    </div>
-    <div class="industry-grid stagger">
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#1d4ed8,#3b82f6);--ind-grad:linear-gradient(135deg,rgba(29,78,216,0.06),transparent);--ind-shadow:rgba(29,78,216,0.28);">
-        <div class="ind-icon">🏦</div>
-        <div><div class="ind-name">Finance · Banking · Insurance</div><div class="ind-desc">Mobile banking, e-wallets, and insurance mini-programs — serving digital transformation for multiple Middle East and Southeast Asian banks</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0891b2,#06b6d4);--ind-grad:linear-gradient(135deg,rgba(6,182,212,0.06),transparent);--ind-shadow:rgba(6,182,212,0.28);">
-        <div class="ind-icon">📡</div>
-        <div><div class="ind-name">Telecom · Carriers</div><div class="ind-desc">Carrier Super Apps, 5G service platforms, and traffic operations systems — deeply embedded in the Huawei telecom ecosystem</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7c3aed,#a78bfa);--ind-grad:linear-gradient(135deg,rgba(124,58,237,0.06),transparent);--ind-shadow:rgba(124,58,237,0.28);">
-        <div class="ind-icon">🏛️</div>
-        <div><div class="ind-name">Government · Smart City</div><div class="ind-desc">One-stop government apps, digital citizen services, and cross-agency data integration — covering multiple Middle East government projects</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#d97706,#f59e0b);--ind-grad:linear-gradient(135deg,rgba(217,119,6,0.06),transparent);--ind-shadow:rgba(217,119,6,0.28);">
-        <div class="ind-icon">🏭</div>
-        <div><div class="ind-name">Manufacturing · Industrial IoT</div><div class="ind-desc">Factory digitization, device IoT onboarding, and supply chain visibility — deeply integrated with the Huawei Industrial Internet ecosystem</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#059669,#10b981);--ind-grad:linear-gradient(135deg,rgba(5,150,105,0.06),transparent);--ind-shadow:rgba(5,150,105,0.28);">
-        <div class="ind-icon">🛒</div>
-        <div><div class="ind-name">Retail · E-Commerce</div><div class="ind-desc">Shopping mini-programs, loyalty systems, and targeted marketing — helping retail brands expand rapidly across Southeast Asia</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#dc2626,#f87171);--ind-grad:linear-gradient(135deg,rgba(220,38,38,0.06),transparent);--ind-shadow:rgba(220,38,38,0.25);">
-        <div class="ind-icon">🏥</div>
-        <div><div class="ind-name">Healthcare</div><div class="ind-desc">Hospital apps, appointment booking, and health management platforms — HIPAA-compliant with multi-language localization support</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0f766e,#14b8a6);--ind-grad:linear-gradient(135deg,rgba(15,118,110,0.06),transparent);--ind-shadow:rgba(15,118,110,0.25);">
-        <div class="ind-icon">🎓</div>
-        <div><div class="ind-name">Education · Training</div><div class="ind-desc">Online classrooms, learning management systems, and certification platforms — supporting the Huawei ICT talent ecosystem</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7e22ce,#c084fc);--ind-grad:linear-gradient(135deg,rgba(126,34,206,0.06),transparent);--ind-shadow:rgba(126,34,206,0.25);">
-        <div class="ind-icon">✈️</div>
-        <div><div class="ind-name">Transport · Mobility</div><div class="ind-desc">Mobility aggregation Super Apps, ticket booking, and real-time navigation — covering public transit digitalization scenarios</div></div>
-      </div>
     </div>
   </div>
 

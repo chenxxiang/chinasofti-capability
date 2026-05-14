@@ -9,12 +9,20 @@ import HomeMiniapp from './HomeMiniapp.vue'
 import HomeMiniappEn from './HomeMiniappEn.vue'
 import HomeCases from './HomeCases.vue'
 import HomeAI from './HomeAI.vue'
+import HomeAIEn from './HomeAIEn.vue'
 import HomeODC from './HomeODC.vue'
+import HomeODCEn from './HomeODCEn.vue'
 import HomeCloud from './HomeCloud.vue'
+import HomeCloudEn from './HomeCloudEn.vue'
 import HomeCampus from './HomeCampus.vue'
+import HomeCampusEn from './HomeCampusEn.vue'
 import HomeCloudCases from './HomeCloudCases.vue'
 import HomeCampusCases from './HomeCampusCases.vue'
 import HomeOdcCases from './HomeOdcCases.vue'
+import HomeCasesEn from './HomeCasesEn.vue'
+import HomeCloudCasesEn from './HomeCloudCasesEn.vue'
+import HomeCampusCasesEn from './HomeCampusCasesEn.vue'
+import HomeOdcCasesEn from './HomeOdcCasesEn.vue'
 
 const { frontmatter } = useData()
 </script>
@@ -28,12 +36,20 @@ const { frontmatter } = useData()
   <HomeMiniappEn v-else-if="frontmatter.layout === 'home-miniapp-en'" />
   <HomeCases v-else-if="frontmatter.layout === 'home-cases-zh'" />
   <HomeAI v-else-if="frontmatter.layout === 'home-ai-zh'" />
+  <HomeAIEn v-else-if="frontmatter.layout === 'home-ai-en'" />
   <HomeODC v-else-if="frontmatter.layout === 'home-odc-zh'" />
+  <HomeODCEn v-else-if="frontmatter.layout === 'home-odc-en'" />
   <HomeCloud v-else-if="frontmatter.layout === 'home-cloud-zh'" />
+  <HomeCloudEn v-else-if="frontmatter.layout === 'home-cloud-en'" />
   <HomeCampus v-else-if="frontmatter.layout === 'home-campus-zh'" />
+  <HomeCampusEn v-else-if="frontmatter.layout === 'home-campus-en'" />
   <HomeCloudCases v-else-if="frontmatter.layout === 'home-cloud-cases-zh'" />
   <HomeCampusCases v-else-if="frontmatter.layout === 'home-campus-cases-zh'" />
   <HomeOdcCases v-else-if="frontmatter.layout === 'home-odc-cases-zh'" />
+  <HomeCasesEn v-else-if="frontmatter.layout === 'home-cases-en'" />
+  <HomeCloudCasesEn v-else-if="frontmatter.layout === 'home-cloud-cases-en'" />
+  <HomeCampusCasesEn v-else-if="frontmatter.layout === 'home-campus-cases-en'" />
+  <HomeOdcCasesEn v-else-if="frontmatter.layout === 'home-odc-cases-en'" />
   <DefaultTheme.Layout v-else>
     <template #nav-bar-title-before>
       <span class="vp-logo-chip">CSI</span>

@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted } from 'vue'
+import NavBar from './NavBar.vue'
 
 onMounted(() => {
   initReveal()
   initTabs()
-  initHamburger()
   initCounters()
 })
 
@@ -30,20 +30,6 @@ function initTabs() {
   })
 }
 
-function initHamburger() {
-  const btn = document.getElementById('nav-hamburger-mn-en')
-  const drawer = document.getElementById('nav-drawer-mn-en')
-  if (!btn || !drawer) return
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation()
-    drawer.classList.toggle('open')
-    btn.classList.toggle('open')
-  })
-  document.addEventListener('click', () => {
-    drawer.classList.remove('open')
-    btn.classList.remove('open')
-  })
-}
 
 function initCounters() {
   const obs = new IntersectionObserver(entries => {
@@ -71,29 +57,7 @@ function initCounters() {
 <div class="mn-mesh-bg"></div>
 
 <!-- NAV -->
-<nav class="au-nav">
-  <div class="nav-logo">
-    <span class="logo-chip">CSI</span>
-    ChinaSofti · Capability
-  </div>
-  <div class="nav-links">
-    <a href="/en/">Home</a>
-    <a href="/en/miniapp-solution" class="active">Mini-App</a>
-    <a href="/en/overseas/">Overseas</a>
-    <a href="/en/business/cms/">Solutions</a>
-  </div>
-  <button class="nav-cta" onclick="window.location.href='/zh/miniapp/'">中文</button>
-  <button class="nav-hamburger" id="nav-hamburger-mn-en" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="nav-drawer" id="nav-drawer-mn-en">
-  <a href="/en/">Home</a>
-  <a href="/en/miniapp-solution">Mini-App</a>
-  <a href="/en/overseas/">Overseas</a>
-  <a href="/en/business/cms/">Solutions</a>
-  <a href="/zh/miniapp/" class="nav-drawer-lang">中文</a>
-</div>
+<NavBar active="solutions" />
 
 <!-- HERO -->
 <section class="mn-hero">
