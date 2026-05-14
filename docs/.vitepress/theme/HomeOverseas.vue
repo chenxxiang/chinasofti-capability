@@ -113,7 +113,7 @@ function initWorldMap() {
   function draw() {
     const dpr = window.devicePixelRatio || 1
     const cssW = canvas.parentElement.offsetWidth
-    const cssH = Math.round(cssW * 500 / 960)
+    const cssH = Math.round(cssW * 0.52)
 
     canvas.width = cssW * dpr
     canvas.height = cssH * dpr
@@ -123,13 +123,13 @@ function initWorldMap() {
     const ctx = canvas.getContext('2d')
     ctx.scale(dpr, dpr)
 
-    // Pacific-centered equirectangular (150°E center = Chinese standard world map)
-    const CTR = 150
+    // Eurasia-focused crop — proportioned so China isn't stretched
+    // lon 180°, lat 78° (-12S→66N), canvas 0.52 → same ratio as China map
+    const W0 = -20, W1 = 160, H0 = 66, H1 = -12
     function project([lon, lat]) {
-      let l = lon - CTR
-      if (l < -180) l += 360
-      if (l >  180) l -= 360
-      return [(l + 180) / 360 * cssW, (90 - lat) / 180 * cssH]
+      let l = lon
+      if (l < W0) l += 360
+      return [(l - W0) / (W1 - W0) * cssW, (H0 - lat) / (H0 - H1) * cssH]
     }
 
     // Ocean gradient background
@@ -228,7 +228,7 @@ async function initChinaMap() {
   } catch { return }
 
   // Wider bounds — shows surrounding context, China appears proportionate
-  const MIN_LON = 58, MAX_LON = 152, MIN_LAT = 6, MAX_LAT = 62
+  const MIN_LON = 58, MAX_LON = 152, MIN_LAT = 17, MAX_LAT = 56
 
   let cssW = 0, cssH = 0, dpr = 1, bgCanvas = null, animId = null
 
@@ -357,7 +357,7 @@ async function initChinaMap() {
   function setup() {
     dpr  = window.devicePixelRatio || 1
     cssW = canvas.parentElement.offsetWidth
-    cssH = Math.round(cssW * 0.60)
+    cssH = Math.round(cssW * 0.52)
 
     canvas.width  = cssW * dpr
     canvas.height = cssH * dpr
@@ -413,52 +413,52 @@ async function initChinaMap() {
       <div class="ov-world-wrap">
         <canvas id="ov-world-canvas" class="ov-world-svg"></canvas>
 
-        <!-- Markers: Pacific-centered proj (150°E center). x=(lon+30)/360, y=(90-lat)/180 -->
-        <!-- 东南亚: KL (103°E,4°N) → 36.9%,47.8% -->
-        <div class="ov-map-pin" data-target="region-sea" style="left:36.9%;top:47.8%;">
+        <!-- Eurasia crop: x=(lon+20)/180, y=(66-lat)/78. bounds -20°W–160°E, 66°N–12°S -->
+        <!-- 东南亚: KL (103°E,4°N) → 68.3%,79.5% -->
+        <div class="ov-map-pin" data-target="region-sea" style="left:68.3%;top:79.5%;">
           <div class="ov-pin-dot" style="--pc:#10b981;"></div>
           <div class="ov-pin-pulse" style="--pc:#10b981;"></div>
-          <div class="ov-pin-label" style="color:#10b981;">东南亚</div>
+          <div class="ov-pin-label">东南亚</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">东南亚</div>
             <div class="ov-pt-sub">马来西亚 · 新加坡 · 印尼</div>
           </div>
         </div>
-        <!-- 港澳大湾区: HK (114°E,22°N) → 40.0%,37.8% -->
-        <div class="ov-map-pin" data-target="region-gba" style="left:40.0%;top:37.8%;">
+        <!-- 港澳大湾区: HK (114°E,22°N) → 74.4%,56.4% -->
+        <div class="ov-map-pin" data-target="region-gba" style="left:74.4%;top:56.4%;">
           <div class="ov-pin-dot" style="--pc:#ef4444;"></div>
           <div class="ov-pin-pulse" style="--pc:#ef4444;"></div>
-          <div class="ov-pin-label" style="color:#ef4444;">大湾区</div>
+          <div class="ov-pin-label">大湾区</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">港澳大湾区</div>
             <div class="ov-pt-sub">香港</div>
           </div>
         </div>
-        <!-- 中东: Riyadh (47°E,24°N) → 21.4%,36.7% -->
-        <div class="ov-map-pin" data-target="region-me" style="left:21.4%;top:36.7%;">
+        <!-- 中东: Riyadh (47°E,24°N) → 37.2%,53.8% -->
+        <div class="ov-map-pin" data-target="region-me" style="left:37.2%;top:53.8%;">
           <div class="ov-pin-dot" style="--pc:#f59e0b;"></div>
           <div class="ov-pin-pulse" style="--pc:#f59e0b;"></div>
-          <div class="ov-pin-label" style="color:#f59e0b;">中东</div>
+          <div class="ov-pin-label">中东</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">中东</div>
             <div class="ov-pt-sub">沙特 · 阿联酋</div>
           </div>
         </div>
-        <!-- 印度: Bangalore (77°E,13°N) → 29.7%,42.8% -->
-        <div class="ov-map-pin" data-target="region-india" style="left:29.7%;top:42.8%;">
+        <!-- 印度: Bangalore (77°E,13°N) → 53.9%,67.9% -->
+        <div class="ov-map-pin" data-target="region-india" style="left:53.9%;top:67.9%;">
           <div class="ov-pin-dot" style="--pc:#a78bfa;"></div>
           <div class="ov-pin-pulse" style="--pc:#a78bfa;"></div>
-          <div class="ov-pin-label" style="color:#a78bfa;">印度</div>
+          <div class="ov-pin-label">印度</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">印度</div>
             <div class="ov-pt-sub">班加罗尔</div>
           </div>
         </div>
-        <!-- 日本: Tokyo (139.7°E,35.7°N) → 47.1%,30.2% -->
-        <div class="ov-map-pin" data-target="region-japan" style="left:47.1%;top:30.2%;">
+        <!-- 日本: Tokyo (139.7°E,35.7°N) → 88.7%,38.8% -->
+        <div class="ov-map-pin" data-target="region-japan" style="left:88.7%;top:38.8%;">
           <div class="ov-pin-dot" style="--pc:#06b6d4;"></div>
           <div class="ov-pin-pulse" style="--pc:#06b6d4;"></div>
-          <div class="ov-pin-label" style="color:#06b6d4;">日本</div>
+          <div class="ov-pin-label">日本</div>
           <div class="ov-pin-tooltip">
             <div class="ov-pt-name">日本</div>
             <div class="ov-pt-sub">东京</div>
@@ -844,7 +844,8 @@ async function initChinaMap() {
   position: absolute; top: calc(100% + 7px); left: 50%;
   transform: translateX(-50%);
   font-size: 0.68rem; font-weight: 700; white-space: nowrap;
-  text-shadow: 0 1px 4px rgba(0,0,30,0.7);
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0,0,40,0.95), 0 1px 3px rgba(0,0,40,0.9);
   pointer-events: none;
 }
 
