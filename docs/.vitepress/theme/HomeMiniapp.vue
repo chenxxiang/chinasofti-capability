@@ -334,7 +334,7 @@ function initCounters() {
           <a href="/zh/business/loyalty/" class="mn-dir-card mn-dir-blue">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <div class="mn-dir-info">
-              <h4>Loyalty</h4>
+              <h4>积分激励平台</h4>
               <p>积分体系 · 任务激励 · 用户忠诚度</p>
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
