@@ -1,4 +1,4 @@
-# 小程序迁移
+# 企业小程序方案
 
 <div class="module-summary">
   <span class="badge">中软国际</span> 技术交付模块

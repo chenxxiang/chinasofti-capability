@@ -31,7 +31,7 @@ export const enSidebar = {
           ]
         },
         {
-          text: 'Mini-App Migration', collapsed: true,
+          text: 'Enterprise Mini App Solution', collapsed: true,
           items: [
             { text: 'Overview', link: '/en/business/migration/' },
             { text: 'Page Complexity', link: '/en/business/migration/complexity' },

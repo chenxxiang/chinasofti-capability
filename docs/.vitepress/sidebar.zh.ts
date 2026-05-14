@@ -31,7 +31,7 @@ export const zhSidebar = {
           ]
         },
         {
-          text: '小程序迁移', collapsed: true,
+          text: '企业小程序方案', collapsed: true,
           items: [
             { text: '概览', link: '/zh/business/migration/' },
             { text: '页面复杂度定义', link: '/zh/business/migration/complexity' },

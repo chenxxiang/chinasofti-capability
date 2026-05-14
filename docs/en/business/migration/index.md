@@ -1,4 +1,4 @@
-# Mini-App Migration
+# Enterprise Mini App Solution
 
 <div class="module-summary">
   <span class="badge">Chinasofti</span> Technical Delivery Module
