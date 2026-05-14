@@ -11,7 +11,7 @@
   <div class="hero-orb orb-c"></div>
   <div class="hero-inner">
     <div class="hero-pill"><span class="pill-dot"></span>Success Cases · 全球落地实证</div>
-    <h1>五大标杆案例<br><span class="shine">覆盖亚非欧三大洲</span></h1>
+    <h1>小程序迁移<br><span class="shine">全球落地标杆案例</span></h1>
     <p class="hero-sub">从东非 Mobile Money 到东南亚超级应用，从亚投行数字化平台到国际泳联全场景运营——中软国际携手蚂蚁集团、华为，深耕金融科技与数字化服务全球落地。</p>
     <div class="hero-badges">
       <span class="h-badge"><span class="flag">🇪🇹</span> 埃塞俄比亚 · Siinqee Bank</span>

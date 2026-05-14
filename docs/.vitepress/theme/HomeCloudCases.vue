@@ -11,7 +11,7 @@
   <div class="hero-orb orb-c"></div>
   <div class="hero-inner">
     <div class="hero-pill"><span class="pill-dot"></span>Cloud Cases · 云迁移落地实证</div>
-    <h1>五大标杆案例<br><span class="shine">覆盖政务·制造·金融·互联网</span></h1>
+    <h1>云原生迁移<br><span class="shine">企业上云交付实证</span></h1>
     <p class="hero-sub">从数字重庆 GaussDB 多库迁移到机场集团全量上云，从广汽丰田 HCSO 云运维到四川长虹鲲鹏大数据——中软国际携手华为云，深耕企业上云全链路服务。</p>
     <div class="hero-badges">
       <span class="h-badge"><span class="flag">🏛</span> 政务 · 数字重庆 GaussDB</span>
