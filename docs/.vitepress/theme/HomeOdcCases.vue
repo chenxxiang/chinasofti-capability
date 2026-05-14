@@ -103,14 +103,27 @@
         </div>
 
         <div class="case-screens">
+          <!-- App showcase：深色容器 + contain 完整显示手机 -->
           <div class="scr-label">HSBC 移动银行应用</div>
-          <div class="scr-main-frame">
-            <img src="/cases/odc-hsbc-app.png" alt="HSBC移动银行APP" class="scr-img-hero" style="object-position:center;" />
+          <div class="phone-showcase">
+            <div class="phone-glow-l"></div>
+            <div class="phone-glow-r"></div>
+            <img src="/cases/odc-hsbc-app.png" alt="HSBC移动银行APP" class="phone-img" />
+            <div class="phone-info">
+              <div class="phone-tag">Mobile Banking</div>
+              <div class="phone-tag">WeChat Bank</div>
+              <div class="phone-tag">Wealth Mgmt</div>
+              <div class="phone-tag">Risk Control</div>
+            </div>
           </div>
-          <div class="scr-label" style="margin-top:16px;">团队规模成长曲线（2010–2018）</div>
-          <img src="/cases/odc-hsbc-growth.png" alt="HSBC ODC团队成长" class="scr-img-wide" />
-          <div class="scr-label" style="margin-top:16px;">西安ODC 交付园区</div>
-          <img src="/cases/odc-hsbc-campus.jpeg" alt="西安ODC园区规划" class="scr-img-wide" />
+          <!-- 成长曲线：白底 contain 完整展示坐标轴 -->
+          <div class="scr-label" style="margin-top:12px;">团队规模成长曲线（2010–2018）</div>
+          <div class="chart-box">
+            <img src="/cases/odc-hsbc-growth.png" alt="HSBC ODC规模成长" class="chart-img" />
+          </div>
+          <!-- 园区平面图 -->
+          <div class="scr-label" style="margin-top:12px;">西安 ODC 交付园区</div>
+          <img src="/cases/odc-hsbc-campus.jpeg" alt="西安ODC园区规划" class="scr-cover" />
         </div>
       </div>
 
@@ -198,29 +211,28 @@
         </div>
 
         <div class="case-screens">
-          <div class="scr-label">大连基地 · 办公实景</div>
-          <div class="scr-duo">
+          <!-- 大图全宽 -->
+          <div class="scr-label">ODC 开放式办公环境</div>
+          <img src="/cases/odc-office-open.png" alt="开放式办公区" class="scr-wide-cover" />
+          <!-- 双图行 1 -->
+          <div class="scr-duo" style="margin-top:10px;">
             <div class="scr-duo-item">
-              <img src="/cases/odc-office-open.png" alt="开放式办公区" class="scr-duo-img" />
-              <div class="scr-duo-cap">标准化开放办公区</div>
+              <img src="/cases/odc-office-corridor.png" alt="工位走廊" class="scr-duo-img" />
+              <div class="scr-duo-cap">工位走廊</div>
             </div>
             <div class="scr-duo-item">
-              <img src="/cases/odc-office-corridor.png" alt="办公走廊" class="scr-duo-img" />
-              <div class="scr-duo-cap">现代化工位走廊</div>
+              <img src="/cases/odc-ant-office.jpeg" alt="大连标准工位" class="scr-duo-img" />
+              <div class="scr-duo-cap">大连 · 标准工位</div>
             </div>
           </div>
-          <div class="scr-label" style="margin-top:16px;">配套设施</div>
-          <div class="scr-stack">
-            <div class="scr-stack-item">
-              <img src="/cases/odc-ant-office.jpeg" alt="大连工位区" class="scr-stack-img" />
-              <div class="scr-duo-cap">大连基地 · 标准工位</div>
-            </div>
-            <div class="scr-stack-item">
-              <img src="/cases/odc-ant-meeting.jpeg" alt="会议室" class="scr-stack-img" />
+          <!-- 双图行 2 -->
+          <div class="scr-duo" style="margin-top:10px;">
+            <div class="scr-duo-item">
+              <img src="/cases/odc-ant-meeting.jpeg" alt="会议室" class="scr-duo-img scr-duo-sm" />
               <div class="scr-duo-cap">会议室</div>
             </div>
-            <div class="scr-stack-item">
-              <img src="/cases/odc-ant-coffee.jpeg" alt="休闲区" class="scr-stack-img" />
+            <div class="scr-duo-item">
+              <img src="/cases/odc-ant-coffee.jpeg" alt="休闲咖啡区" class="scr-duo-img scr-duo-sm" />
               <div class="scr-duo-cap">休闲咖啡区</div>
             </div>
           </div>
@@ -287,14 +299,16 @@
         </div>
 
         <div class="case-screens">
-          <div class="scr-label">全国城市 ODC 分布</div>
-          <div class="scr-main-frame">
-            <img src="/cases/odc-huawei-citymap.png" alt="华为ODC城市分布图" class="scr-img-hero" style="object-position:center;" />
+          <!-- 地图：浅蓝容器 + contain 完整显示城市名称和数字 -->
+          <div class="scr-label">全国 ODC 城市分布与规模</div>
+          <div class="map-box">
+            <img src="/cases/odc-huawei-citymap.png" alt="华为ODC城市分布图" class="map-img" />
           </div>
-          <div class="scr-label" style="margin-top:16px;">ODC 交付基地</div>
+          <!-- 基地建筑双图 -->
+          <div class="scr-label" style="margin-top:12px;">ODC 交付基地</div>
           <div class="scr-duo">
             <div class="scr-duo-item">
-              <img src="/cases/odc-huawei-building.png" alt="中软国际总部园区" class="scr-duo-img" />
+              <img src="/cases/odc-huawei-building.png" alt="中软国际园区" class="scr-duo-img" />
               <div class="scr-duo-cap">中软国际园区</div>
             </div>
             <div class="scr-duo-item">
@@ -448,21 +462,44 @@ onMounted(() => {
 .tl-text { font-size:0.78rem; color:rgba(20,20,60,0.62); line-height:1.5; }
 
 /* ===== SCREENS PANEL ===== */
-.case-screens { padding:28px 28px; display:flex; flex-direction:column; gap:0; background:rgba(248,250,255,0.7); }
+.case-screens { padding:28px 28px 32px; display:flex; flex-direction:column; gap:0; background:rgba(248,250,255,0.7); }
 .scr-label { font-size:0.68rem; font-weight:800; color:rgba(20,20,60,0.36); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
 
-.scr-main-frame { width:100%; }
-.scr-img-hero { width:100%; display:block; object-fit:cover; object-position:top; height:240px; border-radius:10px; border:1px solid rgba(0,0,0,0.08); box-shadow:0 4px 18px rgba(0,0,0,0.12); }
-.scr-img-wide { width:100%; display:block; object-fit:cover; object-position:top; height:160px; border-radius:9px; border:1px solid rgba(0,0,0,0.07); box-shadow:0 4px 14px rgba(0,0,0,0.10); }
+/* === HSBC: phone showcase === */
+.phone-showcase {
+  position:relative; overflow:hidden;
+  background:linear-gradient(135deg,#060d20 0%,#0d1b40 50%,#1a1060 100%);
+  border-radius:14px;
+  display:flex; align-items:center; justify-content:center; gap:20px;
+  padding:22px 20px; min-height:300px;
+  border:1px solid rgba(255,255,255,0.06);
+}
+.phone-glow-l { position:absolute; left:-40px; top:20px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle,rgba(29,78,216,0.30),transparent 70%); pointer-events:none; }
+.phone-glow-r { position:absolute; right:-40px; bottom:10px; width:160px; height:160px; border-radius:50%; background:radial-gradient(circle,rgba(124,58,237,0.25),transparent 70%); pointer-events:none; }
+.phone-img { position:relative; z-index:1; max-width:42%; max-height:280px; width:auto; height:auto; object-fit:contain; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.65),0 0 0 1px rgba(255,255,255,0.09); }
+.phone-info { position:relative; z-index:1; display:flex; flex-direction:column; gap:8px; }
+.phone-tag { font-size:0.72rem; font-weight:700; color:rgba(255,255,255,0.70); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.13); padding:5px 12px; border-radius:8px; }
 
+/* === HSBC: chart card === */
+.chart-box { background:#fff; border-radius:12px; padding:12px 16px; border:1px solid rgba(0,0,0,0.07); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.chart-img { width:100%; height:186px; object-fit:contain; display:block; }
+
+/* === HSBC: campus cover === */
+.scr-cover { width:100%; height:150px; object-fit:cover; object-position:center; border-radius:10px; border:1px solid rgba(0,0,0,0.07); box-shadow:0 3px 12px rgba(0,0,0,0.10); display:block; }
+
+/* === Ant: full-width cover === */
+.scr-wide-cover { width:100%; height:210px; object-fit:cover; object-position:center; border-radius:10px; border:1px solid rgba(0,0,0,0.07); box-shadow:0 3px 14px rgba(0,0,0,0.12); display:block; }
+
+/* === Shared: duo row === */
 .scr-duo { display:flex; gap:10px; }
 .scr-duo-item { flex:1; min-width:0; }
-.scr-duo-img { width:100%; display:block; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.14); border:1px solid rgba(0,0,0,0.07); object-fit:cover; object-position:center; height:160px; }
+.scr-duo-img { width:100%; display:block; border-radius:9px; box-shadow:0 4px 14px rgba(0,0,0,0.13); border:1px solid rgba(0,0,0,0.07); object-fit:cover; object-position:center; height:168px; }
+.scr-duo-sm { height:128px; }
 .scr-duo-cap { font-size:0.63rem; color:rgba(20,20,60,0.38); text-align:center; margin-top:5px; font-weight:600; }
 
-.scr-stack { display:flex; flex-direction:column; gap:8px; }
-.scr-stack-item { width:100%; }
-.scr-stack-img { width:100%; display:block; border-radius:9px; box-shadow:0 4px 16px rgba(0,0,0,0.14); border:1px solid rgba(0,0,0,0.07); object-fit:cover; object-position:center; height:120px; }
+/* === Huawei: map box === */
+.map-box { background:linear-gradient(135deg,#eff6ff,#f0f9ff); border-radius:12px; padding:14px; border:1px solid rgba(29,78,216,0.10); box-shadow:0 2px 10px rgba(29,78,216,0.06); }
+.map-img { width:100%; height:268px; object-fit:contain; display:block; }
 
 /* ===== FOOTER ===== */
 .odc-footer { position:relative; z-index:1; text-align:center; padding:28px 24px; border-top:1px solid rgba(0,0,0,0.07); }
@@ -474,8 +511,12 @@ onMounted(() => {
   .case-info { border-right:none; border-bottom:1px solid rgba(0,0,0,0.07); }
   .banner-content { flex-direction:column; }
   .banner-stats { width:100%; justify-content:space-between; }
-  .scr-img-hero, .scr-img-wide { height:180px; }
+  .phone-showcase { min-height:240px; }
+  .phone-img { max-height:220px; }
+  .chart-img { height:150px; }
+  .scr-wide-cover, .scr-cover { height:150px; }
   .scr-duo-img { height:120px; }
-  .scr-stack-img { height:100px; }
+  .scr-duo-sm { height:100px; }
+  .map-img { height:200px; }
 }
 </style>
