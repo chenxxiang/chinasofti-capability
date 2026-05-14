@@ -804,6 +804,7 @@ onMounted(() => {
   .ai-stats-bar { padding:0; flex-wrap:wrap; }
   .ai-stat { min-width:45%; }
   .ai-stat-div { display:none; }
+  .ai-section-title { font-size: 1.45rem; line-height: 1.3; }
   .ai-pillar-grid,.ai-persona-grid,.ai-principle-grid,.ai-platform-grid,.ai-course-grid,.ai-consult-grid,.ai-case-grid,.ai-result-grid { grid-template-columns:1fr; }
   .ai-cta-inner { flex-direction:column; padding:32px 24px; }
   .ai-cta-btns { flex-direction:row; width:100%; }
