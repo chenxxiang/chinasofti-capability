@@ -57,15 +57,16 @@ const open = ref(false)
             </div>
           </div>
 
-          <div class="csi-sol-item csi-sol-soon">
+          <a href="/zh/odc/" class="csi-sol-item">
             <div class="csi-sol-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div class="csi-sol-text">
-              <div class="csi-sol-title">ODC 离岸开发中心 <span class="csi-badge-soon">即将推出</span></div>
+              <div class="csi-sol-title">ODC 离岸开发中心</div>
               <div class="csi-sol-desc">专属研发团队 · 离岸交付管理</div>
             </div>
-          </div>
+            <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -87,7 +88,7 @@ const open = ref(false)
   <a href="/zh/miniapp/" class="csi-drawer-link csi-drawer-sub" @click="open=false">小程序迁移方案</a>
   <span class="csi-drawer-link csi-drawer-sub csi-drawer-dim">云原生与基础设施 <em>即将推出</em></span>
   <span class="csi-drawer-link csi-drawer-sub csi-drawer-dim">智慧园区解决方案 <em>即将推出</em></span>
-  <span class="csi-drawer-link csi-drawer-sub csi-drawer-dim">ODC 离岸开发中心 <em>即将推出</em></span>
+  <a href="/zh/odc/" class="csi-drawer-link csi-drawer-sub" @click="open=false">ODC 离岸开发中心</a>
   <a href="/en/" class="csi-drawer-link csi-drawer-en">English</a>
 </div>
 </template>
