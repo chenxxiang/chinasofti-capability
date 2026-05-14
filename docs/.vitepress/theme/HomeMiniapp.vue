@@ -283,7 +283,7 @@ function initCounters() {
     </div>
 
     <!-- 目录跳转横幅 -->
-    <a href="/zh/business/cms/" class="mn-dir-banner">
+    <a href="/zh/business/cms/" class="mn-dir-banner" target="_blank" rel="noopener">
       <div class="mn-dir-banner-left">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         <div>
