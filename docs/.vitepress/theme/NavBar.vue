@@ -37,15 +37,16 @@ const open = ref(false)
             <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
 
-          <div class="csi-sol-item csi-sol-soon">
+          <a href="/zh/cloud/" class="csi-sol-item">
             <div class="csi-sol-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
             </div>
             <div class="csi-sol-text">
-              <div class="csi-sol-title">云原生与基础设施 <span class="csi-badge-soon">即将推出</span></div>
+              <div class="csi-sol-title">云原生与基础设施</div>
               <div class="csi-sol-desc">企业云迁移 · 架构现代化升级</div>
             </div>
-          </div>
+            <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
 
           <div class="csi-sol-item csi-sol-soon">
             <div class="csi-sol-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
@@ -86,7 +87,7 @@ const open = ref(false)
   <a href="/zh/cases/" class="csi-drawer-link" @click="open=false">成功案例</a>
   <div class="csi-drawer-sep">海外解决方案</div>
   <a href="/zh/miniapp/" class="csi-drawer-link csi-drawer-sub" @click="open=false">小程序迁移方案</a>
-  <span class="csi-drawer-link csi-drawer-sub csi-drawer-dim">云原生与基础设施 <em>即将推出</em></span>
+  <a href="/zh/cloud/" class="csi-drawer-link csi-drawer-sub" @click="open=false">云原生与基础设施</a>
   <span class="csi-drawer-link csi-drawer-sub csi-drawer-dim">智慧园区解决方案 <em>即将推出</em></span>
   <a href="/zh/odc/" class="csi-drawer-link csi-drawer-sub" @click="open=false">ODC 离岸开发中心</a>
   <a href="/en/" class="csi-drawer-link csi-drawer-en">English</a>
