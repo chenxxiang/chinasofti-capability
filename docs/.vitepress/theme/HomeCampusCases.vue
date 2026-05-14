@@ -194,11 +194,11 @@
         </div>
       </div>
 
-      <!-- 主体 reverse：left=screenshots  right=info -->
-      <div class="case-main case-main-rev">
+      <!-- 主体：left=info  right=screenshots -->
+      <div class="case-main">
 
-        <!-- 右侧info（因 reverse 在 DOM 中放左边） -->
-        <div class="case-info" style="border-right:none;border-left:1px solid rgba(0,0,0,0.07);">
+        <!-- 左侧 info -->
+        <div class="case-info">
           <h3 class="sh">项目背景</h3>
           <p class="case-desc">沙捞越多媒体管理局（SMA）是马来西亚最重要的政府数字多媒体监管机构，依托马来西亚第 12 个五年计划及《智慧城市框架》推进沙捞越地区数字化建设。SIOC 项目是中软国际智慧城市解决方案<strong>首次海外落地</strong>，也是 SMA 在智慧城市领域的首次实践，以 <strong>"IOC-as-a-Service"</strong> 模式为政府管理者提供一站式城市运营服务，并通过 Citizen APP 为市民提供便捷的智慧城市体验。</p>
 
@@ -260,7 +260,7 @@
           </div>
         </div>
 
-        <!-- 左侧大截图（reverse 时视觉在右） -->
+        <!-- 右侧截图 -->
         <div class="case-screens">
           <div class="scr-label">SIOC 平台功能总览</div>
           <div class="scr-main-frame">
