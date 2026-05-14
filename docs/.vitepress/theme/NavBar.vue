@@ -152,7 +152,6 @@ function switchLang() {
   <a :href="L+'cases/cloud/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Cloud Native Cases' : '云原生迁移案例' }}</a>
   <a :href="L+'cases/campus/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Smart Campus Cases' : '智慧园区案例' }}</a>
   <a :href="L+'cases/odc/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'ODC Cases' : 'ODC 交付案例' }}</a>
-  <button @click="switchLang(); open = false" class="csi-drawer-link csi-drawer-en">{{ isEn ? '中文' : 'English' }}</button>
 </div>
 </template>
 
@@ -341,7 +340,7 @@ function switchLang() {
 @media (max-width: 900px) {
   .csi-nav { padding: 0 24px; }
   .csi-links { display: none; }
-  .csi-nav-en { display: none; }
+  .csi-nav-en { padding: 7px 14px; font-size: 0.78rem; }
   .csi-hamburger { display: flex; }
 }
 @media (max-width: 480px) {
