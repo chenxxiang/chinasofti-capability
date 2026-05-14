@@ -444,7 +444,8 @@ onMounted(() => {
 .bt { font-size:0.78rem; font-weight:800; color:#1e1b4b; margin-bottom:2px; }
 .bs { font-size:0.68rem; color:rgba(30,27,75,0.53); line-height:1.5; }
 
-/* timeline */
+/* timeline — reset global ::before from HomeAurora */
+.timeline::before { content: none !important; }
 .timeline { display:flex; flex-direction:column; }
 .tl-item { display:flex; align-items:flex-start; gap:12px; padding:7px 0 7px 16px; border-left:2px solid rgba(8,145,178,0.25); margin-left:5px; position:relative; }
 .tl-last { border-left-color:transparent; }
