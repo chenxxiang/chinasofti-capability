@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import { feature, mesh } from 'topojson-client'
 import worldData from 'world-atlas/countries-110m.json'
+import NavBar from './NavBar.vue'
 
 onMounted(() => {
   initMapTabs()
@@ -9,7 +10,6 @@ onMounted(() => {
   initWorldMap()
   initChinaMap()
   initReveal()
-  initHamburger()
 })
 
 function initMapTabs() {
@@ -375,20 +375,6 @@ async function initChinaMap() {
   })
 }
 
-function initHamburger() {
-  const btn = document.getElementById('nav-hamburger-ov-en')
-  const drawer = document.getElementById('nav-drawer-ov-en')
-  if (!btn || !drawer) return
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation()
-    drawer.classList.toggle('open')
-    btn.classList.toggle('open')
-  })
-  document.addEventListener('click', () => {
-    drawer.classList.remove('open')
-    btn.classList.remove('open')
-  })
-}
 </script>
 
 <template>
@@ -396,29 +382,7 @@ function initHamburger() {
 <div class="mesh-bg"></div>
 
 <!-- NAV -->
-<nav class="au-nav">
-  <div class="nav-logo">
-    <span class="logo-chip">CSI</span>
-    ChinaSofti · Capability
-  </div>
-  <div class="nav-links">
-    <a href="/en/">Home</a>
-    <a href="/en/miniapp-solution">Mini-App</a>
-    <a href="/en/overseas/" class="active">Overseas</a>
-    <a href="/en/business/cms/">Solutions</a>
-  </div>
-  <button class="nav-cta" onclick="window.location.href='/zh/overseas/'">中文</button>
-  <button class="nav-hamburger" id="nav-hamburger-ov-en" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="nav-drawer" id="nav-drawer-ov-en">
-  <a href="/en/">Home</a>
-  <a href="/en/miniapp-solution">Mini-App</a>
-  <a href="/en/overseas/">Overseas</a>
-  <a href="/en/business/cms/">Solutions</a>
-  <a href="/zh/overseas/" class="nav-drawer-lang">中文</a>
-</div>
+<NavBar active="overseas" />
 
 <!-- MAP SECTION -->
 <div class="ov-map-section">

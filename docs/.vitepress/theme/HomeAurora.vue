@@ -225,6 +225,50 @@ function initTabs() {
     </div>
   </div>
 
+  <!-- 深耕行业 -->
+  <div class="sec reveal">
+    <div class="sec-header">
+      <div class="sec-label-wrap">
+        <div class="sec-eyebrow">Industries</div>
+        <div class="sec-title">深耕行业</div>
+      </div>
+    </div>
+    <div class="industry-grid stagger">
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#1d4ed8,#3b82f6);--ind-grad:linear-gradient(135deg,rgba(29,78,216,0.06),transparent);--ind-shadow:rgba(29,78,216,0.28);">
+        <div class="ind-icon">🏦</div>
+        <div><div class="ind-name">金融 · 银行 · 保险</div><div class="ind-desc">移动银行、电子钱包、保险小程序，服务多家中东与东南亚银行数字化转型</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0891b2,#06b6d4);--ind-grad:linear-gradient(135deg,rgba(6,182,212,0.06),transparent);--ind-shadow:rgba(6,182,212,0.28);">
+        <div class="ind-icon">📡</div>
+        <div><div class="ind-name">通信 · 电信运营商</div><div class="ind-desc">运营商 Super App、5G 服务平台、流量运营系统，深度服务华为电信生态</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7c3aed,#a78bfa);--ind-grad:linear-gradient(135deg,rgba(124,58,237,0.06),transparent);--ind-shadow:rgba(124,58,237,0.28);">
+        <div class="ind-icon">🏛️</div>
+        <div><div class="ind-name">政务 · 智慧城市</div><div class="ind-desc">政务一站式 App、数字市民服务、跨部门数据打通，覆盖中东多国政府项目</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#d97706,#f59e0b);--ind-grad:linear-gradient(135deg,rgba(217,119,6,0.06),transparent);--ind-shadow:rgba(217,119,6,0.28);">
+        <div class="ind-icon">🏭</div>
+        <div><div class="ind-name">制造 · 工业互联</div><div class="ind-desc">工厂数字化管理、设备 IoT 接入、供应链可视化，与华为工业互联生态深度集成</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#059669,#10b981);--ind-grad:linear-gradient(135deg,rgba(5,150,105,0.06),transparent);--ind-shadow:rgba(5,150,105,0.28);">
+        <div class="ind-icon">🛒</div>
+        <div><div class="ind-name">零售 · 电商</div><div class="ind-desc">购物小程序、会员体系、精准营销推送，助力零售品牌在东南亚快速布局</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#dc2626,#f87171);--ind-grad:linear-gradient(135deg,rgba(220,38,38,0.06),transparent);--ind-shadow:rgba(220,38,38,0.25);">
+        <div class="ind-icon">🏥</div>
+        <div><div class="ind-name">医疗 · 健康</div><div class="ind-desc">医院 App、问诊预约、健康管理平台，支持 HIPAA 合规与多语言本地化部署</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0f766e,#14b8a6);--ind-grad:linear-gradient(135deg,rgba(15,118,110,0.06),transparent);--ind-shadow:rgba(15,118,110,0.25);">
+        <div class="ind-icon">🎓</div>
+        <div><div class="ind-name">教育 · 培训</div><div class="ind-desc">在线课堂、学习管理系统、证书认证平台，助力华为 ICT 人才生态建设</div></div>
+      </div>
+      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7e22ce,#c084fc);--ind-grad:linear-gradient(135deg,rgba(126,34,206,0.06),transparent);--ind-shadow:rgba(126,34,206,0.25);">
+        <div class="ind-icon">✈️</div>
+        <div><div class="ind-name">交通 · 出行</div><div class="ind-desc">出行聚合 Super App、票务预订、实时导航，覆盖公共交通数字化整合场景</div></div>
+      </div>
+    </div>
+  </div>
+
   <!-- 发展历程 -->
   <div class="sec reveal">
     <div class="sec-header">
@@ -267,50 +311,6 @@ function initTabs() {
       <div class="r-card"><div class="r-head">🌏 香港 · 国际桥头堡</div><div class="r-body">集团上市主体，专注金融科技、跨境支付与 Super App 解决方案交付，是全球化战略的核心枢纽。</div></div>
       <div class="r-card"><div class="r-head">🕌 中东 · 战略新兴市场</div><div class="r-body">沙特、UAE、科威特等国均有落地项目，已服务多家国有银行与电信运营商，深度参与数字政府建设。</div></div>
       <div class="r-card"><div class="r-head">🌴 东南亚 · 高速增长极</div><div class="r-body">深耕马来西亚、印尼、泰国等市场，提供端到端 Super App 交付，海外业务年复合增速超 30%。</div></div>
-    </div>
-  </div>
-
-  <!-- 深耕行业 -->
-  <div class="sec reveal">
-    <div class="sec-header">
-      <div class="sec-label-wrap">
-        <div class="sec-eyebrow">Industries</div>
-        <div class="sec-title">深耕行业</div>
-      </div>
-    </div>
-    <div class="industry-grid stagger">
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#1d4ed8,#3b82f6);--ind-grad:linear-gradient(135deg,rgba(29,78,216,0.06),transparent);--ind-shadow:rgba(29,78,216,0.28);">
-        <div class="ind-icon">🏦</div>
-        <div><div class="ind-name">金融 · 银行 · 保险</div><div class="ind-desc">移动银行、电子钱包、保险小程序，服务多家中东与东南亚银行数字化转型</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0891b2,#06b6d4);--ind-grad:linear-gradient(135deg,rgba(6,182,212,0.06),transparent);--ind-shadow:rgba(6,182,212,0.28);">
-        <div class="ind-icon">📡</div>
-        <div><div class="ind-name">通信 · 电信运营商</div><div class="ind-desc">运营商 Super App、5G 服务平台、流量运营系统，深度服务华为电信生态</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7c3aed,#a78bfa);--ind-grad:linear-gradient(135deg,rgba(124,58,237,0.06),transparent);--ind-shadow:rgba(124,58,237,0.28);">
-        <div class="ind-icon">🏛️</div>
-        <div><div class="ind-name">政务 · 智慧城市</div><div class="ind-desc">政务一站式 App、数字市民服务、跨部门数据打通，覆盖中东多国政府项目</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#d97706,#f59e0b);--ind-grad:linear-gradient(135deg,rgba(217,119,6,0.06),transparent);--ind-shadow:rgba(217,119,6,0.28);">
-        <div class="ind-icon">🏭</div>
-        <div><div class="ind-name">制造 · 工业互联</div><div class="ind-desc">工厂数字化管理、设备 IoT 接入、供应链可视化，与华为工业互联生态深度集成</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#059669,#10b981);--ind-grad:linear-gradient(135deg,rgba(5,150,105,0.06),transparent);--ind-shadow:rgba(5,150,105,0.28);">
-        <div class="ind-icon">🛒</div>
-        <div><div class="ind-name">零售 · 电商</div><div class="ind-desc">购物小程序、会员体系、精准营销推送，助力零售品牌在东南亚快速布局</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#dc2626,#f87171);--ind-grad:linear-gradient(135deg,rgba(220,38,38,0.06),transparent);--ind-shadow:rgba(220,38,38,0.25);">
-        <div class="ind-icon">🏥</div>
-        <div><div class="ind-name">医疗 · 健康</div><div class="ind-desc">医院 App、问诊预约、健康管理平台，支持 HIPAA 合规与多语言本地化部署</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0f766e,#14b8a6);--ind-grad:linear-gradient(135deg,rgba(15,118,110,0.06),transparent);--ind-shadow:rgba(15,118,110,0.25);">
-        <div class="ind-icon">🎓</div>
-        <div><div class="ind-name">教育 · 培训</div><div class="ind-desc">在线课堂、学习管理系统、证书认证平台，助力华为 ICT 人才生态建设</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7e22ce,#c084fc);--ind-grad:linear-gradient(135deg,rgba(126,34,206,0.06),transparent);--ind-shadow:rgba(126,34,206,0.25);">
-        <div class="ind-icon">✈️</div>
-        <div><div class="ind-name">交通 · 出行</div><div class="ind-desc">出行聚合 Super App、票务预订、实时导航，覆盖公共交通数字化整合场景</div></div>
-      </div>
     </div>
   </div>
 
