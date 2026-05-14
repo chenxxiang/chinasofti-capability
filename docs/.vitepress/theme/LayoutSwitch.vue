@@ -9,6 +9,7 @@ import HomeMiniapp from './HomeMiniapp.vue'
 import HomeMiniappEn from './HomeMiniappEn.vue'
 import HomeCases from './HomeCases.vue'
 import HomeAI from './HomeAI.vue'
+import HomeODC from './HomeODC.vue'
 
 const { frontmatter } = useData()
 </script>
@@ -22,6 +23,7 @@ const { frontmatter } = useData()
   <HomeMiniappEn v-else-if="frontmatter.layout === 'home-miniapp-en'" />
   <HomeCases v-else-if="frontmatter.layout === 'home-cases-zh'" />
   <HomeAI v-else-if="frontmatter.layout === 'home-ai-zh'" />
+  <HomeODC v-else-if="frontmatter.layout === 'home-odc-zh'" />
   <DefaultTheme.Layout v-else>
     <template #nav-bar-title-before>
       <span class="vp-logo-chip">CSI</span>
