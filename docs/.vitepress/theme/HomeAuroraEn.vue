@@ -650,7 +650,7 @@ function initTabs() {
 
 /* TIMELINE */
 .timeline { position: relative; padding-left: 4px; }
-.timeline::before { content: ''; position: absolute; left: 107px; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(to bottom, var(--blue), rgba(99,102,241,0.08)); border-radius: 2px; }
+.timeline::before { content: ''; position: absolute; left: 96px; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(to bottom, var(--blue), rgba(99,102,241,0.08)); border-radius: 2px; }
 .tl-item { display: flex; gap: 0; margin-bottom: 22px; align-items: flex-start; }
 .tl-year { min-width: 84px; text-align: right; font-size: 0.9rem; font-weight: 800; color: var(--blue); padding-top: 14px; letter-spacing: -0.01em; }
 .tl-connector { width: 40px; display: flex; justify-content: center; padding-top: 16px; flex-shrink: 0; position: relative; }
@@ -803,7 +803,7 @@ function initTabs() {
   .stat-val .u { font-size: 1rem; }
   .stat-lab { font-size: 0.75rem; margin-top: 8px; }
 
-  .timeline::before { left: 72px; }
+  .timeline::before { left: 62px; }
   .tl-year { min-width: 54px; font-size: 0.78rem; padding-top: 12px; }
   .tl-connector { width: 30px; padding-top: 14px; }
   .tl-dot { width: 13px; height: 13px; }
