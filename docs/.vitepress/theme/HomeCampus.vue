@@ -43,40 +43,31 @@ onMounted(() => {
 
 <template>
 <div class="sc-page">
+<div class="sc-mesh-bg"></div>
   <NavBar active="solutions" />
 
   <!-- ══════════════════════ HERO ══════════════════════ -->
   <section class="sc-hero">
+    <div class="sc-hero-bg"></div>
+    <div class="sc-hero-particles">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
     <div class="sc-hero-inner">
-      <div class="sc-hero-left">
-        <div class="sc-eyebrow">
-          <span class="sc-eyebrow-dot"></span>
-          IoT + AI · 园区数字化综合管理平台
-        </div>
-        <h1 class="sc-hero-title">
-          <span class="sc-hero-accent">智慧园区</span><br>解决方案
-        </h1>
-        <p class="sc-hero-desc">
-          整合门禁通行 · 停车管理 · 综合安防 · IOC大屏<br>
-          AI + IoT 全栈联动，打造安全、高效、智慧的数字化园区
-        </p>
-        <div class="sc-hero-tags">
-          <span class="sc-htag">人脸识别通行</span>
-          <span class="sc-htag">AI视频分析</span>
-          <span class="sc-htag">IoT全联接</span>
-          <span class="sc-htag">GIS室内定位</span>
-          <span class="sc-htag">Welink集成</span>
-        </div>
+      <div class="sc-hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Smart Campus · 智慧园区解决方案
       </div>
-      <div class="sc-hero-right">
-        <div class="sc-hero-img-wrap">
-          <img src="/solutions/campus/images/sc-campus-aerial.png" alt="智慧园区鸟瞰" class="sc-hero-img" />
-          <div class="sc-hero-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-            IOC智慧运营中心
-          </div>
-        </div>
+      <h1>智慧园区 <span class="sc-grad">数字化平台</span></h1>
+      <p class="sc-hero-sub">门禁通行 · 停车管理 · 综合安防 · IOC大屏 — AI + IoT 全栈联动，打造安全高效的数字化园区，人员管理效率提升 60%</p>
+      <div class="sc-hero-tags">
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15s1-1 5-1 5 1 5 1"/><circle cx="12" cy="10" r="3"/></svg> 人脸识别通行</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg> AI视频分析</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10z"/></svg> GIS室内定位</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> IOC综合大屏</span>
       </div>
+    </div>
+    <div class="sc-hero-img-wrap">
+      <img src="/solutions/campus/images/sc-campus-aerial.png" alt="智慧园区" />
     </div>
   </section>
 
@@ -624,6 +615,14 @@ onMounted(() => {
   background: #fff;
   color: #1e293b;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+.sc-mesh-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% -10%, rgba(8,145,178,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 110%, rgba(5,150,105,0.04) 0%, transparent 60%);
 }
 .sc-container {
   max-width: 1100px;
@@ -636,100 +635,69 @@ onMounted(() => {
 
 /* ── Hero ── */
 .sc-hero {
-  background: linear-gradient(140deg, #0c4a6e 0%, #0891b2 45%, #06b6d4 80%, #0891b2 100%);
-  padding: 80px 64px 70px;
+  position: relative; z-index: 1;
+  background: linear-gradient(140deg, #071520 0%, #0b2940 35%, #0d3a58 60%, #082240 82%, #051828 100%);
   min-height: 520px;
-  display: flex;
-  align-items: center;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 120px 72px 80px; gap: 40px; overflow: hidden;
 }
-.sc-hero-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  width: 100%;
+.sc-hero-bg {
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230891b2' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
-.sc-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
-  margin-bottom: 20px;
+.sc-hero-particles { position: absolute; inset: 0; pointer-events: none; }
+.sc-hero-particles span {
+  position: absolute; border-radius: 50%;
+  background: rgba(8,145,178,0.18);
+  animation: scFloat 8s ease-in-out infinite;
 }
-.sc-eyebrow-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #bae6fd;
-  box-shadow: 0 0 0 3px rgba(186,230,253,0.3);
-  animation: sc-pulse 2s infinite;
+.sc-hero-particles span:nth-child(1){width:180px;height:180px;top:-40px;right:35%;animation-delay:0s;}
+.sc-hero-particles span:nth-child(2){width:120px;height:120px;bottom:20px;left:20%;animation-delay:2s;background:rgba(6,182,212,0.12);}
+.sc-hero-particles span:nth-child(3){width:80px;height:80px;top:30%;left:55%;animation-delay:4s;background:rgba(14,165,233,0.15);}
+.sc-hero-particles span:nth-child(4){width:200px;height:200px;bottom:-60px;left:-40px;animation-delay:1s;background:rgba(29,78,216,0.15);}
+.sc-hero-particles span:nth-child(5){width:60px;height:60px;top:20%;right:10%;animation-delay:3s;background:rgba(8,145,178,0.2);}
+.sc-hero-particles span:nth-child(6){width:100px;height:100px;top:60%;left:30%;animation-delay:5s;background:rgba(5,150,105,0.12);}
+@keyframes scFloat {
+  0%,100%{transform:translateY(0) scale(1);opacity:0.6;}
+  50%{transform:translateY(-20px) scale(1.08);opacity:1;}
 }
-@keyframes sc-pulse {
-  0%,100% { box-shadow: 0 0 0 3px rgba(186,230,253,0.3); }
-  50% { box-shadow: 0 0 0 7px rgba(186,230,253,0.12); }
+.sc-hero-inner { position: relative; z-index: 2; max-width: 620px; flex: 1; }
+.sc-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px; padding: 7px 18px; margin-bottom: 24px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.7); text-transform: uppercase;
 }
-.sc-hero-title {
-  font-size: 2.9rem;
-  font-weight: 900;
-  color: #fff;
-  line-height: 1.12;
-  margin: 0 0 20px;
+.sc-hero h1 {
+  font-size: 2.8rem; font-weight: 900; line-height: 1.1;
+  color: #fff; margin-bottom: 18px; letter-spacing: -0.03em;
 }
-.sc-hero-accent {
-  background: linear-gradient(135deg, #bae6fd, #7dd3fc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.sc-grad {
+  background: linear-gradient(90deg, #38bdf8, #06b6d4, #0891b2, #38bdf8);
+  background-size: 300%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: scGrad 6s linear infinite;
 }
-.sc-hero-desc {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.82);
-  line-height: 1.7;
-  margin: 0 0 28px;
+@keyframes scGrad { 0%{background-position:0%} 100%{background-position:300%} }
+.sc-hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.72); margin-bottom: 28px; line-height: 1.7;
 }
-.sc-hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.sc-htag {
-  padding: 5px 13px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.22);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #e0f2fe;
-  backdrop-filter: blur(4px);
+.sc-hero-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.sc-hero-tags span {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px; padding: 7px 14px;
+  font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.88);
 }
 .sc-hero-img-wrap {
-  position: relative;
-  border-radius: 18px;
-  overflow: visible;
+  position: relative; z-index: 2; flex: 0 0 420px;
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
 }
-.sc-hero-img {
-  width: 100%;
-  border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-  display: block;
-}
-.sc-hero-badge {
-  position: absolute;
-  bottom: -14px;
-  right: 20px;
-  background: rgba(255,255,255,0.95);
-  border-radius: 10px;
-  padding: 8px 14px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #0c4a6e;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
+.sc-hero-img-wrap img { width: 100%; height: 280px; object-fit: cover; display: block; }
 
 /* ── Stats ── */
 .sc-stats-bar {
