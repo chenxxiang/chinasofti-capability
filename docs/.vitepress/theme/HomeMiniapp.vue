@@ -323,7 +323,7 @@ function initCounters() {
           覆盖内容分发、积分激励、IoT 接入、小程序迁移、AI 智能体、餐饮聚合等企业核心业务场景，提供完整端到端方案。
         </div>
         <div class="mn-dir-grid">
-          <a href="/zh/business/cms/" class="mn-dir-card mn-dir-blue">
+          <a href="/zh/business/cms/" class="mn-dir-card mn-dir-blue" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.87v6.26a1 1 0 0 1-1.447.894L15 14"/><rect x="2" y="6" width="13" height="12" rx="2"/></svg></div>
             <div class="mn-dir-info">
               <h4>内容分发平台</h4>
@@ -331,7 +331,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/business/loyalty/" class="mn-dir-card mn-dir-blue">
+          <a href="/zh/business/loyalty/" class="mn-dir-card mn-dir-blue" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <div class="mn-dir-info">
               <h4>积分激励平台</h4>
@@ -339,7 +339,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/business/iot/" class="mn-dir-card mn-dir-blue">
+          <a href="/zh/business/iot/" class="mn-dir-card mn-dir-blue" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
             <div class="mn-dir-info">
               <h4>物联网平台</h4>
@@ -347,7 +347,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/business/migration/" class="mn-dir-card mn-dir-blue">
+          <a href="/zh/business/migration/" class="mn-dir-card mn-dir-blue" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" stroke-linecap="round"/></svg></div>
             <div class="mn-dir-info">
               <h4>企业小程序方案</h4>
@@ -355,7 +355,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/business/ai-agent/" class="mn-dir-card mn-dir-blue">
+          <a href="/zh/business/ai-agent/" class="mn-dir-card mn-dir-blue" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
             <div class="mn-dir-info">
               <h4>AI 智能体</h4>
@@ -363,7 +363,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/business/ordering/" class="mn-dir-card mn-dir-blue">
+          <a href="/zh/business/ordering/" class="mn-dir-card mn-dir-blue" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
             <div class="mn-dir-info">
               <h4>餐饮点餐聚合平台</h4>
@@ -380,7 +380,7 @@ function initCounters() {
           覆盖 EV 充电、交通出行、电商购物、餐饮、票务等高频生活场景，快速接入 Super App 生态，触达更广用户群体。
         </div>
         <div class="mn-dir-grid">
-          <a href="/zh/lifestyle/charging/" class="mn-dir-card mn-dir-purple">
+          <a href="/zh/lifestyle/charging/" class="mn-dir-card mn-dir-purple" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.19M15 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3.19"/><line x1="23" y1="13" x2="23" y2="11"/><polyline points="11 6 7 12 13 12 9 18"/></svg></div>
             <div class="mn-dir-info">
               <h4>充电平台</h4>
@@ -388,7 +388,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/lifestyle/transit/" class="mn-dir-card mn-dir-purple">
+          <a href="/zh/lifestyle/transit/" class="mn-dir-card mn-dir-purple" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
             <div class="mn-dir-info">
               <h4>交通卡</h4>
@@ -396,7 +396,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/lifestyle/ecommerce/" class="mn-dir-card mn-dir-purple">
+          <a href="/zh/lifestyle/ecommerce/" class="mn-dir-card mn-dir-purple" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
             <div class="mn-dir-info">
               <h4>电商交易平台</h4>
@@ -404,7 +404,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/lifestyle/catering/" class="mn-dir-card mn-dir-purple">
+          <a href="/zh/lifestyle/catering/" class="mn-dir-card mn-dir-purple" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
             <div class="mn-dir-info">
               <h4>餐饮点餐聚合平台</h4>
@@ -412,7 +412,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/lifestyle/ticketing/" class="mn-dir-card mn-dir-purple">
+          <a href="/zh/lifestyle/ticketing/" class="mn-dir-card mn-dir-purple" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z"/></svg></div>
             <div class="mn-dir-info">
               <h4>票务系统</h4>
@@ -429,7 +429,7 @@ function initCounters() {
           基于合规安全体系，覆盖区块链存证、财富管理投资、E-KYC 身份核验等核心金融场景，支持多语言 GUI 定制。
         </div>
         <div class="mn-dir-grid mn-dir-grid-3">
-          <a href="/zh/finance/blockchain/" class="mn-dir-card mn-dir-cyan">
+          <a href="/zh/finance/blockchain/" class="mn-dir-card mn-dir-cyan" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3" stroke-linecap="round"/></svg></div>
             <div class="mn-dir-info">
               <h4>区块链平台集成</h4>
@@ -437,7 +437,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/finance/wealth/" class="mn-dir-card mn-dir-cyan">
+          <a href="/zh/finance/wealth/" class="mn-dir-card mn-dir-cyan" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
             <div class="mn-dir-info">
               <h4>财富管理</h4>
@@ -445,7 +445,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/finance/ekyc/" class="mn-dir-card mn-dir-cyan">
+          <a href="/zh/finance/ekyc/" class="mn-dir-card mn-dir-cyan" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <div class="mn-dir-info">
               <h4>E-KYC</h4>
@@ -462,7 +462,7 @@ function initCounters() {
           即时通讯与游戏接入，打造高互动社交娱乐生态，支持私信、群聊、直播互动、游戏竞技等场景深度集成。
         </div>
         <div class="mn-dir-grid mn-dir-grid-2">
-          <a href="/zh/social/im/" class="mn-dir-card mn-dir-amber">
+          <a href="/zh/social/im/" class="mn-dir-card mn-dir-amber" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
             <div class="mn-dir-info">
               <h4>即时通讯平台 IM</h4>
@@ -470,7 +470,7 @@ function initCounters() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/zh/social/game/" class="mn-dir-card mn-dir-amber">
+          <a href="/zh/social/game/" class="mn-dir-card mn-dir-amber" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.556 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.444-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></div>
             <div class="mn-dir-info">
               <h4>游戏接入与管理平台</h4>
