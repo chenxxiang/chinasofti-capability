@@ -48,15 +48,16 @@ const open = ref(false)
             <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
 
-          <div class="csi-sol-item csi-sol-soon">
+          <a href="/zh/campus/" class="csi-sol-item">
             <div class="csi-sol-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
             <div class="csi-sol-text">
-              <div class="csi-sol-title">智慧园区解决方案 <span class="csi-badge-soon">即将推出</span></div>
+              <div class="csi-sol-title">智慧园区解决方案</div>
               <div class="csi-sol-desc">IoT + AI · 园区数字化综合管理</div>
             </div>
-          </div>
+            <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
 
           <a href="/zh/odc/" class="csi-sol-item">
             <div class="csi-sol-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
@@ -88,7 +89,7 @@ const open = ref(false)
   <div class="csi-drawer-sep">海外解决方案</div>
   <a href="/zh/miniapp/" class="csi-drawer-link csi-drawer-sub" @click="open=false">小程序迁移方案</a>
   <a href="/zh/cloud/" class="csi-drawer-link csi-drawer-sub" @click="open=false">云原生与基础设施</a>
-  <span class="csi-drawer-link csi-drawer-sub csi-drawer-dim">智慧园区解决方案 <em>即将推出</em></span>
+  <a href="/zh/campus/" class="csi-drawer-link csi-drawer-sub" @click="open=false">智慧园区解决方案</a>
   <a href="/zh/odc/" class="csi-drawer-link csi-drawer-sub" @click="open=false">ODC 离岸开发中心</a>
   <a href="/en/" class="csi-drawer-link csi-drawer-en">English</a>
 </div>
