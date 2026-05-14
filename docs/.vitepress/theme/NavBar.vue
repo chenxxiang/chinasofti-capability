@@ -29,8 +29,8 @@ const open = ref(false)
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" stroke-linecap="round"/></svg>
             </div>
             <div class="csi-sol-text">
-              <div class="csi-sol-title">小程序迁移案例</div>
-              <div class="csi-sol-desc">AIIB · 微信小程序出海实战</div>
+              <div class="csi-sol-title">企业小程序案例</div>
+              <div class="csi-sol-desc">金融级 · 华为平台 · 蚂蚁 mPaaS</div>
             </div>
             <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
@@ -79,8 +79,8 @@ const open = ref(false)
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" stroke-linecap="round"/></svg>
             </div>
             <div class="csi-sol-text">
-              <div class="csi-sol-title">小程序迁移方案</div>
-              <div class="csi-sol-desc">微信小程序 · 跨端适配与海外发布</div>
+              <div class="csi-sol-title">企业小程序方案</div>
+              <div class="csi-sol-desc">华为平台 · 蚂蚁 mPaaS · 端到端交付</div>
             </div>
             <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
@@ -139,7 +139,7 @@ const open = ref(false)
   <a href="/zh/cases/campus/" class="csi-drawer-link csi-drawer-sub" @click="open=false">智慧园区案例</a>
   <a href="/zh/cases/odc/" class="csi-drawer-link csi-drawer-sub" @click="open=false">ODC 交付案例</a>
   <div class="csi-drawer-sep">海外解决方案</div>
-  <a href="/zh/miniapp/" class="csi-drawer-link csi-drawer-sub" @click="open=false">小程序迁移方案</a>
+  <a href="/zh/miniapp/" class="csi-drawer-link csi-drawer-sub" @click="open=false">企业小程序方案</a>
   <a href="/zh/cloud/" class="csi-drawer-link csi-drawer-sub" @click="open=false">云原生与基础设施</a>
   <a href="/zh/campus/" class="csi-drawer-link csi-drawer-sub" @click="open=false">智慧园区解决方案</a>
   <a href="/zh/odc/" class="csi-drawer-link csi-drawer-sub" @click="open=false">ODC 离岸开发中心</a>
