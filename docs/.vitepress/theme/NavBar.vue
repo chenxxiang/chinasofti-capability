@@ -152,7 +152,7 @@ function switchLang() {
   <a :href="L+'cases/cloud/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Cloud Native Cases' : '云原生迁移案例' }}</a>
   <a :href="L+'cases/campus/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Smart Campus Cases' : '智慧园区案例' }}</a>
   <a :href="L+'cases/odc/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'ODC Cases' : 'ODC 交付案例' }}</a>
-  <button @click="switchLang;open=false" class="csi-drawer-link csi-drawer-en">{{ isEn ? '中文' : 'English' }}</button>
+  <button @click="switchLang(); open = false" class="csi-drawer-link csi-drawer-en">{{ isEn ? '中文' : 'English' }}</button>
 </div>
 </template>
 
@@ -330,7 +330,12 @@ function switchLang() {
 .csi-drawer-dim { color: #94a3b8; cursor: default; }
 .csi-drawer-dim:hover { background: none; color: #94a3b8; }
 .csi-drawer-dim em { font-style: normal; font-size: 0.75em; }
-.csi-drawer-en { color: #1d4ed8; font-weight: 700; }
+.csi-drawer-en {
+  color: #1d4ed8; font-weight: 700;
+  border: none; background: none; cursor: pointer;
+  width: 100%; text-align: left;
+  font-family: 'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;
+}
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
