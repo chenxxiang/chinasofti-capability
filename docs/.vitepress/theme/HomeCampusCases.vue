@@ -162,6 +162,10 @@
               </div>
             </div>
           </div>
+
+          <!-- 数据分析大屏 -->
+          <div class="scr-label" style="margin-top:18px;">数据分析与人流洞察</div>
+          <img src="/cases/campus-kaitak-analytics.png" alt="启德数据分析大屏" class="scr-img-full" style="border-radius:10px;border:1px solid rgba(99,102,241,0.18);box-shadow:0 4px 18px rgba(99,102,241,0.15);" />
         </div>
       </div>
 
@@ -280,17 +284,17 @@
           </div>
 
           <div class="scr-label" style="margin-top:16px;">专项子系统截图</div>
-          <div class="scr-trio">
-            <div class="scr-trio-item">
-              <img src="/cases/campus-sarawak-security.jpeg" alt="安防监控" class="scr-trio-img" />
+          <div class="scr-stack">
+            <div class="scr-stack-item">
+              <img src="/cases/campus-sarawak-security.jpeg" alt="安防监控" class="scr-stack-img" />
               <div class="scr-duo-cap">安防 · 人脸识别</div>
             </div>
-            <div class="scr-trio-item">
-              <img src="/cases/campus-sarawak-traffic.jpeg" alt="交通监控" class="scr-trio-img" />
+            <div class="scr-stack-item">
+              <img src="/cases/campus-sarawak-traffic.jpeg" alt="交通监控" class="scr-stack-img" />
               <div class="scr-duo-cap">交通 · 车辆识别</div>
             </div>
-            <div class="scr-trio-item">
-              <img src="/cases/campus-sarawak-app.jpeg" alt="Citizen APP" class="scr-trio-img" />
+            <div class="scr-stack-item">
+              <img src="/cases/campus-sarawak-app.jpeg" alt="Citizen APP" class="scr-stack-img" />
               <div class="scr-duo-cap">Citizen APP</div>
             </div>
           </div>
@@ -487,10 +491,14 @@ onMounted(() => {
 .scr-duo-img { width:100%; display:block; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.14); border:1px solid rgba(0,0,0,0.07); object-fit:cover; object-position:top; height:150px; }
 .scr-duo-cap { font-size:0.62rem; font-weight:700; color:rgba(30,27,75,0.44); text-align:center; margin-top:5px; letter-spacing:0.04em; }
 
-/* Sarawak: trio row */
+/* Sarawak: trio row (legacy, kept for reference) */
 .scr-trio { display:flex; gap:8px; }
 .scr-trio-item { flex:1; min-width:0; }
 .scr-trio-img { width:100%; display:block; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,0.13); border:1px solid rgba(0,0,0,0.07); object-fit:cover; object-position:top; height:120px; }
+/* Sarawak: vertical stack */
+.scr-stack { display:flex; flex-direction:column; gap:8px; }
+.scr-stack-item { width:100%; }
+.scr-stack-img { width:100%; display:block; border-radius:9px; box-shadow:0 4px 16px rgba(0,0,0,0.14); border:1px solid rgba(0,0,0,0.07); object-fit:cover; object-position:top; height:170px; }
 
 /* ===== FOOTER ===== */
 .cpc-footer { position:relative; z-index:1; background:white; border-top:1px solid rgba(29,78,216,0.08); padding:44px 72px; display:flex; justify-content:space-between; align-items:center; }
