@@ -196,12 +196,15 @@ function initTabs() {
 
 <!-- CAPABILITY STRIP -->
 <div class="cap-strip">
-  <div class="cap-item"><span class="cap-icon">🤖</span>AI Innovation Lab</div>
-  <div class="cap-item"><span class="cap-icon">📱</span>Super App Full-Stack</div>
-  <div class="cap-item"><span class="cap-icon">☁️</span>HarmonyOS Ecosystem</div>
-  <div class="cap-item"><span class="cap-icon">💻</span>Cloud-Native & Infrastructure</div>
-  <div class="cap-item"><span class="cap-icon">🏙️</span>Smart City / Campus</div>
-  <div class="cap-item"><span class="cap-icon">🌐</span>ODC Offshore Dev Center</div>
+  <div class="cap-item"><span class="cap-icon">🤖</span><span class="cap-label">AI</span></div>
+  <div class="cap-item"><span class="cap-icon">☁️</span><span class="cap-label">Cloud Services</span></div>
+  <div class="cap-item"><span class="cap-icon">📊</span><span class="cap-label">Big Data</span></div>
+  <div class="cap-item"><span class="cap-icon">💻</span><span class="cap-label">App Development</span></div>
+  <div class="cap-item"><span class="cap-icon">⚙️</span><span class="cap-label">Managed Services</span></div>
+  <div class="cap-item"><span class="cap-icon">💡</span><span class="cap-label">Consulting</span></div>
+  <div class="cap-item"><span class="cap-icon">🔶</span><span class="cap-label">HarmonyOS</span></div>
+  <div class="cap-item"><span class="cap-icon">🏙️</span><span class="cap-label">Smart City</span></div>
+  <div class="cap-item"><span class="cap-icon">🌐</span><span class="cap-label">ODC</span></div>
 </div>
 
 <!-- BODY -->
@@ -610,16 +613,32 @@ function initTabs() {
 .cap-strip {
   position: relative; z-index: 1;
   background: linear-gradient(135deg, var(--blue), var(--indigo), var(--purple));
-  padding: 22px 72px; display: flex; justify-content: center; align-items: center; gap: 0;
-  flex-wrap: wrap; overflow: hidden;
+  padding: 22px 48px; display: flex; justify-content: center; align-items: center;
+  gap: 10px; flex-wrap: wrap; overflow: hidden;
 }
 .cap-strip::before {
   content: ''; position: absolute; inset: 0;
   background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
-.cap-item { position: relative; z-index: 1; display: flex; align-items: center; gap: 10px; padding: 8px 36px; color: rgba(255,255,255,0.9); font-size: 1rem; font-weight: 600; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); }
-.cap-item:last-child { border-right: none; }
-.cap-icon { font-size: 1.2rem; }
+.cap-item {
+  position: relative; z-index: 1; display: flex; align-items: center; gap: 8px;
+  padding: 8px 20px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.95); font-size: 0.97rem; font-weight: 600;
+  white-space: nowrap; cursor: default;
+  transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+  backdrop-filter: blur(8px);
+}
+.cap-item:hover {
+  background: rgba(255,255,255,0.26);
+  border-color: rgba(255,255,255,0.5);
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255,255,255,0.18);
+}
+.cap-icon { font-size: 1.15rem; line-height: 1; }
+.cap-label { letter-spacing: 0.01em; }
 
 /* BODY */
 .page-body { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 0 72px 100px; }
@@ -786,10 +805,9 @@ function initTabs() {
   .h-badge { font-size: 0.72rem; padding: 7px 11px; }
   .scroll-hint { display: none; }
 
-  .cap-strip { padding: 12px 16px; gap: 0; }
-  .cap-item { padding: 6px 8px; font-size: 0.68rem; border-right: none; width: 50%; justify-content: center; white-space: normal; text-align: center; overflow: hidden; line-height: 1.3; }
-  .cap-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
-  .cap-icon { font-size: 1rem; flex-shrink: 0; }
+  .cap-strip { padding: 16px 20px; gap: 8px; }
+  .cap-item { padding: 6px 14px; font-size: 0.8rem; }
+  .cap-icon { font-size: 1rem; }
 
   .page-body { padding: 0 16px 56px; }
   .sec { padding: 40px 0; }
