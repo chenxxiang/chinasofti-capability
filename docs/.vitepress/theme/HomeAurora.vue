@@ -464,6 +464,7 @@ function initTabs() {
       <div class="cert-card"><img src="/images/certs/cloud-mgmt-cert.jpeg" alt="云管理"><div class="cert-label">云管理服务能力评估证书 · 卓越级</div></div>
       <div class="cert-card"><img src="/images/certs/gartner-top100.png" alt="Gartner"><div class="cert-label">Gartner 全球 IT 服务市场份额 TOP 100</div></div>
       <div class="cert-card"><img src="/images/certs/china-it-top100.png" alt="中国软件百强"><div class="cert-label">2020 软件和信息技术服务竞争力百强企业</div></div>
+      <div class="cert-card"><img src="/images/certs/iso27701-cert.jpg" alt="ISO 27701"><div class="cert-label">ISO/IEC 27701:2019 · 隐私信息管理体系</div></div>
     </div>
   </div>
 
