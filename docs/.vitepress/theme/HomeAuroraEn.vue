@@ -466,6 +466,7 @@ function initTabs() {
       <div class="cert-card"><img src="/images/certs/cloud-mgmt-cert.jpeg" alt="Cloud Management"><div class="cert-label">Cloud Management Service Capability · Elite</div></div>
       <div class="cert-card"><img src="/images/certs/gartner-top100.png" alt="Gartner"><div class="cert-label">Gartner Global IT Services Market Share TOP 100</div></div>
       <div class="cert-card"><img src="/images/certs/china-it-top100.png" alt="China IT Top 100"><div class="cert-label">2020 China Software & IT Services Top 100</div></div>
+      <div class="cert-card"><img src="/images/certs/iso27001-cert.jpg" alt="ISO 27001"><div class="cert-label">ISO/IEC 27001:2013 · Information Security Management</div></div>
       <div class="cert-card"><img src="/images/certs/iso27701-cert.jpg" alt="ISO 27701"><div class="cert-label">ISO/IEC 27701:2019 · Privacy Information Management</div></div>
     </div>
   </div>
