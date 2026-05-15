@@ -487,33 +487,77 @@ function initCounters() {
       </div>
     </div>
 
-    <div class="mn-flow-imgs">
-      <div class="mn-flow-img-block">
-        <div class="mn-flow-img-header">
-          <div class="mn-flow-img-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <div>
-            <div class="mn-flow-img-title">End-to-End Delivery Process</div>
-            <div class="mn-flow-img-sub">M Platform Deploy · SDK Integration · Mini-App Launch</div>
-          </div>
+    <!-- CI/CD Pipeline -->
+    <div class="mn-cicd-card">
+      <div class="mn-flow-img-header">
+        <div class="mn-flow-img-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
-        <div class="mn-flow-img-wrap">
-          <img src="/solutions/miniapp/images/delivery-flow-new.png" alt="E2E Delivery Process" />
+        <div>
+          <div class="mn-flow-img-title">End-to-End Delivery Pipeline</div>
+          <div class="mn-flow-img-sub">Code · Branch Build · Integration Test · Release — Full CI/CD Pipeline</div>
         </div>
       </div>
-      <div class="mn-flow-img-block">
-        <div class="mn-flow-img-header">
-          <div class="mn-flow-img-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+
+      <div class="mn-cicd-body">
+        <div class="mn-cicd-meta">
+          <div class="mn-cicd-inp-row">
+            <span class="mn-cicd-inp">Requirements</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#94a3b8;"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            <span class="mn-cicd-inp">Project | Features</span>
           </div>
-          <div>
-            <div class="mn-flow-img-title">Standardized Customization Process</div>
-            <div class="mn-flow-img-sub">Based on MM App Baseline · Rapid Customization · Multi-language GUI</div>
+          <div class="mn-cicd-dm-note">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Defect management spans branch &amp; integration phases
           </div>
         </div>
-        <div class="mn-flow-img-wrap">
-          <img src="/solutions/miniapp/images/customization-flow-new.png" alt="Standardized Customization Process" />
+
+        <div class="mn-cicd-scroll">
+          <div class="mn-cicd-grid">
+            <div class="mn-cicd-dm1">Defect Mgmt</div>
+            <div class="mn-cicd-dm2">Defect Mgmt</div>
+            <div class="mn-cicd-conn"></div>
+            <div class="mn-cicd-st" style="grid-column:1;">
+              <div class="mn-cicd-dot" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);"></div>
+              <div class="mn-cicd-sn">Write Code</div>
+              <div class="mn-cicd-tools"><span>Xcode</span><span>Android Studio</span></div>
+            </div>
+            <div class="mn-cicd-st" style="grid-column:2;">
+              <div class="mn-cicd-dot" style="background:linear-gradient(135deg,#4f46e5,#818cf8);"></div>
+              <div class="mn-cicd-sn">Code Mgmt</div>
+              <div class="mn-cicd-tools"><span>Git</span><span>Maven</span></div>
+            </div>
+            <div class="mn-cicd-st" style="grid-column:3;">
+              <div class="mn-cicd-dot" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"></div>
+              <div class="mn-cicd-sn">Branch Build</div>
+              <div class="mn-cicd-tools"><span>Jenkins</span></div>
+            </div>
+            <div class="mn-cicd-st" style="grid-column:4;">
+              <div class="mn-cicd-dot" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"></div>
+              <div class="mn-cicd-sn">Branch Test</div>
+              <div class="mn-cicd-tools"><span>Manual</span><span>Automated</span></div>
+            </div>
+            <div class="mn-cicd-st" style="grid-column:5;">
+              <div class="mn-cicd-dot" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"></div>
+              <div class="mn-cicd-sn">Branch Merge</div>
+              <div class="mn-cicd-tools"><span>Baseline Mgmt</span></div>
+            </div>
+            <div class="mn-cicd-st" style="grid-column:6;">
+              <div class="mn-cicd-dot" style="background:linear-gradient(135deg,#0891b2,#06b6d4);"></div>
+              <div class="mn-cicd-sn">Integ. Build</div>
+              <div class="mn-cicd-tools"><span>Jenkins</span></div>
+            </div>
+            <div class="mn-cicd-st" style="grid-column:7;">
+              <div class="mn-cicd-dot" style="background:linear-gradient(135deg,#0891b2,#06b6d4);"></div>
+              <div class="mn-cicd-sn">Integ. Test</div>
+              <div class="mn-cicd-tools"><span>Manual</span><span>Automated</span></div>
+            </div>
+            <div class="mn-cicd-st mn-cicd-st-last" style="grid-column:8;">
+              <div class="mn-cicd-dot" style="background:linear-gradient(135deg,#059669,#10b981);"></div>
+              <div class="mn-cicd-sn">Release</div>
+              <div class="mn-cicd-tools"><span>Release Platform</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -632,9 +676,138 @@ function initCounters() {
       </div>
     </div>
 
-    <div class="mn-cap-img reveal">
-      <img src="/solutions/miniapp/images/process-monitoring.png" alt="Process Monitoring System" />
-      <div class="mn-img-cap">Process Monitoring System</div>
+    <!-- Dual-Layer Timeline: Client Milestones ↔ Internal R&D -->
+    <div class="mn-dual-tl reveal">
+
+      <!-- ① Client Delivery Milestones -->
+      <div class="mn-dtl-client">
+        <div class="mn-dtl-head">
+          <div class="mn-dtl-head-dot" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);"></div>
+          <span>Client Delivery Milestones</span>
+        </div>
+        <div class="mn-dtl-ms-row">
+          <div class="mn-dtl-ms">
+            <div class="mn-dtl-ms-num" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">1</div>
+            <div class="mn-dtl-ms-title">Delivery Prep</div>
+            <div class="mn-dtl-ms-desc">FRS clarification · UE/UI design<br>Custom dev · System test</div>
+          </div>
+          <div class="mn-dtl-ms-arr">→</div>
+          <div class="mn-dtl-ms">
+            <div class="mn-dtl-ms-num" style="background:linear-gradient(135deg,#4f46e5,#818cf8);">2</div>
+            <div class="mn-dtl-ms-title">Install &amp; Commission</div>
+            <div class="mn-dtl-ms-desc">PR/DR review<br>IOT · Performance test</div>
+          </div>
+          <div class="mn-dtl-ms-arr">→</div>
+          <div class="mn-dtl-ms">
+            <div class="mn-dtl-ms-num" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">3</div>
+            <div class="mn-dtl-ms-title">UAT</div>
+            <div class="mn-dtl-ms-desc">User acceptance test<br>E2E scenarios · Report</div>
+          </div>
+          <div class="mn-dtl-ms-arr">→</div>
+          <div class="mn-dtl-ms">
+            <div class="mn-dtl-ms-num" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">4</div>
+            <div class="mn-dtl-ms-title">Go-Live</div>
+            <div class="mn-dtl-ms-desc">System check · Pilot run<br>PAC sign-off</div>
+          </div>
+          <div class="mn-dtl-ms-arr">→</div>
+          <div class="mn-dtl-ms">
+            <div class="mn-dtl-ms-num" style="background:linear-gradient(135deg,#059669,#10b981);">5</div>
+            <div class="mn-dtl-ms-title">O&amp;M Support</div>
+            <div class="mn-dtl-ms-desc">Ongoing operations<br>O&amp;M services</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bridge -->
+      <div class="mn-dtl-bridge">
+        <div class="mn-dtl-br-l"></div>
+        <div class="mn-dtl-br-center">
+          <span class="mn-dtl-br-tag mn-dtl-br-tag-blue">Client View</span>
+          <svg width="14" height="18" viewBox="0 0 14 18" fill="none" style="color:#94a3b8;flex-shrink:0;">
+            <path d="M7 0v18M2 13l5 5 5-5M2 5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="mn-dtl-br-tag mn-dtl-br-tag-purple">Internal R&amp;D</span>
+        </div>
+        <div class="mn-dtl-br-l"></div>
+      </div>
+
+      <!-- ② Internal R&D Phases -->
+      <div class="mn-dtl-rd">
+        <div class="mn-dtl-head">
+          <div class="mn-dtl-head-dot" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"></div>
+          <span>Internal R&amp;D Phases &amp; CP Quality Gates</span>
+        </div>
+        <div class="mn-dtl-phases-outer">
+          <div class="mn-dtl-phases">
+            <div class="mn-dtl-ph">
+              <div class="mn-dtl-cp-slot"></div>
+              <div class="mn-dtl-ph-dot"></div>
+              <div class="mn-dtl-ph-name">Kickoff</div>
+              <div class="mn-dtl-ph-desc">Kickoff meeting<br>Project plan<br>Quality strategy</div>
+            </div>
+            <div class="mn-dtl-ph">
+              <div class="mn-dtl-cp-slot"></div>
+              <div class="mn-dtl-ph-dot"></div>
+              <div class="mn-dtl-ph-name">Planning</div>
+              <div class="mn-dtl-ph-desc">Req. roadmap<br>Arch. roadmap<br>Iteration plan</div>
+            </div>
+            <div class="mn-dtl-ph mn-dtl-ph-cp">
+              <div class="mn-dtl-cp-badge">CP1</div>
+              <div class="mn-dtl-ph-dot mn-dtl-ph-dot-cp"></div>
+              <div class="mn-dtl-ph-name">Requirements</div>
+              <div class="mn-dtl-ph-desc">PRD<br>Prototype<br>Work packages</div>
+            </div>
+            <div class="mn-dtl-ph">
+              <div class="mn-dtl-cp-slot"></div>
+              <div class="mn-dtl-ph-dot"></div>
+              <div class="mn-dtl-ph-name">Design</div>
+              <div class="mn-dtl-ph-desc">Visual design<br>HLD / LLD<br>Test plan design</div>
+            </div>
+            <div class="mn-dtl-ph">
+              <div class="mn-dtl-cp-slot"></div>
+              <div class="mn-dtl-ph-dot"></div>
+              <div class="mn-dtl-ph-name">Development</div>
+              <div class="mn-dtl-ph-desc">Static scan<br>Code review<br>Dev self-test</div>
+            </div>
+            <div class="mn-dtl-ph">
+              <div class="mn-dtl-cp-slot"></div>
+              <div class="mn-dtl-ph-dot"></div>
+              <div class="mn-dtl-ph-name">Integration</div>
+              <div class="mn-dtl-ph-desc">Integ. verification<br>Integ. debugging</div>
+            </div>
+            <div class="mn-dtl-ph mn-dtl-ph-cp">
+              <div class="mn-dtl-cp-badge">CP2</div>
+              <div class="mn-dtl-ph-dot mn-dtl-ph-dot-cp"></div>
+              <div class="mn-dtl-ph-name">Testing</div>
+              <div class="mn-dtl-ph-desc">Functional / Compat.<br>Integ. / Perf. test</div>
+            </div>
+            <div class="mn-dtl-ph mn-dtl-ph-cp">
+              <div class="mn-dtl-cp-badge">CP3</div>
+              <div class="mn-dtl-ph-dot mn-dtl-ph-dot-cp"></div>
+              <div class="mn-dtl-ph-name">Release</div>
+              <div class="mn-dtl-ph-desc">Launch<br>Online verification<br>Online patrol</div>
+            </div>
+            <div class="mn-dtl-ph">
+              <div class="mn-dtl-cp-slot"></div>
+              <div class="mn-dtl-ph-dot mn-dtl-ph-dot-end"></div>
+              <div class="mn-dtl-ph-name">Acceptance</div>
+              <div class="mn-dtl-ph-desc">Source code<br>Product / Tech docs<br>Other materials</div>
+            </div>
+          </div>
+        </div>
+        <div class="mn-dtl-qbars">
+          <div class="mn-dtl-qbar" style="margin-left:0;width:100%;background:linear-gradient(90deg,rgba(29,78,216,0.1),rgba(29,78,216,0.04));">
+            <span>Full-cycle project monitoring &amp; audit</span>
+          </div>
+          <div class="mn-dtl-qbar" style="margin-left:22%;width:78%;background:linear-gradient(90deg,rgba(124,58,237,0.1),rgba(124,58,237,0.04));">
+            <span>R&amp;D process quality control — entry/exit criteria</span>
+          </div>
+          <div class="mn-dtl-qbar" style="margin-left:44%;width:34%;background:linear-gradient(90deg,rgba(8,145,178,0.1),rgba(8,145,178,0.04));">
+            <span>Dev quality assurance &amp; metrics analysis</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1119,5 +1292,159 @@ function initCounters() {
   .mn-sec-title { font-size: 1.4rem; }
   .mn-ucd-feat-grid { grid-template-columns: 1fr; }
   .mn-pm-cards { grid-template-columns: 1fr; }
+  .mn-dtl-ms { min-width: 100%; flex: none; }
+}
+
+/* ── CI/CD PIPELINE CARD ── */
+.mn-cicd-card {
+  background: var(--card-bg); border: 1px solid rgba(29,78,216,0.09);
+  border-radius: 16px; box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 44px;
+}
+.mn-cicd-body { padding: 20px 24px 28px; }
+.mn-cicd-meta {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 14px; flex-wrap: wrap;
+}
+.mn-cicd-inp-row { display: flex; align-items: center; gap: 8px; }
+.mn-cicd-inp {
+  background: rgba(29,78,216,0.07); color: #1d4ed8;
+  font-size: 0.72rem; font-weight: 700;
+  border: 1px solid rgba(29,78,216,0.14); border-radius: 6px; padding: 3px 9px;
+}
+.mn-cicd-dm-note { display: flex; align-items: center; gap: 5px; font-size: 0.68rem; font-weight: 600; color: var(--text3); }
+.mn-cicd-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.mn-cicd-grid {
+  display: grid; grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 22px 1fr; min-width: 580px;
+  position: relative; padding-bottom: 8px;
+}
+.mn-cicd-dm1 {
+  grid-column: 3 / 6; grid-row: 1;
+  background: rgba(124,58,237,0.07); border: 1px solid rgba(124,58,237,0.18);
+  border-radius: 4px; margin: 0 4px;
+  font-size: 0.6rem; font-weight: 700; color: #7c3aed;
+  display: flex; align-items: center; justify-content: center; letter-spacing: 0.05em;
+}
+.mn-cicd-dm2 {
+  grid-column: 6 / 8; grid-row: 1;
+  background: rgba(8,145,178,0.07); border: 1px solid rgba(8,145,178,0.18);
+  border-radius: 4px; margin: 0 4px;
+  font-size: 0.6rem; font-weight: 700; color: #0891b2;
+  display: flex; align-items: center; justify-content: center; letter-spacing: 0.05em;
+}
+.mn-cicd-conn {
+  grid-column: 1 / 9; grid-row: 2;
+  align-self: start; margin-top: 21px; height: 2px; pointer-events: none; z-index: 0;
+  background: linear-gradient(90deg, #3b82f6, #7c3aed, #06b6d4, #10b981);
+}
+.mn-cicd-st {
+  grid-row: 2; display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 6px; padding: 8px 4px 0; position: relative; z-index: 1;
+}
+.mn-cicd-st:not(.mn-cicd-st-last)::after {
+  content: '›'; font-size: 1.2rem; color: #94a3b8;
+  position: absolute; right: -9px; top: 14px; z-index: 3; line-height: 1;
+}
+.mn-cicd-dot {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  border: 2.5px solid var(--card-bg); box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+}
+.mn-cicd-sn { font-size: 0.72rem; font-weight: 800; color: var(--text1); white-space: nowrap; }
+.mn-cicd-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; }
+.mn-cicd-tools span {
+  font-size: 0.58rem; font-weight: 600; color: var(--text3);
+  background: var(--vp-c-bg-soft, #f8fafc); border: 1px solid var(--border);
+  border-radius: 4px; padding: 1px 5px; white-space: nowrap;
+}
+
+/* ── DUAL-LAYER TIMELINE ── */
+.mn-dual-tl {
+  margin-top: 32px; background: var(--card-bg);
+  border: 1px solid rgba(29,78,216,0.09); border-radius: 20px;
+  overflow: hidden; box-shadow: var(--shadow-lg);
+}
+.mn-dtl-client {
+  padding: 28px 32px 24px;
+  background: linear-gradient(180deg, rgba(29,78,216,0.03) 0%, transparent 100%);
+}
+.mn-dtl-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--text3);
+}
+.mn-dtl-head-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.mn-dtl-ms-row { display: flex; align-items: flex-start; gap: 6px; }
+.mn-dtl-ms {
+  flex: 1; background: var(--vp-c-bg-soft, #f8fafc);
+  border: 1px solid rgba(29,78,216,0.08); border-radius: 12px; padding: 14px 14px 12px;
+  transition: box-shadow .2s, transform .2s;
+}
+.mn-dtl-ms:hover { box-shadow: 0 6px 24px rgba(29,78,216,0.1); transform: translateY(-2px); }
+.mn-dtl-ms-num {
+  width: 26px; height: 26px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 0.75rem; font-weight: 900; margin-bottom: 8px;
+}
+.mn-dtl-ms-title { font-size: 0.85rem; font-weight: 800; color: var(--text1); margin-bottom: 4px; }
+.mn-dtl-ms-desc { font-size: 0.7rem; color: var(--text3); line-height: 1.55; }
+.mn-dtl-ms-arr {
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 1.2rem; color: #cbd5e1; padding-top: 22px; min-width: 18px;
+}
+.mn-dtl-bridge {
+  display: flex; align-items: center; gap: 16px; padding: 0 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(29,78,216,0.02) 0%, rgba(124,58,237,0.02) 100%);
+}
+.mn-dtl-br-l { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(99,102,241,0.25), transparent); }
+.mn-dtl-br-center { display: flex; align-items: center; gap: 10px; padding: 10px 0; }
+.mn-dtl-br-tag { font-size: 0.66rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.07em; white-space: nowrap; }
+.mn-dtl-br-tag-blue  { background: rgba(29,78,216,0.08);  color: #1d4ed8; }
+.mn-dtl-br-tag-purple{ background: rgba(124,58,237,0.08); color: #7c3aed; }
+.mn-dtl-rd {
+  padding: 24px 32px 28px;
+  background: linear-gradient(180deg, transparent 0%, rgba(124,58,237,0.03) 100%);
+}
+.mn-dtl-phases-outer { overflow-x: auto; margin-bottom: 20px; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+.mn-dtl-phases { display: flex; position: relative; min-width: 600px; }
+.mn-dtl-phases::before {
+  content: ''; position: absolute; top: 31px;
+  left: calc(100% / 18); right: calc(100% / 18);
+  height: 2px; background: linear-gradient(90deg, #3b82f6, #7c3aed, #06b6d4); z-index: 0;
+}
+.mn-dtl-ph { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; padding: 0 2px; }
+.mn-dtl-cp-slot  { height: 24px; }
+.mn-dtl-cp-badge {
+  height: 22px; display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #d97706, #f59e0b); color: #fff;
+  font-size: 0.62rem; font-weight: 900; border-radius: 6px; padding: 0 7px;
+  box-shadow: 0 2px 8px rgba(217,119,6,0.3); white-space: nowrap;
+}
+.mn-dtl-ph-dot {
+  width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  border: 2.5px solid var(--card-bg); box-shadow: 0 0 0 2px rgba(59,130,246,0.3); z-index: 2;
+}
+.mn-dtl-ph-dot-cp { width: 16px; height: 16px; background: linear-gradient(135deg, #d97706, #f59e0b); box-shadow: 0 0 0 2px rgba(217,119,6,0.3); }
+.mn-dtl-ph-dot-end { background: linear-gradient(135deg, #059669, #10b981); box-shadow: 0 0 0 2px rgba(5,150,105,0.3); }
+.mn-dtl-ph-name { font-size: 0.78rem; font-weight: 800; color: var(--text1); }
+.mn-dtl-ph-desc { font-size: 0.65rem; color: var(--text3); line-height: 1.5; }
+.mn-dtl-qbars { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+.mn-dtl-qbar { height: 26px; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; }
+.mn-dtl-qbar span { font-size: 0.69rem; font-weight: 600; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 1024px) {
+  .mn-dtl-client { padding: 22px 24px 20px; }
+  .mn-dtl-rd     { padding: 20px 24px 24px; }
+  .mn-dtl-bridge { padding: 0 24px; }
+}
+@media (max-width: 768px) {
+  .mn-dtl-client { padding: 20px; }
+  .mn-dtl-rd     { padding: 18px 20px 22px; }
+  .mn-dtl-bridge { padding: 0 20px; }
+  .mn-dtl-ms-arr { display: none; }
+  .mn-dtl-ms-row { flex-wrap: wrap; gap: 8px; }
+  .mn-dtl-ms     { min-width: calc(50% - 4px); flex: none; }
+  .mn-dtl-qbar span { font-size: 0.62rem; }
+  .mn-cicd-body  { padding: 16px 16px 20px; }
 }
 </style>
