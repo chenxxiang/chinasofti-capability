@@ -25,6 +25,8 @@ import HomeCampusCasesEn from './HomeCampusCasesEn.vue'
 import HomeOdcCasesEn from './HomeOdcCasesEn.vue'
 import HomeBSSZh from './HomeBSSZh.vue'
 import HomeBSSEn from './HomeBSSEn.vue'
+import HomeMSZh from './HomeMSZh.vue'
+import HomeMSEn from './HomeMSEn.vue'
 
 const { frontmatter } = useData()
 </script>
@@ -54,6 +56,8 @@ const { frontmatter } = useData()
   <HomeOdcCasesEn v-else-if="frontmatter.layout === 'home-odc-cases-en'" />
   <HomeBSSZh v-else-if="frontmatter.layout === 'home-bss-zh'" />
   <HomeBSSEn v-else-if="frontmatter.layout === 'home-bss-en'" />
+  <HomeMSZh v-else-if="frontmatter.layout === 'home-ms-zh'" />
+  <HomeMSEn v-else-if="frontmatter.layout === 'home-ms-en'" />
   <DefaultTheme.Layout v-else>
     <template #nav-bar-title-before>
       <span class="vp-logo-chip">CSI</span>

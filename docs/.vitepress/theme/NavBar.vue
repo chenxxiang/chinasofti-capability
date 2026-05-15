@@ -87,6 +87,17 @@ function switchLang() {
             </div>
             <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
+
+          <a :href="L+'ms/'" class="csi-sol-item">
+            <div class="csi-sol-icon" style="background:linear-gradient(135deg,#4f46e5,#6366f1);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="csi-sol-text">
+              <div class="csi-sol-title">{{ isEn ? 'Managed Services' : '管理服务解决方案' }}</div>
+              <div class="csi-sol-desc">{{ isEn ? 'DIGI Proven · BSS Ops Excellence' : 'DIGI 验证 · 运营商 BSS 管理服务' }}</div>
+            </div>
+            <svg class="csi-sol-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -159,6 +170,7 @@ function switchLang() {
   <a :href="L+'campus/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Smart Campus' : '智慧园区解决方案' }}</a>
   <a :href="L+'odc/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'ODC' : 'ODC 离岸开发中心' }}</a>
   <a :href="L+'bss/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Telecom BSS' : '运营商 BSS 解决方案' }}</a>
+  <a :href="L+'ms/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Managed Services' : '管理服务解决方案' }}</a>
   <div class="csi-drawer-sep">{{ isEn ? 'Cases' : '成功案例' }}</div>
   <a :href="L+'cases/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Mini App Cases' : '企业小程序案例' }}</a>
   <a :href="L+'cases/cloud/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Cloud Native Cases' : '云原生迁移案例' }}</a>
