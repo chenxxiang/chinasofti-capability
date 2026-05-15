@@ -97,12 +97,12 @@
 }
 
 /* ── 时间轴 ── */
-.timeline {
+.timeline:has(.timeline-item) {
   position: relative;
   padding: 8px 0;
   margin: 32px 0;
 }
-.timeline::before {
+.timeline:has(.timeline-item)::before {
   content: '';
   position: absolute;
   left: 120px;
