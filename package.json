@@ -6,14 +6,17 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "npx vitepress build docs",
-    "docs:preview": "npx vitepress preview docs"
+    "docs:preview": "npx vitepress preview docs",
+    "deploy": "npm run docs:build && wrangler deploy",
+    "preview": "npm run docs:build && wrangler dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "wrangler": "^4.91.0"
   },
   "dependencies": {
     "topojson-client": "^3.1.0",
