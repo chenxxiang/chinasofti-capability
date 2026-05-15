@@ -196,12 +196,12 @@ function initTabs() {
 
 <!-- CAPABILITY STRIP -->
 <div class="cap-strip">
-  <div class="cap-item"><span class="cap-icon">🏗️</span>End-to-End Delivery</div>
+  <div class="cap-item"><span class="cap-icon">🤖</span>AI Innovation Lab</div>
   <div class="cap-item"><span class="cap-icon">📱</span>Super App Full-Stack</div>
   <div class="cap-item"><span class="cap-icon">☁️</span>HarmonyOS Ecosystem</div>
-  <div class="cap-item"><span class="cap-icon">🤖</span>AI Agent Deployment</div>
-  <div class="cap-item"><span class="cap-icon">🔐</span>Security & Compliance</div>
-  <div class="cap-item"><span class="cap-icon">🌐</span>Multi-language</div>
+  <div class="cap-item"><span class="cap-icon">💻</span>Cloud-Native & Infrastructure</div>
+  <div class="cap-item"><span class="cap-icon">🏙️</span>Smart City / Campus</div>
+  <div class="cap-item"><span class="cap-icon">🌐</span>ODC Offshore Dev Center</div>
 </div>
 
 <!-- BODY -->
@@ -617,7 +617,7 @@ function initTabs() {
   content: ''; position: absolute; inset: 0;
   background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
-.cap-item { position: relative; z-index: 1; display: flex; align-items: center; gap: 10px; padding: 8px 36px; color: rgba(255,255,255,0.9); font-size: 0.9rem; font-weight: 600; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); }
+.cap-item { position: relative; z-index: 1; display: flex; align-items: center; gap: 10px; padding: 8px 36px; color: rgba(255,255,255,0.9); font-size: 1rem; font-weight: 600; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); }
 .cap-item:last-child { border-right: none; }
 .cap-icon { font-size: 1.2rem; }
 

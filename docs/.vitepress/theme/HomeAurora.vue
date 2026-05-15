@@ -194,12 +194,12 @@ function initTabs() {
 
 <!-- CAPABILITY STRIP -->
 <div class="cap-strip">
-  <div class="cap-item"><span class="cap-icon">🏗️</span>端到端交付能力</div>
+  <div class="cap-item"><span class="cap-icon">🤖</span>AI 创新工坊</div>
   <div class="cap-item"><span class="cap-icon">📱</span>Super App 全栈开发</div>
   <div class="cap-item"><span class="cap-icon">☁️</span>HarmonyOS 鸿蒙生态</div>
-  <div class="cap-item"><span class="cap-icon">🤖</span>AI 智能体落地</div>
-  <div class="cap-item"><span class="cap-icon">🔐</span>企业级安全合规</div>
-  <div class="cap-item"><span class="cap-icon">🌐</span>多语言本地化</div>
+  <div class="cap-item"><span class="cap-icon">💻</span>云原生与基础设施</div>
+  <div class="cap-item"><span class="cap-icon">🏙️</span>智慧城市 / 园区</div>
+  <div class="cap-item"><span class="cap-icon">🌐</span>ODC 离岸研发中心</div>
 </div>
 
 <!-- BODY -->
@@ -615,7 +615,7 @@ function initTabs() {
   content: ''; position: absolute; inset: 0;
   background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
-.cap-item { position: relative; z-index: 1; display: flex; align-items: center; gap: 10px; padding: 8px 36px; color: rgba(255,255,255,0.9); font-size: 0.9rem; font-weight: 600; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); }
+.cap-item { position: relative; z-index: 1; display: flex; align-items: center; gap: 10px; padding: 8px 36px; color: rgba(255,255,255,0.9); font-size: 1rem; font-weight: 600; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); }
 .cap-item:last-child { border-right: none; }
 .cap-icon { font-size: 1.2rem; }
 
