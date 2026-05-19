@@ -1,9 +1,11 @@
 # 餐饮点餐聚合平台 · 解决方案
 
 <div class="cms-hero">
-  <div class="cms-hero-badge">POSPAL · Next Generation POS</div>
-  <h2>新一代餐饮点餐聚合平台</h2>
-  <p>一体化云端 POS 解决方案，覆盖收银、客户、员工、库存、厨房与数据分析，助力餐饮商户实现数字化运营升级。</p>
+  <div class="cms-hero-content">
+    <div class="cms-hero-badge">POSPAL · Next Generation POS</div>
+    <h1>新一代餐饮点餐聚合平台</h1>
+    <p>一体化云端 POS 解决方案，覆盖收银、客户、员工、库存、厨房与数据分析，助力餐饮商户实现数字化运营升级。</p>
+  </div>
 </div>
 
 ## 产品定位

@@ -1,18 +1,20 @@
 # 电商解决方案 · 解决方案
 
 <div class="cms-hero">
-  <div class="cms-hero-eyebrow">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-    E-Commerce · 电商解决方案
-  </div>
-  <h1>一体化新零售电商平台</h1>
-  <p>基于 JAVA SpringBoot + LAMJ 架构，全终端覆盖，支持 B2C / B2B / S2B2C 多商业模式，内置会员体系、促销引擎、供应链分销与 IM 客服，覆盖金融、快消、医药等多行业头部客户。</p>
-  <div class="cms-hero-tags">
-    <span>五网合一</span>
-    <span>会员 &amp; 积分体系</span>
-    <span>多样化促销引擎</span>
-    <span>供应链 S2B2C</span>
-    <span>IM 内置客服</span>
+  <div class="cms-hero-content">
+    <div class="cms-hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      E-Commerce · 电商解决方案
+    </div>
+    <h1>一体化新零售电商平台</h1>
+    <p>基于 JAVA SpringBoot + LAMJ 架构，全终端覆盖，支持 B2C / B2B / S2B2C 多商业模式，内置会员体系、促销引擎、供应链分销与 IM 客服，覆盖金融、快消、医药等多行业头部客户。</p>
+    <div class="cms-hero-tags">
+      <span>五网合一</span>
+      <span>会员 &amp; 积分体系</span>
+      <span>多样化促销引擎</span>
+      <span>供应链 S2B2C</span>
+      <span>IM 内置客服</span>
+    </div>
   </div>
 </div>
 
