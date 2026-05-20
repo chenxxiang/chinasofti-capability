@@ -8,8 +8,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/business/cms/' },
             { text: '方案', link: '/zh/business/cms/plan' },
-            { text: '报价', link: '/zh/business/cms/pricing' },
-            { text: 'DEMO', link: '/zh/business/cms/demo' },
           ]
         },
         {
@@ -17,8 +15,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/business/loyalty/' },
             { text: '方案', link: '/zh/business/loyalty/plan' },
-            { text: '报价', link: '/zh/business/loyalty/pricing' },
-            { text: 'DEMO', link: '/zh/business/loyalty/demo' },
           ]
         },
         {
@@ -26,35 +22,14 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/business/iot/' },
             { text: '方案', link: '/zh/business/iot/plan' },
-            { text: '报价（支持SaaS）', link: '/zh/business/iot/pricing-saas' },
-            { text: 'DEMO', link: '/zh/business/iot/demo' },
           ]
         },
-        {
-          text: '企业小程序方案', collapsed: true,
-          items: [
-            { text: '概览', link: '/zh/business/migration/' },
-            { text: '页面复杂度定义', link: '/zh/business/migration/complexity' },
-            { text: '报价', link: '/zh/business/migration/pricing' },
-            { text: 'DEMO', link: '/zh/business/migration/demo' },
-          ]
-        },
+        // { text: '企业小程序方案', collapsed: true, items: [...] },  // 暂时隐藏
         {
           text: 'AI智能体', collapsed: true,
           items: [
             { text: '概览', link: '/zh/business/ai-agent/' },
             { text: '方案', link: '/zh/business/ai-agent/plan' },
-            { text: '报价', link: '/zh/business/ai-agent/pricing' },
-            { text: 'DEMO', link: '/zh/business/ai-agent/demo' },
-          ]
-        },
-        {
-          text: '餐饮点餐聚合平台', collapsed: true,
-          items: [
-            { text: '概览', link: '/zh/business/ordering/' },
-            { text: '方案', link: '/zh/business/ordering/plan' },
-            { text: '报价', link: '/zh/business/ordering/pricing' },
-            { text: 'DEMO', link: '/zh/business/ordering/demo' },
           ]
         },
       ]
@@ -67,8 +42,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/charging/' },
             { text: '方案', link: '/zh/lifestyle/charging/plan' },
-            { text: '报价', link: '/zh/lifestyle/charging/pricing' },
-            { text: 'DEMO', link: '/zh/lifestyle/charging/demo' },
           ]
         },
         {
@@ -76,8 +49,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/transit/' },
             { text: '方案', link: '/zh/lifestyle/transit/plan' },
-            { text: '报价', link: '/zh/lifestyle/transit/pricing' },
-            { text: 'DEMO', link: '/zh/lifestyle/transit/demo' },
           ]
         },
         {
@@ -85,8 +56,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/ecommerce/' },
             { text: '方案', link: '/zh/lifestyle/ecommerce/plan' },
-            { text: '报价', link: '/zh/lifestyle/ecommerce/pricing' },
-            { text: 'DEMO', link: '/zh/lifestyle/ecommerce/demo' },
           ]
         },
         {
@@ -94,8 +63,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/catering/' },
             { text: '方案', link: '/zh/lifestyle/catering/plan' },
-            { text: '报价（支持SaaS）', link: '/zh/lifestyle/catering/pricing-saas' },
-            { text: 'DEMO', link: '/zh/lifestyle/catering/demo' },
           ]
         },
         {
@@ -103,8 +70,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/ticketing/' },
             { text: '方案', link: '/zh/lifestyle/ticketing/plan' },
-            { text: '报价', link: '/zh/lifestyle/ticketing/pricing' },
-            { text: 'DEMO', link: '/zh/lifestyle/ticketing/demo' },
           ]
         },
       ]
@@ -117,8 +82,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/finance/blockchain/' },
             { text: '方案', link: '/zh/finance/blockchain/plan' },
-            { text: '报价', link: '/zh/finance/blockchain/pricing' },
-            { text: 'DEMO', link: '/zh/finance/blockchain/demo' },
           ]
         },
         {
@@ -126,8 +89,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/finance/wealth/' },
             { text: '方案', link: '/zh/finance/wealth/plan' },
-            { text: '报价', link: '/zh/finance/wealth/pricing' },
-            { text: 'DEMO', link: '/zh/finance/wealth/demo' },
           ]
         },
         {
@@ -135,8 +96,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/finance/ekyc/' },
             { text: '方案', link: '/zh/finance/ekyc/plan' },
-            { text: '报价（支持SaaS）', link: '/zh/finance/ekyc/pricing-saas' },
-            { text: 'DEMO', link: '/zh/finance/ekyc/demo' },
           ]
         },
       ]
@@ -149,8 +108,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/social/im/' },
             { text: '方案', link: '/zh/social/im/plan' },
-            { text: '报价（支持SaaS）', link: '/zh/social/im/pricing-saas' },
-            { text: 'DEMO', link: '/zh/social/im/demo' },
           ]
         },
         {
@@ -158,8 +115,6 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/social/game/' },
             { text: '方案', link: '/zh/social/game/plan' },
-            { text: '报价', link: '/zh/social/game/pricing' },
-            { text: 'DEMO', link: '/zh/social/game/demo' },
           ]
         },
       ]
