@@ -6,6 +6,7 @@ onMounted(() => {
   initReveal()
   initTabs()
   initCounters()
+  initIOCDashboard()
 })
 
 function initReveal() {
@@ -49,6 +50,92 @@ function initCounters() {
     })
   }, { threshold: 0.5 })
   document.querySelectorAll('.mn-counter').forEach(el => obs.observe(el))
+}
+
+function initIOCDashboard() {
+  if (typeof document === 'undefined') return
+
+  // Clock — always ticking
+  function tick() {
+    const el = document.getElementById('ioc-clock')
+    if (el) el.textContent = new Date().toLocaleTimeString('en-GB', { hour12: false })
+  }
+  tick()
+  setInterval(tick, 1000)
+
+  // Last-updated counter
+  let secs = 0
+  setInterval(() => {
+    secs++
+    const el = document.getElementById('ioc-last-upd')
+    if (el) el.textContent = secs < 60 ? `${secs}s ago` : `${Math.floor(secs / 60)}m ago`
+    if (secs >= 30) secs = 0
+  }, 1000)
+
+  // Animate when frame enters viewport
+  const frame = document.getElementById('ioc-frame')
+  if (!frame) return
+  let animated = false
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting || animated) return
+      animated = true
+      obs.unobserve(e.target)
+      // Line-chart draw
+      const path = document.getElementById('ioc-txn-path')
+      if (path) {
+        const len = path.getTotalLength ? path.getTotalLength() : 460
+        path.style.strokeDasharray = `${len} ${len}`
+        path.style.strokeDashoffset = len
+        setTimeout(() => {
+          path.style.transition = 'stroke-dashoffset 2.6s cubic-bezier(0.25,0.46,0.45,0.94)'
+          path.style.strokeDashoffset = '0'
+        }, 200)
+      }
+      // Bar chart
+      setTimeout(() => {
+        document.querySelectorAll('.ioc-bar-fill').forEach(b => {
+          b.style.transition = 'height 0.9s cubic-bezier(0.34,1.56,0.64,1)'
+          b.style.height = b.dataset.h || '0%'
+        })
+      }, 500)
+    })
+  }, { threshold: 0.1 })
+  obs.observe(frame)
+
+  // Live TXN counter (slow increment)
+  let txn = 47283
+  setInterval(() => {
+    txn += Math.floor(Math.random() * 5) + 1
+    const el = document.getElementById('ioc-txn-count')
+    if (el) el.textContent = txn.toLocaleString()
+  }, 2700)
+
+  // Live transaction feed
+  const feed = document.getElementById('ioc-feed-list')
+  if (feed) {
+    const items = [
+      ['#439447', '↑', 'MTN → NeoS Wallet', '+8,500 XAF'],
+      ['#2980B9', '↑', 'SCB Bank Transfer', '+22,000 XAF'],
+      ['#E8C547', '⚡', 'AES Electricity Biller', '−6,000 XAF'],
+      ['#33B466', '↑', 'GimacPay Intl Transfer', '+48,000 XAF'],
+      ['#C0392B', '⚠', 'Risk Flag #R-0042', 'Review'],
+      ['#439447', '↑', 'Orange OCS Top-Up', '+2,000 XAF'],
+      ['#2980B9', '↑', 'UBA → NeoS Wallet', '+15,000 XAF'],
+      ['#33B466', '↑', 'JiangRong Micro-Loan', '+50,000 XAF'],
+    ]
+    let i = 0
+    setInterval(() => {
+      const t = items[i % items.length]
+      const row = document.createElement('div')
+      row.className = 'mn-ioc-fr mn-ioc-feed-flash'
+      row.innerHTML = `<span class="mn-ioc-fi" style="color:${t[0]}">${t[1]}</span><span class="mn-ioc-fd">${t[2]}</span><span class="mn-ioc-fa">${t[3]}</span><span class="mn-ioc-ft">0:00</span>`
+      feed.insertBefore(row, feed.firstChild)
+      if (feed.children.length > 5) feed.removeChild(feed.lastChild)
+      setTimeout(() => row.classList.remove('mn-ioc-feed-flash'), 600)
+      i++
+    }, 3100)
+  }
 }
 </script>
 
@@ -811,6 +898,661 @@ function initCounters() {
     </div>
   </section>
 
+<!-- ── DESIGN SYSTEM ──────────────────────────── -->
+<section class="mn-sec reveal" id="design-system">
+  <div class="mn-sec-header">
+    <div class="mn-eyebrow">Design System · Mobile App Visual Language</div>
+    <h2 class="mn-sec-title">Design System</h2>
+    <p class="mn-sec-sub">A unified visual language ensuring brand consistency across every screen, component, and platform of the NeoS Mobile Money App — built on industry-standard design methodology.</p>
+  </div>
+
+  <!-- ── 01 Brand-Aligned Design System ── -->
+  <div class="mn-ds-block reveal">
+    <div class="mn-ds-block-header">
+      <div class="mn-ds-block-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </div>
+      <div>
+        <div class="mn-ds-block-tag">01 · Brand</div>
+        <div class="mn-ds-block-name">Brand-Aligned Design System</div>
+      </div>
+    </div>
+
+    <div class="mn-ds-row">
+      <!-- Color Palette -->
+      <div class="mn-ds-card mn-ds-palette-card">
+        <div class="mn-ds-card-title">Color Palette</div>
+        <div class="mn-ds-swatches">
+          <div class="mn-ds-swatch">
+            <div class="mn-ds-swatch-color" style="background:#439447;"></div>
+            <div class="mn-ds-swatch-info">
+              <span class="mn-ds-swatch-name">CNEF Green</span>
+              <span class="mn-ds-swatch-hex">#439447</span>
+              <span class="mn-ds-swatch-role">Primary</span>
+            </div>
+          </div>
+          <div class="mn-ds-swatch">
+            <div class="mn-ds-swatch-color" style="background:#2D6B31;"></div>
+            <div class="mn-ds-swatch-info">
+              <span class="mn-ds-swatch-name">Deep Green</span>
+              <span class="mn-ds-swatch-hex">#2D6B31</span>
+              <span class="mn-ds-swatch-role">Dark</span>
+            </div>
+          </div>
+          <div class="mn-ds-swatch">
+            <div class="mn-ds-swatch-color" style="background:#33B466;"></div>
+            <div class="mn-ds-swatch-info">
+              <span class="mn-ds-swatch-name">Light Green</span>
+              <span class="mn-ds-swatch-hex">#33B466</span>
+              <span class="mn-ds-swatch-role">Accent</span>
+            </div>
+          </div>
+          <div class="mn-ds-swatch">
+            <div class="mn-ds-swatch-color" style="background:#1A3557;"></div>
+            <div class="mn-ds-swatch-info">
+              <span class="mn-ds-swatch-name">Finance Navy</span>
+              <span class="mn-ds-swatch-hex">#1A3557</span>
+              <span class="mn-ds-swatch-role">Text / BG</span>
+            </div>
+          </div>
+          <div class="mn-ds-swatch">
+            <div class="mn-ds-swatch-color" style="background:#2980B9;"></div>
+            <div class="mn-ds-swatch-info">
+              <span class="mn-ds-swatch-name">Info Blue</span>
+              <span class="mn-ds-swatch-hex">#2980B9</span>
+              <span class="mn-ds-swatch-role">Info</span>
+            </div>
+          </div>
+          <div class="mn-ds-swatch">
+            <div class="mn-ds-swatch-color" style="background:#E8C547;"></div>
+            <div class="mn-ds-swatch-info">
+              <span class="mn-ds-swatch-name">Signal Gold</span>
+              <span class="mn-ds-swatch-hex">#E8C547</span>
+              <span class="mn-ds-swatch-role">Warning</span>
+            </div>
+          </div>
+          <div class="mn-ds-swatch">
+            <div class="mn-ds-swatch-color" style="background:#C0392B;"></div>
+            <div class="mn-ds-swatch-info">
+              <span class="mn-ds-swatch-name">Risk Red</span>
+              <span class="mn-ds-swatch-hex">#C0392B</span>
+              <span class="mn-ds-swatch-role">Error</span>
+            </div>
+          </div>
+          <div class="mn-ds-swatch">
+            <div class="mn-ds-swatch-color" style="background:#F5F5F0;border:1px solid #ddd;"></div>
+            <div class="mn-ds-swatch-info">
+              <span class="mn-ds-swatch-name">App Canvas</span>
+              <span class="mn-ds-swatch-hex">#F5F5F0</span>
+              <span class="mn-ds-swatch-role">Background</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Allocation + Status -->
+      <div class="mn-ds-right-col">
+        <div class="mn-ds-card">
+          <div class="mn-ds-card-title">Brand Color Allocation</div>
+          <div class="mn-ds-alloc-bars">
+            <div class="mn-ds-alloc-row">
+              <span class="mn-ds-alloc-label">Primary Actions</span>
+              <div class="mn-ds-alloc-track"><div class="mn-ds-alloc-fill" style="width:65%;background:#439447;"></div></div>
+              <span class="mn-ds-alloc-pct">65%</span>
+            </div>
+            <div class="mn-ds-alloc-row">
+              <span class="mn-ds-alloc-label">Dark Surfaces</span>
+              <div class="mn-ds-alloc-track"><div class="mn-ds-alloc-fill" style="width:20%;background:#1A3557;"></div></div>
+              <span class="mn-ds-alloc-pct">20%</span>
+            </div>
+            <div class="mn-ds-alloc-row">
+              <span class="mn-ds-alloc-label">Highlights</span>
+              <div class="mn-ds-alloc-track"><div class="mn-ds-alloc-fill" style="width:10%;background:#33B466;"></div></div>
+              <span class="mn-ds-alloc-pct">10%</span>
+            </div>
+            <div class="mn-ds-alloc-row">
+              <span class="mn-ds-alloc-label">Status / Alert</span>
+              <div class="mn-ds-alloc-track"><div class="mn-ds-alloc-fill" style="width:5%;background:#E8C547;"></div></div>
+              <span class="mn-ds-alloc-pct">5%</span>
+            </div>
+          </div>
+        </div>
+        <div class="mn-ds-card">
+          <div class="mn-ds-card-title">Status Semantics</div>
+          <div class="mn-ds-status-grid">
+            <div class="mn-ds-status-pill" style="background:#e8f5e9;color:#439447;border:1.5px solid #439447;"><span class="mn-ds-status-dot" style="background:#439447;"></span>Success</div>
+            <div class="mn-ds-status-pill" style="background:#fff8e1;color:#b8921e;border:1.5px solid #E8C547;"><span class="mn-ds-status-dot" style="background:#E8C547;"></span>Warning</div>
+            <div class="mn-ds-status-pill" style="background:#ffebee;color:#C0392B;border:1.5px solid #C0392B;"><span class="mn-ds-status-dot" style="background:#C0392B;"></span>Error</div>
+            <div class="mn-ds-status-pill" style="background:#e3f2fd;color:#2980B9;border:1.5px solid #2980B9;"><span class="mn-ds-status-dot" style="background:#2980B9;"></span>Info</div>
+            <div class="mn-ds-status-pill" style="background:#e8edf3;color:#1A3557;border:1.5px solid #1A3557;"><span class="mn-ds-status-dot" style="background:#1A3557;"></span>Neutral</div>
+            <div class="mn-ds-status-pill" style="background:#f5f5f5;color:#9e9e9e;border:1.5px solid #e0e0e0;"><span class="mn-ds-status-dot" style="background:#bdbdbd;"></span>Disabled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography Scale -->
+    <div class="mn-ds-card mn-ds-typo-card reveal">
+      <div class="mn-ds-card-title">Typography Scale · Roboto / Inter Family</div>
+      <div class="mn-ds-typo-scale">
+        <div class="mn-ds-typo-row">
+          <span class="mn-ds-typo-label">H1 · 28sp Bold</span>
+          <span class="mn-ds-typo-sample" style="font-size:1.75rem;font-weight:700;color:#1A3557;line-height:1.1;">NeoS Mobile</span>
+        </div>
+        <div class="mn-ds-typo-row">
+          <span class="mn-ds-typo-label">H2 · 22sp SemiBold</span>
+          <span class="mn-ds-typo-sample" style="font-size:1.375rem;font-weight:600;color:#1A3557;">Transfer &amp; Pay</span>
+        </div>
+        <div class="mn-ds-typo-row">
+          <span class="mn-ds-typo-label">Body · 16sp Regular</span>
+          <span class="mn-ds-typo-sample" style="font-size:1rem;font-weight:400;color:#424242;">Secure · Fast · Convenient</span>
+        </div>
+        <div class="mn-ds-typo-row">
+          <span class="mn-ds-typo-label">Caption · 12sp Regular</span>
+          <span class="mn-ds-typo-sample" style="font-size:0.75rem;font-weight:400;color:#757575;">Transaction ID: TXN-2024-001</span>
+        </div>
+        <div class="mn-ds-typo-row">
+          <span class="mn-ds-typo-label">Label · 11sp SemiBold</span>
+          <span class="mn-ds-typo-sample" style="font-size:0.69rem;font-weight:700;color:#439447;text-transform:uppercase;letter-spacing:.06em;">CONFIRMED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 02 Mobile App UI Kit ── -->
+  <div class="mn-ds-block reveal">
+    <div class="mn-ds-block-header">
+      <div class="mn-ds-block-icon mn-ds-block-icon--kit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1"/></svg>
+      </div>
+      <div>
+        <div class="mn-ds-block-tag">02 · UI Kit</div>
+        <div class="mn-ds-block-name">Mobile App UI Kit</div>
+      </div>
+    </div>
+
+    <!-- Icons + Buttons -->
+    <div class="mn-ds-row">
+      <div class="mn-ds-card">
+        <div class="mn-ds-card-title">Feature Icon Set</div>
+        <div class="mn-ds-icon-grid">
+          <div class="mn-ds-icon-item">
+            <div class="mn-ds-icon-circle" style="background:#e8f5e9;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#439447" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </div>
+            <span>Transfer</span>
+          </div>
+          <div class="mn-ds-icon-item">
+            <div class="mn-ds-icon-circle" style="background:#e8f5e9;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#439447" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="15" y="15" width="2" height="2"/><rect x="19" y="15" width="2" height="2"/><rect x="15" y="19" width="2" height="2"/><rect x="19" y="19" width="2" height="2"/></svg>
+            </div>
+            <span>QR Scan</span>
+          </div>
+          <div class="mn-ds-icon-item">
+            <div class="mn-ds-icon-circle" style="background:#e3f2fd;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2980B9" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <span>Top Up</span>
+          </div>
+          <div class="mn-ds-icon-item">
+            <div class="mn-ds-icon-circle" style="background:#e8f5e9;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#439447" stroke-width="2" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <span>Card</span>
+          </div>
+          <div class="mn-ds-icon-item">
+            <div class="mn-ds-icon-circle" style="background:#fff8e1;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#b8921e" stroke-width="2" stroke-linecap="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+            </div>
+            <span>Biller</span>
+          </div>
+          <div class="mn-ds-icon-item">
+            <div class="mn-ds-icon-circle" style="background:#fce4ec;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span>Loan</span>
+          </div>
+          <div class="mn-ds-icon-item">
+            <div class="mn-ds-icon-circle" style="background:#e8f5e9;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2D6B31" stroke-width="2" stroke-linecap="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            </div>
+            <span>Report</span>
+          </div>
+          <div class="mn-ds-icon-item">
+            <div class="mn-ds-icon-circle" style="background:#e8edf3;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1A3557" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <span>Security</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mn-ds-card">
+        <div class="mn-ds-card-title">Button Components</div>
+        <div class="mn-ds-btn-list">
+          <div class="mn-ds-btn-row">
+            <span class="mn-ds-btn-label">Primary</span>
+            <div class="mn-ds-btn-demo mn-ds-btn-primary">Confirm Payment</div>
+          </div>
+          <div class="mn-ds-btn-row">
+            <span class="mn-ds-btn-label">Secondary</span>
+            <div class="mn-ds-btn-demo mn-ds-btn-secondary">View Details</div>
+          </div>
+          <div class="mn-ds-btn-row">
+            <span class="mn-ds-btn-label">Outline</span>
+            <div class="mn-ds-btn-demo mn-ds-btn-outline">Cancel</div>
+          </div>
+          <div class="mn-ds-btn-row">
+            <span class="mn-ds-btn-label">Disabled</span>
+            <div class="mn-ds-btn-demo mn-ds-btn-disabled">Processing…</div>
+          </div>
+          <div class="mn-ds-btn-row">
+            <span class="mn-ds-btn-label">Danger</span>
+            <div class="mn-ds-btn-demo mn-ds-btn-danger">Delete Account</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Fields + Card Tiles -->
+    <div class="mn-ds-row reveal">
+      <div class="mn-ds-card">
+        <div class="mn-ds-card-title">Input Components</div>
+        <div class="mn-ds-inputs">
+          <div class="mn-ds-field">
+            <label class="mn-ds-field-label">Phone Number</label>
+            <div class="mn-ds-field-input mn-ds-field-normal">
+              <span class="mn-ds-field-prefix">+237</span>
+              <span class="mn-ds-field-text">6XX XXX XXXX</span>
+            </div>
+          </div>
+          <div class="mn-ds-field">
+            <label class="mn-ds-field-label">Amount (XAF) <span style="color:#439447;">*</span></label>
+            <div class="mn-ds-field-input mn-ds-field-active">
+              <span class="mn-ds-field-text" style="color:#1A3557;font-weight:700;">5,000</span>
+              <span class="mn-ds-field-suffix">XAF</span>
+            </div>
+          </div>
+          <div class="mn-ds-field">
+            <label class="mn-ds-field-label">PIN</label>
+            <div class="mn-ds-field-input mn-ds-field-normal">
+              <span class="mn-ds-field-text" style="letter-spacing:.4em;color:#1A3557;">● ● ● ● ● ●</span>
+            </div>
+          </div>
+          <div class="mn-ds-field">
+            <label class="mn-ds-field-label" style="color:#C0392B;">Account Number</label>
+            <div class="mn-ds-field-input mn-ds-field-error">
+              <span class="mn-ds-field-text" style="color:#C0392B;">Invalid IBAN format</span>
+              <svg style="width:16px;height:16px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <span class="mn-ds-field-hint" style="color:#C0392B;">Please enter a valid account number</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mn-ds-card">
+        <div class="mn-ds-card-title">Card Components</div>
+        <div class="mn-ds-card-tiles">
+          <!-- Balance Card -->
+          <div class="mn-ds-tile mn-ds-tile-balance">
+            <div class="mn-ds-tile-balance-label">Available Balance</div>
+            <div class="mn-ds-tile-balance-amount">128,500 <span>XAF</span></div>
+            <div class="mn-ds-tile-balance-row">
+              <span>Acc: ●●●● 4821</span>
+              <span style="color:#33B466;">● Active</span>
+            </div>
+          </div>
+          <!-- Transaction Card -->
+          <div class="mn-ds-tile">
+            <div class="mn-ds-tile-header">
+              <div class="mn-ds-tile-icon-wrap" style="background:#e8f5e9;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#439447" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </div>
+              <div class="mn-ds-tile-meta">
+                <span class="mn-ds-tile-title">Transfer to MTN</span>
+                <span class="mn-ds-tile-sub">Today, 14:32</span>
+              </div>
+              <span class="mn-ds-tile-amount" style="color:#C0392B;">-5,000 XAF</span>
+            </div>
+            <div class="mn-ds-tile-badge" style="background:#e8f5e9;color:#439447;">Completed</div>
+          </div>
+          <!-- Biller Card -->
+          <div class="mn-ds-tile">
+            <div class="mn-ds-tile-header">
+              <div class="mn-ds-tile-icon-wrap" style="background:#fff8e1;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b8921e" stroke-width="2" stroke-linecap="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+              </div>
+              <div class="mn-ds-tile-meta">
+                <span class="mn-ds-tile-title">Electricity Bill</span>
+                <span class="mn-ds-tile-sub">AES · Due Jun 30</span>
+              </div>
+              <span class="mn-ds-tile-amount" style="color:#1A3557;">12,000 XAF</span>
+            </div>
+            <div class="mn-ds-tile-badge" style="background:#fff8e1;color:#b8921e;">Pending</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5-Bank Theme Inheritance -->
+    <div class="mn-ds-card mn-ds-bank-card reveal">
+      <div class="mn-ds-card-title">Multi-Bank Theme Inheritance · 5 Partner Banks</div>
+      <div class="mn-ds-banks">
+        <div class="mn-ds-bank-item">
+          <div class="mn-ds-bank-color" style="background:linear-gradient(135deg,#439447,#2D6B31);"></div>
+          <div class="mn-ds-bank-info">
+            <span class="mn-ds-bank-name">CNEF</span>
+            <span class="mn-ds-bank-tag">NeoS Host</span>
+          </div>
+        </div>
+        <div class="mn-ds-bank-item">
+          <div class="mn-ds-bank-color" style="background:linear-gradient(135deg,#E2001A,#a8001a);"></div>
+          <div class="mn-ds-bank-info">
+            <span class="mn-ds-bank-name">Société Générale</span>
+            <span class="mn-ds-bank-tag">Commercial Bank</span>
+          </div>
+        </div>
+        <div class="mn-ds-bank-item">
+          <div class="mn-ds-bank-color" style="background:linear-gradient(135deg,#003DA5,#002d7a);"></div>
+          <div class="mn-ds-bank-info">
+            <span class="mn-ds-bank-name">SCB Cameroun</span>
+            <span class="mn-ds-bank-tag">Commercial Bank</span>
+          </div>
+        </div>
+        <div class="mn-ds-bank-item">
+          <div class="mn-ds-bank-color" style="background:linear-gradient(135deg,#006DB7,#004e85);"></div>
+          <div class="mn-ds-bank-info">
+            <span class="mn-ds-bank-name">UBA Cameroun</span>
+            <span class="mn-ds-bank-tag">Commercial Bank</span>
+          </div>
+        </div>
+        <div class="mn-ds-bank-item">
+          <div class="mn-ds-bank-color" style="background:linear-gradient(135deg,#1B1464,#0d0a3d);"></div>
+          <div class="mn-ds-bank-info">
+            <span class="mn-ds-bank-name">CCA Bank</span>
+            <span class="mn-ds-bank-tag">Commercial Bank</span>
+          </div>
+        </div>
+      </div>
+      <p class="mn-ds-bank-note">Each partner bank's brand colors and logo are injected as design tokens — the NeoS app looks native to each bank while sharing the same component library and UX patterns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── IOC DASHBOARD ──────────────────────────── -->
+<section class="mn-sec reveal" id="ioc-dashboard">
+  <div class="mn-sec-header">
+    <div class="mn-eyebrow">IOC Dashboard · Integrated Operations Center</div>
+    <h2 class="mn-sec-title">Leadership Dashboard</h2>
+    <p class="mn-sec-sub">A real-time command-and-control interface for CNEF leadership — aggregating Mobile Money, Risk Control, Settlement, and Biller operations into a single pane of glass.</p>
+  </div>
+
+  <!-- ── Technical Architecture Specs (outside dashboard) ── -->
+  <div class="mn-ioc-specs reveal">
+    <div class="mn-ioc-spec-grid">
+      <div class="mn-ioc-spec-card">
+        <div class="mn-ioc-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 4.93 19.07"/><path d="M15.54 8.46a5 5 0 1 0-7.07 7.07"/></svg></div>
+        <div>
+          <div class="mn-ioc-spec-label">Data Sources</div>
+          <div class="mn-ioc-spec-val">6 Subsystems · 8 Bank APIs · 3 Billers</div>
+          <div class="mn-ioc-spec-detail">Mobile Money Core · Risk Engine · Settlement · Biller · AML · Bank Layer</div>
+        </div>
+      </div>
+      <div class="mn-ioc-spec-card">
+        <div class="mn-ioc-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div>
+          <div class="mn-ioc-spec-label">Data Elements</div>
+          <div class="mn-ioc-spec-val">≤ 50 Core KPIs</div>
+          <div class="mn-ioc-spec-detail">Transactions · Risk Alerts · Compliance · Operations · Finance · SLA</div>
+        </div>
+      </div>
+      <div class="mn-ioc-spec-card">
+        <div class="mn-ioc-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div>
+          <div class="mn-ioc-spec-label">Refresh Frequency</div>
+          <div class="mn-ioc-spec-val">≤ 1s alerts · ≤ 30s metrics</div>
+          <div class="mn-ioc-spec-detail">WebSocket push for real-time events · RESTful polling for aggregated KPIs</div>
+        </div>
+      </div>
+      <div class="mn-ioc-spec-card">
+        <div class="mn-ioc-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div>
+          <div class="mn-ioc-spec-label">API Architecture</div>
+          <div class="mn-ioc-spec-val">RESTful + WebSocket Dual Channel</div>
+          <div class="mn-ioc-spec-detail">OAuth 2.0 + JWT · TLS 1.3 · JSON/HTTPS · RBAC role-based access</div>
+        </div>
+      </div>
+      <div class="mn-ioc-spec-card">
+        <div class="mn-ioc-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+        <div>
+          <div class="mn-ioc-spec-label">Data Retention</div>
+          <div class="mn-ioc-spec-val">Hot 90d · Warm 1yr · Cold Archive</div>
+          <div class="mn-ioc-spec-detail">Redis hot cache · PostgreSQL warm store · Huawei OBS cold archive</div>
+        </div>
+      </div>
+      <div class="mn-ioc-spec-card">
+        <div class="mn-ioc-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div>
+          <div class="mn-ioc-spec-label">SLA &amp; Compliance</div>
+          <div class="mn-ioc-spec-val">99.9% availability · P95 &lt; 500ms</div>
+          <div class="mn-ioc-spec-detail">ISO 27001 ready · PCI-DSS aligned · RGPD compliant · role-based views</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Dashboard Frame ── -->
+  <div class="mn-ioc-frame reveal" id="ioc-frame">
+
+    <!-- ═══ TOP BAR ═══ -->
+    <div class="mn-ioc-tb">
+      <div class="mn-ioc-tb-l">
+        <div class="mn-ioc-brand-ring"></div>
+        <span class="mn-ioc-brand-n">NeoS · IOC</span>
+        <span class="mn-ioc-tb-sep">|</span>
+        <span class="mn-ioc-tb-title">Integrated Operations Center</span>
+      </div>
+      <div class="mn-ioc-tb-r">
+        <span id="ioc-last-upd" class="mn-ioc-upd">0s ago</span>
+        <div class="mn-ioc-sysr">
+          <span class="mn-ioc-sysd mn-ioc-sysd-ok" title="Mobile Money"></span>
+          <span class="mn-ioc-sysd mn-ioc-sysd-ok" title="Risk Engine"></span>
+          <span class="mn-ioc-sysd mn-ioc-sysd-ok" title="Settlement"></span>
+          <span class="mn-ioc-sysd mn-ioc-sysd-warn" title="Bank API-6"></span>
+          <span class="mn-ioc-sysd mn-ioc-sysd-ok" title="AML"></span>
+        </div>
+        <span id="ioc-clock" class="mn-ioc-clock">00:00:00</span>
+      </div>
+    </div>
+
+    <!-- ═══ 6 KPI CARDS ═══ -->
+    <div class="mn-ioc-kpis">
+      <div class="mn-ioc-k" style="--kc:#439447">
+        <span class="mn-ioc-kl">Transactions Today</span>
+        <span class="mn-ioc-kv" id="ioc-txn-count">47,283</span>
+        <div class="mn-ioc-kb"><span class="mn-ioc-up">↑ 12.4%</span><svg class="mn-ioc-sp" viewBox="0 0 60 18" preserveAspectRatio="none"><polyline points="0,15 8,13 16,10 24,8 32,6 40,4 48,6 60,2" fill="none" stroke="#439447" stroke-width="1.5"/></svg></div>
+      </div>
+      <div class="mn-ioc-k" style="--kc:#2980B9">
+        <span class="mn-ioc-kl">Active Users</span>
+        <span class="mn-ioc-kv">12,847</span>
+        <div class="mn-ioc-kb"><span class="mn-ioc-up">↑ 8.1%</span><svg class="mn-ioc-sp" viewBox="0 0 60 18" preserveAspectRatio="none"><polyline points="0,14 8,12 16,10 24,12 32,8 40,6 48,9 60,7" fill="none" stroke="#2980B9" stroke-width="1.5"/></svg></div>
+      </div>
+      <div class="mn-ioc-k" style="--kc:#33B466">
+        <span class="mn-ioc-kl">Success Rate</span>
+        <span class="mn-ioc-kv">99.72%</span>
+        <div class="mn-ioc-kb"><span class="mn-ioc-up">↑ 0.08%</span><svg class="mn-ioc-sp" viewBox="0 0 60 18" preserveAspectRatio="none"><polyline points="0,8 8,9 16,7 24,8 32,5 40,6 48,4 60,5" fill="none" stroke="#33B466" stroke-width="1.5"/></svg></div>
+      </div>
+      <div class="mn-ioc-k" style="--kc:#E8C547">
+        <span class="mn-ioc-kl">Settlement Vol.</span>
+        <span class="mn-ioc-kv">2.4B XAF</span>
+        <div class="mn-ioc-kb"><span class="mn-ioc-up">↑ 18.3%</span><svg class="mn-ioc-sp" viewBox="0 0 60 18" preserveAspectRatio="none"><polyline points="0,16 8,14 16,12 24,10 32,11 40,8 48,7 60,5" fill="none" stroke="#E8C547" stroke-width="1.5"/></svg></div>
+      </div>
+      <div class="mn-ioc-k" style="--kc:#C0392B">
+        <span class="mn-ioc-kl">Risk Alerts</span>
+        <span class="mn-ioc-kv" style="color:#ff6b6b;">3 <span class="mn-ioc-pulse"></span></span>
+        <div class="mn-ioc-kb"><span class="mn-ioc-dn">2 Pending</span> · 1 Resolved</div>
+      </div>
+      <div class="mn-ioc-k" style="--kc:#7c3aed">
+        <span class="mn-ioc-kl">Avg TXN Size</span>
+        <span class="mn-ioc-kv">5,281 XAF</span>
+        <div class="mn-ioc-kb"><span class="mn-ioc-up">↑ 3.2%</span><svg class="mn-ioc-sp" viewBox="0 0 60 18" preserveAspectRatio="none"><polyline points="0,14 8,12 16,11 24,9 32,10 40,8 48,9 60,7" fill="none" stroke="#7c3aed" stroke-width="1.5"/></svg></div>
+      </div>
+    </div>
+
+    <!-- ═══ MAIN CHARTS ROW ═══ -->
+    <div class="mn-ioc-main">
+
+      <!-- 24h Line Chart -->
+      <div class="mn-ioc-lc">
+        <div class="mn-ioc-ch"><span class="mn-ioc-ct">24h Transaction Volume</span><div class="mn-ioc-leg"><span class="mn-ioc-ld" style="background:#439447;"></span>Today <span class="mn-ioc-ld" style="background:#2D6B31;opacity:.5;margin-left:8px;"></span>Yesterday</div></div>
+        <div class="mn-ioc-lc-inner">
+          <div class="mn-ioc-ya"><span>100k</span><span>75k</span><span>50k</span><span>25k</span><span>0</span></div>
+          <div class="mn-ioc-lsvg">
+            <svg viewBox="0 0 440 98" preserveAspectRatio="none" style="width:100%;height:100%;display:block;overflow:visible;">
+              <defs>
+                <linearGradient id="ioc-ag" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#439447" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#439447" stop-opacity="0.02"/>
+                </linearGradient>
+              </defs>
+              <line x1="0" y1="24" x2="440" y2="24" stroke="#162d4a" stroke-width="0.8"/>
+              <line x1="0" y1="49" x2="440" y2="49" stroke="#162d4a" stroke-width="0.8"/>
+              <line x1="0" y1="73" x2="440" y2="73" stroke="#162d4a" stroke-width="0.8"/>
+              <!-- Volume bars (subtle) -->
+              <rect x="1"   y="83" width="9"  height="15" fill="rgba(67,148,71,0.08)" rx="1"/>
+              <rect x="20"  y="85" width="9"  height="13" fill="rgba(67,148,71,0.07)" rx="1"/>
+              <rect x="39"  y="87" width="9"  height="11" fill="rgba(67,148,71,0.07)" rx="1"/>
+              <rect x="58"  y="87" width="9"  height="11" fill="rgba(67,148,71,0.07)" rx="1"/>
+              <rect x="77"  y="88" width="9"  height="10" fill="rgba(67,148,71,0.08)" rx="1"/>
+              <rect x="96"  y="84" width="9"  height="14" fill="rgba(67,148,71,0.10)" rx="1"/>
+              <rect x="115" y="78" width="9"  height="20" fill="rgba(67,148,71,0.13)" rx="1"/>
+              <rect x="134" y="65" width="9"  height="33" fill="rgba(67,148,71,0.18)" rx="1"/>
+              <rect x="153" y="49" width="9"  height="49" fill="rgba(67,148,71,0.24)" rx="1"/>
+              <rect x="172" y="30" width="9"  height="68" fill="rgba(67,148,71,0.30)" rx="1"/>
+              <rect x="191" y="34" width="9"  height="64" fill="rgba(67,148,71,0.28)" rx="1"/>
+              <rect x="210" y="38" width="9"  height="60" fill="rgba(67,148,71,0.25)" rx="1"/>
+              <rect x="229" y="52" width="9"  height="46" fill="rgba(67,148,71,0.20)" rx="1"/>
+              <rect x="248" y="56" width="9"  height="42" fill="rgba(67,148,71,0.18)" rx="1"/>
+              <rect x="267" y="44" width="9"  height="54" fill="rgba(67,148,71,0.23)" rx="1"/>
+              <rect x="286" y="31" width="9"  height="67" fill="rgba(67,148,71,0.30)" rx="1"/>
+              <rect x="305" y="22" width="9"  height="76" fill="rgba(67,148,71,0.38)" rx="1"/>
+              <rect x="324" y="27" width="9"  height="71" fill="rgba(67,148,71,0.32)" rx="1"/>
+              <rect x="343" y="38" width="9"  height="60" fill="rgba(67,148,71,0.25)" rx="1"/>
+              <rect x="362" y="52" width="9"  height="46" fill="rgba(67,148,71,0.20)" rx="1"/>
+              <rect x="381" y="65" width="9"  height="33" fill="rgba(67,148,71,0.15)" rx="1"/>
+              <rect x="400" y="74" width="9"  height="24" fill="rgba(67,148,71,0.11)" rx="1"/>
+              <rect x="419" y="81" width="9"  height="17" fill="rgba(67,148,71,0.08)" rx="1"/>
+              <!-- Area -->
+              <path d="M0,86 L19,89 L38,91 L57,92 L76,93 L95,90 L114,80 L133,63 L152,46 L171,28 L190,32 L209,36 L228,50 L247,54 L266,44 L285,31 L304,23 L323,27 L342,36 L361,50 L380,63 L399,74 L418,81 L437,87 L437,98 L0,98 Z" fill="url(#ioc-ag)"/>
+              <!-- Yesterday -->
+              <polyline points="0,90 19,92 38,93 57,94 76,95 95,92 114,84 133,67 152,50 171,32 190,36 209,40 228,53 247,57 266,47 285,35 304,27 323,31 342,40 361,54 380,67 399,77 418,84 437,90" fill="none" stroke="#2D6B31" stroke-width="1.2" stroke-dasharray="4 2" opacity="0.5"/>
+              <!-- Today line (animated) -->
+              <path id="ioc-txn-path" d="M0,86 L19,89 L38,91 L57,92 L76,93 L95,90 L114,80 L133,63 L152,46 L171,28 L190,32 L209,36 L228,50 L247,54 L266,44 L285,31 L304,23 L323,27 L342,36 L361,50 L380,63 L399,74 L418,81 L437,87" fill="none" stroke="#439447" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Peak marker -->
+              <line x1="304" y1="23" x2="304" y2="98" stroke="#439447" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.35"/>
+              <circle cx="304" cy="23" r="4.5" fill="#439447"/>
+              <circle cx="304" cy="23" r="8" fill="none" stroke="#439447" stroke-width="1" class="mn-ioc-pr"/>
+              <rect x="310" y="14" width="46" height="14" rx="3" fill="rgba(67,148,71,0.25)"/>
+              <text x="333" y="24" text-anchor="middle" font-size="7.5" fill="#7ee89c" font-weight="700">Peak 16:00</text>
+            </svg>
+            <div class="mn-ioc-xa"><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span><span>16</span><span>18</span><span>20</span><span>22</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donut: Payment Mix -->
+      <div class="mn-ioc-donut">
+        <div class="mn-ioc-ch"><span class="mn-ioc-ct">Payment Mix</span></div>
+        <div class="mn-ioc-dp">
+          <!-- C = 2π×36 ≈ 226.2 | offset = (1−cumul)×C -->
+          <svg viewBox="0 0 100 100" class="mn-ioc-dsv">
+            <circle cx="50" cy="50" r="36" fill="none" stroke="#439447" stroke-width="10" stroke-dasharray="86.0 226.2" stroke-dashoffset="226.2" transform="rotate(-90 50 50)"/>
+            <circle cx="50" cy="50" r="36" fill="none" stroke="#2980B9" stroke-width="10" stroke-dasharray="56.6 226.2" stroke-dashoffset="140.2" transform="rotate(-90 50 50)"/>
+            <circle cx="50" cy="50" r="36" fill="none" stroke="#33B466" stroke-width="10" stroke-dasharray="49.8 226.2" stroke-dashoffset="83.7" transform="rotate(-90 50 50)"/>
+            <circle cx="50" cy="50" r="36" fill="none" stroke="#E8C547" stroke-width="10" stroke-dasharray="22.6 226.2" stroke-dashoffset="33.9" transform="rotate(-90 50 50)"/>
+            <circle cx="50" cy="50" r="36" fill="none" stroke="#C0392B" stroke-width="10" stroke-dasharray="11.3 226.2" stroke-dashoffset="11.3" transform="rotate(-90 50 50)"/>
+            <text x="50" y="47" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">47.3K</text>
+            <text x="50" y="58" text-anchor="middle" font-size="5" fill="#6b9cbf">TXN Today</text>
+          </svg>
+          <div class="mn-ioc-dl">
+            <div class="mn-ioc-di"><span class="mn-ioc-dd" style="background:#439447"></span><span class="mn-ioc-dn2">QR Scan</span><div class="mn-ioc-dpb"><div style="width:38%;background:#439447"></div></div><span class="mn-ioc-dpct">38%</span></div>
+            <div class="mn-ioc-di"><span class="mn-ioc-dd" style="background:#2980B9"></span><span class="mn-ioc-dn2">Bank Tfr</span><div class="mn-ioc-dpb"><div style="width:25%;background:#2980B9"></div></div><span class="mn-ioc-dpct">25%</span></div>
+            <div class="mn-ioc-di"><span class="mn-ioc-dd" style="background:#33B466"></span><span class="mn-ioc-dn2">Wallet</span><div class="mn-ioc-dpb"><div style="width:22%;background:#33B466"></div></div><span class="mn-ioc-dpct">22%</span></div>
+            <div class="mn-ioc-di"><span class="mn-ioc-dd" style="background:#E8C547"></span><span class="mn-ioc-dn2">Intl</span><div class="mn-ioc-dpb"><div style="width:10%;background:#E8C547"></div></div><span class="mn-ioc-dpct">10%</span></div>
+            <div class="mn-ioc-di"><span class="mn-ioc-dd" style="background:#C0392B"></span><span class="mn-ioc-dn2">Biller</span><div class="mn-ioc-dpb"><div style="width:5%;background:#C0392B"></div></div><span class="mn-ioc-dpct">5%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Latency -->
+      <div class="mn-ioc-ss">
+        <div class="mn-ioc-ch"><span class="mn-ioc-ct">System Latency</span></div>
+        <div class="mn-ioc-ssl">
+          <div class="mn-ioc-sr"><span class="mn-ioc-so"></span><span class="mn-ioc-sn">Mobile Money</span><div class="mn-ioc-slb"><div style="width:12%;background:#439447"></div></div><span class="mn-ioc-sm">12ms</span></div>
+          <div class="mn-ioc-sr"><span class="mn-ioc-so"></span><span class="mn-ioc-sn">Risk Engine</span><div class="mn-ioc-slb"><div style="width:28%;background:#439447"></div></div><span class="mn-ioc-sm">28ms</span></div>
+          <div class="mn-ioc-sr"><span class="mn-ioc-so"></span><span class="mn-ioc-sn">Settlement GW</span><div class="mn-ioc-slb"><div style="width:18%;background:#439447"></div></div><span class="mn-ioc-sm">18ms</span></div>
+          <div class="mn-ioc-sr"><span class="mn-ioc-so"></span><span class="mn-ioc-sn">Biller Platform</span><div class="mn-ioc-slb"><div style="width:22%;background:#439447"></div></div><span class="mn-ioc-sm">22ms</span></div>
+          <div class="mn-ioc-sr"><span class="mn-ioc-so"></span><span class="mn-ioc-sn">AML Engine</span><div class="mn-ioc-slb"><div style="width:45%;background:#E8C547"></div></div><span class="mn-ioc-sm" style="color:#E8C547;">45ms</span></div>
+          <div class="mn-ioc-sr"><span class="mn-ioc-sw"></span><span class="mn-ioc-sn">Bank APIs (8)</span><div class="mn-ioc-slb"><div style="width:72%;background:#E8C547"></div></div><span class="mn-ioc-sm" style="color:#E8C547;">7/8 OK</span></div>
+          <div class="mn-ioc-sr"><span class="mn-ioc-so"></span><span class="mn-ioc-sn">GimacPay Intl</span><div class="mn-ioc-slb"><div style="width:89%;background:#d97706"></div></div><span class="mn-ioc-sm" style="color:#d97706;">89ms</span></div>
+          <div class="mn-ioc-sr"><span class="mn-ioc-so"></span><span class="mn-ioc-sn">OCS Telecom</span><div class="mn-ioc-slb"><div style="width:31%;background:#439447"></div></div><span class="mn-ioc-sm">31ms</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BOTTOM ROW ═══ -->
+    <div class="mn-ioc-bot">
+
+      <!-- Bank Bar Chart -->
+      <div class="mn-ioc-bc">
+        <div class="mn-ioc-ch"><span class="mn-ioc-ct">Bank Volume</span><span class="mn-ioc-cs">Today</span></div>
+        <div class="mn-ioc-bars">
+          <div class="mn-ioc-bi"><div class="mn-ioc-bt"><div class="ioc-bar-fill" data-h="85%" style="height:0;background:linear-gradient(180deg,#52b256,#2D6B31)"></div></div><span class="mn-ioc-bn">CNEF</span><span class="mn-ioc-bv">21.4k</span></div>
+          <div class="mn-ioc-bi"><div class="mn-ioc-bt"><div class="ioc-bar-fill" data-h="62%" style="height:0;background:linear-gradient(180deg,#4aa3d6,#1a6090)"></div></div><span class="mn-ioc-bn">SCB</span><span class="mn-ioc-bv">15.6k</span></div>
+          <div class="mn-ioc-bi"><div class="mn-ioc-bt"><div class="ioc-bar-fill" data-h="54%" style="height:0;background:linear-gradient(180deg,#3ecf7a,#229950)"></div></div><span class="mn-ioc-bn">UBA</span><span class="mn-ioc-bv">13.6k</span></div>
+          <div class="mn-ioc-bi"><div class="mn-ioc-bt"><div class="ioc-bar-fill" data-h="38%" style="height:0;background:linear-gradient(180deg,#a78bfa,#5b21b6)"></div></div><span class="mn-ioc-bn">SocGen</span><span class="mn-ioc-bv">9.6k</span></div>
+          <div class="mn-ioc-bi"><div class="mn-ioc-bt"><div class="ioc-bar-fill" data-h="27%" style="height:0;background:linear-gradient(180deg,#fde68a,#c9a832)"></div></div><span class="mn-ioc-bn">CCA</span><span class="mn-ioc-bv">6.8k</span></div>
+        </div>
+      </div>
+
+      <!-- Live Feed -->
+      <div class="mn-ioc-feed">
+        <div class="mn-ioc-ch"><span class="mn-ioc-ct">Live Transactions</span><span class="mn-ioc-lb">● LIVE</span></div>
+        <div class="mn-ioc-fl" id="ioc-feed-list">
+          <div class="mn-ioc-fr"><span class="mn-ioc-fi" style="color:#439447">↑</span><span class="mn-ioc-fd">MTN → NeoS Wallet</span><span class="mn-ioc-fa">+8,500 XAF</span><span class="mn-ioc-ft">0:12</span></div>
+          <div class="mn-ioc-fr"><span class="mn-ioc-fi" style="color:#2980B9">↑</span><span class="mn-ioc-fd">SCB Bank Transfer</span><span class="mn-ioc-fa">+22,000 XAF</span><span class="mn-ioc-ft">0:34</span></div>
+          <div class="mn-ioc-fr"><span class="mn-ioc-fi" style="color:#E8C547">⚡</span><span class="mn-ioc-fd">AES Electricity Biller</span><span class="mn-ioc-fa">−6,000 XAF</span><span class="mn-ioc-ft">1:02</span></div>
+          <div class="mn-ioc-fr"><span class="mn-ioc-fi" style="color:#33B466">↑</span><span class="mn-ioc-fd">GimacPay Intl Transfer</span><span class="mn-ioc-fa">+48,000 XAF</span><span class="mn-ioc-ft">1:45</span></div>
+          <div class="mn-ioc-fr"><span class="mn-ioc-fi" style="color:#C0392B">⚠</span><span class="mn-ioc-fd">Risk Flag #R-0042</span><span class="mn-ioc-fa" style="color:#ff6b6b">Review</span><span class="mn-ioc-ft">2:11</span></div>
+        </div>
+      </div>
+
+      <!-- 7-Day Heatmap -->
+      <div class="mn-ioc-hm">
+        <div class="mn-ioc-ch"><span class="mn-ioc-ct">7-Day TXN Heatmap</span><span class="mn-ioc-cs">by Hour</span></div>
+        <div class="mn-ioc-hm-wrap">
+          <div class="mn-ioc-hm-yl"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          <div class="mn-ioc-hm-r">
+            <div class="mn-ioc-hm-g">
+              <div class="mn-ioc-hc" style="--op:.03"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.01"></div><div class="mn-ioc-hc" style="--op:.03"></div><div class="mn-ioc-hc" style="--op:.08"></div><div class="mn-ioc-hc" style="--op:.18"></div><div class="mn-ioc-hc" style="--op:.42"></div><div class="mn-ioc-hc" style="--op:.75"></div><div class="mn-ioc-hc" style="--op:.90"></div><div class="mn-ioc-hc" style="--op:.82"></div><div class="mn-ioc-hc" style="--op:.76"></div><div class="mn-ioc-hc" style="--op:.65"></div><div class="mn-ioc-hc" style="--op:.60"></div><div class="mn-ioc-hc" style="--op:.70"></div><div class="mn-ioc-hc" style="--op:.85"></div><div class="mn-ioc-hc" style="--op:.95"></div><div class="mn-ioc-hc" style="--op:.82"></div><div class="mn-ioc-hc" style="--op:.70"></div><div class="mn-ioc-hc" style="--op:.55"></div><div class="mn-ioc-hc" style="--op:.38"></div><div class="mn-ioc-hc" style="--op:.28"></div><div class="mn-ioc-hc" style="--op:.18"></div><div class="mn-ioc-hc" style="--op:.10"></div>
+              <div class="mn-ioc-hc" style="--op:.03"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.01"></div><div class="mn-ioc-hc" style="--op:.01"></div><div class="mn-ioc-hc" style="--op:.04"></div><div class="mn-ioc-hc" style="--op:.09"></div><div class="mn-ioc-hc" style="--op:.20"></div><div class="mn-ioc-hc" style="--op:.44"></div><div class="mn-ioc-hc" style="--op:.78"></div><div class="mn-ioc-hc" style="--op:.92"></div><div class="mn-ioc-hc" style="--op:.85"></div><div class="mn-ioc-hc" style="--op:.79"></div><div class="mn-ioc-hc" style="--op:.68"></div><div class="mn-ioc-hc" style="--op:.62"></div><div class="mn-ioc-hc" style="--op:.72"></div><div class="mn-ioc-hc" style="--op:.87"></div><div class="mn-ioc-hc" style="--op:.97"></div><div class="mn-ioc-hc" style="--op:.84"></div><div class="mn-ioc-hc" style="--op:.71"></div><div class="mn-ioc-hc" style="--op:.57"></div><div class="mn-ioc-hc" style="--op:.40"></div><div class="mn-ioc-hc" style="--op:.30"></div><div class="mn-ioc-hc" style="--op:.20"></div><div class="mn-ioc-hc" style="--op:.11"></div>
+              <div class="mn-ioc-hc" style="--op:.04"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.03"></div><div class="mn-ioc-hc" style="--op:.07"></div><div class="mn-ioc-hc" style="--op:.17"></div><div class="mn-ioc-hc" style="--op:.40"></div><div class="mn-ioc-hc" style="--op:.72"></div><div class="mn-ioc-hc" style="--op:.88"></div><div class="mn-ioc-hc" style="--op:.80"></div><div class="mn-ioc-hc" style="--op:.74"></div><div class="mn-ioc-hc" style="--op:.63"></div><div class="mn-ioc-hc" style="--op:.58"></div><div class="mn-ioc-hc" style="--op:.68"></div><div class="mn-ioc-hc" style="--op:.83"></div><div class="mn-ioc-hc" style="--op:.92"></div><div class="mn-ioc-hc" style="--op:.80"></div><div class="mn-ioc-hc" style="--op:.67"></div><div class="mn-ioc-hc" style="--op:.52"></div><div class="mn-ioc-hc" style="--op:.36"></div><div class="mn-ioc-hc" style="--op:.27"></div><div class="mn-ioc-hc" style="--op:.17"></div><div class="mn-ioc-hc" style="--op:.08"></div>
+              <div class="mn-ioc-hc" style="--op:.04"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.04"></div><div class="mn-ioc-hc" style="--op:.10"></div><div class="mn-ioc-hc" style="--op:.21"></div><div class="mn-ioc-hc" style="--op:.46"></div><div class="mn-ioc-hc" style="--op:.80"></div><div class="mn-ioc-hc" style="--op:.94"></div><div class="mn-ioc-hc" style="--op:.87"></div><div class="mn-ioc-hc" style="--op:.81"></div><div class="mn-ioc-hc" style="--op:.70"></div><div class="mn-ioc-hc" style="--op:.65"></div><div class="mn-ioc-hc" style="--op:.75"></div><div class="mn-ioc-hc" style="--op:.90"></div><div class="mn-ioc-hc" style="--op:1.0"></div><div class="mn-ioc-hc" style="--op:.88"></div><div class="mn-ioc-hc" style="--op:.74"></div><div class="mn-ioc-hc" style="--op:.60"></div><div class="mn-ioc-hc" style="--op:.43"></div><div class="mn-ioc-hc" style="--op:.32"></div><div class="mn-ioc-hc" style="--op:.22"></div><div class="mn-ioc-hc" style="--op:.12"></div>
+              <div class="mn-ioc-hc" style="--op:.05"></div><div class="mn-ioc-hc" style="--op:.03"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.05"></div><div class="mn-ioc-hc" style="--op:.12"></div><div class="mn-ioc-hc" style="--op:.25"></div><div class="mn-ioc-hc" style="--op:.52"></div><div class="mn-ioc-hc" style="--op:.85"></div><div class="mn-ioc-hc" style="--op:.98"></div><div class="mn-ioc-hc" style="--op:.94"></div><div class="mn-ioc-hc" style="--op:.88"></div><div class="mn-ioc-hc" style="--op:.78"></div><div class="mn-ioc-hc" style="--op:.73"></div><div class="mn-ioc-hc" style="--op:.83"></div><div class="mn-ioc-hc" style="--op:.96"></div><div class="mn-ioc-hc" style="--op:1.0"></div><div class="mn-ioc-hc" style="--op:.94"></div><div class="mn-ioc-hc" style="--op:.82"></div><div class="mn-ioc-hc" style="--op:.68"></div><div class="mn-ioc-hc" style="--op:.50"></div><div class="mn-ioc-hc" style="--op:.38"></div><div class="mn-ioc-hc" style="--op:.26"></div><div class="mn-ioc-hc" style="--op:.14"></div>
+              <div class="mn-ioc-hc" style="--op:.03"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.01"></div><div class="mn-ioc-hc" style="--op:.01"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.06"></div><div class="mn-ioc-hc" style="--op:.14"></div><div class="mn-ioc-hc" style="--op:.32"></div><div class="mn-ioc-hc" style="--op:.55"></div><div class="mn-ioc-hc" style="--op:.66"></div><div class="mn-ioc-hc" style="--op:.64"></div><div class="mn-ioc-hc" style="--op:.60"></div><div class="mn-ioc-hc" style="--op:.67"></div><div class="mn-ioc-hc" style="--op:.70"></div><div class="mn-ioc-hc" style="--op:.64"></div><div class="mn-ioc-hc" style="--op:.60"></div><div class="mn-ioc-hc" style="--op:.65"></div><div class="mn-ioc-hc" style="--op:.58"></div><div class="mn-ioc-hc" style="--op:.50"></div><div class="mn-ioc-hc" style="--op:.43"></div><div class="mn-ioc-hc" style="--op:.33"></div><div class="mn-ioc-hc" style="--op:.25"></div><div class="mn-ioc-hc" style="--op:.17"></div><div class="mn-ioc-hc" style="--op:.10"></div>
+              <div class="mn-ioc-hc" style="--op:.04"></div><div class="mn-ioc-hc" style="--op:.02"></div><div class="mn-ioc-hc" style="--op:.01"></div><div class="mn-ioc-hc" style="--op:.01"></div><div class="mn-ioc-hc" style="--op:.03"></div><div class="mn-ioc-hc" style="--op:.08"></div><div class="mn-ioc-hc" style="--op:.20"></div><div class="mn-ioc-hc" style="--op:.42"></div><div class="mn-ioc-hc" style="--op:.75"></div><div class="mn-ioc-hc" style="--op:.90"></div><div class="mn-ioc-hc" style="--op:.85"></div><div class="mn-ioc-hc" style="--op:.78"></div><div class="mn-ioc-hc" style="--op:.67"></div><div class="mn-ioc-hc" style="--op:.62"></div><div class="mn-ioc-hc" style="--op:.72"></div><div class="mn-ioc-hc" style="--op:.87"></div><div class="mn-ioc-hc mn-ioc-hca" style="--op:.95"></div><div class="mn-ioc-hc mn-ioc-hco" style="--op:.04"></div><div class="mn-ioc-hc mn-ioc-hco" style="--op:.04"></div><div class="mn-ioc-hc mn-ioc-hco" style="--op:.04"></div><div class="mn-ioc-hc mn-ioc-hco" style="--op:.04"></div><div class="mn-ioc-hc mn-ioc-hco" style="--op:.04"></div><div class="mn-ioc-hc mn-ioc-hco" style="--op:.04"></div><div class="mn-ioc-hc mn-ioc-hco" style="--op:.04"></div>
+            </div>
+            <div class="mn-ioc-hm-xl"><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span><span>16</span><span>18</span><span>20</span><span>22</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end bottom row -->
+
+
+  </div><!-- end ioc-frame -->
+</section>
+
 </div><!-- end mn-body -->
 
 <footer class="au-footer">
@@ -1446,5 +2188,433 @@ function initCounters() {
   .mn-dtl-ms     { min-width: calc(50% - 4px); flex: none; }
   .mn-dtl-qbar span { font-size: 0.62rem; }
   .mn-cicd-body  { padding: 16px 16px 20px; }
+  .mn-ds-row     { grid-template-columns: 1fr; }
+  .mn-ds-swatches { grid-template-columns: repeat(2, 1fr); }
+  .mn-ds-icon-grid { grid-template-columns: repeat(4, 1fr); }
+  .mn-ds-banks   { grid-template-columns: repeat(3, 1fr); }
+  .mn-ds-block   { padding: 20px 16px 24px; }
+  .mn-ds-typo-label { width: 120px; }
+}
+
+/* ── DESIGN SYSTEM ──────────────────────────────────── */
+.mn-ds-block {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  padding: 28px 32px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.mn-ds-block-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 24px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.mn-ds-block-icon {
+  width: 44px; height: 44px;
+  background: #e8f5e9; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: #439447;
+}
+.mn-ds-block-icon svg { width: 22px; height: 22px; }
+.mn-ds-block-icon--kit { background: #e8edf3; color: #1A3557; }
+.mn-ds-block-tag {
+  font-size: 0.7rem; font-weight: 700; color: #439447;
+  text-transform: uppercase; letter-spacing: .07em; margin-bottom: 2px;
+}
+.mn-ds-block-name { font-size: 1.1rem; font-weight: 700; color: var(--text1); }
+
+.mn-ds-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 16px;
+}
+.mn-ds-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px 20px;
+}
+.mn-ds-card-title {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em;
+  color: var(--text3); margin-bottom: 14px;
+}
+
+/* Swatches */
+.mn-ds-swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.mn-ds-swatch { display: flex; flex-direction: column; gap: 5px; }
+.mn-ds-swatch-color { height: 50px; border-radius: 8px; }
+.mn-ds-swatch-info { display: flex; flex-direction: column; gap: 1px; }
+.mn-ds-swatch-name { font-size: 0.68rem; font-weight: 600; color: var(--text1); }
+.mn-ds-swatch-hex  { font-size: 0.62rem; font-family: monospace; color: var(--text3); }
+.mn-ds-swatch-role { font-size: 0.58rem; font-weight: 700; color: #439447; text-transform: uppercase; letter-spacing: .04em; }
+
+/* Right column */
+.mn-ds-right-col { display: flex; flex-direction: column; gap: 14px; }
+
+/* Allocation bars */
+.mn-ds-alloc-bars { display: flex; flex-direction: column; gap: 10px; }
+.mn-ds-alloc-row  { display: flex; align-items: center; gap: 10px; }
+.mn-ds-alloc-label { font-size: 0.7rem; color: var(--text2); width: 108px; flex-shrink: 0; }
+.mn-ds-alloc-track { flex: 1; height: 9px; background: var(--border); border-radius: 5px; overflow: hidden; }
+.mn-ds-alloc-fill  { height: 100%; border-radius: 5px; }
+.mn-ds-alloc-pct   { font-size: 0.68rem; font-weight: 700; color: var(--text2); width: 32px; text-align: right; }
+
+/* Status pills */
+.mn-ds-status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.mn-ds-status-pill {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 11px; border-radius: 20px;
+  font-size: 0.7rem; font-weight: 600;
+}
+.mn-ds-status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* Typography */
+.mn-ds-typo-card  { margin-bottom: 0; }
+.mn-ds-typo-scale { display: flex; flex-direction: column; }
+.mn-ds-typo-row   {
+  display: flex; align-items: baseline; gap: 20px;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+}
+.mn-ds-typo-row:last-child { border-bottom: none; }
+.mn-ds-typo-label  { font-size: 0.64rem; color: var(--text3); width: 148px; flex-shrink: 0; font-family: monospace; }
+.mn-ds-typo-sample { flex: 1; }
+
+/* Icon grid */
+.mn-ds-icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.mn-ds-icon-item  { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.mn-ds-icon-circle {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.mn-ds-icon-circle svg { width: 24px; height: 24px; }
+.mn-ds-icon-item span  { font-size: 0.64rem; color: var(--text2); text-align: center; font-weight: 500; }
+
+/* Buttons */
+.mn-ds-btn-list { display: flex; flex-direction: column; gap: 9px; }
+.mn-ds-btn-row  { display: flex; align-items: center; gap: 14px; }
+.mn-ds-btn-label { font-size: 0.67rem; color: var(--text3); width: 68px; flex-shrink: 0; }
+.mn-ds-btn-demo {
+  padding: 8px 18px; border-radius: 8px;
+  font-size: 0.78rem; font-weight: 600; text-align: center;
+  user-select: none;
+}
+.mn-ds-btn-primary  { background: #439447; color: #fff; }
+.mn-ds-btn-secondary { background: #1A3557; color: #fff; }
+.mn-ds-btn-outline  { background: transparent; color: #439447; border: 1.5px solid #439447; }
+.mn-ds-btn-disabled { background: #e8e8e8; color: #9e9e9e; }
+.mn-ds-btn-danger   { background: #C0392B; color: #fff; }
+
+/* Input fields */
+.mn-ds-inputs  { display: flex; flex-direction: column; gap: 11px; }
+.mn-ds-field   { display: flex; flex-direction: column; gap: 4px; }
+.mn-ds-field-label { font-size: 0.7rem; color: var(--text2); font-weight: 600; }
+.mn-ds-field-input {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 8px;
+  background: var(--bg); border: 1.5px solid var(--border);
+}
+.mn-ds-field-normal { border-color: var(--border); }
+.mn-ds-field-active { border-color: #439447; box-shadow: 0 0 0 2px rgba(67,148,71,.12); }
+.mn-ds-field-error  { border-color: #C0392B; background: #fff8f7; }
+.mn-ds-field-prefix, .mn-ds-field-suffix { font-size: 0.72rem; color: var(--text3); flex-shrink: 0; }
+.mn-ds-field-text  { flex: 1; font-size: 0.78rem; color: var(--text2); }
+.mn-ds-field-hint  { font-size: 0.63rem; color: var(--text3); }
+
+/* Card tiles */
+.mn-ds-card-tiles { display: flex; flex-direction: column; gap: 9px; }
+.mn-ds-tile {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 11px 13px;
+}
+.mn-ds-tile-header    { display: flex; align-items: center; gap: 9px; margin-bottom: 7px; }
+.mn-ds-tile-icon-wrap {
+  width: 34px; height: 34px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.mn-ds-tile-icon-wrap svg { width: 17px; height: 17px; }
+.mn-ds-tile-meta   { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.mn-ds-tile-title  { font-size: 0.76rem; font-weight: 700; color: var(--text1); }
+.mn-ds-tile-sub    { font-size: 0.62rem; color: var(--text3); }
+.mn-ds-tile-amount { font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
+.mn-ds-tile-badge  {
+  display: inline-block; padding: 2px 9px; border-radius: 12px;
+  font-size: 0.6rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .04em;
+}
+.mn-ds-tile-balance {
+  background: linear-gradient(135deg, #1A3557 0%, #2D6B31 100%);
+  border-color: transparent;
+}
+.mn-ds-tile-balance-label  { font-size: 0.66rem; color: rgba(255,255,255,.7); margin-bottom: 4px; }
+.mn-ds-tile-balance-amount { font-size: 1.45rem; font-weight: 700; color: #fff; margin-bottom: 7px; line-height: 1.1; }
+.mn-ds-tile-balance-amount span { font-size: 0.82rem; font-weight: 400; }
+.mn-ds-tile-balance-row { display: flex; justify-content: space-between; font-size: 0.66rem; color: rgba(255,255,255,.7); }
+
+/* Bank theme */
+.mn-ds-banks { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 16px; }
+.mn-ds-bank-item  { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.mn-ds-bank-color { width: 50px; height: 50px; border-radius: 12px; }
+.mn-ds-bank-info  { display: flex; flex-direction: column; gap: 2px; }
+.mn-ds-bank-name  { font-size: 0.68rem; font-weight: 700; color: var(--text1); line-height: 1.2; }
+.mn-ds-bank-tag   { font-size: 0.58rem; color: var(--text3); }
+.mn-ds-bank-note  {
+  font-size: 0.74rem; color: var(--text2); line-height: 1.55;
+  border-top: 1px solid var(--border); padding-top: 12px; margin: 0;
+}
+
+/* ── IOC DASHBOARD ───────────────────────────────────── */
+
+/* Tech specs grid */
+.mn-ioc-specs { margin-bottom: 28px; }
+.mn-ioc-spec-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.mn-ioc-spec-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px 18px;
+  display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: var(--shadow);
+}
+.mn-ioc-spec-icon {
+  width: 36px; height: 36px; flex-shrink: 0; border-radius: 8px;
+  background: rgba(67,148,71,.1); display: flex; align-items: center;
+  justify-content: center; color: #439447;
+}
+.mn-ioc-spec-icon svg { width: 18px; height: 18px; }
+.mn-ioc-spec-label  { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text3); margin-bottom: 3px; }
+.mn-ioc-spec-val    { font-size: 0.82rem; font-weight: 700; color: var(--text1); margin-bottom: 3px; }
+.mn-ioc-spec-detail { font-size: 0.67rem; color: var(--text3); line-height: 1.4; }
+
+/* ═══════════════════════════════════════════════════
+   IOC DASHBOARD — redesigned dark theme
+   All mn-ioc-* classes for new compact layout
+═══════════════════════════════════════════════════ */
+
+/* Frame */
+.mn-ioc-frame {
+  background: #050e1a;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 28px 80px rgba(0,0,0,.65), 0 0 0 1px rgba(67,148,71,.22);
+}
+
+/* ── Top bar ── */
+.mn-ioc-tb {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 16px; background: #02060e;
+  border-bottom: 1px solid rgba(67,148,71,.18);
+  gap: 12px; min-height: 36px;
+}
+.mn-ioc-tb-l { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.mn-ioc-tb-r { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.mn-ioc-brand-ring {
+  width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
+  border: 2px solid #439447;
+  animation: ioc-ring 2s ease-in-out infinite;
+}
+@keyframes ioc-ring {
+  0%,100% { box-shadow: 0 0 5px rgba(67,148,71,.4); }
+  50%      { box-shadow: 0 0 14px rgba(67,148,71,.95); }
+}
+.mn-ioc-brand-n  { font-size: 0.75rem; font-weight: 800; color: #439447; letter-spacing: .08em; white-space: nowrap; }
+.mn-ioc-tb-sep   { color: rgba(255,255,255,.18); font-size: 0.85rem; }
+.mn-ioc-tb-title {
+  font-size: 0.62rem; color: rgba(255,255,255,.38); letter-spacing: .05em;
+  text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mn-ioc-upd   { font-size: 0.58rem; color: rgba(255,255,255,.28); white-space: nowrap; }
+.mn-ioc-sysr  { display: flex; gap: 4px; align-items: center; }
+.mn-ioc-sysd  { width: 7px; height: 7px; border-radius: 50%; }
+.mn-ioc-sysd-ok   { background: #439447; animation: ioc-sysd 3s ease-in-out infinite; }
+.mn-ioc-sysd-warn { background: #E8C547; animation: ioc-sysd-warn 1.2s ease-in-out infinite; }
+@keyframes ioc-sysd      { 0%,100%{opacity:1} 50%{opacity:.3}  }
+@keyframes ioc-sysd-warn { 0%,100%{opacity:1} 50%{opacity:.12} }
+.mn-ioc-clock {
+  font-family: 'Courier New', monospace; font-size: 0.78rem;
+  font-weight: 700; color: #439447; letter-spacing: .1em; white-space: nowrap;
+}
+
+/* ── 6 KPI cards ── */
+.mn-ioc-kpis {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 1px; background: rgba(255,255,255,.05);
+}
+.mn-ioc-k {
+  background: #0c1d32; padding: 10px 12px 8px;
+  border-top: 2px solid var(--kc, #439447);
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 0; transition: background .18s;
+}
+.mn-ioc-k:hover { background: #102444; }
+.mn-ioc-kl {
+  font-size: 0.57rem; text-transform: uppercase; letter-spacing: .055em;
+  color: rgba(255,255,255,.38); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mn-ioc-kv {
+  font-size: 1.42rem; font-weight: 900; color: #fff; line-height: 1.05;
+  font-family: 'Courier New', monospace; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; letter-spacing: -.01em;
+}
+.mn-ioc-kb {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.59rem; color: rgba(255,255,255,.32); margin-top: 1px;
+}
+.mn-ioc-sp { width: 60px; height: 16px; flex-shrink: 0; }
+.mn-ioc-up { color: #33B466; font-weight: 700; }
+.mn-ioc-dn { color: #E8C547; font-weight: 700; }
+.mn-ioc-pulse {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: #C0392B; vertical-align: middle; margin-left: 2px;
+  animation: ioc-pulse 1s ease-in-out infinite;
+}
+@keyframes ioc-pulse {
+  0%,100% { transform: scale(1);   opacity: 1; }
+  50%     { transform: scale(1.8); opacity: .35; }
+}
+
+/* ── Shared card header ── */
+.mn-ioc-ch {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 12px 5px; border-bottom: 1px solid rgba(255,255,255,.06);
+  flex-shrink: 0;
+}
+.mn-ioc-ct { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: rgba(255,255,255,.52); }
+.mn-ioc-cs { font-size: 0.57rem; color: rgba(255,255,255,.28); }
+.mn-ioc-lb { font-size: 0.59rem; font-weight: 700; color: #33B466; animation: ioc-sysd 1.5s infinite; }
+.mn-ioc-leg { display: flex; align-items: center; gap: 5px; font-size: 0.58rem; color: rgba(255,255,255,.42); }
+.mn-ioc-ld  { width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+
+/* ── Main 3-col layout ── */
+.mn-ioc-main {
+  display: grid; grid-template-columns: 1fr 196px 208px;
+  gap: 1px; background: rgba(255,255,255,.04);
+}
+
+/* Line chart card */
+.mn-ioc-lc { background: #0c1d32; display: flex; flex-direction: column; }
+.mn-ioc-lc-inner {
+  display: flex; padding: 8px 10px 4px; flex: 1; gap: 6px; min-height: 138px;
+}
+.mn-ioc-ya {
+  display: flex; flex-direction: column; justify-content: space-between;
+  font-size: 0.53rem; color: rgba(255,255,255,.26); text-align: right;
+  padding-bottom: 18px; min-width: 26px; flex-shrink: 0;
+}
+.mn-ioc-lsvg { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.mn-ioc-lsvg svg { flex: 1; min-height: 90px; display: block; }
+.mn-ioc-xa {
+  display: flex; justify-content: space-between;
+  font-size: 0.52rem; color: rgba(255,255,255,.26); padding-top: 3px;
+}
+.mn-ioc-pr { animation: ioc-peak 2.2s ease-out infinite; }
+@keyframes ioc-peak { 0%{r:5;opacity:.5} 100%{r:13;opacity:0} }
+
+/* Donut card */
+.mn-ioc-donut { background: #0c1d32; display: flex; flex-direction: column; }
+.mn-ioc-dp {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 8px 10px 10px; gap: 7px; flex: 1;
+}
+.mn-ioc-dsv { width: 88px; height: 88px; flex-shrink: 0; }
+.mn-ioc-dl  { width: 100%; display: flex; flex-direction: column; gap: 3px; }
+.mn-ioc-di  { display: flex; align-items: center; gap: 5px; font-size: 0.61rem; }
+.mn-ioc-dd  { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.mn-ioc-dn2 { color: rgba(255,255,255,.58); flex: 1; white-space: nowrap; overflow: hidden; }
+.mn-ioc-dpb {
+  width: 48px; height: 4px; background: rgba(255,255,255,.1);
+  border-radius: 2px; overflow: hidden; flex-shrink: 0;
+}
+.mn-ioc-dpb > div { height: 100%; border-radius: 2px; }
+.mn-ioc-dpct { font-size: 0.59rem; font-weight: 700; color: rgba(255,255,255,.82); min-width: 24px; text-align: right; }
+
+/* System latency card */
+.mn-ioc-ss  { background: #0c1d32; display: flex; flex-direction: column; }
+.mn-ioc-ssl { display: flex; flex-direction: column; padding: 2px 0; flex: 1; justify-content: space-around; }
+.mn-ioc-sr  { display: flex; align-items: center; gap: 5px; padding: 4px 10px; }
+.mn-ioc-so  { width: 6px; height: 6px; border-radius: 50%; background: #439447; flex-shrink: 0; animation: ioc-sysd 3s infinite; }
+.mn-ioc-sw  { width: 6px; height: 6px; border-radius: 50%; background: #E8C547; flex-shrink: 0; animation: ioc-sysd-warn 1.2s infinite; }
+.mn-ioc-sn  { flex: 1; color: rgba(255,255,255,.58); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.6rem; }
+.mn-ioc-slb {
+  width: 54px; height: 4px; background: rgba(255,255,255,.1);
+  border-radius: 2px; overflow: hidden; flex-shrink: 0;
+}
+.mn-ioc-slb > div { height: 100%; border-radius: 2px; }
+.mn-ioc-sm  { font-size: 0.57rem; color: rgba(255,255,255,.32); min-width: 32px; text-align: right; flex-shrink: 0; }
+
+/* ── Bottom 3-col row ── */
+.mn-ioc-bot {
+  display: grid; grid-template-columns: 216px 1fr 276px;
+  gap: 1px; background: rgba(255,255,255,.04);
+}
+
+/* Bank bar chart */
+.mn-ioc-bc   { background: #0c1d32; display: flex; flex-direction: column; }
+.mn-ioc-bars { display: flex; align-items: flex-end; gap: 7px; padding: 5px 12px 7px; flex: 1; min-height: 100px; }
+.mn-ioc-bi   { display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; justify-content: flex-end; height: 100%; }
+.mn-ioc-bt   { width: 100%; flex: 1; display: flex; align-items: flex-end; background: rgba(255,255,255,.05); border-radius: 3px 3px 0 0; overflow: hidden; }
+.ioc-bar-fill { width: 100%; min-height: 2px; border-radius: 2px 2px 0 0; height: 0; }
+.mn-ioc-bn   { font-size: 0.56rem; color: rgba(255,255,255,.38); white-space: nowrap; }
+.mn-ioc-bv   { font-size: 0.59rem; font-weight: 700; color: rgba(255,255,255,.68); }
+
+/* Live feed */
+.mn-ioc-feed { background: #0c1d32; display: flex; flex-direction: column; }
+.mn-ioc-fl   { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+.mn-ioc-fr   {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 12px; font-size: 0.65rem;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  transition: background .3s;
+}
+.mn-ioc-fi   { width: 15px; text-align: center; flex-shrink: 0; font-size: 0.72rem; }
+.mn-ioc-fd   { flex: 1; color: rgba(255,255,255,.62); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mn-ioc-fa   { font-weight: 700; color: rgba(255,255,255,.88); font-size: 0.63rem; white-space: nowrap; flex-shrink: 0; }
+.mn-ioc-ft   { font-size: 0.56rem; color: rgba(255,255,255,.26); min-width: 28px; text-align: right; flex-shrink: 0; }
+.mn-ioc-feed-flash { background: rgba(67,148,71,.16) !important; }
+
+/* 7-day heatmap */
+.mn-ioc-hm      { background: #0c1d32; display: flex; flex-direction: column; }
+.mn-ioc-hm-wrap { display: flex; gap: 5px; padding: 5px 10px 7px; flex: 1; align-items: flex-start; }
+.mn-ioc-hm-yl   {
+  display: flex; flex-direction: column; justify-content: space-between;
+  font-size: 0.52rem; color: rgba(255,255,255,.3); text-align: right;
+  flex-shrink: 0; min-width: 20px; padding-bottom: 15px; align-self: stretch;
+}
+.mn-ioc-hm-r    { flex: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.mn-ioc-hm-g    {
+  display: grid; grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(7, 9px);
+  gap: 2px;
+}
+.mn-ioc-hc  {
+  border-radius: 2px;
+  background: rgba(67,148,71, var(--op, 0.04));
+}
+.mn-ioc-hca {
+  background: rgba(67,148,71, .95) !important;
+  animation: ioc-hm-blink .9s ease-in-out infinite;
+  box-shadow: 0 0 4px rgba(67,148,71,.7);
+}
+.mn-ioc-hco { background: rgba(255,255,255,.04) !important; }
+@keyframes ioc-hm-blink { 0%,100%{opacity:1} 50%{opacity:.38} }
+.mn-ioc-hm-xl {
+  display: flex; justify-content: space-between;
+  font-size: 0.5rem; color: rgba(255,255,255,.22); padding: 2px 1px 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+  .mn-ioc-kpis { grid-template-columns: repeat(3, 1fr); }
+  .mn-ioc-main { grid-template-columns: 1fr 190px; }
+  .mn-ioc-ss   { display: none; }
+}
+@media (max-width: 1024px) {
+  .mn-ioc-spec-grid { grid-template-columns: repeat(2, 1fr); }
+  .mn-ioc-main { grid-template-columns: 1fr; }
+  .mn-ioc-bot  { grid-template-columns: 1fr; }
+  .mn-ioc-tb-title { display: none; }
+}
+@media (max-width: 640px) {
+  .mn-ioc-spec-grid { grid-template-columns: 1fr; }
+  .mn-ioc-kpis { grid-template-columns: repeat(2, 1fr); }
+  .mn-ioc-hm   { display: none; }
 }
 </style>
