@@ -962,7 +962,6 @@ function initIOCDashboard() {
     </div>
   </section>
 
-</div><!-- end mn-body -->
 
 <section class="mn-sec reveal" id="design-system">
   <div class="mn-sec-header">
@@ -1616,6 +1615,9 @@ function initIOCDashboard() {
 
   </div><!-- end ioc-frame -->
 </section>
+
+</div><!-- end mn-body -->
+
 
 <footer class="au-footer">
   <span class="footer-l">中软国际 · <span>ChinaSofti</span></span>
