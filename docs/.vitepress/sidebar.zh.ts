@@ -1,5 +1,6 @@
 export const zhSidebar = {
   '/zh/': [
+    { text: '全部方案', link: '/zh/solutions/' },
     {
       text: '业务平台',
       items: [

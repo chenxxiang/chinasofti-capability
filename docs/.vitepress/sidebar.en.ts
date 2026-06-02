@@ -1,5 +1,6 @@
 export const enSidebar = {
   '/en/': [
+    { text: 'All Solutions', link: '/en/solutions/' },
     {
       text: 'Business Platform',
       items: [

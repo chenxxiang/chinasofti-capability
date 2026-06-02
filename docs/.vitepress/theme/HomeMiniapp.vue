@@ -366,7 +366,13 @@ function initIOCDashboard() {
   <section class="mn-sec reveal" id="scenarios">
     <div class="mn-sec-header">
       <div class="mn-eyebrow">Directory · 方案目录</div>
-      <h2 class="mn-sec-title">四大类小程序方案</h2>
+      <div class="mn-sec-title-row">
+        <h2 class="mn-sec-title">四大类小程序方案</h2>
+        <a href="/zh/solutions/" class="mn-catalog-btn" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          查看完整目录
+        </a>
+      </div>
     </div>
 
     <div class="mn-tabs-wrap">
@@ -386,6 +392,10 @@ function initIOCDashboard() {
         <button class="mn-tab" data-panel="tab-social">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           社交娱乐类
+        </button>
+        <button class="mn-tab" data-panel="tab-all">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          全部方案
         </button>
       </div>
 
@@ -534,6 +544,103 @@ function initIOCDashboard() {
             </div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
+        </div>
+      </div>
+
+      <!-- 全部方案 -->
+      <div class="mn-panel" id="tab-all">
+        <div class="mn-panel-intro">
+          涵盖业务平台、生活类、金融类、社交娱乐类，共 14 个小程序方案，覆盖超级 App 全场景接入。
+        </div>
+        <div class="mn-all-grid">
+          <div class="mn-all-group mn-all-blue">
+            <div class="mn-all-group-hd">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              业务平台
+            </div>
+            <div class="mn-all-items">
+              <a href="/zh/business/cms/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">内容分发平台</span>
+                <span class="mn-all-desc">CMS · 直播 · 版权</span>
+              </a>
+              <a href="/zh/business/loyalty/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">积分激励平台</span>
+                <span class="mn-all-desc">积分 · 任务 · 忠诚度</span>
+              </a>
+              <a href="/zh/business/iot/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">物联网平台</span>
+                <span class="mn-all-desc">IoT · 监控 · 数据采集</span>
+              </a>
+              <a href="/zh/business/ai-agent/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">AI 智能体</span>
+                <span class="mn-all-desc">问答 · 自动化 · RAG</span>
+              </a>
+            </div>
+          </div>
+          <div class="mn-all-group mn-all-purple">
+            <div class="mn-all-group-hd">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              生活类
+            </div>
+            <div class="mn-all-items">
+              <a href="/zh/lifestyle/charging/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">充电平台</span>
+                <span class="mn-all-desc">EV · 桩管理 · 扫码</span>
+              </a>
+              <a href="/zh/lifestyle/transit/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">交通卡</span>
+                <span class="mn-all-desc">NFC · 乘车码 · 地铁</span>
+              </a>
+              <a href="/zh/lifestyle/ecommerce/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">电商交易平台</span>
+                <span class="mn-all-desc">购物车 · 支付 · 商城</span>
+              </a>
+              <a href="/zh/lifestyle/catering/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">餐饮点餐聚合</span>
+                <span class="mn-all-desc">外卖 · 堂食 · 多门店</span>
+              </a>
+              <a href="/zh/lifestyle/ticketing/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">票务系统</span>
+                <span class="mn-all-desc">演出 · 选座 · 电子票</span>
+              </a>
+            </div>
+          </div>
+          <div class="mn-all-group mn-all-cyan">
+            <div class="mn-all-group-hd">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              金融类
+            </div>
+            <div class="mn-all-items">
+              <a href="/zh/finance/blockchain/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">区块链平台集成</span>
+                <span class="mn-all-desc">存证 · 数字资产 · 合约</span>
+              </a>
+              <a href="/zh/finance/wealth/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">财富管理</span>
+                <span class="mn-all-desc">理财 · 组合 · 收益追踪</span>
+              </a>
+              <a href="/zh/finance/ekyc/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">E-KYC</span>
+                <span class="mn-all-desc">身份核验 · 人脸识别</span>
+              </a>
+            </div>
+          </div>
+          <div class="mn-all-group mn-all-amber">
+            <div class="mn-all-group-hd">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              社交娱乐类
+            </div>
+            <div class="mn-all-items">
+              <a href="/zh/social/im/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">即时通讯 IM</span>
+                <span class="mn-all-desc">群聊 · 红包 · 直播互动</span>
+              </a>
+              <a href="/zh/social/game/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">游戏接入管理</span>
+                <span class="mn-all-desc">游戏中心 · 竞技 · 运营</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2775,5 +2882,45 @@ function initIOCDashboard() {
   .mn-ioc-kpis { grid-template-columns: repeat(2, 1fr); }
   .mn-ioc-hm   { display: none; }
 }
+
+/* ── CATALOG BUTTON ── */
+.mn-sec-title-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.mn-sec-title-row .mn-sec-title { margin: 0; }
+.mn-catalog-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 18px; border-radius: 8px; text-decoration: none;
+  font-size: 0.84rem; font-weight: 700; white-space: nowrap;
+  background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+  color: #fff; box-shadow: 0 3px 12px rgba(29,78,216,0.25);
+  transition: transform .2s, box-shadow .2s;
+}
+.mn-catalog-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 18px rgba(29,78,216,0.35); color: #fff; }
+
+/* ── ALL SOLUTIONS GRID ── */
+.mn-all-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.mn-all-group { border-radius: 10px; overflow: hidden; border: 1px solid; }
+.mn-all-blue   { border-color: rgba(59,130,246,0.25); }
+.mn-all-purple { border-color: rgba(124,58,237,0.25); }
+.mn-all-cyan   { border-color: rgba(8,145,178,0.25); }
+.mn-all-amber  { border-color: rgba(217,119,6,0.25); }
+.mn-all-group-hd {
+  display: flex; align-items: center; gap: 7px;
+  padding: 10px 14px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.05em;
+}
+.mn-all-blue   .mn-all-group-hd { background: rgba(59,130,246,0.1);  color: #2563eb; }
+.mn-all-purple .mn-all-group-hd { background: rgba(124,58,237,0.1);  color: #7c3aed; }
+.mn-all-cyan   .mn-all-group-hd { background: rgba(8,145,178,0.1);   color: #0891b2; }
+.mn-all-amber  .mn-all-group-hd { background: rgba(217,119,6,0.1);   color: #d97706; }
+.mn-all-items { padding: 6px 8px; }
+.mn-all-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 10px; border-radius: 7px; text-decoration: none; color: inherit;
+  transition: background .15s;
+}
+.mn-all-item:hover { background: var(--vp-c-bg-soft, rgba(0,0,0,0.04)); }
+.mn-all-name { font-size: 0.83rem; font-weight: 600; color: var(--vp-c-text-1); }
+.mn-all-desc { font-size: 0.7rem; color: var(--vp-c-text-2); text-align: right; }
+@media (max-width: 900px) { .mn-all-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .mn-all-grid { grid-template-columns: 1fr; } }
 
 </style>

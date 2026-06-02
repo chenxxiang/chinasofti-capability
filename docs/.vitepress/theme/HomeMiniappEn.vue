@@ -366,7 +366,13 @@ function initIOCDashboard() {
   <section class="mn-sec reveal" id="directory">
     <div class="mn-sec-header">
       <div class="mn-eyebrow">Directory · Solution Catalog</div>
-      <h2 class="mn-sec-title">Four Categories of Mini-App Solutions</h2>
+      <div class="mn-sec-title-row">
+        <h2 class="mn-sec-title">Four Categories of Mini-App Solutions</h2>
+        <a href="/en/solutions/" class="mn-catalog-btn" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          View Full Catalog
+        </a>
+      </div>
     </div>
 
     <div class="mn-tabs-wrap">
@@ -386,6 +392,10 @@ function initIOCDashboard() {
         <button class="mn-tab" data-panel="tab-social-en">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Social & Entertainment
+        </button>
+        <button class="mn-tab" data-panel="tab-all-en">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          All Solutions
         </button>
       </div>
 
@@ -492,6 +502,103 @@ function initIOCDashboard() {
             <div class="mn-dir-info"><h4>Gaming Platform</h4><p>Game Center · Leaderboards · Operations Dashboard</p></div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
+        </div>
+      </div>
+
+      <!-- All Solutions -->
+      <div class="mn-panel" id="tab-all-en">
+        <div class="mn-panel-intro">
+          14 mini-app solutions across Business Platform, Lifestyle, Finance, and Social &amp; Entertainment — full Super App ecosystem coverage.
+        </div>
+        <div class="mn-all-grid">
+          <div class="mn-all-group mn-all-blue">
+            <div class="mn-all-group-hd">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              Business Platform
+            </div>
+            <div class="mn-all-items">
+              <a href="/en/business/cms/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">Content Distribution</span>
+                <span class="mn-all-desc">CMS · Livestream · Rights</span>
+              </a>
+              <a href="/en/business/loyalty/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">Loyalty Platform</span>
+                <span class="mn-all-desc">Points · Tasks · Retention</span>
+              </a>
+              <a href="/en/business/iot/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">IoT Platform</span>
+                <span class="mn-all-desc">Devices · Monitoring · Data</span>
+              </a>
+              <a href="/en/business/ai-agent/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">AI Agent</span>
+                <span class="mn-all-desc">Q&amp;A · Automation · RAG</span>
+              </a>
+            </div>
+          </div>
+          <div class="mn-all-group mn-all-purple">
+            <div class="mn-all-group-hd">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              Lifestyle
+            </div>
+            <div class="mn-all-items">
+              <a href="/en/lifestyle/charging/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">EV Charging Platform</span>
+                <span class="mn-all-desc">Network · Stations · QR Pay</span>
+              </a>
+              <a href="/en/lifestyle/transit/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">Transit Card</span>
+                <span class="mn-all-desc">NFC · Ride Code · Metro</span>
+              </a>
+              <a href="/en/lifestyle/ecommerce/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">E-Commerce Platform</span>
+                <span class="mn-all-desc">Cart · Payment · Mall</span>
+              </a>
+              <a href="/en/lifestyle/catering/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">Catering Aggregator</span>
+                <span class="mn-all-desc">Delivery · Dine-in · Multi-brand</span>
+              </a>
+              <a href="/en/lifestyle/ticketing/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">Ticketing System</span>
+                <span class="mn-all-desc">Events · Seats · E-Ticket</span>
+              </a>
+            </div>
+          </div>
+          <div class="mn-all-group mn-all-cyan">
+            <div class="mn-all-group-hd">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              Finance
+            </div>
+            <div class="mn-all-items">
+              <a href="/en/finance/blockchain/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">Blockchain Integration</span>
+                <span class="mn-all-desc">Records · Assets · Contracts</span>
+              </a>
+              <a href="/en/finance/wealth/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">Wealth Management</span>
+                <span class="mn-all-desc">Investment · Portfolio · Returns</span>
+              </a>
+              <a href="/en/finance/ekyc/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">E-KYC</span>
+                <span class="mn-all-desc">Identity · Face Recognition</span>
+              </a>
+            </div>
+          </div>
+          <div class="mn-all-group mn-all-amber">
+            <div class="mn-all-group-hd">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Social &amp; Entertainment
+            </div>
+            <div class="mn-all-items">
+              <a href="/en/social/im/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">IM Platform</span>
+                <span class="mn-all-desc">Chat · Red Packets · Live</span>
+              </a>
+              <a href="/en/social/game/" class="mn-all-item" target="_blank" rel="noopener">
+                <span class="mn-all-name">Gaming Platform</span>
+                <span class="mn-all-desc">Game Hub · Tournaments · Ops</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2593,4 +2700,44 @@ function initIOCDashboard() {
   .mn-ioc-kpis { grid-template-columns: repeat(2, 1fr); }
   .mn-ioc-hm   { display: none; }
 }
+
+/* ── CATALOG BUTTON ── */
+.mn-sec-title-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.mn-sec-title-row .mn-sec-title { margin: 0; }
+.mn-catalog-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 18px; border-radius: 8px; text-decoration: none;
+  font-size: 0.84rem; font-weight: 700; white-space: nowrap;
+  background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+  color: #fff; box-shadow: 0 3px 12px rgba(29,78,216,0.25);
+  transition: transform .2s, box-shadow .2s;
+}
+.mn-catalog-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 18px rgba(29,78,216,0.35); color: #fff; }
+
+/* ── ALL SOLUTIONS GRID ── */
+.mn-all-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.mn-all-group { border-radius: 10px; overflow: hidden; border: 1px solid; }
+.mn-all-blue   { border-color: rgba(59,130,246,0.25); }
+.mn-all-purple { border-color: rgba(124,58,237,0.25); }
+.mn-all-cyan   { border-color: rgba(8,145,178,0.25); }
+.mn-all-amber  { border-color: rgba(217,119,6,0.25); }
+.mn-all-group-hd {
+  display: flex; align-items: center; gap: 7px;
+  padding: 10px 14px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.05em;
+}
+.mn-all-blue   .mn-all-group-hd { background: rgba(59,130,246,0.1);  color: #2563eb; }
+.mn-all-purple .mn-all-group-hd { background: rgba(124,58,237,0.1);  color: #7c3aed; }
+.mn-all-cyan   .mn-all-group-hd { background: rgba(8,145,178,0.1);   color: #0891b2; }
+.mn-all-amber  .mn-all-group-hd { background: rgba(217,119,6,0.1);   color: #d97706; }
+.mn-all-items { padding: 6px 8px; }
+.mn-all-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 10px; border-radius: 7px; text-decoration: none; color: inherit;
+  transition: background .15s;
+}
+.mn-all-item:hover { background: var(--vp-c-bg-soft, rgba(0,0,0,0.04)); }
+.mn-all-name { font-size: 0.83rem; font-weight: 600; color: var(--vp-c-text-1); }
+.mn-all-desc { font-size: 0.7rem; color: var(--vp-c-text-2); text-align: right; }
+@media (max-width: 900px) { .mn-all-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .mn-all-grid { grid-template-columns: 1fr; } }
 </style>
