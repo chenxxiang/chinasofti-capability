@@ -13,7 +13,7 @@
     <p>An integrated platform combining liveness detection, face comparison, document OCR, and NFC verification, supporting SDK / H5 / API multi-channel integration. Proven deployments include Malaysia's Maybank and Kenanga Bank in financial-grade eKYC projects.</p>
     <div class="cms-hero-tags">
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> Liveness Detection</span>
-      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Face Comparison</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> ID-to-Face Verification</span>
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> OCR Document Recognition</span>
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> NFC Document Verification</span>
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Private Deployment</span>
@@ -110,7 +110,7 @@
         <span class="arch-bridge-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Action Liveness</span>
         <span class="arch-bridge-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg> Color Flash Liveness</span>
         <span class="arch-bridge-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Silent Liveness</span>
-        <span class="arch-bridge-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg> 1:1 Face Comparison</span>
+        <span class="arch-bridge-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg> 1:1 ID-to-Face Match</span>
         <span class="arch-bridge-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 1:N Face Search</span>
         <span class="arch-bridge-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Document OCR</span>
         <span class="arch-bridge-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> NFC Document Reading</span>
@@ -207,7 +207,7 @@
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     </div>
     <h4>Face Recognition</h4>
-    <p>Liveness Detection · 1:1 Comparison · 1:N Search</p>
+    <p>Liveness Detection · 1:1 ID Verification · 1:N Search</p>
     <span class="cms-sub-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
   </a>
   <a href="#ocr-document-recognition" class="cms-subsystem-card cms-sub-purple">
@@ -234,7 +234,7 @@
 
 <div class="cms-section-intro">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-  Provides action, color flash, and silent liveness detection modes, combined with 1:1 face comparison and million-scale 1:N search — fully covering high-security scenarios such as financial account opening, identity verification, and risk control.
+  Provides action, color flash, and silent liveness detection modes. The 1:1 ID-to-face verification matches the user's live selfie against their ID document photo to confirm the person matches the cardholder. Also supports million-scale 1:N face search — fully covering high-security scenarios such as financial account opening, identity verification, and risk control.
 </div>
 
 <div class="cms-feature-grid">
@@ -257,10 +257,10 @@
       <div class="cms-feature-hicon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
       </div>
-      <span>1:1 Face Comparison</span>
+      <span>1:1 ID-to-Face Verification</span>
     </div>
     <div class="cms-feature-body">
-      Combined liveness detection and face comparison in a single API call. Average latency: <strong>200–400ms (comparison only) / 800–1000ms (with liveness)</strong>, returning attack type and comparison confidence score.
+      Matches the user's <strong>live selfie</strong> against their <strong>ID document photo</strong> in a 1:1 similarity check, confirming the person matches the cardholder. Liveness detection and ID-to-face verification run in a single API call. Average latency: <strong>200–400ms (comparison only) / 800–1000ms (with liveness)</strong>, returning attack type and comparison confidence score.
     </div>
     <div class="cms-screenshot-wrapper">
       <img src="/solutions/ekyc/images/faceid-compare.png" alt="Face Comparison" style="height:240px;object-fit:cover;object-position:top;" />
