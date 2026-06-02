@@ -369,20 +369,6 @@ function initIOCDashboard() {
       <h2 class="mn-sec-title">Four Categories of Mini-App Solutions</h2>
     </div>
 
-    <a href="/en/business/cms/" class="mn-dir-banner" target="_blank" rel="noopener">
-      <div class="mn-dir-banner-left">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        <div>
-          <div class="mn-dir-banner-title">Browse Full Solution Catalog</div>
-          <div class="mn-dir-banner-sub">16 module solutions · Overview, Plan, Pricing, DEMO</div>
-        </div>
-      </div>
-      <div class="mn-dir-banner-arrow">
-        View Catalog
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
-
     <div class="mn-tabs-wrap">
       <div class="mn-tab-bar">
         <button class="mn-tab active" data-panel="tab-biz-en">
@@ -424,19 +410,9 @@ function initIOCDashboard() {
             <div class="mn-dir-info"><h4>IoT Platform</h4><p>Device Onboarding · Smart Monitoring · Data Collection</p></div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
-          <a href="/en/business/migration/" class="mn-dir-card mn-dir-blue" target="_blank" rel="noopener">
-            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" stroke-linecap="round"/></svg></div>
-            <div class="mn-dir-info"><h4>Enterprise Mini App Solution</h4><p>Huawei / Ant mPaaS · E2E Delivery</p></div>
-            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-          </a>
           <a href="/en/business/ai-agent/" class="mn-dir-card mn-dir-blue" target="_blank" rel="noopener">
             <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
             <div class="mn-dir-info"><h4>AI Agent</h4><p>Smart Q&A · Automated Workflows · RAG Knowledge Base</p></div>
-            <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-          </a>
-          <a href="/en/business/ordering/" class="mn-dir-card mn-dir-blue" target="_blank" rel="noopener">
-            <div class="mn-dir-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
-            <div class="mn-dir-info"><h4>F&B Ordering Aggregator</h4><p>Multi-brand · Dine-in & Delivery · Order Management</p></div>
             <svg class="mn-dir-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </a>
         </div>
