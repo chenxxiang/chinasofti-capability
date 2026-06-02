@@ -1,15 +1,22 @@
 # Smart Ticketing Management System · Solution
 
 <div class="cms-hero">
-  <div class="cms-hero-body">
-    <div class="cms-hero-tags">
-      <span class="cms-hero-tag">Scenic Area Ticketing</span>
-      <span class="cms-hero-tag">Aggregated Distribution</span>
-      <span class="cms-hero-tag">Big Data Operations</span>
-      <span class="cms-hero-tag">Smart Gates</span>
+  <div class="cms-hero-particles">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="cms-hero-content">
+    <div class="cms-hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+      Solution Overview · 解决方案概览
     </div>
-    <h1 class="cms-hero-title">Smart Ticketing Management System</h1>
-    <p class="cms-hero-desc">A full-chain smart ticketing platform for scenic areas and cultural tourism venues, integrating ticket sales, validation, distribution, data analytics, and hardware — enabling complete digital transformation of venue operations.</p>
+    <h1>Smart Ticketing<br><span class="cms-hero-gradient">Management System</span></h1>
+    <p>A full-chain smart ticketing platform for scenic areas and cultural tourism venues, integrating ticket sales, validation, distribution, data analytics, and hardware — enabling complete digital transformation of venue operations.</p>
+    <div class="cms-hero-tags">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/></svg> Scenic Area Ticketing</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Aggregated Distribution</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Big Data Operations</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/></svg> Smart Gates</span>
+    </div>
   </div>
 </div>
 

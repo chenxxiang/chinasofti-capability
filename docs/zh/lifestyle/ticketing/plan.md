@@ -1,15 +1,22 @@
 # 智慧票务管理系统 · 解决方案
 
 <div class="cms-hero">
-  <div class="cms-hero-body">
-    <div class="cms-hero-tags">
-      <span class="cms-hero-tag">景区票务</span>
-      <span class="cms-hero-tag">聚合分销</span>
-      <span class="cms-hero-tag">大数据运营</span>
-      <span class="cms-hero-tag">智能闸机</span>
+  <div class="cms-hero-particles">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="cms-hero-content">
+    <div class="cms-hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+      Solution Overview · 解决方案概览
     </div>
-    <h1 class="cms-hero-title">智慧票务管理系统</h1>
-    <p class="cms-hero-desc">面向景区、文旅场馆的全链路智慧票务平台，集售票、检票、分销、数据分析与硬件接入于一体，实现景区运营数字化升级。</p>
+    <h1>智慧票务管理系统<br><span class="cms-hero-gradient">解决方案</span></h1>
+    <p>面向景区、文旅场馆的全链路智慧票务平台，集售票、检票、分销、数据分析与硬件接入于一体，实现景区运营数字化升级。</p>
+    <div class="cms-hero-tags">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/></svg> 景区票务</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> 聚合分销</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> 大数据运营</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/></svg> 智能闸机</span>
+    </div>
   </div>
 </div>
 
