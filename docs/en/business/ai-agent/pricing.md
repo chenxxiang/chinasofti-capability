@@ -1,22 +1,7 @@
 # AI Agent · Pricing
 
-<div style="overflow-x:auto;margin-top:20px;">
-<table style="width:100%;border-collapse:collapse;font-size:1.08rem;border:1px solid #d1d5db;">
-<thead>
-<tr style="background:#f3f4f6;">
-<th style="padding:14px 20px;font-weight:700;text-align:left;color:#111827;border:1px solid #d1d5db;">Product / Service</th>
-<th style="padding:14px 20px;font-weight:700;text-align:left;color:#111827;border:1px solid #d1d5db;">Core Features</th>
-<th style="padding:14px 20px;font-weight:700;text-align:right;color:#111827;border:1px solid #d1d5db;">Estimated Unit Price (USD)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="padding:14px 20px;background:#ffffff;color:#111827;border:1px solid #d1d5db;">AI Agent</td>
-<td style="padding:14px 20px;background:#ffffff;color:#111827;border:1px solid #d1d5db;">Single agent</td>
-<td style="padding:14px 20px;background:#ffffff;color:#111827;border:1px solid #d1d5db;text-align:right;font-weight:700;">155,500</td>
-</tr>
-</tbody>
-</table>
-</div>
+| Product / Service | Core Features | Estimated Unit Price (USD) |
+|:---|:---|---:|
+| AI Agent | Single agent | 155,500 |
 
 Contact: caixiaofang@chinasofti.com
