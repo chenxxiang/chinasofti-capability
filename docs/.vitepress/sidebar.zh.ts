@@ -8,6 +8,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/business/cms/' },
             { text: '方案', link: '/zh/business/cms/plan' },
+            { text: '报价', link: '/zh/business/cms/pricing' },
           ]
         },
         {
@@ -15,6 +16,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/business/loyalty/' },
             { text: '方案', link: '/zh/business/loyalty/plan' },
+            { text: '报价', link: '/zh/business/loyalty/pricing' },
           ]
         },
         {
@@ -22,6 +24,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/business/iot/' },
             { text: '方案', link: '/zh/business/iot/plan' },
+            { text: '报价', link: '/zh/business/iot/pricing' },
           ]
         },
         // { text: '企业小程序方案', collapsed: true, items: [...] },  // 暂时隐藏
@@ -30,6 +33,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/business/ai-agent/' },
             { text: '方案', link: '/zh/business/ai-agent/plan' },
+            { text: '报价', link: '/zh/business/ai-agent/pricing' },
           ]
         },
       ]
@@ -42,6 +46,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/charging/' },
             { text: '方案', link: '/zh/lifestyle/charging/plan' },
+            { text: '报价', link: '/zh/lifestyle/charging/pricing' },
           ]
         },
         {
@@ -49,6 +54,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/transit/' },
             { text: '方案', link: '/zh/lifestyle/transit/plan' },
+            { text: '报价', link: '/zh/lifestyle/transit/pricing' },
           ]
         },
         {
@@ -56,6 +62,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/ecommerce/' },
             { text: '方案', link: '/zh/lifestyle/ecommerce/plan' },
+            { text: '报价', link: '/zh/lifestyle/ecommerce/pricing' },
           ]
         },
         {
@@ -63,6 +70,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/catering/' },
             { text: '方案', link: '/zh/lifestyle/catering/plan' },
+            { text: '报价', link: '/zh/lifestyle/catering/pricing' },
           ]
         },
         {
@@ -70,6 +78,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/lifestyle/ticketing/' },
             { text: '方案', link: '/zh/lifestyle/ticketing/plan' },
+            { text: '报价', link: '/zh/lifestyle/ticketing/pricing' },
           ]
         },
       ]
@@ -82,6 +91,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/finance/blockchain/' },
             { text: '方案', link: '/zh/finance/blockchain/plan' },
+            { text: '报价', link: '/zh/finance/blockchain/pricing' },
           ]
         },
         {
@@ -89,6 +99,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/finance/wealth/' },
             { text: '方案', link: '/zh/finance/wealth/plan' },
+            { text: '报价', link: '/zh/finance/wealth/pricing' },
           ]
         },
         {
@@ -96,6 +107,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/finance/ekyc/' },
             { text: '方案', link: '/zh/finance/ekyc/plan' },
+            { text: '报价', link: '/zh/finance/ekyc/pricing' },
           ]
         },
       ]
@@ -108,6 +120,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/social/im/' },
             { text: '方案', link: '/zh/social/im/plan' },
+            { text: '报价', link: '/zh/social/im/pricing' },
           ]
         },
         {
@@ -115,6 +128,7 @@ export const zhSidebar = {
           items: [
             { text: '概览', link: '/zh/social/game/' },
             { text: '方案', link: '/zh/social/game/plan' },
+            { text: '报价', link: '/zh/social/game/pricing' },
           ]
         },
       ]

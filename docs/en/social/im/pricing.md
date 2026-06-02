@@ -1,4 +1,4 @@
-# Game Management Platform · Pricing
+# IM Platform · Pricing
 
 <div class="cms-hero" style="padding:28px 36px 22px;min-height:auto;">
   <div class="cms-hero-particles">
@@ -9,8 +9,8 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       Pricing · Estimate
     </div>
-    <h1>Game Integration &amp; Management Platform<br><span class="cms-hero-gradient">Pricing</span></h1>
-    <p>Game Aggregation Integration · Operations Management · Analytics — One-stop game platform integration pricing</p>
+    <h1>Instant Messaging Platform<br><span class="cms-hero-gradient">Pricing</span></h1>
+    <p>From 200K MAU · Monthly subscription — High-concurrency IM platform elastic pricing</p>
   </div>
 </div>
 
@@ -20,14 +20,14 @@
 <tr style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
 <th style="padding:13px 18px;color:white;font-weight:600;text-align:left;white-space:nowrap;">Product / Service</th>
 <th style="padding:13px 18px;color:white;font-weight:600;text-align:left;white-space:nowrap;">Core Features</th>
-<th style="padding:13px 18px;color:white;font-weight:600;text-align:right;white-space:nowrap;">Estimated Price (USD)</th>
+<th style="padding:13px 18px;color:white;font-weight:600;text-align:right;white-space:nowrap;">Estimated Price (USD / Month)</th>
 </tr>
 </thead>
 <tbody>
 <tr style="background:rgba(30,41,59,0.4);border-bottom:1px solid rgba(100,116,139,0.2);">
-<td style="padding:14px 18px;font-weight:500;">Game Integration &amp; Management Platform</td>
-<td style="padding:14px 18px;color:#94a3b8;">Game aggregation platform integration</td>
-<td style="padding:14px 18px;text-align:right;font-weight:700;color:#a78bfa;">300,000</td>
+<td style="padding:14px 18px;font-weight:500;">Instant Messaging Platform</td>
+<td style="padding:14px 18px;color:#94a3b8;">200K MAU, monthly subscription</td>
+<td style="padding:14px 18px;text-align:right;font-weight:700;color:#a78bfa;">30,000</td>
 </tr>
 </tbody>
 </table>
