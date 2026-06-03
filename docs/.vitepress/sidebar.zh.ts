@@ -38,6 +38,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/business/ai-agent/' },
             { text: '方案', link: '/zh/business/ai-agent/plan' },
             { text: '报价', link: '/zh/business/ai-agent/pricing' },
+            { text: 'DEMO', link: '/zh/business/ai-agent/demo' },
           ]
         },
       ]

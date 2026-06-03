@@ -38,6 +38,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/business/ai-agent/' },
             { text: 'Solution', link: '/en/business/ai-agent/plan' },
             { text: 'Pricing', link: '/en/business/ai-agent/pricing' },
+            { text: 'DEMO', link: '/en/business/ai-agent/demo' },
           ]
         },
       ]
