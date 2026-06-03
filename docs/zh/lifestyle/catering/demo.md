@@ -27,35 +27,33 @@
       <div style="font-size:0.75rem;color:#c2410c;">扫描二维码下载 App，使用测试账号登录体验</div>
     </div>
   </div>
-  <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;">
-    <div>
-      <div style="font-size:0.82rem;font-weight:600;color:#9a3412;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="2"><rect x="3" y="3" width="5" height="5"/><rect x="16" y="3" width="5" height="5"/><rect x="3" y="16" width="5" height="5"/><path d="M21 16h-3a2 2 0 0 0-2 2v3M16 21v-3M21 21v-3"/></svg>
-        App 下载二维码
-      </div>
-      <img src="/solutions/catering/images/catering-demo-1.png" style="width:200px;border-radius:12px;border:1px solid #fed7aa;display:block;" alt="餐饮App下载二维码"/>
+  <div style="margin-bottom:16px;">
+    <div style="font-size:0.82rem;font-weight:600;color:#9a3412;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="2"><rect x="3" y="3" width="5" height="5"/><rect x="16" y="3" width="5" height="5"/><rect x="3" y="16" width="5" height="5"/><path d="M21 16h-3a2 2 0 0 0-2 2v3M16 21v-3M21 21v-3"/></svg>
+      App 下载二维码
     </div>
-    <div>
-      <div style="font-size:0.82rem;font-weight:600;color:#9a3412;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        测试账号
-      </div>
-      <div style="display:grid;gap:8px;">
-        <div style="background:rgba(255,255,255,0.7);border-radius:8px;padding:10px 14px;">
-          <div style="font-size:0.74rem;font-weight:700;color:#9a3412;margin-bottom:6px;">标准版</div>
-          <div style="display:grid;grid-template-columns:52px 1fr;gap:4px 12px;font-size:0.78rem;color:#7c2d12;">
-            <span style="opacity:0.7;">账号</span><span style="font-family:monospace;font-weight:600;">18659230663</span>
-            <span style="opacity:0.7;">密码</span><span style="font-family:monospace;font-weight:600;">a123456</span>
-            <span style="opacity:0.7;">员工号</span><span style="font-family:monospace;font-weight:600;">1001</span>
-          </div>
+    <img src="/solutions/catering/images/catering-demo-1.png" style="width:100%;max-width:360px;border-radius:12px;border:1px solid #fed7aa;display:block;" alt="餐饮App下载二维码"/>
+  </div>
+  <div>
+    <div style="font-size:0.82rem;font-weight:600;color:#9a3412;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      测试账号
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+      <div style="background:rgba(255,255,255,0.7);border-radius:8px;padding:10px 14px;">
+        <div style="font-size:0.74rem;font-weight:700;color:#9a3412;margin-bottom:6px;">标准版</div>
+        <div style="display:grid;grid-template-columns:52px 1fr;gap:4px 12px;font-size:0.78rem;color:#7c2d12;">
+          <span style="opacity:0.7;">账号</span><span style="font-family:monospace;font-weight:600;">18659230663</span>
+          <span style="opacity:0.7;">密码</span><span style="font-family:monospace;font-weight:600;">a123456</span>
+          <span style="opacity:0.7;">员工号</span><span style="font-family:monospace;font-weight:600;">1001</span>
         </div>
-        <div style="background:rgba(255,255,255,0.7);border-radius:8px;padding:10px 14px;">
-          <div style="font-size:0.74rem;font-weight:700;color:#9a3412;margin-bottom:6px;">中餐版</div>
-          <div style="display:grid;grid-template-columns:52px 1fr;gap:4px 12px;font-size:0.78rem;color:#7c2d12;">
-            <span style="opacity:0.7;">账号</span><span style="font-family:monospace;font-weight:600;">1120_LF</span>
-            <span style="opacity:0.7;">密码</span><span style="font-family:monospace;font-weight:600;">123456</span>
-            <span style="opacity:0.7;">员工号</span><span style="font-family:monospace;font-weight:600;">1001</span>
-          </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.7);border-radius:8px;padding:10px 14px;">
+        <div style="font-size:0.74rem;font-weight:700;color:#9a3412;margin-bottom:6px;">中餐版</div>
+        <div style="display:grid;grid-template-columns:52px 1fr;gap:4px 12px;font-size:0.78rem;color:#7c2d12;">
+          <span style="opacity:0.7;">账号</span><span style="font-family:monospace;font-weight:600;">1120_LF</span>
+          <span style="opacity:0.7;">密码</span><span style="font-family:monospace;font-weight:600;">123456</span>
+          <span style="opacity:0.7;">员工号</span><span style="font-family:monospace;font-weight:600;">1001</span>
         </div>
       </div>
     </div>
