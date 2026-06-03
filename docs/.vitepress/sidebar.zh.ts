@@ -10,6 +10,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/business/cms/' },
             { text: '方案', link: '/zh/business/cms/plan' },
             { text: '报价', link: '/zh/business/cms/pricing' },
+            { text: 'DEMO', link: '/zh/business/cms/demo' },
           ]
         },
         {

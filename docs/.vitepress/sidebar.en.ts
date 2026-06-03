@@ -10,6 +10,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/business/cms/' },
             { text: 'Solution', link: '/en/business/cms/plan' },
             { text: 'Pricing', link: '/en/business/cms/pricing' },
+            { text: 'DEMO', link: '/en/business/cms/demo' },
           ]
         },
         {
