@@ -33,7 +33,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="2"><rect x="3" y="3" width="5" height="5"/><rect x="16" y="3" width="5" height="5"/><rect x="3" y="16" width="5" height="5"/><path d="M21 16h-3a2 2 0 0 0-2 2v3M16 21v-3M21 21v-3"/></svg>
         App Download QR
       </div>
-      <img src="/solutions/catering/images/catering-demo-1.png" style="width:130px;border-radius:12px;border:1px solid #fed7aa;display:block;" alt="Catering App Download QR Code"/>
+      <img src="/solutions/catering/images/catering-demo-1.png" style="width:200px;border-radius:12px;border:1px solid #fed7aa;display:block;" alt="Catering App Download QR Code"/>
     </div>
     <div>
       <div style="font-size:0.82rem;font-weight:600;color:#9a3412;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
