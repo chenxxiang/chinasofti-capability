@@ -19,6 +19,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/business/loyalty/' },
             { text: '方案', link: '/zh/business/loyalty/plan' },
             { text: '报价', link: '/zh/business/loyalty/pricing' },
+            { text: 'DEMO', link: '/zh/business/loyalty/demo' },
           ]
         },
         {

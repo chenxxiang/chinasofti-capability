@@ -19,6 +19,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/business/loyalty/' },
             { text: 'Solution', link: '/en/business/loyalty/plan' },
             { text: 'Pricing', link: '/en/business/loyalty/pricing' },
+            { text: 'DEMO', link: '/en/business/loyalty/demo' },
           ]
         },
         {
