@@ -101,6 +101,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/finance/blockchain/' },
             { text: 'Solution', link: '/en/finance/blockchain/plan' },
             { text: 'Pricing', link: '/en/finance/blockchain/pricing' },
+            { text: 'DEMO', link: '/en/finance/blockchain/demo' },
           ]
         },
         {
@@ -109,6 +110,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/finance/wealth/' },
             { text: 'Solution', link: '/en/finance/wealth/plan' },
             { text: 'Pricing', link: '/en/finance/wealth/pricing' },
+            { text: 'DEMO', link: '/en/finance/wealth/demo' },
           ]
         },
         {
@@ -117,6 +119,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/finance/ekyc/' },
             { text: 'Solution', link: '/en/finance/ekyc/plan' },
             { text: 'Pricing', link: '/en/finance/ekyc/pricing' },
+            { text: 'DEMO', link: '/en/finance/ekyc/demo' },
           ]
         },
       ]
@@ -130,6 +133,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/social/im/' },
             { text: 'Solution', link: '/en/social/im/plan' },
             { text: 'Pricing', link: '/en/social/im/pricing' },
+            { text: 'DEMO', link: '/en/social/im/demo' },
           ]
         },
         {
@@ -138,6 +142,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/social/game/' },
             { text: 'Solution', link: '/en/social/game/plan' },
             { text: 'Pricing', link: '/en/social/game/pricing' },
+            { text: 'DEMO', link: '/en/social/game/demo' },
           ]
         },
       ]

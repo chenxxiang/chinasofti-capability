@@ -101,6 +101,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/finance/blockchain/' },
             { text: '方案', link: '/zh/finance/blockchain/plan' },
             { text: '报价', link: '/zh/finance/blockchain/pricing' },
+            { text: 'DEMO', link: '/zh/finance/blockchain/demo' },
           ]
         },
         {
@@ -109,6 +110,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/finance/wealth/' },
             { text: '方案', link: '/zh/finance/wealth/plan' },
             { text: '报价', link: '/zh/finance/wealth/pricing' },
+            { text: 'DEMO', link: '/zh/finance/wealth/demo' },
           ]
         },
         {
@@ -117,6 +119,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/finance/ekyc/' },
             { text: '方案', link: '/zh/finance/ekyc/plan' },
             { text: '报价', link: '/zh/finance/ekyc/pricing' },
+            { text: 'DEMO', link: '/zh/finance/ekyc/demo' },
           ]
         },
       ]
@@ -130,6 +133,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/social/im/' },
             { text: '方案', link: '/zh/social/im/plan' },
             { text: '报价', link: '/zh/social/im/pricing' },
+            { text: 'DEMO', link: '/zh/social/im/demo' },
           ]
         },
         {
@@ -138,6 +142,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/social/game/' },
             { text: '方案', link: '/zh/social/game/plan' },
             { text: '报价', link: '/zh/social/game/pricing' },
+            { text: 'DEMO', link: '/zh/social/game/demo' },
           ]
         },
       ]
