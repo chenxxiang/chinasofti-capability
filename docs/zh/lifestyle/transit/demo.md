@@ -17,6 +17,27 @@
   </div>
 </div>
 
+<div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #93c5fd;border-radius:16px;padding:24px;margin:24px 0;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    </div>
+    <div>
+      <div style="font-size:0.95rem;font-weight:700;color:#1e3a8a;">体验入口</div>
+      <div style="font-size:0.75rem;color:#1d4ed8;">在 App Store 搜索「城客e家」或点击以下链接下载</div>
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,0.7);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:14px;">
+    <div style="width:32px;height:32px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8l4 4-4 4M8 12h8"/></svg>
+    </div>
+    <div>
+      <div style="font-size:0.82rem;font-weight:600;color:#1e3a8a;margin-bottom:4px;">城客e家 · Apple App Store（香港区）</div>
+      <a href="https://apps.apple.com/hk/app/%E5%9F%8E%E5%AE%A2e%E5%AE%B6/id1014406138" target="_blank" rel="noopener" style="color:#2563eb;font-size:0.82rem;text-decoration:none;word-break:break-all;">https://apps.apple.com/hk/app/城客e家/id1014406138</a>
+    </div>
+  </div>
+</div>
+
 ## 出行服务全览
 
 <div class="cms-section-intro">

@@ -17,6 +17,46 @@
   </div>
 </div>
 
+<div style="background:linear-gradient(135deg,#faf5ff,#f3e8ff);border:1px solid #d8b4fe;border-radius:16px;padding:24px;margin:24px 0;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#7c3aed);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    </div>
+    <div>
+      <div style="font-size:0.95rem;font-weight:700;color:#581c87;">Try It Live</div>
+      <div style="font-size:0.75rem;color:#7c3aed;">Visit any of the links below and log in with the test credentials</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+    <div style="background:rgba(255,255,255,0.7);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:0.76rem;font-weight:600;color:#6b21a8;margin-bottom:6px;">Admin Backend</div>
+      <a href="https://chinasoft.bingoshow.cn/" target="_blank" rel="noopener" style="color:#7c3aed;font-size:0.80rem;text-decoration:none;font-weight:500;">chinasoft.bingoshow.cn</a>
+    </div>
+    <div style="background:rgba(255,255,255,0.7);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:0.76rem;font-weight:600;color:#6b21a8;margin-bottom:6px;">PC Mall</div>
+      <a href="https://chinasoft.bingoshow.cn/pc" target="_blank" rel="noopener" style="color:#7c3aed;font-size:0.80rem;text-decoration:none;font-weight:500;">chinasoft.bingoshow.cn/pc</a>
+    </div>
+    <div style="background:rgba(255,255,255,0.7);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:0.76rem;font-weight:600;color:#6b21a8;margin-bottom:6px;">Mobile</div>
+      <a href="https://chinasoft.bingoshow.cn/wap" target="_blank" rel="noopener" style="color:#7c3aed;font-size:0.80rem;text-decoration:none;font-weight:500;">chinasoft.bingoshow.cn/wap</a>
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,0.7);border-radius:8px;overflow:hidden;">
+    <div style="display:grid;grid-template-columns:80px 1fr 80px 100px;font-size:0.76rem;font-weight:700;color:#6b21a8;background:rgba(216,180,254,0.3);padding:8px 14px;gap:8px;">
+      <span>Role</span><span>Username</span><span>Password</span><span>Pay Password</span>
+    </div>
+    <div style="display:grid;grid-template-columns:80px 1fr 80px 100px;font-size:0.78rem;color:#581c87;padding:8px 14px;gap:8px;border-top:1px solid rgba(216,180,254,0.4);">
+      <span>Admin</span><span style="font-family:monospace;">admin</span><span style="font-family:monospace;">123456</span><span style="color:#9ca3af;">—</span>
+    </div>
+    <div style="display:grid;grid-template-columns:80px 1fr 80px 100px;font-size:0.78rem;color:#581c87;padding:8px 14px;gap:8px;border-top:1px solid rgba(216,180,254,0.4);background:rgba(255,255,255,0.3);">
+      <span>Merchant</span><span style="font-family:monospace;">18360650891</span><span style="font-family:monospace;">123456</span><span style="font-family:monospace;">123456!</span>
+    </div>
+    <div style="display:grid;grid-template-columns:80px 1fr 80px 100px;font-size:0.78rem;color:#581c87;padding:8px 14px;gap:8px;border-top:1px solid rgba(216,180,254,0.4);">
+      <span>User</span><span style="font-family:monospace;">13357827991</span><span style="font-family:monospace;">123456</span><span style="font-family:monospace;">123456!</span>
+    </div>
+  </div>
+</div>
+
 ## Platform Homepage
 
 <div class="cms-section-intro">

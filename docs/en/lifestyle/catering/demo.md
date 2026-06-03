@@ -17,6 +17,51 @@
   </div>
 </div>
 
+<div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fed7aa;border-radius:16px;padding:24px;margin:24px 0;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#f97316,#c2410c);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+    </div>
+    <div>
+      <div style="font-size:0.95rem;font-weight:700;color:#7c2d12;">Try It Live</div>
+      <div style="font-size:0.75rem;color:#c2410c;">Scan the QR code to download the app and log in with the test credentials below</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;">
+    <div>
+      <div style="font-size:0.82rem;font-weight:600;color:#9a3412;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="2"><rect x="3" y="3" width="5" height="5"/><rect x="16" y="3" width="5" height="5"/><rect x="3" y="16" width="5" height="5"/><path d="M21 16h-3a2 2 0 0 0-2 2v3M16 21v-3M21 21v-3"/></svg>
+        App Download QR
+      </div>
+      <img src="/solutions/catering/images/catering-demo-1.png" style="width:130px;border-radius:12px;border:1px solid #fed7aa;display:block;" alt="Catering App Download QR Code"/>
+    </div>
+    <div>
+      <div style="font-size:0.82rem;font-weight:600;color:#9a3412;margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Test Credentials
+      </div>
+      <div style="display:grid;gap:8px;">
+        <div style="background:rgba(255,255,255,0.7);border-radius:8px;padding:10px 14px;">
+          <div style="font-size:0.74rem;font-weight:700;color:#9a3412;margin-bottom:6px;">Standard Version</div>
+          <div style="display:grid;grid-template-columns:72px 1fr;gap:4px 12px;font-size:0.78rem;color:#7c2d12;">
+            <span style="opacity:0.7;">Username</span><span style="font-family:monospace;font-weight:600;">18659230663</span>
+            <span style="opacity:0.7;">Password</span><span style="font-family:monospace;font-weight:600;">a123456</span>
+            <span style="opacity:0.7;">Employee ID</span><span style="font-family:monospace;font-weight:600;">1001</span>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.7);border-radius:8px;padding:10px 14px;">
+          <div style="font-size:0.74rem;font-weight:700;color:#9a3412;margin-bottom:6px;">Chinese Restaurant Version</div>
+          <div style="display:grid;grid-template-columns:72px 1fr;gap:4px 12px;font-size:0.78rem;color:#7c2d12;">
+            <span style="opacity:0.7;">Username</span><span style="font-family:monospace;font-weight:600;">1120_LF</span>
+            <span style="opacity:0.7;">Password</span><span style="font-family:monospace;font-weight:600;">123456</span>
+            <span style="opacity:0.7;">Employee ID</span><span style="font-family:monospace;font-weight:600;">1001</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 ## Customer Ordering Experience
 
 <div class="cms-section-intro">
