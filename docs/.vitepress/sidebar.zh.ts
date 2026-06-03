@@ -28,6 +28,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/business/iot/' },
             { text: '方案', link: '/zh/business/iot/plan' },
             { text: '报价', link: '/zh/business/iot/pricing' },
+            { text: 'DEMO', link: '/zh/business/iot/demo' },
           ]
         },
         // { text: '企业小程序方案', collapsed: true, items: [...] },  // 暂时隐藏
@@ -50,6 +51,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/lifestyle/charging/' },
             { text: '方案', link: '/zh/lifestyle/charging/plan' },
             { text: '报价', link: '/zh/lifestyle/charging/pricing' },
+            { text: 'DEMO', link: '/zh/lifestyle/charging/demo' },
           ]
         },
         {
@@ -58,6 +60,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/lifestyle/transit/' },
             { text: '方案', link: '/zh/lifestyle/transit/plan' },
             { text: '报价', link: '/zh/lifestyle/transit/pricing' },
+            { text: 'DEMO', link: '/zh/lifestyle/transit/demo' },
           ]
         },
         {
@@ -66,6 +69,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/lifestyle/ecommerce/' },
             { text: '方案', link: '/zh/lifestyle/ecommerce/plan' },
             { text: '报价', link: '/zh/lifestyle/ecommerce/pricing' },
+            { text: 'DEMO', link: '/zh/lifestyle/ecommerce/demo' },
           ]
         },
         {
@@ -74,6 +78,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/lifestyle/catering/' },
             { text: '方案', link: '/zh/lifestyle/catering/plan' },
             { text: '报价', link: '/zh/lifestyle/catering/pricing' },
+            { text: 'DEMO', link: '/zh/lifestyle/catering/demo' },
           ]
         },
         {
@@ -82,6 +87,7 @@ export const zhSidebar = {
             { text: '概览', link: '/zh/lifestyle/ticketing/' },
             { text: '方案', link: '/zh/lifestyle/ticketing/plan' },
             { text: '报价', link: '/zh/lifestyle/ticketing/pricing' },
+            { text: 'DEMO', link: '/zh/lifestyle/ticketing/demo' },
           ]
         },
       ]

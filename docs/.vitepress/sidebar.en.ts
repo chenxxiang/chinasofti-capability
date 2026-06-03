@@ -28,6 +28,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/business/iot/' },
             { text: 'Solution', link: '/en/business/iot/plan' },
             { text: 'Pricing', link: '/en/business/iot/pricing' },
+            { text: 'DEMO', link: '/en/business/iot/demo' },
           ]
         },
         // { text: 'Enterprise Mini App Solution', collapsed: true, items: [...] },  // hidden
@@ -50,6 +51,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/lifestyle/charging/' },
             { text: 'Solution', link: '/en/lifestyle/charging/plan' },
             { text: 'Pricing', link: '/en/lifestyle/charging/pricing' },
+            { text: 'DEMO', link: '/en/lifestyle/charging/demo' },
           ]
         },
         {
@@ -58,6 +60,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/lifestyle/transit/' },
             { text: 'Solution', link: '/en/lifestyle/transit/plan' },
             { text: 'Pricing', link: '/en/lifestyle/transit/pricing' },
+            { text: 'DEMO', link: '/en/lifestyle/transit/demo' },
           ]
         },
         {
@@ -66,6 +69,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/lifestyle/ecommerce/' },
             { text: 'Solution', link: '/en/lifestyle/ecommerce/plan' },
             { text: 'Pricing', link: '/en/lifestyle/ecommerce/pricing' },
+            { text: 'DEMO', link: '/en/lifestyle/ecommerce/demo' },
           ]
         },
         {
@@ -74,6 +78,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/lifestyle/catering/' },
             { text: 'Solution', link: '/en/lifestyle/catering/plan' },
             { text: 'Pricing', link: '/en/lifestyle/catering/pricing' },
+            { text: 'DEMO', link: '/en/lifestyle/catering/demo' },
           ]
         },
         {
@@ -82,6 +87,7 @@ export const enSidebar = {
             { text: 'Overview', link: '/en/lifestyle/ticketing/' },
             { text: 'Solution', link: '/en/lifestyle/ticketing/plan' },
             { text: 'Pricing', link: '/en/lifestyle/ticketing/pricing' },
+            { text: 'DEMO', link: '/en/lifestyle/ticketing/demo' },
           ]
         },
       ]
