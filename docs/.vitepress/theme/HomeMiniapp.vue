@@ -788,70 +788,98 @@ function initIOCDashboard() {
 
   </section>
 
-  <!-- UCD 设计能力 -->
-  <section class="mn-sec reveal" id="ucd">
+  <!-- 页面复杂度规范 -->
+  <section class="mn-sec reveal" id="complexity">
     <div class="mn-sec-header">
-      <div class="mn-eyebrow">UCD Design · 设计能力</div>
-      <h2 class="mn-sec-title">用户中心设计（UCD）能力</h2>
+      <div class="mn-eyebrow">Page Complexity · 复杂度规范</div>
+      <h2 class="mn-sec-title">页面复杂度规范</h2>
     </div>
 
-    <div class="mn-ucd-feat-grid">
-      <div class="mn-ucd-feat-card">
-        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    <div class="mn-cpx-grid">
+      <!-- Low -->
+      <div class="mn-cpx-card cpx-low">
+        <div class="mn-cpx-head">
+          <span class="mn-cpx-badge badge-low">Low · 低复杂度</span>
+          <div class="mn-cpx-days-wrap"><span class="mn-cpx-num">3</span> Man-Days</div>
         </div>
-        <h4>全流程 UCD 设计</h4>
-        <p>需求分析 → 交互 / 视觉设计 → 可用性测试 → 设计复盘，六阶段完整闭环，确保以用户为中心贯穿全程</p>
-      </div>
-      <div class="mn-ucd-feat-card">
-        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="mn-cpx-screen">
+          <img src="/solutions/miniapp/images/complexity-low.png" alt="低复杂度示例页面" />
         </div>
-        <h4>3D 可视化大屏</h4>
-        <p>结合 Unity3D / ThreeJS 构建沉浸式大屏，煤矿、智慧园区、电厂等多个行业均有实际交付案例</p>
-      </div>
-      <div class="mn-ucd-feat-card">
-        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+        <div class="mn-cpx-example">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          个人资料基本信息页
         </div>
-        <h4>数字人设计</h4>
-        <p>参与华为虚拟数字人"云笙"研制，输出人物建模、骨骼绑定、表情驱动等完整 3D 角色技术</p>
-      </div>
-      <div class="mn-ucd-feat-card">
-        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#059669,#10b981);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div class="mn-cpx-meta">
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Elements</span>
+            <span class="mn-cpx-val">6（1头像 + 2文本 + 2按钮 + 1分割线）</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Interactions</span>
+            <span class="mn-cpx-val">2次点击（无动画）</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Data</span>
+            <span class="mn-cpx-val">静态缓存用户信息</span>
+          </div>
         </div>
-        <h4>专家评估 &amp; 用户测评</h4>
-        <p>AQ 专家走查 + 真实用户测试报告，量化设计改进效果，系统性提升产品体验质量</p>
       </div>
-    </div>
 
-    <!-- 设计作品展示 -->
-    <div class="mn-ucd-gallery">
-      <div class="mn-ucd-gal-col">
-        <div class="mn-ucd-gal-item">
-          <img src="/solutions/miniapp/images/ucd-ecommerce-ui.jpg" alt="电商 UI 设计" />
-          <div class="mn-ucd-gal-cap">电商平台 UI</div>
+      <!-- Medium -->
+      <div class="mn-cpx-card cpx-medium">
+        <div class="mn-cpx-head">
+          <span class="mn-cpx-badge badge-medium">Medium · 中复杂度</span>
+          <div class="mn-cpx-days-wrap"><span class="mn-cpx-num">5</span> Man-Days</div>
         </div>
-        <div class="mn-ucd-gal-item">
-          <img src="/solutions/miniapp/images/ucd-wallet-ui.png" alt="钱包 App 设计" />
-          <div class="mn-ucd-gal-cap">移动钱包 App</div>
+        <div class="mn-cpx-screen">
+          <img src="/solutions/miniapp/images/complexity-medium.png" alt="中复杂度示例页面" />
+        </div>
+        <div class="mn-cpx-example">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          账户流水页
+        </div>
+        <div class="mn-cpx-meta">
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Elements</span>
+            <span class="mn-cpx-val">12（1搜索 + 2标签 + 6卡片 + 1按钮 + 2分割线）</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Interactions</span>
+            <span class="mn-cpx-val">4项（搜索 / 筛选 / 加载 + 简单淡入动画）</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Data</span>
+            <span class="mn-cpx-val">缓存 30 天交易记录</span>
+          </div>
         </div>
       </div>
-      <div class="mn-ucd-gal-col">
-        <div class="mn-ucd-gal-item">
-          <img src="/solutions/miniapp/images/ucd-digital-human.jpg" alt="虚拟数字人" style="object-position:center;" />
-          <div class="mn-ucd-gal-cap">虚拟数字人</div>
+
+      <!-- High -->
+      <div class="mn-cpx-card cpx-high">
+        <div class="mn-cpx-head">
+          <span class="mn-cpx-badge badge-high">High · 高复杂度</span>
+          <div class="mn-cpx-days-wrap"><span class="mn-cpx-num">10</span> Man-Days</div>
         </div>
-        <div class="mn-ucd-gal-item">
-          <img src="/solutions/miniapp/images/ucd-ecommerce-detail.jpg" alt="界面精细化" />
-          <div class="mn-ucd-gal-cap">界面精细化</div>
+        <div class="mn-cpx-screen">
+          <img src="/solutions/miniapp/images/complexity-high.png" alt="高复杂度示例页面" />
         </div>
-      </div>
-      <div class="mn-ucd-gal-col mn-ucd-gal-wide">
-        <div class="mn-ucd-gal-item mn-ucd-gal-full">
-          <img src="/solutions/miniapp/images/ucd-dashboard.png" alt="3D 可视化大屏" style="object-position:center;" />
-          <div class="mn-ucd-gal-cap">3D 可视化大屏</div>
+        <div class="mn-cpx-example">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          投资资产配置页
+        </div>
+        <div class="mn-cpx-meta">
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Elements</span>
+            <span class="mn-cpx-val">28（1导航 + 4仪表盘 + 6卡片 + 2标签 + 3按钮）</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Interactions</span>
+            <span class="mn-cpx-val">7项（图表缩放 / 实时刷新 / 导出报表）</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Data</span>
+            <span class="mn-cpx-val">实时 API 净值与收益（30 秒刷新）</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2113,46 +2141,57 @@ function initIOCDashboard() {
 .mn-ops-card h4 { font-size: 1rem; font-weight: 800; color: var(--text1); margin: 0 0 8px; }
 .mn-ops-card p { font-size: 0.86rem; color: var(--text2); line-height: 1.7; margin: 0; }
 
-/* ── UCD DESIGN ── */
-.mn-ucd-feat-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 28px;
+/* ── PAGE COMPLEXITY ── */
+.mn-cpx-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
 }
-.mn-ucd-feat-card {
-  background: var(--card-bg); border-radius: var(--radius); padding: 26px 22px;
-  box-shadow: var(--shadow); border: 1px solid rgba(124,58,237,0.1);
-  backdrop-filter: blur(8px); transition: all .3s;
+.mn-cpx-card {
+  background: var(--card-bg); border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  overflow: hidden; transition: all .3s; backdrop-filter: blur(8px);
 }
-.mn-ucd-feat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.mn-ucd-feat-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 14px; box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+.mn-cpx-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.cpx-low { border-top: 3px solid #10b981; }
+.cpx-medium { border-top: 3px solid #f59e0b; }
+.cpx-high { border-top: 3px solid #ef4444; }
+.mn-cpx-head {
+  padding: 18px 20px 14px; display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
 }
-.mn-ucd-feat-card h4 { font-size: 0.96rem; font-weight: 800; color: var(--text1); margin: 0 0 8px; }
-.mn-ucd-feat-card p { font-size: 0.83rem; color: var(--text2); line-height: 1.7; margin: 0; }
-
-.mn-ucd-gallery {
-  display: flex; gap: 14px; height: 420px; border-radius: 16px; overflow: hidden;
+.mn-cpx-badge {
+  font-size: 0.72rem; font-weight: 800; border-radius: 20px; padding: 4px 12px;
+  letter-spacing: 0.04em;
 }
-.mn-ucd-gal-col {
-  flex: 1; display: flex; flex-direction: column; gap: 14px;
+.badge-low    { background: rgba(16,185,129,0.12); color: #059669; }
+.badge-medium { background: rgba(245,158,11,0.12); color: #d97706; }
+.badge-high   { background: rgba(239,68,68,0.12);  color: #dc2626; }
+.mn-cpx-days-wrap {
+  font-size: 0.78rem; font-weight: 600; color: var(--text2);
+  display: flex; align-items: baseline; gap: 4px;
 }
-.mn-ucd-gal-wide { flex: 1.7; }
-.mn-ucd-gal-item {
-  flex: 1; position: relative; overflow: hidden; border-radius: 12px;
-  border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+.mn-cpx-num {
+  font-size: 1.9rem; font-weight: 900; line-height: 1; color: var(--text1);
 }
-.mn-ucd-gal-full { flex: 1; height: 100%; }
-.mn-ucd-gal-item img {
+.mn-cpx-screen {
+  margin: 16px 20px; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border); height: 300px;
+}
+.mn-cpx-screen img {
   width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
-  transition: transform .4s ease;
 }
-.mn-ucd-gal-item:hover img { transform: scale(1.03); }
-.mn-ucd-gal-cap {
-  position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px;
-  background: linear-gradient(to top, rgba(0,0,0,0.72), transparent);
-  font-size: 0.76rem; color: #fff; font-weight: 700; letter-spacing: 0.02em;
+.mn-cpx-example {
+  display: flex; align-items: center; gap: 7px; padding: 0 20px 14px;
+  font-size: 0.83rem; font-weight: 700; color: var(--text1);
 }
+.mn-cpx-meta {
+  padding: 12px 20px 20px; border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 9px;
+}
+.mn-cpx-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.79rem; }
+.mn-cpx-label {
+  font-weight: 700; color: var(--text2); min-width: 80px; flex-shrink: 0;
+}
+.mn-cpx-val { color: var(--text2); line-height: 1.55; }
 
 /* ── PROJECT MANAGEMENT ── */
 .mn-pm-cards {

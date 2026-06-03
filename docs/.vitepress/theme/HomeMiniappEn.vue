@@ -733,69 +733,98 @@ function initIOCDashboard() {
     </div>
   </section>
 
-  <!-- UCD Design -->
-  <section class="mn-sec reveal" id="ucd">
+  <!-- Page Complexity Standards -->
+  <section class="mn-sec reveal" id="complexity">
     <div class="mn-sec-header">
-      <div class="mn-eyebrow">UCD Design · Design Capabilities</div>
-      <h2 class="mn-sec-title">User-Centered Design (UCD) Capabilities</h2>
+      <div class="mn-eyebrow">Page Complexity · Estimation Standards</div>
+      <h2 class="mn-sec-title">Page Complexity Standards</h2>
     </div>
 
-    <div class="mn-ucd-feat-grid">
-      <div class="mn-ucd-feat-card">
-        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    <div class="mn-cpx-grid">
+      <!-- Low -->
+      <div class="mn-cpx-card cpx-low">
+        <div class="mn-cpx-head">
+          <span class="mn-cpx-badge badge-low">Low Complexity</span>
+          <div class="mn-cpx-days-wrap"><span class="mn-cpx-num">3</span> Man-Days</div>
         </div>
-        <h4>Full-Cycle UCD Design</h4>
-        <p>Requirements → Interaction / Visual Design → Usability Testing → Design Review — a complete 6-phase closed loop ensuring user-centricity throughout</p>
-      </div>
-      <div class="mn-ucd-feat-card">
-        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="mn-cpx-screen">
+          <img src="/solutions/miniapp/images/complexity-low.png" alt="Low complexity page example" />
         </div>
-        <h4>3D Visualization Dashboards</h4>
-        <p>Immersive big-screen experiences using Unity3D / ThreeJS, with delivered projects in mining, smart campus, and power plant industries</p>
-      </div>
-      <div class="mn-ucd-feat-card">
-        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+        <div class="mn-cpx-example">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          Personal Profile Basic Info Page
         </div>
-        <h4>Virtual Digital Human</h4>
-        <p>Co-developed Huawei's virtual digital human "Yun Sheng" — delivering 3D character modeling, rigging, and expression animation</p>
-      </div>
-      <div class="mn-ucd-feat-card">
-        <div class="mn-ucd-feat-icon" style="background:linear-gradient(135deg,#059669,#10b981);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div class="mn-cpx-meta">
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Elements</span>
+            <span class="mn-cpx-val">6 (1 avatar + 2 texts + 2 buttons + 1 divider)</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Interactions</span>
+            <span class="mn-cpx-val">2 clicks (no animations)</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Data</span>
+            <span class="mn-cpx-val">Static cached user info</span>
+          </div>
         </div>
-        <h4>Expert Evaluation &amp; UX Testing</h4>
-        <p>AQ expert walkthrough + real user test reports — quantifying design improvement impact and systematically elevating product experience quality</p>
       </div>
-    </div>
 
-    <div class="mn-ucd-gallery">
-      <div class="mn-ucd-gal-col">
-        <div class="mn-ucd-gal-item">
-          <img src="/solutions/miniapp/images/ucd-ecommerce-ui.jpg" alt="E-Commerce Platform UI" />
-          <div class="mn-ucd-gal-cap">E-Commerce Platform UI</div>
+      <!-- Medium -->
+      <div class="mn-cpx-card cpx-medium">
+        <div class="mn-cpx-head">
+          <span class="mn-cpx-badge badge-medium">Medium Complexity</span>
+          <div class="mn-cpx-days-wrap"><span class="mn-cpx-num">5</span> Man-Days</div>
         </div>
-        <div class="mn-ucd-gal-item">
-          <img src="/solutions/miniapp/images/ucd-wallet-ui.png" alt="Mobile Wallet App" />
-          <div class="mn-ucd-gal-cap">Mobile Wallet App</div>
+        <div class="mn-cpx-screen">
+          <img src="/solutions/miniapp/images/complexity-medium.png" alt="Medium complexity page example" />
+        </div>
+        <div class="mn-cpx-example">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          Account Statement Page
+        </div>
+        <div class="mn-cpx-meta">
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Elements</span>
+            <span class="mn-cpx-val">12 (1 search + 2 tabs + 6 cards + 1 button + 2 dividers)</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Interactions</span>
+            <span class="mn-cpx-val">4 (search / filter / load with simple fade)</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Data</span>
+            <span class="mn-cpx-val">Cached 30-day transactions</span>
+          </div>
         </div>
       </div>
-      <div class="mn-ucd-gal-col">
-        <div class="mn-ucd-gal-item">
-          <img src="/solutions/miniapp/images/ucd-digital-human.jpg" alt="Virtual Digital Human" style="object-position:center;" />
-          <div class="mn-ucd-gal-cap">Virtual Digital Human</div>
+
+      <!-- High -->
+      <div class="mn-cpx-card cpx-high">
+        <div class="mn-cpx-head">
+          <span class="mn-cpx-badge badge-high">High Complexity</span>
+          <div class="mn-cpx-days-wrap"><span class="mn-cpx-num">10</span> Man-Days</div>
         </div>
-        <div class="mn-ucd-gal-item">
-          <img src="/solutions/miniapp/images/ucd-ecommerce-detail.jpg" alt="UI Polish & Detail" />
-          <div class="mn-ucd-gal-cap">UI Polish &amp; Detail</div>
+        <div class="mn-cpx-screen">
+          <img src="/solutions/miniapp/images/complexity-high.png" alt="High complexity page example" />
         </div>
-      </div>
-      <div class="mn-ucd-gal-col mn-ucd-gal-wide">
-        <div class="mn-ucd-gal-item mn-ucd-gal-full">
-          <img src="/solutions/miniapp/images/ucd-dashboard.png" alt="3D Visualization Dashboard" style="object-position:center;" />
-          <div class="mn-ucd-gal-cap">3D Visualization Dashboard</div>
+        <div class="mn-cpx-example">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          Investment Asset Allocation Page
+        </div>
+        <div class="mn-cpx-meta">
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Elements</span>
+            <span class="mn-cpx-val">28 (1 nav + 4 dashboards + 6 cards + 2 tabs + 3 buttons)</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Interactions</span>
+            <span class="mn-cpx-val">7 (chart zoom / real-time refresh / export)</span>
+          </div>
+          <div class="mn-cpx-row">
+            <span class="mn-cpx-label">Data</span>
+            <span class="mn-cpx-val">Real-time API-synced NAV &amp; profit (30s update)</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2014,43 +2043,57 @@ function initIOCDashboard() {
   border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.07);
 }
 
-/* ── UCD DESIGN ── */
-.mn-ucd-feat-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 28px;
+/* ── PAGE COMPLEXITY ── */
+.mn-cpx-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
 }
-.mn-ucd-feat-card {
-  background: var(--card-bg); border-radius: var(--radius); padding: 26px 22px;
-  box-shadow: var(--shadow); border: 1px solid rgba(124,58,237,0.1);
-  backdrop-filter: blur(8px); transition: all .3s;
+.mn-cpx-card {
+  background: var(--card-bg); border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  overflow: hidden; transition: all .3s; backdrop-filter: blur(8px);
 }
-.mn-ucd-feat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.mn-ucd-feat-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 14px; box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+.mn-cpx-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.cpx-low { border-top: 3px solid #10b981; }
+.cpx-medium { border-top: 3px solid #f59e0b; }
+.cpx-high { border-top: 3px solid #ef4444; }
+.mn-cpx-head {
+  padding: 18px 20px 14px; display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
 }
-.mn-ucd-feat-card h4 { font-size: 0.96rem; font-weight: 800; color: var(--text1); margin: 0 0 8px; }
-.mn-ucd-feat-card p { font-size: 0.83rem; color: var(--text2); line-height: 1.7; margin: 0; }
-.mn-ucd-gallery {
-  display: flex; gap: 14px; height: 420px; border-radius: 16px; overflow: hidden;
+.mn-cpx-badge {
+  font-size: 0.72rem; font-weight: 800; border-radius: 20px; padding: 4px 12px;
+  letter-spacing: 0.04em;
 }
-.mn-ucd-gal-col { flex: 1; display: flex; flex-direction: column; gap: 14px; }
-.mn-ucd-gal-wide { flex: 1.7; }
-.mn-ucd-gal-item {
-  flex: 1; position: relative; overflow: hidden; border-radius: 12px;
-  border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+.badge-low    { background: rgba(16,185,129,0.12); color: #059669; }
+.badge-medium { background: rgba(245,158,11,0.12); color: #d97706; }
+.badge-high   { background: rgba(239,68,68,0.12);  color: #dc2626; }
+.mn-cpx-days-wrap {
+  font-size: 0.78rem; font-weight: 600; color: var(--text2);
+  display: flex; align-items: baseline; gap: 4px;
 }
-.mn-ucd-gal-full { flex: 1; height: 100%; }
-.mn-ucd-gal-item img {
+.mn-cpx-num {
+  font-size: 1.9rem; font-weight: 900; line-height: 1; color: var(--text1);
+}
+.mn-cpx-screen {
+  margin: 16px 20px; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border); height: 300px;
+}
+.mn-cpx-screen img {
   width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
-  transition: transform .4s ease;
 }
-.mn-ucd-gal-item:hover img { transform: scale(1.03); }
-.mn-ucd-gal-cap {
-  position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px;
-  background: linear-gradient(to top, rgba(0,0,0,0.72), transparent);
-  font-size: 0.76rem; color: #fff; font-weight: 700; letter-spacing: 0.02em;
+.mn-cpx-example {
+  display: flex; align-items: center; gap: 7px; padding: 0 20px 14px;
+  font-size: 0.83rem; font-weight: 700; color: var(--text1);
 }
+.mn-cpx-meta {
+  padding: 12px 20px 20px; border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 9px;
+}
+.mn-cpx-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.79rem; }
+.mn-cpx-label {
+  font-weight: 700; color: var(--text2); min-width: 80px; flex-shrink: 0;
+}
+.mn-cpx-val { color: var(--text2); line-height: 1.55; }
 
 /* ── PROJECT MANAGEMENT ── */
 .mn-pm-cards {
