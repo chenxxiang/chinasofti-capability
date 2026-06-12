@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
+import { heroData, stats, highlights } from './data/company.en.js'
 
 onMounted(() => {
   initParticles()
@@ -64,7 +65,7 @@ function initParticles() {
 }
 
 function initTypewriter() {
-  const text = "China's leading IT service provider — delivering end-to-end digital solutions across government, finance, telecom, and energy in markets worldwide"
+  const text = heroData.tagline
   const el = document.getElementById('typed-text')
   const cursor = document.getElementById('typed-cursor')
   if (!el) return
@@ -184,11 +185,7 @@ function initTabs() {
     <h1>A Leading Global<br><span class="shine">Technology Services Platform</span></h1>
     <p class="hero-sub"><span id="typed-text"></span><span id="typed-cursor" class="cursor"></span></p>
     <div class="hero-badges">
-      <span class="h-badge"><span class="h-badge-icon">🤝</span>Huawei Premier Partner</span>
-      <span class="h-badge"><span class="h-badge-icon">📊</span>Gartner Top 73</span>
-      <span class="h-badge"><span class="h-badge-icon">🏆</span>China Software Top 15</span>
-      <span class="h-badge"><span class="h-badge-icon">🌍</span>70+ Cities Worldwide</span>
-      <span class="h-badge"><span class="h-badge-icon">💡</span>18 Years in Huawei Ecosystem</span>
+      <span v-for="b in heroData.badges" :key="b.text" class="h-badge"><span class="h-badge-icon">{{ b.icon }}</span>{{ b.text }}</span>
     </div>
   </div>
   <div class="scroll-hint">SCROLL<div class="scroll-chevron"></div></div>
@@ -196,15 +193,9 @@ function initTabs() {
 
 <!-- CAPABILITY STRIP -->
 <div class="cap-strip">
-  <div class="cap-item"><span class="cap-icon">🤖</span><span class="cap-label">AI</span></div>
-  <div class="cap-item"><span class="cap-icon">☁️</span><span class="cap-label">Cloud Services</span></div>
-  <div class="cap-item"><span class="cap-icon">📊</span><span class="cap-label">Big Data</span></div>
-  <div class="cap-item"><span class="cap-icon">💻</span><span class="cap-label">App Development</span></div>
-  <div class="cap-item"><span class="cap-icon">⚙️</span><span class="cap-label">Managed Services</span></div>
-  <div class="cap-item"><span class="cap-icon">💡</span><span class="cap-label">Consulting</span></div>
-  <div class="cap-item"><span class="cap-icon">🔶</span><span class="cap-label">HarmonyOS</span></div>
-  <div class="cap-item"><span class="cap-icon">🏙️</span><span class="cap-label">Smart City</span></div>
-  <div class="cap-item"><span class="cap-icon">🌐</span><span class="cap-label">ODC</span></div>
+  <div v-for="c in heroData.capabilities" :key="c.label" class="cap-item">
+    <span class="cap-icon">{{ c.icon }}</span><span class="cap-label">{{ c.label }}</span>
+  </div>
 </div>
 
 <!-- BODY -->
@@ -219,14 +210,12 @@ function initTabs() {
       </div>
     </div>
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="80">0</span><span class="u">K+</span></div><div class="stat-lab">Total Employees</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="17">0</span><span class="u">B</span></div><div class="stat-lab">Annual Revenue (CNY)</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="70">0</span><span class="u">+</span></div><div class="stat-lab">Cities Worldwide</div></div>
-      <div class="stat-card"><div class="stat-val">Top<span class="u"> 73</span></div><div class="stat-lab">Gartner Global Ranking</div></div>
-      <div class="stat-card"><div class="stat-val">Top<span class="u"> 15</span></div><div class="stat-lab">China Software Top 100</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="30">0</span><span class="u">%+</span></div><div class="stat-lab">Overseas Revenue CAGR</div></div>
-      <div class="stat-card"><div class="stat-val">9.8<span class="u">B</span></div><div class="stat-lab">Cumulative Huawei Contracts (CNY)</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="1000">0</span><span class="u">+</span></div><div class="stat-lab">Global Clients</div></div>
+      <div v-for="s in stats" :key="s.label" class="stat-card">
+        <div class="stat-val">
+          {{ s.prefix }}<span v-if="s.counter !== null" class="counting" :data-target="s.counter">0</span><span class="u">{{ s.unit }}</span>
+        </div>
+        <div class="stat-lab">{{ s.label }}</div>
+      </div>
     </div>
   </div>
 
@@ -239,37 +228,9 @@ function initTabs() {
       </div>
     </div>
     <div class="industry-grid stagger">
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#1d4ed8,#3b82f6);--ind-grad:linear-gradient(135deg,rgba(29,78,216,0.06),transparent);--ind-shadow:rgba(29,78,216,0.28);">
-        <div class="ind-icon">🏦</div>
-        <div><div class="ind-name">Finance · Banking · Insurance</div><div class="ind-desc">Mobile banking, e-wallets, and insurance mini-programs — serving digital transformation for multiple Middle East and Southeast Asian banks</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0891b2,#06b6d4);--ind-grad:linear-gradient(135deg,rgba(6,182,212,0.06),transparent);--ind-shadow:rgba(6,182,212,0.28);">
-        <div class="ind-icon">📡</div>
-        <div><div class="ind-name">Telecom · Carriers</div><div class="ind-desc">Carrier Super Apps, 5G service platforms, and traffic operations systems — deeply embedded in the Huawei telecom ecosystem</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7c3aed,#a78bfa);--ind-grad:linear-gradient(135deg,rgba(124,58,237,0.06),transparent);--ind-shadow:rgba(124,58,237,0.28);">
-        <div class="ind-icon">🏛️</div>
-        <div><div class="ind-name">Government · Smart City</div><div class="ind-desc">One-stop government apps, digital citizen services, and cross-agency data integration — covering multiple Middle East government projects</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#d97706,#f59e0b);--ind-grad:linear-gradient(135deg,rgba(217,119,6,0.06),transparent);--ind-shadow:rgba(217,119,6,0.28);">
-        <div class="ind-icon">🏭</div>
-        <div><div class="ind-name">Manufacturing · Industrial IoT</div><div class="ind-desc">Factory digitization, device IoT onboarding, and supply chain visibility — deeply integrated with the Huawei Industrial Internet ecosystem</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#059669,#10b981);--ind-grad:linear-gradient(135deg,rgba(5,150,105,0.06),transparent);--ind-shadow:rgba(5,150,105,0.28);">
-        <div class="ind-icon">🛒</div>
-        <div><div class="ind-name">Retail · E-Commerce</div><div class="ind-desc">Shopping mini-programs, loyalty systems, and targeted marketing — helping retail brands expand rapidly across Southeast Asia</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#dc2626,#f87171);--ind-grad:linear-gradient(135deg,rgba(220,38,38,0.06),transparent);--ind-shadow:rgba(220,38,38,0.25);">
-        <div class="ind-icon">🏥</div>
-        <div><div class="ind-name">Healthcare</div><div class="ind-desc">Hospital apps, appointment booking, and health management platforms — HIPAA-compliant with multi-language localization support</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0f766e,#14b8a6);--ind-grad:linear-gradient(135deg,rgba(15,118,110,0.06),transparent);--ind-shadow:rgba(15,118,110,0.25);">
-        <div class="ind-icon">🎓</div>
-        <div><div class="ind-name">Education · Training</div><div class="ind-desc">Online classrooms, learning management systems, and certification platforms — supporting the Huawei ICT talent ecosystem</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7e22ce,#c084fc);--ind-grad:linear-gradient(135deg,rgba(126,34,206,0.06),transparent);--ind-shadow:rgba(126,34,206,0.25);">
-        <div class="ind-icon">✈️</div>
-        <div><div class="ind-name">Transport · Mobility</div><div class="ind-desc">Mobility aggregation Super Apps, ticket booking, and real-time navigation — covering public transit digitalization scenarios</div></div>
+      <div v-for="h in highlights" :key="h.name" class="ind-card" :style="`--ind-color:${h.color};--ind-grad:${h.grad};--ind-shadow:${h.shadow};`">
+        <div class="ind-icon">{{ h.icon }}</div>
+        <div><div class="ind-name">{{ h.name }}</div><div class="ind-desc">{{ h.desc }}</div></div>
       </div>
     </div>
   </div>

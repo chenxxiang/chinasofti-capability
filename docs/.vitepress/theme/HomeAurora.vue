@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
+import { heroData, stats, highlights } from './data/company.zh.js'
 
 onMounted(() => {
   initParticles()
@@ -63,7 +64,7 @@ function initParticles() {
 }
 
 function initTypewriter() {
-  const text = '中国领先的 IT 服务商，深耕全球多国市场，提供政务、金融、电信、能源全行业端到端数字化解决方案'
+  const text = heroData.tagline
   const el = document.getElementById('typed-text')
   const cursor = document.getElementById('typed-cursor')
   if (!el) return
@@ -182,11 +183,7 @@ function initTabs() {
     <h1>领先的 IT 行业<br><span class="shine">全球化科技服务平台</span></h1>
     <p class="hero-sub"><span id="typed-text"></span><span id="typed-cursor" class="cursor"></span></p>
     <div class="hero-badges">
-      <span class="h-badge"><span class="h-badge-icon">🤝</span>Huawei Premier Partner</span>
-      <span class="h-badge"><span class="h-badge-icon">📊</span>Gartner Top 73</span>
-      <span class="h-badge"><span class="h-badge-icon">🏆</span>中国软件百强 Top 15</span>
-      <span class="h-badge"><span class="h-badge-icon">🌍</span>全球 70+ 城市布局</span>
-      <span class="h-badge"><span class="h-badge-icon">💡</span>深耕华为生态 18 年</span>
+      <span v-for="b in heroData.badges" :key="b.text" class="h-badge"><span class="h-badge-icon">{{ b.icon }}</span>{{ b.text }}</span>
     </div>
   </div>
   <div class="scroll-hint">SCROLL<div class="scroll-chevron"></div></div>
@@ -194,15 +191,9 @@ function initTabs() {
 
 <!-- CAPABILITY STRIP -->
 <div class="cap-strip">
-  <div class="cap-item"><span class="cap-icon">🤖</span><span class="cap-label">AI</span></div>
-  <div class="cap-item"><span class="cap-icon">☁️</span><span class="cap-label">云服务</span></div>
-  <div class="cap-item"><span class="cap-icon">📊</span><span class="cap-label">大数据</span></div>
-  <div class="cap-item"><span class="cap-icon">💻</span><span class="cap-label">应用开发</span></div>
-  <div class="cap-item"><span class="cap-icon">⚙️</span><span class="cap-label">管理服务</span></div>
-  <div class="cap-item"><span class="cap-icon">💡</span><span class="cap-label">咨询服务</span></div>
-  <div class="cap-item"><span class="cap-icon">🔶</span><span class="cap-label">鸿蒙生态</span></div>
-  <div class="cap-item"><span class="cap-icon">🏙️</span><span class="cap-label">智慧城市</span></div>
-  <div class="cap-item"><span class="cap-icon">🌐</span><span class="cap-label">ODC</span></div>
+  <div v-for="c in heroData.capabilities" :key="c.label" class="cap-item">
+    <span class="cap-icon">{{ c.icon }}</span><span class="cap-label">{{ c.label }}</span>
+  </div>
 </div>
 
 <!-- BODY -->
@@ -217,14 +208,12 @@ function initTabs() {
       </div>
     </div>
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="8">0</span><span class="u">万+</span></div><div class="stat-lab">员工总数</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="170">0</span><span class="u">亿</span></div><div class="stat-lab">年收入规模</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="70">0</span><span class="u">+</span></div><div class="stat-lab">全球城市布局</div></div>
-      <div class="stat-card"><div class="stat-val">Top<span class="u"> 73</span></div><div class="stat-lab">Gartner 全球排名</div></div>
-      <div class="stat-card"><div class="stat-val">Top<span class="u"> 15</span></div><div class="stat-lab">中国软件百强</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="30">0</span><span class="u">%+</span></div><div class="stat-lab">海外业务复合增速</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="98">0</span><span class="u">亿</span></div><div class="stat-lab">华为合作累计合同额</div></div>
-      <div class="stat-card"><div class="stat-val"><span class="counting" data-target="1000">0</span><span class="u">+</span></div><div class="stat-lab">全球客户</div></div>
+      <div v-for="s in stats" :key="s.label" class="stat-card">
+        <div class="stat-val">
+          {{ s.prefix }}<span v-if="s.counter !== null" class="counting" :data-target="s.counter">0</span><span class="u">{{ s.unit }}</span>
+        </div>
+        <div class="stat-lab">{{ s.label }}</div>
+      </div>
     </div>
   </div>
 
@@ -237,37 +226,9 @@ function initTabs() {
       </div>
     </div>
     <div class="industry-grid stagger">
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#1d4ed8,#3b82f6);--ind-grad:linear-gradient(135deg,rgba(29,78,216,0.06),transparent);--ind-shadow:rgba(29,78,216,0.28);">
-        <div class="ind-icon">🏦</div>
-        <div><div class="ind-name">金融 · 银行 · 保险</div><div class="ind-desc">移动银行、电子钱包、保险小程序，服务多家中东与东南亚银行数字化转型</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0891b2,#06b6d4);--ind-grad:linear-gradient(135deg,rgba(6,182,212,0.06),transparent);--ind-shadow:rgba(6,182,212,0.28);">
-        <div class="ind-icon">📡</div>
-        <div><div class="ind-name">通信 · 电信运营商</div><div class="ind-desc">运营商 Super App、5G 服务平台、流量运营系统，深度服务华为电信生态</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7c3aed,#a78bfa);--ind-grad:linear-gradient(135deg,rgba(124,58,237,0.06),transparent);--ind-shadow:rgba(124,58,237,0.28);">
-        <div class="ind-icon">🏛️</div>
-        <div><div class="ind-name">政务 · 智慧城市</div><div class="ind-desc">政务一站式 App、数字市民服务、跨部门数据打通，覆盖中东多国政府项目</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#d97706,#f59e0b);--ind-grad:linear-gradient(135deg,rgba(217,119,6,0.06),transparent);--ind-shadow:rgba(217,119,6,0.28);">
-        <div class="ind-icon">🏭</div>
-        <div><div class="ind-name">制造 · 工业互联</div><div class="ind-desc">工厂数字化管理、设备 IoT 接入、供应链可视化，与华为工业互联生态深度集成</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#059669,#10b981);--ind-grad:linear-gradient(135deg,rgba(5,150,105,0.06),transparent);--ind-shadow:rgba(5,150,105,0.28);">
-        <div class="ind-icon">🛒</div>
-        <div><div class="ind-name">零售 · 电商</div><div class="ind-desc">购物小程序、会员体系、精准营销推送，助力零售品牌在东南亚快速布局</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#dc2626,#f87171);--ind-grad:linear-gradient(135deg,rgba(220,38,38,0.06),transparent);--ind-shadow:rgba(220,38,38,0.25);">
-        <div class="ind-icon">🏥</div>
-        <div><div class="ind-name">医疗 · 健康</div><div class="ind-desc">医院 App、问诊预约、健康管理平台，支持 HIPAA 合规与多语言本地化部署</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#0f766e,#14b8a6);--ind-grad:linear-gradient(135deg,rgba(15,118,110,0.06),transparent);--ind-shadow:rgba(15,118,110,0.25);">
-        <div class="ind-icon">🎓</div>
-        <div><div class="ind-name">教育 · 培训</div><div class="ind-desc">在线课堂、学习管理系统、证书认证平台，助力华为 ICT 人才生态建设</div></div>
-      </div>
-      <div class="ind-card" style="--ind-color:linear-gradient(135deg,#7e22ce,#c084fc);--ind-grad:linear-gradient(135deg,rgba(126,34,206,0.06),transparent);--ind-shadow:rgba(126,34,206,0.25);">
-        <div class="ind-icon">✈️</div>
-        <div><div class="ind-name">交通 · 出行</div><div class="ind-desc">出行聚合 Super App、票务预订、实时导航，覆盖公共交通数字化整合场景</div></div>
+      <div v-for="h in highlights" :key="h.name" class="ind-card" :style="`--ind-color:${h.color};--ind-grad:${h.grad};--ind-shadow:${h.shadow};`">
+        <div class="ind-icon">{{ h.icon }}</div>
+        <div><div class="ind-name">{{ h.name }}</div><div class="ind-desc">{{ h.desc }}</div></div>
       </div>
     </div>
   </div>
