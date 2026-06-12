@@ -3,6 +3,7 @@ import { onMounted } from 'vue'
 import { feature, mesh } from 'topojson-client'
 import worldData from 'world-atlas/countries-110m.json'
 import NavBar from './NavBar.vue'
+import { regions, coverageStats } from './data/overseas.en.js'
 
 onMounted(() => {
   initMapTabs()
@@ -483,196 +484,51 @@ async function initChinaMap() {
 
 <!-- COVERAGE STRIP -->
 <div class="ov-cov-strip">
-  <div class="ov-cov-item">
-    <span class="ov-cov-icon">🏢</span>
-    <span class="ov-cov-text"><strong>2</strong> offices in Hi-Tech Parks / Free Trade Zones</span>
-  </div>
-  <div class="ov-cov-item">
-    <span class="ov-cov-icon">🔧</span>
-    <span class="ov-cov-text"><strong>11</strong> Huawei Global ODC centers</span>
-  </div>
-  <div class="ov-cov-item">
-    <span class="ov-cov-icon">🌐</span>
-    <span class="ov-cov-text"><strong>11</strong> MNC cross-border ODC centers</span>
-  </div>
-  <div class="ov-cov-item">
-    <span class="ov-cov-icon">🤝</span>
-    <span class="ov-cov-text"><strong>23</strong> Operator Partnerships</span>
+  <div v-for="s in coverageStats" :key="s.post" class="ov-cov-item">
+    <span class="ov-cov-icon">{{ s.icon }}</span>
+    <span class="ov-cov-text">{{ s.pre }}<strong>{{ s.value }}</strong>{{ s.post }}</span>
   </div>
 </div>
 
 <!-- REGION SECTIONS -->
 <div class="page-body">
 
-  <!-- Southeast Asia -->
-  <div id="region-sea" class="ov-region-sec reveal">
+  <div v-for="r in regions" :key="r.id" :id="`region-${r.id}`" :class="['ov-region-sec', { 'ov-region-sec-rev': r.rev }, 'reveal']">
     <div class="ov-region-photo">
-      <img src="/images/overseas/sea-photo.jpeg" alt="Southeast Asia · Kuala Lumpur" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#059669,#10b981);">🌏 SE Asia</div>
+      <img :src="r.photo" :alt="r.photoAlt" />
+      <div class="ov-photo-badge" :style="`background:${r.grad};`">{{ r.badgeEmoji }} {{ r.badgeName }}</div>
     </div>
     <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#10b981;">Southeast Asia · 3 Entities</div>
-      <h2 class="ov-region-title">Southeast Asia</h2>
+      <div class="ov-region-eyebrow" :style="`color:${r.color};`">{{ r.eyebrow }}</div>
+      <h2 class="ov-region-title">{{ r.title }}</h2>
       <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#10b981;">260+ Local Staff</span>
+        <span v-for="b in r.badges" :key="b.text" class="ov-region-badge" :style="`--rb:${r.color};`">{{ b.text }}</span>
       </div>
       <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#10b981;"></span>
+        <div v-for="e in r.entities" :key="e.name" class="ov-entity">
+          <span class="ov-edot" :style="`background:${r.colorDark};`"></span>
           <div>
-            <div class="ov-ename">CSI Interfusion SDN. BHD</div>
-            <div class="ov-eloc">📍 Kuala Lumpur, Malaysia</div>
-          </div>
-        </div>
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#10b981;"></span>
-          <div>
-            <div class="ov-ename">CSI Interfusion Singapore</div>
-            <div class="ov-eloc">📍 Singapore</div>
-          </div>
-        </div>
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#10b981;"></span>
-          <div>
-            <div class="ov-ename">PT CSI Interfusion Technology Service JAKARTA</div>
-            <div class="ov-eloc">📍 Jakarta, Indonesia</div>
+            <div class="ov-ename">{{ e.name }}</div>
+            <div class="ov-eloc">{{ e.loc }}</div>
           </div>
         </div>
       </div>
-      <div class="ov-svc-label">Core Services</div>
-      <div class="ov-tags">
-        <span>Telco Managed Services</span><span>Financial SuperApp</span><span>E-KYC</span>
-        <span>Enterprise Risk Mgmt</span><span>Smart City / Campus</span><span>Cloud Platform</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Greater Bay Area -->
-  <div id="region-gba" class="ov-region-sec ov-region-sec-rev reveal">
-    <div class="ov-region-photo">
-      <img src="/images/overseas/gba-photo.jpeg" alt="Greater Bay Area · Hong Kong" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#dc2626,#f87171);">🇭🇰 Greater Bay Area</div>
-    </div>
-    <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#ef4444;">Greater Bay Area · 1 Entity</div>
-      <h2 class="ov-region-title">Greater Bay Area</h2>
-      <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#ef4444;">160+ Staff</span>
-      </div>
-      <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#dc2626;"></span>
+      <template v-if="r.jpRow">
+        <div class="ov-jp-row">
           <div>
-            <div class="ov-ename">Chinasoft International Technology Service (Hong Kong)</div>
-            <div class="ov-eloc">📍 Hong Kong</div>
+            <div class="ov-svc-label">{{ r.clientLabel }}</div>
+            <div class="ov-tags"><span v-for="t in r.clientTags" :key="t">{{ t }}</span></div>
+          </div>
+          <div>
+            <div class="ov-svc-label">{{ r.svcLabel }}</div>
+            <div class="ov-tags"><span v-for="t in r.tags" :key="t">{{ t }}</span></div>
           </div>
         </div>
-      </div>
-      <div class="ov-svc-label">Core Services</div>
-      <div class="ov-tags">
-        <span>IDS Integration &amp; Certification</span><span>ECU / HPLC</span><span>Big Data / BES / OCS</span>
-        <span>App Dev &amp; Testing</span><span>Cloud Resell / SI</span><span>Smart City / Campus</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Middle East -->
-  <div id="region-me" class="ov-region-sec reveal">
-    <div class="ov-region-photo">
-      <img src="/images/overseas/me-photo.jpeg" alt="Middle East · Riyadh" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#d97706,#f59e0b);">🕌 Middle East</div>
-    </div>
-    <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#f59e0b;">Middle East · 2 Entities</div>
-      <h2 class="ov-region-title">Middle East</h2>
-      <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#f59e0b;">50+ Staff</span>
-      </div>
-      <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#d97706;"></span>
-          <div>
-            <div class="ov-ename">CSI Joint Advanced Technologies</div>
-            <div class="ov-eloc">📍 Riyadh, Saudi Arabia (10+ staff)</div>
-          </div>
-        </div>
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#d97706;"></span>
-          <div>
-            <div class="ov-ename">CSI INTERFUSION MIDDLE EAST TECHNOLOGY SERVICE</div>
-            <div class="ov-eloc">📍 Abu Dhabi, UAE (40+ staff)</div>
-          </div>
-        </div>
-      </div>
-      <div class="ov-svc-label">Core Services</div>
-      <div class="ov-tags">
-        <span>Huawei Cloud / Resell / SI</span><span>IDS Integration</span><span>Digital Operations</span>
-        <span>Gov App Dev</span><span>Smart City / Campus</span><span>Software O&amp;M</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- India -->
-  <div id="region-india" class="ov-region-sec ov-region-sec-rev reveal">
-    <div class="ov-region-photo">
-      <img src="/images/overseas/india-photo.jpeg" alt="India · Bangalore" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">🇮🇳 India</div>
-    </div>
-    <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#a78bfa;">India · 1 Entity</div>
-      <h2 class="ov-region-title">India</h2>
-      <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#a78bfa;">80+ Staff</span>
-      </div>
-      <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#7c3aed;"></span>
-          <div>
-            <div class="ov-ename">CSI Interfusion India</div>
-            <div class="ov-eloc">📍 Bangalore, India</div>
-          </div>
-        </div>
-      </div>
-      <div class="ov-svc-label">Core Services</div>
-      <div class="ov-tags">
-        <span>Microsoft ISV</span><span>Android Dev / UI</span><span>Remote Testing</span>
-        <span>Operator Integration</span><span>CRM / BSS Maintenance</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Japan -->
-  <div id="region-japan" class="ov-region-sec reveal">
-    <div class="ov-region-photo">
-      <img src="/images/overseas/japan-photo.jpeg" alt="Japan · Tokyo" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">🇯🇵 Japan</div>
-    </div>
-    <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#06b6d4;">Japan · 1 Entity</div>
-      <h2 class="ov-region-title">Japan</h2>
-      <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#06b6d4;">60+ On-site</span>
-        <span class="ov-region-badge" style="--rb:#06b6d4;">1,000+ Remote</span>
-      </div>
-      <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#0891b2;"></span>
-          <div>
-            <div class="ov-ename">東京信華 &amp; 日本創智</div>
-            <div class="ov-eloc">📍 Tokyo, Japan (+ remote teams in Dalian, Changsha, Xi'an, Beijing, Shanghai — 1,000+ total)</div>
-          </div>
-        </div>
-      </div>
-      <div class="ov-jp-row">
-        <div>
-          <div class="ov-svc-label">Client Industries</div>
-          <div class="ov-tags"><span>Finance</span><span>Manufacturing</span><span>Distribution</span><span>Media</span></div>
-        </div>
-        <div>
-          <div class="ov-svc-label">Core Services</div>
-          <div class="ov-tags"><span>System Dev &amp; Test</span><span>Test Outsourcing</span><span>Staff Dispatch</span></div>
-        </div>
-      </div>
+      </template>
+      <template v-else>
+        <div class="ov-svc-label">{{ r.svcLabel }}</div>
+        <div class="ov-tags"><span v-for="t in r.tags" :key="t">{{ t }}</span></div>
+      </template>
     </div>
   </div>
 

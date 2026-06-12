@@ -3,6 +3,7 @@ import { onMounted } from 'vue'
 import { feature, mesh } from 'topojson-client'
 import worldData from 'world-atlas/countries-110m.json'
 import NavBar from './NavBar.vue'
+import { regions, coverageStats } from './data/overseas.zh.js'
 
 onMounted(() => {
   initMapTabs()
@@ -494,200 +495,51 @@ async function initChinaMap() {
 
 <!-- COVERAGE STRIP -->
 <div class="ov-cov-strip">
-  <div class="ov-cov-item">
-    <span class="ov-cov-icon">🏢</span>
-    <span class="ov-cov-text"><strong>2</strong> 个设立于高科技园区或自贸区</span>
-  </div>
-  <div class="ov-cov-item">
-    <span class="ov-cov-icon">🔧</span>
-    <span class="ov-cov-text"><strong>11</strong> 个华为全球中方ODC</span>
-  </div>
-  <div class="ov-cov-item">
-    <span class="ov-cov-icon">🌐</span>
-    <span class="ov-cov-text"><strong>11</strong> 个MNC跨国企业ODC</span>
-  </div>
-  <div class="ov-cov-item">
-    <span class="ov-cov-icon">📱</span>
-    <span class="ov-cov-text">华为手机端覆盖 <strong>70+</strong> 城市</span>
-  </div>
-  <div class="ov-cov-item">
-    <span class="ov-cov-icon">🤝</span>
-    <span class="ov-cov-text">运营商合作签约 <strong>23</strong> 家</span>
+  <div v-for="s in coverageStats" :key="s.post" class="ov-cov-item">
+    <span class="ov-cov-icon">{{ s.icon }}</span>
+    <span class="ov-cov-text">{{ s.pre }}<strong>{{ s.value }}</strong>{{ s.post }}</span>
   </div>
 </div>
 
 <!-- REGION SECTIONS -->
 <div class="page-body">
 
-  <!-- 东南亚 -->
-  <div id="region-sea" class="ov-region-sec reveal">
+  <div v-for="r in regions" :key="r.id" :id="`region-${r.id}`" :class="['ov-region-sec', { 'ov-region-sec-rev': r.rev }, 'reveal']">
     <div class="ov-region-photo">
-      <img src="/images/overseas/sea-photo.jpeg" alt="东南亚·吉隆坡" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#059669,#10b981);">🌏 东南亚</div>
+      <img :src="r.photo" :alt="r.photoAlt" />
+      <div class="ov-photo-badge" :style="`background:${r.grad};`">{{ r.badgeEmoji }} {{ r.badgeName }}</div>
     </div>
     <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#10b981;">Southeast Asia · 3 个实体</div>
-      <h2 class="ov-region-title">东南亚区域</h2>
+      <div class="ov-region-eyebrow" :style="`color:${r.color};`">{{ r.eyebrow }}</div>
+      <h2 class="ov-region-title">{{ r.title }}</h2>
       <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#10b981;">260+ 本地员工</span>
+        <span v-for="b in r.badges" :key="b.text" class="ov-region-badge" :style="`--rb:${r.color};`">{{ b.text }}</span>
       </div>
       <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#10b981;"></span>
+        <div v-for="e in r.entities" :key="e.name" class="ov-entity">
+          <span class="ov-edot" :style="`background:${r.colorDark};`"></span>
           <div>
-            <div class="ov-ename">CSI Interfusion SDN. BHD</div>
-            <div class="ov-eloc">📍 马来西亚 · 吉隆坡</div>
-          </div>
-        </div>
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#10b981;"></span>
-          <div>
-            <div class="ov-ename">CSI Interfusion Singapore</div>
-            <div class="ov-eloc">📍 新加坡</div>
-          </div>
-        </div>
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#10b981;"></span>
-          <div>
-            <div class="ov-ename">PT CSI Interfusion Technology Service JAKARTA</div>
-            <div class="ov-eloc">📍 印度尼西亚 · 雅加达</div>
+            <div class="ov-ename">{{ e.name }}</div>
+            <div class="ov-eloc">{{ e.loc }}</div>
           </div>
         </div>
       </div>
-      <div class="ov-svc-label">核心服务</div>
-      <div class="ov-tags">
-        <span>Telco 管理服务</span><span>金融 SuperApp</span><span>EKyc</span>
-        <span>全面风险管理</span><span>智慧城市/园区</span><span>云平台产品</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 港澳大湾区 -->
-  <div id="region-gba" class="ov-region-sec ov-region-sec-rev reveal">
-    <div class="ov-region-photo">
-      <img src="/images/overseas/gba-photo.jpeg" alt="港澳大湾区·香港" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#dc2626,#f87171);">🇭🇰 港澳大湾区</div>
-    </div>
-    <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#ef4444;">Greater Bay Area · 1 个实体</div>
-      <h2 class="ov-region-title">港澳大湾区</h2>
-      <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#ef4444;">160+ 员工</span>
-      </div>
-      <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#dc2626;"></span>
+      <template v-if="r.jpRow">
+        <div class="ov-jp-row">
           <div>
-            <div class="ov-ename">Chinasoft International Technology Service (Hong Kong)</div>
-            <div class="ov-eloc">📍 香港</div>
+            <div class="ov-svc-label">{{ r.clientLabel }}</div>
+            <div class="ov-tags"><span v-for="t in r.clientTags" :key="t">{{ t }}</span></div>
+          </div>
+          <div>
+            <div class="ov-svc-label">{{ r.svcLabel }}</div>
+            <div class="ov-tags"><span v-for="t in r.tags" :key="t">{{ t }}</span></div>
           </div>
         </div>
-      </div>
-      <div class="ov-svc-label">核心服务</div>
-      <div class="ov-tags">
-        <span>IDS集成认证支持</span><span>台区ECU/HPLC</span><span>大数据/BES/OCS</span>
-        <span>应用开发测试</span><span>云转售/SI</span><span>智慧城市/园区</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 中东 -->
-  <div id="region-me" class="ov-region-sec reveal">
-    <div class="ov-region-photo">
-      <img src="/images/overseas/me-photo.jpeg" alt="中东·利雅得" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#d97706,#f59e0b);">🕌 中东</div>
-    </div>
-    <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#f59e0b;">Middle East · 2 个实体</div>
-      <h2 class="ov-region-title">中东区域</h2>
-      <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#f59e0b;">50+ 员工</span>
-      </div>
-      <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#d97706;"></span>
-          <div>
-            <div class="ov-ename">CSI Joint Advanced Technologies</div>
-            <div class="ov-eloc">📍 沙特阿拉伯 · 利雅得（10+ 员工）</div>
-          </div>
-        </div>
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#d97706;"></span>
-          <div>
-            <div class="ov-ename">CSI INTERFUSION MIDDLE EAST TECHNOLOGY SERVICE</div>
-            <div class="ov-eloc">📍 阿联酋 · 阿布扎比（40+ 员工）</div>
-          </div>
-        </div>
-      </div>
-      <div class="ov-svc-label">核心服务</div>
-      <div class="ov-tags">
-        <span>HW云/云转售/SI</span><span>IDS集成验证</span><span>数字化运营</span>
-        <span>政府应用开发</span><span>智慧城市/园区</span><span>软件运维</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 印度 -->
-  <div id="region-india" class="ov-region-sec ov-region-sec-rev reveal">
-    <div class="ov-region-photo">
-      <img src="/images/overseas/india-photo.jpeg" alt="印度·班加罗尔" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">🇮🇳 印度</div>
-    </div>
-    <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#a78bfa;">India · 1 个实体</div>
-      <h2 class="ov-region-title">印度区域</h2>
-      <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#a78bfa;">80+ 员工</span>
-      </div>
-      <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#7c3aed;"></span>
-          <div>
-            <div class="ov-ename">CSI Interfusion India</div>
-            <div class="ov-eloc">📍 印度 · 班加罗尔</div>
-          </div>
-        </div>
-      </div>
-      <div class="ov-svc-label">核心服务</div>
-      <div class="ov-tags">
-        <span>Microsoft ISV</span><span>Android开发/UI定制</span><span>远程测试服务</span>
-        <span>运营商集成管理</span><span>CRM/BSS系统维护</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 日本 -->
-  <div id="region-japan" class="ov-region-sec reveal">
-    <div class="ov-region-photo">
-      <img src="/images/overseas/japan-photo.jpeg" alt="日本·东京" />
-      <div class="ov-photo-badge" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">🇯🇵 日本</div>
-    </div>
-    <div class="ov-region-content">
-      <div class="ov-region-eyebrow" style="color:#06b6d4;">Japan · 1 个实体</div>
-      <h2 class="ov-region-title">日本区域</h2>
-      <div class="ov-region-badge-row">
-        <span class="ov-region-badge" style="--rb:#06b6d4;">60+ 驻日</span>
-        <span class="ov-region-badge" style="--rb:#06b6d4;">1000+ 远程</span>
-      </div>
-      <div class="ov-entities">
-        <div class="ov-entity">
-          <span class="ov-edot" style="background:#0891b2;"></span>
-          <div>
-            <div class="ov-ename">東京信華 &amp; 日本創智</div>
-            <div class="ov-eloc">📍 日本 · 东京（另有大连/长沙/西安/北京/上海远程团队 1000+ 人）</div>
-          </div>
-        </div>
-      </div>
-      <div class="ov-jp-row">
-        <div>
-          <div class="ov-svc-label">客户行业</div>
-          <div class="ov-tags"><span>金融</span><span>制造</span><span>流通</span><span>传媒</span></div>
-        </div>
-        <div>
-          <div class="ov-svc-label">核心服务</div>
-          <div class="ov-tags"><span>系统开发测试</span><span>测试外包</span><span>人才派遣服务</span></div>
-        </div>
-      </div>
+      </template>
+      <template v-else>
+        <div class="ov-svc-label">{{ r.svcLabel }}</div>
+        <div class="ov-tags"><span v-for="t in r.tags" :key="t">{{ t }}</span></div>
+      </template>
     </div>
   </div>
 
