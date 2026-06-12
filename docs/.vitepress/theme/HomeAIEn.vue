@@ -29,25 +29,13 @@
 
 <!-- STATS -->
 <div class="ai-stats-bar">
-  <div class="ai-stat">
-    <div class="ai-stat-val">50<span>+</span></div>
-    <div class="ai-stat-lab">Enterprise Clients Served</div>
-  </div>
-  <div class="ai-stat-div"></div>
-  <div class="ai-stat">
-    <div class="ai-stat-val">80<span>+</span></div>
-    <div class="ai-stat-lab">AI Scenarios Incubated</div>
-  </div>
-  <div class="ai-stat-div"></div>
-  <div class="ai-stat">
-    <div class="ai-stat-val">2000<span>+</span></div>
-    <div class="ai-stat-lab">AI Professionals Trained</div>
-  </div>
-  <div class="ai-stat-div"></div>
-  <div class="ai-stat">
-    <div class="ai-stat-val">85<span>%+</span></div>
-    <div class="ai-stat-lab">Client Renewal Rate</div>
-  </div>
+  <template v-for="(s, i) in heroStats" :key="s.label">
+    <div class="ai-stat-div" v-if="i > 0"></div>
+    <div class="ai-stat">
+      <div class="ai-stat-val">{{ s.val }}<span>{{ s.unit }}</span></div>
+      <div class="ai-stat-lab">{{ s.label }}</div>
+    </div>
+  </template>
 </div>
 
 <!-- BODY -->
@@ -59,35 +47,15 @@
     <h2 class="ai-section-title">Three Core Pillars of Enterprise AI Transformation</h2>
     <p class="ai-section-sub">From strategy to talent to scenario execution — building a complete AI transformation capability system</p>
     <div class="ai-pillar-grid">
-      <div class="ai-pillar-card">
-        <div class="ai-pillar-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      <div v-for="(p, i) in pillars" :key="p.title" class="ai-pillar-card">
+        <div class="ai-pillar-icon" :style="`background:${p.grad};`">
+          <svg v-if="i === 0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <svg v-else-if="i === 1" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg v-else width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
         </div>
-        <h3>Strategy & Planning</h3>
-        <p>Achieve executive alignment, set clear objectives, and define a medium-to-long-term AI transformation roadmap</p>
-        <div class="ai-pillar-tags">
-          <span>Executive Alignment</span><span>Clear Goals</span><span>Long-term Roadmap</span>
-        </div>
-      </div>
-      <div class="ai-pillar-card">
-        <div class="ai-pillar-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3>Organization & Talent</h3>
-        <p>Drive organizational process transformation, build an AI-native talent system, and lay a solid foundation for execution</p>
-        <div class="ai-pillar-tags">
-          <span>Org Transformation</span><span>AI-native Talent</span><span>Execution Foundation</span>
-        </div>
-      </div>
-      <div class="ai-pillar-card">
-        <div class="ai-pillar-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-        </div>
-        <h3>Scenario & Innovation</h3>
-        <p>Precisely target business pain points, conduct joint innovation sprints, and achieve rapid AI value realization</p>
-        <div class="ai-pillar-tags">
-          <span>Pain Point Targeting</span><span>Joint Innovation</span><span>Value Realization</span>
-        </div>
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.desc }}</p>
+        <div class="ai-pillar-tags"><span v-for="t in p.tags" :key="t">{{ t }}</span></div>
       </div>
     </div>
   </div>
@@ -199,33 +167,15 @@
     <!-- Technology Platforms -->
     <h3 class="ai-sub-title">Four Core Technology Platforms</h3>
     <div class="ai-platform-grid">
-      <div class="ai-platform-card">
-        <div class="ai-platform-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <div v-for="(pl, i) in platforms" :key="pl.name" class="ai-platform-card">
+        <div class="ai-platform-icon" :style="`background:${pl.grad};`">
+          <svg v-if="i === 0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <svg v-else-if="i === 1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41"/><path d="M20 12h-2.83"/><path d="M17.66 17.66l-1.41-1.41"/><path d="M12 20v-2.83"/><path d="M6.34 17.66l1.41-1.41"/><path d="M4 12h2.83"/><path d="M6.34 6.34l1.41 1.41"/></svg>
+          <svg v-else-if="i === 2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
         </div>
-        <div class="ai-platform-name">Claw (训战)</div>
-        <div class="ai-platform-desc">Integrated platform for bootcamp archives, course materials, project management, and roadshow documentation</div>
-      </div>
-      <div class="ai-platform-card">
-        <div class="ai-platform-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41"/><path d="M20 12h-2.83"/><path d="M17.66 17.66l-1.41-1.41"/><path d="M12 20v-2.83"/><path d="M6.34 17.66l1.41-1.41"/><path d="M4 12h2.83"/><path d="M6.34 6.34l1.41 1.41"/></svg>
-        </div>
-        <div class="ai-platform-name">LingXi Platform (灵析)</div>
-        <div class="ai-platform-desc">Visual Agent development, intelligent workflow orchestration, and one-click deployment to lower the barrier of AI application building</div>
-      </div>
-      <div class="ai-platform-card">
-        <div class="ai-platform-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <div class="ai-platform-name">SmartCode</div>
-        <div class="ai-platform-desc">Intelligent code generation, code review, and defect detection to comprehensively improve R&D efficiency and code quality</div>
-      </div>
-      <div class="ai-platform-card">
-        <div class="ai-platform-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
-        </div>
-        <div class="ai-platform-name">SmartCode Hub</div>
-        <div class="ai-platform-desc">Prompt library, MCP services, and automated workflows to build an enterprise-grade AI asset reuse ecosystem</div>
+        <div class="ai-platform-name">{{ pl.name }}</div>
+        <div class="ai-platform-desc">{{ pl.desc }}</div>
       </div>
     </div>
 
@@ -338,45 +288,16 @@
     <!-- Five-Stage Practice System -->
     <h3 class="ai-sub-title">Five-Stage Practice Forging System</h3>
     <div class="ai-stages">
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">01</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">Cognitive Awakening</div>
-          <div class="ai-stage-desc">Build AI transformation consensus, break cognitive barriers, and establish the ideological foundation for organization-wide AI adoption</div>
+      <template v-for="(st, i) in stages" :key="st.num">
+        <div class="ai-stage-arrow" v-if="i > 0">›</div>
+        <div class="ai-stage">
+          <div class="ai-stage-num" :style="`background:${st.grad};`">{{ st.num }}</div>
+          <div class="ai-stage-content">
+            <div class="ai-stage-title">{{ st.title }}</div>
+            <div class="ai-stage-desc">{{ st.desc }}</div>
+          </div>
         </div>
-      </div>
-      <div class="ai-stage-arrow">›</div>
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#5b21b6,#7c3aed);">02</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">Scenario Design</div>
-          <div class="ai-stage-desc">Decompose business pain points and model requirements, converting abstract problems into concrete AI application scenarios</div>
-        </div>
-      </div>
-      <div class="ai-stage-arrow">›</div>
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">03</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">Skill Building</div>
-          <div class="ai-stage-desc">Master core AI skills: prompt engineering, Agent orchestration, and knowledge base construction</div>
-        </div>
-      </div>
-      <div class="ai-stage-arrow">›</div>
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#d97706,#f59e0b);">04</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">Industry Immersion</div>
-          <div class="ai-stage-desc">Deep-dive into industry knowledge and case studies, precisely combining general AI capabilities with specific vertical scenarios</div>
-        </div>
-      </div>
-      <div class="ai-stage-arrow">›</div>
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#059669,#10b981);">05</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">Hands-on Practice</div>
-          <div class="ai-stage-desc">Complete MVP design and value validation on real challenges, producing deployable AI prototype solutions</div>
-        </div>
-      </div>
+      </template>
     </div>
 
     <!-- Stage Images -->
@@ -391,25 +312,10 @@
     <!-- 4-Day Course Modules -->
     <h3 class="ai-sub-title">Four Course Modules</h3>
     <div class="ai-course-grid">
-      <div class="ai-course-card" style="--cc:#1d4ed8;">
-        <div class="ai-course-day">Day 1</div>
-        <div class="ai-course-title">Cognitive Awakening & Org Reshaping</div>
-        <div class="ai-course-desc">Build a holistic understanding of AI transformation, clarify the organization's transition direction, and align management and frontline thinking</div>
-      </div>
-      <div class="ai-course-card" style="--cc:#7c3aed;">
-        <div class="ai-course-day">Day 2</div>
-        <div class="ai-course-title">Strategic Planning & Execution Decoding</div>
-        <div class="ai-course-desc">Starting from strategic objectives, break down the AI deployment path and convert top-level planning into executable action plans</div>
-      </div>
-      <div class="ai-course-card" style="--cc:#0891b2;">
-        <div class="ai-course-day">Day 3</div>
-        <div class="ai-course-title">Track-based Enablement & Skill Uplift</div>
-        <div class="ai-course-desc">Role-specific track teaching covering five directions: intelligent agent development, Agent applications, ontology deployment, data augmentation, and AI coding</div>
-      </div>
-      <div class="ai-course-card" style="--cc:#d97706;">
-        <div class="ai-course-day">Day 4–5</div>
-        <div class="ai-course-title">Industry Immersion & Hands-on Drill</div>
-        <div class="ai-course-desc">Deep industry practice combined with 5-day intensive MVP development, completing the full journey from idea to prototype on real challenges</div>
+      <div v-for="c in courses" :key="c.day" class="ai-course-card" :style="`--cc:${c.color};`">
+        <div class="ai-course-day">{{ c.day }}</div>
+        <div class="ai-course-title">{{ c.title }}</div>
+        <div class="ai-course-desc">{{ c.desc }}</div>
       </div>
     </div>
   </div>
@@ -465,35 +371,10 @@
     <h2 class="ai-section-title">Flagship Client Outcomes</h2>
     <p class="ai-section-sub">Spanning Healthcare, Finance, Government, Manufacturing, and Energy — continuously validating AI transformation enablement value</p>
     <div class="ai-case-grid">
-      <div class="ai-case-card" style="--acc:#1d4ed8;">
-        <div class="ai-case-industry">Healthcare</div>
-        <div class="ai-case-name">Beijing Anzhen Hospital</div>
-        <div class="ai-case-result">Digital intelligence strategic planning delivered, driving smart healthcare AI innovation scenario development</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#7c3aed;">
-        <div class="ai-case-industry">Finance</div>
-        <div class="ai-case-name">CITIC Bank</div>
-        <div class="ai-case-result">Incubated 6 core AI value scenarios, establishing a benchmark for AI applications in the banking sector</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#0891b2;">
-        <div class="ai-case-industry">Government</div>
-        <div class="ai-case-name">Nanjing Municipal Government</div>
-        <div class="ai-case-result">Collected 200+ innovative applications, activating AI innovation momentum across the entire government system</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#d97706;">
-        <div class="ai-case-industry">IT Services</div>
-        <div class="ai-case-name">ChinaSoft International</div>
-        <div class="ai-case-result">Deployed 15 AI scenarios, cultivated 100 AI experts, and scaled internal enablement across the organization</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#059669;">
-        <div class="ai-case-industry">Education</div>
-        <div class="ai-case-name">Shanghai Municipal Party School</div>
-        <div class="ai-case-result">2 consecutive years, 10 completed training cohorts, enabling 1,000+ participants</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#db2777;">
-        <div class="ai-case-industry">Multi-Industry</div>
-        <div class="ai-case-name">Ecosystem Partner Hackathon</div>
-        <div class="ai-case-result">Partnered with cross-industry collaborators to produce AI solutions spanning multiple vertical domains</div>
+      <div v-for="cc in clientCases" :key="cc.name" class="ai-case-card" :style="`--acc:${cc.color};`">
+        <div class="ai-case-industry">{{ cc.industry }}</div>
+        <div class="ai-case-name">{{ cc.name }}</div>
+        <div class="ai-case-result">{{ cc.result }}</div>
       </div>
     </div>
   </div>
@@ -526,6 +407,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
+import { heroStats, pillars, platforms, stages, courses, clientCases } from './data/ai.en.js'
 onMounted(() => {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) } })

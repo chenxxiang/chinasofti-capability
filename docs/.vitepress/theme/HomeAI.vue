@@ -29,25 +29,13 @@
 
 <!-- STATS -->
 <div class="ai-stats-bar">
-  <div class="ai-stat">
-    <div class="ai-stat-val">50<span>+</span></div>
-    <div class="ai-stat-lab">累计赋能企业客户</div>
-  </div>
-  <div class="ai-stat-div"></div>
-  <div class="ai-stat">
-    <div class="ai-stat-val">80<span>+</span></div>
-    <div class="ai-stat-lab">孵化落地 AI 场景</div>
-  </div>
-  <div class="ai-stat-div"></div>
-  <div class="ai-stat">
-    <div class="ai-stat-val">2000<span>+</span></div>
-    <div class="ai-stat-lab">培养 AI 专业人才</div>
-  </div>
-  <div class="ai-stat-div"></div>
-  <div class="ai-stat">
-    <div class="ai-stat-val">85<span>%+</span></div>
-    <div class="ai-stat-lab">企业客户复购率</div>
-  </div>
+  <template v-for="(s, i) in heroStats" :key="s.label">
+    <div class="ai-stat-div" v-if="i > 0"></div>
+    <div class="ai-stat">
+      <div class="ai-stat-val">{{ s.val }}<span>{{ s.unit }}</span></div>
+      <div class="ai-stat-lab">{{ s.label }}</div>
+    </div>
+  </template>
 </div>
 
 <!-- BODY -->
@@ -59,35 +47,15 @@
     <h2 class="ai-section-title">企业 AI 变革三大核心抓手</h2>
     <p class="ai-section-sub">从战略到人才再到场景落地，构建完整的 AI 变革能力体系</p>
     <div class="ai-pillar-grid">
-      <div class="ai-pillar-card">
-        <div class="ai-pillar-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      <div v-for="(p, i) in pillars" :key="p.title" class="ai-pillar-card">
+        <div class="ai-pillar-icon" :style="`background:${p.grad};`">
+          <svg v-if="i === 0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <svg v-else-if="i === 1" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg v-else width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
         </div>
-        <h3>战略与规划</h3>
-        <p>高层共识达成、目标清晰锚定、制定中长期 AI 转型路径规划</p>
-        <div class="ai-pillar-tags">
-          <span>高层共识</span><span>目标明确</span><span>中长期规划</span>
-        </div>
-      </div>
-      <div class="ai-pillar-card">
-        <div class="ai-pillar-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3>组织与人才</h3>
-        <p>推动组织流程变革，构建 AI 原生人才体系，夯实转型落地根基</p>
-        <div class="ai-pillar-tags">
-          <span>组织变革</span><span>AI原生人才</span><span>落地根基</span>
-        </div>
-      </div>
-      <div class="ai-pillar-card">
-        <div class="ai-pillar-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-        </div>
-        <h3>场景与创新</h3>
-        <p>精准锚定业务痛点，开展联合创新攻坚，实现 AI 价值快速落地</p>
-        <div class="ai-pillar-tags">
-          <span>业务痛点锚定</span><span>联合创新</span><span>价值实现</span>
-        </div>
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.desc }}</p>
+        <div class="ai-pillar-tags"><span v-for="t in p.tags" :key="t">{{ t }}</span></div>
       </div>
     </div>
   </div>
@@ -199,33 +167,15 @@
     <!-- 技术平台 -->
     <h3 class="ai-sub-title">四大技术底座平台</h3>
     <div class="ai-platform-grid">
-      <div class="ai-platform-card">
-        <div class="ai-platform-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <div v-for="(pl, i) in platforms" :key="pl.name" class="ai-platform-card">
+        <div class="ai-platform-icon" :style="`background:${pl.grad};`">
+          <svg v-if="i === 0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <svg v-else-if="i === 1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41"/><path d="M20 12h-2.83"/><path d="M17.66 17.66l-1.41-1.41"/><path d="M12 20v-2.83"/><path d="M6.34 17.66l1.41-1.41"/><path d="M4 12h2.83"/><path d="M6.34 6.34l1.41 1.41"/></svg>
+          <svg v-else-if="i === 2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
         </div>
-        <div class="ai-platform-name">训战 Claw</div>
-        <div class="ai-platform-desc">训战全流程档案管理、课程资料、作品管理、路演归档一体化平台</div>
-      </div>
-      <div class="ai-platform-card">
-        <div class="ai-platform-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41"/><path d="M20 12h-2.83"/><path d="M17.66 17.66l-1.41-1.41"/><path d="M12 20v-2.83"/><path d="M6.34 17.66l1.41-1.41"/><path d="M4 12h2.83"/><path d="M6.34 6.34l1.41 1.41"/></svg>
-        </div>
-        <div class="ai-platform-name">灵析平台</div>
-        <div class="ai-platform-desc">Agent 可视化开发、智能流程编排、一键部署，降低 AI 应用开发门槛</div>
-      </div>
-      <div class="ai-platform-card">
-        <div class="ai-platform-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <div class="ai-platform-name">SmartCode</div>
-        <div class="ai-platform-desc">智能代码生成、代码审查、缺陷检测，全面提升研发效率与代码质量</div>
-      </div>
-      <div class="ai-platform-card">
-        <div class="ai-platform-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
-        </div>
-        <div class="ai-platform-name">SmartCode Hub</div>
-        <div class="ai-platform-desc">提示词库、MCP 服务、自动化工作流，构建企业级 AI 资产复用体系</div>
+        <div class="ai-platform-name">{{ pl.name }}</div>
+        <div class="ai-platform-desc">{{ pl.desc }}</div>
       </div>
     </div>
 
@@ -338,45 +288,16 @@
     <!-- 五阶实战体系 -->
     <h3 class="ai-sub-title">五阶实战锻造体系</h3>
     <div class="ai-stages">
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">01</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">认知觉醒</div>
-          <div class="ai-stage-desc">建立 AI 变革共识，突破认知局限，形成全员 AI 转型的思想基础</div>
+      <template v-for="(st, i) in stages" :key="st.num">
+        <div class="ai-stage-arrow" v-if="i > 0">›</div>
+        <div class="ai-stage">
+          <div class="ai-stage-num" :style="`background:${st.grad};`">{{ st.num }}</div>
+          <div class="ai-stage-content">
+            <div class="ai-stage-title">{{ st.title }}</div>
+            <div class="ai-stage-desc">{{ st.desc }}</div>
+          </div>
         </div>
-      </div>
-      <div class="ai-stage-arrow">›</div>
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#5b21b6,#7c3aed);">02</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">场景设计</div>
-          <div class="ai-stage-desc">业务痛点拆解与需求建模，将抽象问题转化为可落地的 AI 应用场景</div>
-        </div>
-      </div>
-      <div class="ai-stage-arrow">›</div>
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">03</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">技能提升</div>
-          <div class="ai-stage-desc">掌握提示词工程、Agent 编排、知识库构建等 AI 核心技能</div>
-        </div>
-      </div>
-      <div class="ai-stage-arrow">›</div>
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#d97706,#f59e0b);">04</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">贴近行业</div>
-          <div class="ai-stage-desc">深入行业知识与应用案例，将通用 AI 能力与特定行业场景精准结合</div>
-        </div>
-      </div>
-      <div class="ai-stage-arrow">›</div>
-      <div class="ai-stage">
-        <div class="ai-stage-num" style="background:linear-gradient(135deg,#059669,#10b981);">05</div>
-        <div class="ai-stage-content">
-          <div class="ai-stage-title">实战演练</div>
-          <div class="ai-stage-desc">在真实课题中完成 MVP 设计与价值验证，产出可落地的 AI 原型方案</div>
-        </div>
-      </div>
+      </template>
     </div>
 
     <!-- 五阶配图 -->
@@ -391,25 +312,10 @@
     <!-- 课程4天模块 -->
     <h3 class="ai-sub-title">课程四大模块</h3>
     <div class="ai-course-grid">
-      <div class="ai-course-card" style="--cc:#1d4ed8;">
-        <div class="ai-course-day">Day 1</div>
-        <div class="ai-course-title">认知觉醒与组织重塑</div>
-        <div class="ai-course-desc">建立 AI 变革全局认知，明确组织转型方向，统一管理层与一线的思想共识</div>
-      </div>
-      <div class="ai-course-card" style="--cc:#7c3aed;">
-        <div class="ai-course-day">Day 2</div>
-        <div class="ai-course-title">战略规划与落地解码</div>
-        <div class="ai-course-desc">从战略目标出发，拆解 AI 落地路径，将顶层规划转化为可执行的行动方案</div>
-      </div>
-      <div class="ai-course-card" style="--cc:#0891b2;">
-        <div class="ai-course-day">Day 3</div>
-        <div class="ai-course-title">分轨赋能与能力提升</div>
-        <div class="ai-course-desc">按岗位分轨教学，涵盖智能体开发、Agent 应用、本体落地、数据增强、AI 编程五大方向</div>
-      </div>
-      <div class="ai-course-card" style="--cc:#d97706;">
-        <div class="ai-course-day">Day 4–5</div>
-        <div class="ai-course-title">行业贴近与实战演练</div>
-        <div class="ai-course-desc">结合行业知识深度演练，5 天高强度 MVP 开发，在真实课题中完成从想法到原型的全链路实践</div>
+      <div v-for="c in courses" :key="c.day" class="ai-course-card" :style="`--cc:${c.color};`">
+        <div class="ai-course-day">{{ c.day }}</div>
+        <div class="ai-course-title">{{ c.title }}</div>
+        <div class="ai-course-desc">{{ c.desc }}</div>
       </div>
     </div>
   </div>
@@ -465,35 +371,10 @@
     <h2 class="ai-section-title">标杆客户成果</h2>
     <p class="ai-section-sub">覆盖医疗、金融、政务、制造、能源五大行业，持续验证 AI 变革赋能价值</p>
     <div class="ai-case-grid">
-      <div class="ai-case-card" style="--acc:#1d4ed8;">
-        <div class="ai-case-industry">医疗</div>
-        <div class="ai-case-name">北京安贞医院</div>
-        <div class="ai-case-result">数智战略规划落地，推动智慧医疗 AI 创新应用场景建设</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#7c3aed;">
-        <div class="ai-case-industry">金融</div>
-        <div class="ai-case-name">中信银行</div>
-        <div class="ai-case-result">孵化 6 大核心 AI 价值场景，打造金融行业 AI 应用标杆</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#0891b2;">
-        <div class="ai-case-industry">政务</div>
-        <div class="ai-case-name">南京政务</div>
-        <div class="ai-case-result">征集 200+ 创新应用，激活政务全系统 AI 创新活力</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#d97706;">
-        <div class="ai-case-industry">科技服务</div>
-        <div class="ai-case-name">中软国际</div>
-        <div class="ai-case-result">落地 15 个 AI 场景，培养 100 名 AI 专家，规模化复制内部赋能</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#059669;">
-        <div class="ai-case-industry">教育</div>
-        <div class="ai-case-name">上海市委党校</div>
-        <div class="ai-case-result">持续 2 年，累计完成 10 期培训，赋能 1000+ 名学员</div>
-      </div>
-      <div class="ai-case-card" style="--acc:#db2777;">
-        <div class="ai-case-industry">多行业</div>
-        <div class="ai-case-name">生态伙伴 Hackathon</div>
-        <div class="ai-case-result">联合多行业合作伙伴，产出覆盖多个垂直领域的 AI 解决方案</div>
+      <div v-for="cc in clientCases" :key="cc.name" class="ai-case-card" :style="`--acc:${cc.color};`">
+        <div class="ai-case-industry">{{ cc.industry }}</div>
+        <div class="ai-case-name">{{ cc.name }}</div>
+        <div class="ai-case-result">{{ cc.result }}</div>
       </div>
     </div>
   </div>
@@ -526,6 +407,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
+import { heroStats, pillars, platforms, stages, courses, clientCases } from './data/ai.zh.js'
 onMounted(() => {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) } })
