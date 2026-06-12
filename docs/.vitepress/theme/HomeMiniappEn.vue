@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
+import { architectureLayers, deliverySteps, pmCards } from './data/miniapp.en.js'
 
 onMounted(() => {
   initReveal()
@@ -253,111 +254,34 @@ function initIOCDashboard() {
     </div>
     <div class="mn-arch-wrap">
 
-      <!-- Layer 1 -->
-      <div class="mn-arch-card" style="--lc:#3b82f6;--lg:linear-gradient(135deg,#1d4ed8,#3b82f6);--lbg:rgba(59,130,246,0.06);--lbd:rgba(59,130,246,0.22);">
-        <div class="mn-arch-card-left">
-          <div class="mn-arch-num-badge">01</div>
-          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-          <div class="mn-arch-layer-text">
-            <div class="mn-arch-layer-cn">Client Layer</div>
-            <div class="mn-arch-layer-en">CLIENT LAYER</div>
+      <template v-for="(layer, i) in architectureLayers" :key="layer.num">
+        <div class="mn-arch-conn" v-if="i > 0">
+          <div class="mn-arch-conn-line" :style="`--cc:${architectureLayers[i-1].lc};`"></div>
+          <div class="mn-arch-conn-dot" :style="`background:${architectureLayers[i-1].lc};`"></div>
+          <div class="mn-arch-conn-line" :style="`--cc:${layer.lc};`"></div>
+        </div>
+        <div class="mn-arch-card" :style="`--lc:${layer.lc};--lg:${layer.grad};--lbg:${layer.lbg};--lbd:${layer.lbd};`">
+          <div class="mn-arch-card-left">
+            <div class="mn-arch-num-badge">{{ layer.num }}</div>
+            <div class="mn-arch-layer-icon">
+              <svg v-if="i === 0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <svg v-else-if="i === 1" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <svg v-else-if="i === 2" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              <svg v-else width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <div class="mn-arch-layer-text">
+              <div class="mn-arch-layer-cn">{{ layer.label }}</div>
+              <div class="mn-arch-layer-en">{{ layer.labelEn }}</div>
+            </div>
+          </div>
+          <div class="mn-arch-card-body">
+            <div v-for="g in layer.groups" :key="g.label" class="mn-arch-group">
+              <div class="mn-arch-group-lbl" :style="`color:${layer.lc};`">{{ g.label }}</div>
+              <div class="mn-arch-chips"><span v-for="c in g.chips" :key="c">{{ c }}</span></div>
+            </div>
           </div>
         </div>
-        <div class="mn-arch-card-body">
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#3b82f6;">Mobile</div>
-            <div class="mn-arch-chips"><span>Android SDK</span><span>iOS SDK</span><span>Mini-App Runtime</span><span>Native JS API</span></div>
-          </div>
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#3b82f6;">Web</div>
-            <div class="mn-arch-chips"><span>H5 Container</span><span>Responsive Layout</span><span>PWA Support</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mn-arch-conn">
-        <div class="mn-arch-conn-line" style="--cc:#3b82f6;"></div>
-        <div class="mn-arch-conn-dot" style="background:#3b82f6;"></div>
-        <div class="mn-arch-conn-line" style="--cc:#a78bfa;"></div>
-      </div>
-
-      <!-- Layer 2 -->
-      <div class="mn-arch-card" style="--lc:#a78bfa;--lg:linear-gradient(135deg,#7c3aed,#a78bfa);--lbg:rgba(167,139,250,0.06);--lbd:rgba(167,139,250,0.22);">
-        <div class="mn-arch-card-left">
-          <div class="mn-arch-num-badge">02</div>
-          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <div class="mn-arch-layer-text">
-            <div class="mn-arch-layer-cn">Platform Layer</div>
-            <div class="mn-arch-layer-en">PLATFORM LAYER</div>
-          </div>
-        </div>
-        <div class="mn-arch-card-body">
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#a78bfa;">Security &amp; Identity</div>
-            <div class="mn-arch-chips"><span>Unified Auth</span><span>Biometrics</span><span>Security Hardening</span><span>Mini-App Sandbox</span></div>
-          </div>
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#a78bfa;">Platform Services</div>
-            <div class="mn-arch-chips"><span>Mobile Payment</span><span>LBS Location</span><span>Push Notifications</span><span>Analytics</span><span>Social Sharing</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mn-arch-conn">
-        <div class="mn-arch-conn-line" style="--cc:#a78bfa;"></div>
-        <div class="mn-arch-conn-dot" style="background:#a78bfa;"></div>
-        <div class="mn-arch-conn-line" style="--cc:#06b6d4;"></div>
-      </div>
-
-      <!-- Layer 3 -->
-      <div class="mn-arch-card" style="--lc:#06b6d4;--lg:linear-gradient(135deg,#0891b2,#06b6d4);--lbg:rgba(6,182,212,0.06);--lbd:rgba(6,182,212,0.22);">
-        <div class="mn-arch-card-left">
-          <div class="mn-arch-num-badge">03</div>
-          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-          <div class="mn-arch-layer-text">
-            <div class="mn-arch-layer-cn">App Service Layer</div>
-            <div class="mn-arch-layer-en">APPLICATION LAYER</div>
-          </div>
-        </div>
-        <div class="mn-arch-card-body">
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#06b6d4;">Financial</div>
-            <div class="mn-arch-chips"><span>E-Wallet</span><span>Investment</span><span>Wealth Mgmt</span><span>Crypto</span><span>Consumer Finance</span><span>Insurance</span></div>
-          </div>
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#06b6d4;">Lifestyle &amp; City</div>
-            <div class="mn-arch-chips"><span>Smart Fitness</span><span>Smart Tour</span><span>Digital Assets</span><span>Vehicle Mgmt</span><span>Smart City</span><span>Personalization</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mn-arch-conn">
-        <div class="mn-arch-conn-line" style="--cc:#06b6d4;"></div>
-        <div class="mn-arch-conn-dot" style="background:#06b6d4;"></div>
-        <div class="mn-arch-conn-line" style="--cc:#f59e0b;"></div>
-      </div>
-
-      <!-- Layer 4 -->
-      <div class="mn-arch-card" style="--lc:#f59e0b;--lg:linear-gradient(135deg,#d97706,#f59e0b);--lbg:rgba(245,158,11,0.06);--lbd:rgba(245,158,11,0.22);">
-        <div class="mn-arch-card-left">
-          <div class="mn-arch-num-badge">04</div>
-          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-          <div class="mn-arch-layer-text">
-            <div class="mn-arch-layer-cn">Infrastructure Layer</div>
-            <div class="mn-arch-layer-en">INFRASTRUCTURE LAYER</div>
-          </div>
-        </div>
-        <div class="mn-arch-card-body">
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#f59e0b;">Cloud Platform</div>
-            <div class="mn-arch-chips"><span>Huawei Public Cloud</span><span>Huawei Hybrid Cloud</span><span>On-premise</span><span>Azure</span><span>AWS</span><span>Google Cloud</span></div>
-          </div>
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#f59e0b;">Business Platform</div>
-            <div class="mn-arch-chips"><span>APP Cube Platform</span><span>Banking / MM Backend</span><span>3rd-party API</span></div>
-          </div>
-        </div>
-      </div>
+      </template>
 
     </div>
   </section>
@@ -616,45 +540,16 @@ function initIOCDashboard() {
     </div>
 
     <div class="mn-flow-steps">
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">01</div>
-        <div class="mn-flow-content">
-          <h4>M Platform Deploy</h4>
-          <p>Cloud resource provisioning, project environment setup, M Platform installation, initialization, and one-click dev environment setup.</p>
+      <template v-for="(step, i) in deliverySteps" :key="step.num">
+        <div class="mn-flow-arrow" v-if="i > 0">→</div>
+        <div class="mn-flow-step">
+          <div class="mn-flow-num" :style="`background:${step.grad};`">{{ step.num }}</div>
+          <div class="mn-flow-content">
+            <h4>{{ step.title }}</h4>
+            <p>{{ step.desc }}</p>
+          </div>
         </div>
-      </div>
-      <div class="mn-flow-arrow">→</div>
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#4f46e5,#818cf8);">02</div>
-        <div class="mn-flow-content">
-          <h4>SDK Integration</h4>
-          <p>Android / iOS SDK retrieval and integration, host app initialization, simulator testing to ensure consistent runtime environment.</p>
-        </div>
-      </div>
-      <div class="mn-flow-arrow">→</div>
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">03</div>
-        <div class="mn-flow-content">
-          <h4>Mini-App Development</h4>
-          <p>Online IDE, native JS API development, real-time simulator preview for rapid iteration of UI and business logic.</p>
-        </div>
-      </div>
-      <div class="mn-flow-arrow">→</div>
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">04</div>
-        <div class="mn-flow-content">
-          <h4>Testing &amp; Validation</h4>
-          <p>5-dimension testing: compatibility / reliability / automation / security / performance. KCP3 exit evaluation with multi-scenario test coverage.</p>
-        </div>
-      </div>
-      <div class="mn-flow-arrow">→</div>
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#059669,#10b981);">05</div>
-        <div class="mn-flow-content">
-          <h4>Harden &amp; Release</h4>
-          <p>Security hardening, publish &amp; go-live without app store gating — instant user reach with a delivery metrics dashboard.</p>
-        </div>
-      </div>
+      </template>
     </div>
 
     <!-- CI/CD Pipeline -->
@@ -838,40 +733,16 @@ function initIOCDashboard() {
     </div>
 
     <div class="mn-pm-cards">
-      <div class="mn-pm-card" style="border-top-color:#1d4ed8;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <div v-for="(pm, i) in pmCards" :key="pm.title" class="mn-pm-card" :style="`border-top-color:${pm.color};`">
+        <div class="mn-pm-card-icon" :style="`background:${pm.grad};`">
+          <svg v-if="i === 0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <svg v-else-if="i === 1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <svg v-else-if="i === 2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <svg v-else-if="i === 3" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <svg v-else width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h4>Schedule</h4>
-        <p>Milestone definition, planning, and change review mechanisms to keep delivery on track</p>
-      </div>
-      <div class="mn-pm-card" style="border-top-color:#7c3aed;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h4>Communication</h4>
-        <p>Daily standups + reviews + topic meetings + quality sessions; AAR mechanism to capture lessons learned</p>
-      </div>
-      <div class="mn-pm-card" style="border-top-color:#0891b2;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <h4>Risk Management</h4>
-        <p>Risk tracking matrix + weekly review + daily email follow-up — ensuring full lifecycle risk closure</p>
-      </div>
-      <div class="mn-pm-card" style="border-top-color:#d97706;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <h4>Quality Planning</h4>
-        <p>Current state analysis → goal planning → process tailoring; outputs a project quality plan</p>
-      </div>
-      <div class="mn-pm-card" style="border-top-color:#059669;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#059669,#10b981);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h4>Process Monitoring</h4>
-        <p>CP1 / CP2 / CP3 full-cycle checkpoints with entry/exit criteria and measurement analysis</p>
+        <h4>{{ pm.title }}</h4>
+        <p>{{ pm.desc }}</p>
       </div>
     </div>
 

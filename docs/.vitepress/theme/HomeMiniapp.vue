@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
+import { architectureLayers, deliverySteps, pmCards } from './data/miniapp.zh.js'
 
 onMounted(() => {
   initReveal()
@@ -253,111 +254,34 @@ function initIOCDashboard() {
     </div>
     <div class="mn-arch-wrap">
 
-      <!-- Layer 1 -->
-      <div class="mn-arch-card" style="--lc:#3b82f6;--lg:linear-gradient(135deg,#1d4ed8,#3b82f6);--lbg:rgba(59,130,246,0.06);--lbd:rgba(59,130,246,0.22);">
-        <div class="mn-arch-card-left">
-          <div class="mn-arch-num-badge">01</div>
-          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-          <div class="mn-arch-layer-text">
-            <div class="mn-arch-layer-cn">终端接入层</div>
-            <div class="mn-arch-layer-en">CLIENT LAYER</div>
+      <template v-for="(layer, i) in architectureLayers" :key="layer.num">
+        <div class="mn-arch-conn" v-if="i > 0">
+          <div class="mn-arch-conn-line" :style="`--cc:${architectureLayers[i-1].lc};`"></div>
+          <div class="mn-arch-conn-dot" :style="`background:${architectureLayers[i-1].lc};`"></div>
+          <div class="mn-arch-conn-line" :style="`--cc:${layer.lc};`"></div>
+        </div>
+        <div class="mn-arch-card" :style="`--lc:${layer.lc};--lg:${layer.grad};--lbg:${layer.lbg};--lbd:${layer.lbd};`">
+          <div class="mn-arch-card-left">
+            <div class="mn-arch-num-badge">{{ layer.num }}</div>
+            <div class="mn-arch-layer-icon">
+              <svg v-if="i === 0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <svg v-else-if="i === 1" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <svg v-else-if="i === 2" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              <svg v-else width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <div class="mn-arch-layer-text">
+              <div class="mn-arch-layer-cn">{{ layer.label }}</div>
+              <div class="mn-arch-layer-en">{{ layer.labelEn }}</div>
+            </div>
+          </div>
+          <div class="mn-arch-card-body">
+            <div v-for="g in layer.groups" :key="g.label" class="mn-arch-group">
+              <div class="mn-arch-group-lbl" :style="`color:${layer.lc};`">{{ g.label }}</div>
+              <div class="mn-arch-chips"><span v-for="c in g.chips" :key="c">{{ c }}</span></div>
+            </div>
           </div>
         </div>
-        <div class="mn-arch-card-body">
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#3b82f6;">移动端</div>
-            <div class="mn-arch-chips"><span>Android SDK</span><span>iOS SDK</span><span>小程序运行时</span><span>原生 JS API</span></div>
-          </div>
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#3b82f6;">Web 端</div>
-            <div class="mn-arch-chips"><span>H5 容器</span><span>响应式布局</span><span>PWA 支持</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mn-arch-conn">
-        <div class="mn-arch-conn-line" style="--cc:#3b82f6;"></div>
-        <div class="mn-arch-conn-dot" style="background:#3b82f6;"></div>
-        <div class="mn-arch-conn-line" style="--cc:#a78bfa;"></div>
-      </div>
-
-      <!-- Layer 2 -->
-      <div class="mn-arch-card" style="--lc:#a78bfa;--lg:linear-gradient(135deg,#7c3aed,#a78bfa);--lbg:rgba(167,139,250,0.06);--lbd:rgba(167,139,250,0.22);">
-        <div class="mn-arch-card-left">
-          <div class="mn-arch-num-badge">02</div>
-          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <div class="mn-arch-layer-text">
-            <div class="mn-arch-layer-cn">平台能力层</div>
-            <div class="mn-arch-layer-en">PLATFORM LAYER</div>
-          </div>
-        </div>
-        <div class="mn-arch-card-body">
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#a78bfa;">安全 &amp; 身份</div>
-            <div class="mn-arch-chips"><span>统一身份认证</span><span>生物识别</span><span>安全加固</span><span>小程序沙箱</span></div>
-          </div>
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#a78bfa;">服务能力</div>
-            <div class="mn-arch-chips"><span>移动支付</span><span>LBS 定位</span><span>推送通知</span><span>数据分析</span><span>社交分享</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mn-arch-conn">
-        <div class="mn-arch-conn-line" style="--cc:#a78bfa;"></div>
-        <div class="mn-arch-conn-dot" style="background:#a78bfa;"></div>
-        <div class="mn-arch-conn-line" style="--cc:#06b6d4;"></div>
-      </div>
-
-      <!-- Layer 3 -->
-      <div class="mn-arch-card" style="--lc:#06b6d4;--lg:linear-gradient(135deg,#0891b2,#06b6d4);--lbg:rgba(6,182,212,0.06);--lbd:rgba(6,182,212,0.22);">
-        <div class="mn-arch-card-left">
-          <div class="mn-arch-num-badge">03</div>
-          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-          <div class="mn-arch-layer-text">
-            <div class="mn-arch-layer-cn">应用服务层</div>
-            <div class="mn-arch-layer-en">APPLICATION LAYER</div>
-          </div>
-        </div>
-        <div class="mn-arch-card-body">
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#06b6d4;">金融类</div>
-            <div class="mn-arch-chips"><span>电子钱包</span><span>理财投资</span><span>财富管理</span><span>虚拟货币</span><span>消费金融</span><span>保险服务</span></div>
-          </div>
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#06b6d4;">生活 &amp; 城市类</div>
-            <div class="mn-arch-chips"><span>智慧健身</span><span>智慧导览</span><span>数字藏品</span><span>车辆管理</span><span>智慧城市</span><span>个性化推荐</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mn-arch-conn">
-        <div class="mn-arch-conn-line" style="--cc:#06b6d4;"></div>
-        <div class="mn-arch-conn-dot" style="background:#06b6d4;"></div>
-        <div class="mn-arch-conn-line" style="--cc:#f59e0b;"></div>
-      </div>
-
-      <!-- Layer 4 -->
-      <div class="mn-arch-card" style="--lc:#f59e0b;--lg:linear-gradient(135deg,#d97706,#f59e0b);--lbg:rgba(245,158,11,0.06);--lbd:rgba(245,158,11,0.22);">
-        <div class="mn-arch-card-left">
-          <div class="mn-arch-num-badge">04</div>
-          <div class="mn-arch-layer-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-          <div class="mn-arch-layer-text">
-            <div class="mn-arch-layer-cn">基础设施层</div>
-            <div class="mn-arch-layer-en">INFRASTRUCTURE LAYER</div>
-          </div>
-        </div>
-        <div class="mn-arch-card-body">
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#f59e0b;">云平台</div>
-            <div class="mn-arch-chips"><span>华为公有云</span><span>华为混合云</span><span>On-premise</span><span>Azure</span><span>AWS</span><span>Google Cloud</span></div>
-          </div>
-          <div class="mn-arch-group">
-            <div class="mn-arch-group-lbl" style="color:#f59e0b;">业务平台</div>
-            <div class="mn-arch-chips"><span>APP Cube 平台</span><span>银行 / MM 后台</span><span>第三方 API</span></div>
-          </div>
-        </div>
-      </div>
+      </template>
 
     </div>
   </section>
@@ -658,45 +582,16 @@ function initIOCDashboard() {
 
     <!-- 流程步骤 -->
     <div class="mn-flow-steps">
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">01</div>
-        <div class="mn-flow-content">
-          <h4>M 平台部署</h4>
-          <p>公有云资源申请、项目资源开通，M 平台安装部署与初始化配置，一键拉通小程序开发环境。</p>
+      <template v-for="(step, i) in deliverySteps" :key="step.num">
+        <div class="mn-flow-arrow" v-if="i > 0">→</div>
+        <div class="mn-flow-step">
+          <div class="mn-flow-num" :style="`background:${step.grad};`">{{ step.num }}</div>
+          <div class="mn-flow-content">
+            <h4>{{ step.title }}</h4>
+            <p>{{ step.desc }}</p>
+          </div>
         </div>
-      </div>
-      <div class="mn-flow-arrow">→</div>
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#4f46e5,#818cf8);">02</div>
-        <div class="mn-flow-content">
-          <h4>SDK 集成</h4>
-          <p>Android / iOS SDK 获取与集成，宿主 App 初始化，仿真器模拟调测，确保运行环境一致。</p>
-        </div>
-      </div>
-      <div class="mn-flow-arrow">→</div>
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">03</div>
-        <div class="mn-flow-content">
-          <h4>小程序开发</h4>
-          <p>在线开发环境，原生 JS API 开发调用，支持仿真器实时预览，快速迭代前端界面与业务逻辑。</p>
-        </div>
-      </div>
-      <div class="mn-flow-arrow">→</div>
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">04</div>
-        <div class="mn-flow-content">
-          <h4>测试验证</h4>
-          <p>兼容性 / 可靠性 / 自动化 / 安全 / 性能五维测试，KCP3 出口评估，多场景测试平台覆盖。</p>
-        </div>
-      </div>
-      <div class="mn-flow-arrow">→</div>
-      <div class="mn-flow-step">
-        <div class="mn-flow-num" style="background:linear-gradient(135deg,#059669,#10b981);">05</div>
-        <div class="mn-flow-content">
-          <h4>安全加固与发布</h4>
-          <p>小程序安全加固，发布上架，无须经过应用商店，即时触达用户，交付度量看板可视化进度。</p>
-        </div>
-      </div>
+      </template>
     </div>
 
     <!-- CI/CD 流水线 -->
@@ -893,40 +788,16 @@ function initIOCDashboard() {
     </div>
 
     <div class="mn-pm-cards">
-      <div class="mn-pm-card" style="border-top-color:#1d4ed8;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <div v-for="(pm, i) in pmCards" :key="pm.title" class="mn-pm-card" :style="`border-top-color:${pm.color};`">
+        <div class="mn-pm-card-icon" :style="`background:${pm.grad};`">
+          <svg v-if="i === 0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <svg v-else-if="i === 1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <svg v-else-if="i === 2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <svg v-else-if="i === 3" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <svg v-else width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h4>进度管理</h4>
-        <p>里程碑制定、计划排期、变更评审机制，保障计划可控</p>
-      </div>
-      <div class="mn-pm-card" style="border-top-color:#7c3aed;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h4>沟通管理</h4>
-        <p>晨会 + 评审 + 专题 + 质量会议，AAR 机制沉淀经验</p>
-      </div>
-      <div class="mn-pm-card" style="border-top-color:#0891b2;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <h4>风险管理</h4>
-        <p>风险跟踪表 + 例会审视 + 邮件日追踪，确保风险全程闭环</p>
-      </div>
-      <div class="mn-pm-card" style="border-top-color:#d97706;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#d97706,#f59e0b);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <h4>质量策划</h4>
-        <p>现状分析 → 目标策划 → 过程裁剪，输出项目质量计划</p>
-      </div>
-      <div class="mn-pm-card" style="border-top-color:#059669;">
-        <div class="mn-pm-card-icon" style="background:linear-gradient(135deg,#059669,#10b981);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h4>流程看护</h4>
-        <p>CP1/CP2/CP3 全周期检查点，准出准入标准，度量分析</p>
+        <h4>{{ pm.title }}</h4>
+        <p>{{ pm.desc }}</p>
       </div>
     </div>
 
