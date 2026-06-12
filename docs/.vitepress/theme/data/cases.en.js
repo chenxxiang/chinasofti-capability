@@ -43,6 +43,7 @@ export const cases = [
     screenshots: ['/cases/kibb-transfer.png', '/cases/kibb-accounts.png', '/cases/kibb-arch.png'],
     screenshotType: 'phone',
     archScreenshot: true,
+    archLabel: 'System Architecture',
     tagClass: 'indigo',
   },
   {

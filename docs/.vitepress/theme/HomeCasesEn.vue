@@ -77,7 +77,7 @@
           <template v-for="(src, si) in c.screenshots" :key="si">
             <div v-if="c.archScreenshot && si === c.screenshots.length - 1" class="arch-thumb">
               <img :src="src" :alt="c.title" :style="`width:100%;border-radius:10px;border:1px solid ${c.accentColor}33;`" />
-              <div class="arch-label">System Architecture</div>
+              <div class="arch-label">{{ c.archLabel }}</div>
             </div>
             <div v-else class="phone-wrap">
               <img :src="src" :alt="c.title" class="phone-img" />

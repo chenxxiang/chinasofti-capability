@@ -25,282 +25,112 @@
 
 <!-- CASES BODY -->
 <div class="cases-body">
+  <div
+    v-for="(c, i) in cases"
+    :key="c.id"
+    class="case-block reveal"
+    :id="c.id"
+  >
+    <div class="case-card" :style="`--accent:${c.accentColor};--accent-rgb:${hexToRgb(c.accentColor)};`">
+      <div class="case-top" :class="{ reverse: i % 2 === 1 }">
 
-  <!-- ① Siinqee Bank -->
-  <div class="case-block reveal" id="siinqee">
-    <div class="case-card" style="--accent:#10b981;--accent-rgb:16,185,129;">
-      <div class="case-top">
+        <!-- Info panel -->
         <div class="case-info">
           <div class="case-eyebrow">
-            <span class="flag-tag">🇪🇹 埃塞俄比亚</span>
-            <span class="status-tag" style="background:rgba(16,185,129,0.12);color:#059669;border-color:rgba(16,185,129,0.3);">
-              <i class="dot" style="background:#10b981;"></i>进行中 · 2025
+            <span class="flag-tag">{{ c.flag }} {{ c.country }}</span>
+            <span class="status-tag" :style="`background:${c.accentColor}1e;color:${c.accentDark};border-color:${c.accentColor}4d;`">
+              <i class="dot" :style="`background:${c.accentColor};`"></i>{{ c.status }}
             </span>
           </div>
-          <h2>Siinqee Bank<br><em>Mobile Money App</em></h2>
+          <h2>{{ c.title }}<br><em>{{ c.subtitle }}</em></h2>
           <div class="tag-row">
-            <span class="ctag green">Mobile Money</span>
-            <span class="ctag green">华为 Baseline</span>
-            <span class="ctag green">App 定制开发</span>
+            <span v-for="tag in c.tags" :key="tag" :class="['ctag', c.tagClass]">{{ tag }}</span>
           </div>
-          <p class="case-desc">Siinqee Bank 是<strong>埃塞俄比亚领先的金融服务集团</strong>，致力于打造全国性 Mobile Money 数字通道。中软国际基于华为 OOTB 基线 APP，提供原生 APP + 小程序定制开发，将品牌、多语言、监管需求与华为底座无缝融合。</p>
-          <div class="feat-list">
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>多语言支持，覆盖埃塞多民族用户</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>品牌定制：主题色 / Logo / Banner 全套适配</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>e-KYC 对接：OCR 识别 · 活体检测 · 人证比对</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>AppCube 后端逻辑与流程编排开发</div>
+          <p class="case-desc" v-html="c.description"></p>
+
+          <div v-if="c.contentType === 'features'" class="feat-list">
+            <div v-for="feat in c.features" :key="feat" class="feat">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" :stroke="c.accentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {{ feat }}
+            </div>
           </div>
+
+          <div v-if="c.contentType === 'metrics'" class="metrics-row">
+            <div v-for="m in c.metrics" :key="m.val" class="metric">
+              <div class="mval" :style="`color:${c.accentColor};`">{{ m.val }}</div>
+              <div class="mlab" style="white-space:pre-line;">{{ m.label }}</div>
+            </div>
+          </div>
+
+          <div v-if="c.techStack" class="tech-row">
+            <span v-for="t in c.techStack" :key="t">{{ t }}</span>
+          </div>
+
           <div class="partner-tag">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            合作伙伴：华为
+            {{ c.partnerDisplay || ('Partner: ' + c.partner) }}
           </div>
         </div>
-        <div class="case-screens phone-screens">
-          <div class="phone-wrap">
-            <img src="/cases/siinqee-onboard.png" alt="Siinqee 引导页" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/siinqee-home.png" alt="Siinqee 首页" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/siinqee-home2.png" alt="Siinqee 余额页" class="phone-img" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ② KIBB KDi GO -->
-  <div class="case-block reveal" id="kibb">
-    <div class="case-card" style="--accent:#6366f1;--accent-rgb:99,102,241;">
-      <div class="case-top reverse">
-        <div class="case-screens phone-screens">
-          <div class="phone-wrap">
-            <img src="/cases/kibb-transfer.png" alt="KDi GO 转账成功" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/kibb-accounts.png" alt="KDi GO 银行账户" class="phone-img" />
-          </div>
-          <div class="arch-thumb">
-            <img src="/cases/kibb-arch.png" alt="KDi GO 架构图" style="width:100%;border-radius:10px;border:1px solid rgba(99,102,241,0.20);" />
-            <div class="arch-label">系统架构</div>
-          </div>
+        <!-- Phone screenshots -->
+        <div v-if="c.screenshotType === 'phone'" class="case-screens phone-screens">
+          <template v-for="(src, si) in c.screenshots" :key="si">
+            <div v-if="c.archScreenshot && si === c.screenshots.length - 1" class="arch-thumb">
+              <img :src="src" :alt="c.title" :style="`width:100%;border-radius:10px;border:1px solid ${c.accentColor}33;`" />
+              <div class="arch-label">{{ c.archLabel }}</div>
+            </div>
+            <div v-else class="phone-wrap">
+              <img :src="src" :alt="c.title" class="phone-img" />
+            </div>
+          </template>
         </div>
-        <div class="case-info">
-          <div class="case-eyebrow">
-            <span class="flag-tag">🇲🇾 马来西亚</span>
-            <span class="status-tag" style="background:rgba(99,102,241,0.12);color:#4f46e5;border-color:rgba(99,102,241,0.3);">
-              <i class="dot" style="background:#6366f1;"></i>已上线 · 2022
-            </span>
-          </div>
-          <h2>KIBB Bank<br><em>KDi GO Super App</em></h2>
-          <div class="tag-row">
-            <span class="ctag indigo">Super App</span>
-            <span class="ctag indigo">mPaaS</span>
-            <span class="ctag indigo">投资理财</span>
-          </div>
-          <p class="case-desc">2022 年 10 月起，中软国际与 Kenanga Bank（KIBB）基于<strong>蚂蚁 mPaaS 平台</strong>合作上线 KDi GO，让投资者在单一 App 内完成基金理财、日常支付与股票交易，并获得 AI 智能投顾支持。</p>
-          <div class="metrics-row">
-            <div class="metric">
-              <div class="mval" style="color:#6366f1;">3</div>
-              <div class="mlab">核心金融场景<br>投资·支付·股票</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#6366f1;">2022</div>
-              <div class="mlab">正式上线<br>持续迭代至今</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#6366f1;">持续</div>
-              <div class="mlab">IT 建设<br>服务支持中</div>
-            </div>
-          </div>
-          <div class="tech-row">
-            <span>蚂蚁 mPaaS</span><span>Java</span><span>Node.JS</span><span>AWS</span><span>Cloudentity</span><span>N8N</span>
-          </div>
-          <div class="partner-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            合作伙伴：蚂蚁集团 mPaaS
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ③ BNI Bank -->
-  <div class="case-block reveal" id="bni">
-    <div class="case-card" style="--accent:#0891b2;--accent-rgb:8,145,178;">
-      <div class="case-top">
-        <div class="case-info">
-          <div class="case-eyebrow">
-            <span class="flag-tag">🇮🇩 印度尼西亚</span>
-            <span class="status-tag" style="background:rgba(8,145,178,0.12);color:#0369a1;border-color:rgba(8,145,178,0.3);">
-              <i class="dot" style="background:#0891b2;"></i>已上线 · 成效显著
-            </span>
-          </div>
-          <h2>BNI Bank<br><em>Super App 数字化转型</em></h2>
-          <div class="tag-row">
-            <span class="ctag cyan">Super App</span>
-            <span class="ctag cyan">财富管理</span>
-            <span class="ctag cyan">定制开发</span>
-          </div>
-          <p class="case-desc">印尼 BNI 银行委托中软国际打造定制化<strong>超级应用解决方案</strong>，将个人财务、财富管理、会员忠诚度及客户互动功能整合至统一平台。上线首年即实现存量客户 70% 渗透率，月活突破 230 万，同比增长 55%。</p>
-          <div class="metrics-row">
-            <div class="metric">
-              <div class="mval" style="color:#0891b2;">70%</div>
-              <div class="mlab">存量客户渗透率<br>上线首年</div>
+        <!-- Browser screenshots: stacked -->
+        <div v-else-if="c.screenshotLayout === 'stacked'" class="case-screens web-screens">
+          <div
+            v-for="(src, si) in c.screenshots"
+            :key="si"
+            class="browser-wrap"
+            :style="si > 0 ? 'margin-top:12px;' : ''"
+          >
+            <div class="browser-bar">
+              <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
+              <span class="b-addr">{{ c.browserAddrs[si] }}</span>
             </div>
-            <div class="metric">
-              <div class="mval" style="color:#0891b2;">230万</div>
-              <div class="mlab">月活跃用户<br>MAU</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#0891b2;">55%</div>
-              <div class="mlab">同比增长率<br>新用户激活</div>
-            </div>
-          </div>
-          <div class="tech-row">
-            <span>个人财务</span><span>财富管理</span><span>忠诚度计划</span><span>QRIS 支付</span><span>基金申购</span>
-          </div>
-          <div class="partner-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            独立端到端交付
+            <img :src="src" :alt="c.title" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
           </div>
         </div>
-        <div class="case-screens phone-screens">
-          <div class="phone-wrap">
-            <img src="/cases/bni-funds.png" alt="BNI 基金列表" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/bni-risk.png" alt="BNI 投资画像" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/bni-recap.png" alt="BNI 财务概览" class="phone-img" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ④ 亚投行 ITP -->
-  <div class="case-block reveal" id="aiib">
-    <div class="case-card" style="--accent:#7c3aed;--accent-rgb:124,58,237;">
-      <div class="case-top reverse">
-        <div class="case-screens web-screens">
+        <!-- Browser screenshots: 1 + 2 grid -->
+        <div v-else-if="c.screenshotLayout === 'grid'" class="case-screens web-screens">
           <div class="browser-wrap">
             <div class="browser-bar">
               <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-              <span class="b-addr">infratech.aiib.org · Dashboard</span>
+              <span class="b-addr">{{ c.browserAddrs[0] }}</span>
             </div>
-            <img src="/cases/aiib-dashboard.png" alt="ITP Dashboard" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
+            <img :src="c.screenshots[0]" :alt="c.title" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
           </div>
-          <div class="browser-wrap" style="margin-top:12px;">
-            <div class="browser-bar">
-              <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-              <span class="b-addr">infratech.aiib.org · Solutions</span>
-            </div>
-            <img src="/cases/aiib-charts.png" alt="ITP Charts" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
-          </div>
-        </div>
-        <div class="case-info">
-          <div class="case-eyebrow">
-            <span class="flag-tag">🌏 亚投行 AIIB</span>
-            <span class="status-tag" style="background:rgba(124,58,237,0.12);color:#6d28d9;border-color:rgba(124,58,237,0.3);">
-              <i class="dot" style="background:#7c3aed;"></i>已上线 · 2024.02
-            </span>
-          </div>
-          <h2>亚投行<br><em>InfraTech Portal (ITP)</em></h2>
-          <div class="tag-row">
-            <span class="ctag purple">数字化平台</span>
-            <span class="ctag purple">全英文交付</span>
-            <span class="ctag purple">多边机构</span>
-          </div>
-          <p class="case-desc">亚洲基础设施投资银行（AIIB）是首个由中国倡议的多边开发机构，已覆盖<strong>全球 81% 人口、110 个成员国</strong>。依托蚂蚁 JIGSAW 项目合作，中软国际承接并交付 ITP 基础设施科技数字化管理平台，全英文交付，2024年2月正式上线。</p>
-          <div class="metrics-row">
-            <div class="metric">
-              <div class="mval" style="color:#7c3aed;">110</div>
-              <div class="mlab">成员国<br>覆盖全球</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#7c3aed;">81%</div>
-              <div class="mlab">全球人口<br>GDP 占65%</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#7c3aed;">2024</div>
-              <div class="mlab">正式上线<br>运维持续中</div>
-            </div>
-          </div>
-          <div class="tech-row">
-            <span>Azure AAD</span><span>SSO/IAM</span><span>AWS</span><span>MySQL</span><span>Redis</span><span>PowerBI</span>
-          </div>
-          <div class="partner-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            合作伙伴：蚂蚁集团（JIGSAW 项目背书）
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ⑤ 国际泳联 -->
-  <div class="case-block reveal" id="fina">
-    <div class="case-card" style="--accent:#f59e0b;--accent-rgb:245,158,11;">
-      <div class="case-top">
-        <div class="case-info">
-          <div class="case-eyebrow">
-            <span class="flag-tag">🏊 瑞士 · 全球体育组织</span>
-            <span class="status-tag" style="background:rgba(245,158,11,0.12);color:#b45309;border-color:rgba(245,158,11,0.3);">
-              <i class="dot" style="background:#f59e0b;"></i>进行中 · 2025
-            </span>
-          </div>
-          <h2>阿里巴巴 × 国际泳联<br><em>World Aquatics 数字化运营平台</em></h2>
-          <div class="tag-row">
-            <span class="ctag amber">官网重构</span>
-            <span class="ctag amber">APP 开发</span>
-            <span class="ctag amber">MPaaS</span>
-          </div>
-          <p class="case-desc">国际泳联（World Aquatics）总部位于瑞士，是全球最具影响力的水上运动组织。中软国际联合<strong>蚂蚁集团、阿里巴巴</strong>，重构官网与后台，拓展 APP 移动端，实现"官网 + APP"数据互通与用户统一运营。</p>
-          <div class="feat-list">
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>响应式官网重构 · 新一代 CMS · 精细化会员权限</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>基于蚂蚁 MPaaS 平台：推送 · 小程序 · 数据分析 · 智能投放</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>赛事管理 · 全球会员服务 · 精准营销转化</div>
-          </div>
-          <div class="tech-row">
-            <span>蚂蚁 MPaaS</span><span>小程序</span><span>CMS</span><span>数据分析</span><span>智能投放</span>
-          </div>
-          <div class="partner-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            三方联合：中软国际 · 蚂蚁集团 · 阿里巴巴
-          </div>
-        </div>
-        <div class="case-screens web-screens">
-          <div class="browser-wrap">
-            <div class="browser-bar">
-              <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-              <span class="b-addr">worldaquatics.com</span>
-            </div>
-            <img src="/cases/fina-home.png" alt="World Aquatics 官网" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
-          </div>
-          <div class="web-row" style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="browser-wrap">
               <div class="browser-bar" style="font-size:0.6rem;">
                 <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-                <span class="b-addr">World Records</span>
+                <span class="b-addr">{{ c.browserAddrs[1] }}</span>
               </div>
-              <img src="/cases/fina-records.png" alt="World Records" style="width:100%;display:block;border-radius:0 0 8px 8px;" />
+              <img :src="c.screenshots[1]" :alt="c.title" style="width:100%;display:block;border-radius:0 0 8px 8px;" />
             </div>
             <div class="browser-wrap">
               <div class="browser-bar" style="font-size:0.6rem;">
                 <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-                <span class="b-addr">Highlights</span>
+                <span class="b-addr">{{ c.browserAddrs[2] }}</span>
               </div>
-              <img src="/cases/fina-highlights.png" alt="Olympics Highlights" style="width:100%;display:block;border-radius:0 0 8px 8px;" />
+              <img :src="c.screenshots[2]" :alt="c.title" style="width:100%;display:block;border-radius:0 0 8px 8px;" />
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- FOOTER -->
@@ -315,6 +145,15 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
+import { cases } from './data/cases.zh.js'
+
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  return `${r},${g},${b}`
+}
+
 onMounted(() => {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) } })
