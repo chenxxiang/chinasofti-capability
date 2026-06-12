@@ -25,282 +25,112 @@
 
 <!-- CASES BODY -->
 <div class="cases-body">
+  <div
+    v-for="(c, i) in cases"
+    :key="c.id"
+    class="case-block reveal"
+    :id="c.id"
+  >
+    <div class="case-card" :style="`--accent:${c.accentColor};--accent-rgb:${hexToRgb(c.accentColor)};`">
+      <div class="case-top" :class="{ reverse: i % 2 === 1 }">
 
-  <!-- ① Siinqee Bank -->
-  <div class="case-block reveal" id="siinqee">
-    <div class="case-card" style="--accent:#10b981;--accent-rgb:16,185,129;">
-      <div class="case-top">
+        <!-- Info panel -->
         <div class="case-info">
           <div class="case-eyebrow">
-            <span class="flag-tag">🇪🇹 Ethiopia</span>
-            <span class="status-tag" style="background:rgba(16,185,129,0.12);color:#059669;border-color:rgba(16,185,129,0.3);">
-              <i class="dot" style="background:#10b981;"></i>In Progress · 2025
+            <span class="flag-tag">{{ c.flag }} {{ c.country }}</span>
+            <span class="status-tag" :style="`background:${c.accentColor}1e;color:${c.accentDark};border-color:${c.accentColor}4d;`">
+              <i class="dot" :style="`background:${c.accentColor};`"></i>{{ c.status }}
             </span>
           </div>
-          <h2>Siinqee Bank<br><em>Mobile Money App</em></h2>
+          <h2>{{ c.title }}<br><em>{{ c.subtitle }}</em></h2>
           <div class="tag-row">
-            <span class="ctag green">Mobile Money</span>
-            <span class="ctag green">Huawei Baseline</span>
-            <span class="ctag green">App Custom Dev</span>
+            <span v-for="tag in c.tags" :key="tag" :class="['ctag', c.tagClass]">{{ tag }}</span>
           </div>
-          <p class="case-desc">Siinqee Bank is <strong>Ethiopia's leading financial services group</strong>, dedicated to building a nationwide Mobile Money digital channel. CSI delivered native APP + mini-program custom development based on Huawei's OOTB baseline APP, seamlessly integrating brand identity, multi-language support, regulatory requirements, and the Huawei platform.</p>
-          <div class="feat-list">
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Multi-language support covering Ethiopia's diverse ethnic user base</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Brand customization: theme colors / logo / banner full-set adaptation</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>e-KYC integration: OCR recognition · liveness detection · ID-face comparison</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>AppCube backend logic and process orchestration development</div>
+          <p class="case-desc" v-html="c.description"></p>
+
+          <div v-if="c.contentType === 'features'" class="feat-list">
+            <div v-for="feat in c.features" :key="feat" class="feat">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" :stroke="c.accentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {{ feat }}
+            </div>
           </div>
+
+          <div v-if="c.contentType === 'metrics'" class="metrics-row">
+            <div v-for="m in c.metrics" :key="m.val" class="metric">
+              <div class="mval" :style="`color:${c.accentColor};`">{{ m.val }}</div>
+              <div class="mlab" style="white-space:pre-line;">{{ m.label }}</div>
+            </div>
+          </div>
+
+          <div v-if="c.techStack" class="tech-row">
+            <span v-for="t in c.techStack" :key="t">{{ t }}</span>
+          </div>
+
           <div class="partner-tag">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            Partner: Huawei
+            {{ c.partnerDisplay || ('Partner: ' + c.partner) }}
           </div>
         </div>
-        <div class="case-screens phone-screens">
-          <div class="phone-wrap">
-            <img src="/cases/siinqee-onboard.png" alt="Siinqee Onboarding" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/siinqee-home.png" alt="Siinqee Home" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/siinqee-home2.png" alt="Siinqee Balance" class="phone-img" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ② KIBB KDi GO -->
-  <div class="case-block reveal" id="kibb">
-    <div class="case-card" style="--accent:#6366f1;--accent-rgb:99,102,241;">
-      <div class="case-top reverse">
-        <div class="case-screens phone-screens">
-          <div class="phone-wrap">
-            <img src="/cases/kibb-transfer.png" alt="KDi GO Transfer Success" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/kibb-accounts.png" alt="KDi GO Bank Accounts" class="phone-img" />
-          </div>
-          <div class="arch-thumb">
-            <img src="/cases/kibb-arch.png" alt="KDi GO Architecture" style="width:100%;border-radius:10px;border:1px solid rgba(99,102,241,0.20);" />
-            <div class="arch-label">System Architecture</div>
-          </div>
+        <!-- Phone screenshots -->
+        <div v-if="c.screenshotType === 'phone'" class="case-screens phone-screens">
+          <template v-for="(src, si) in c.screenshots" :key="si">
+            <div v-if="c.archScreenshot && si === c.screenshots.length - 1" class="arch-thumb">
+              <img :src="src" :alt="c.title" :style="`width:100%;border-radius:10px;border:1px solid ${c.accentColor}33;`" />
+              <div class="arch-label">System Architecture</div>
+            </div>
+            <div v-else class="phone-wrap">
+              <img :src="src" :alt="c.title" class="phone-img" />
+            </div>
+          </template>
         </div>
-        <div class="case-info">
-          <div class="case-eyebrow">
-            <span class="flag-tag">🇲🇾 Malaysia</span>
-            <span class="status-tag" style="background:rgba(99,102,241,0.12);color:#4f46e5;border-color:rgba(99,102,241,0.3);">
-              <i class="dot" style="background:#6366f1;"></i>Live · 2022
-            </span>
-          </div>
-          <h2>KIBB Bank<br><em>KDi GO Super App</em></h2>
-          <div class="tag-row">
-            <span class="ctag indigo">Super App</span>
-            <span class="ctag indigo">mPaaS</span>
-            <span class="ctag indigo">Investment &amp; Finance</span>
-          </div>
-          <p class="case-desc">From October 2022, CSI partnered with Kenanga Bank (KIBB) to launch KDi GO on <strong>Ant Group's mPaaS platform</strong>, enabling investors to manage fund investments, daily payments, and stock trading within a single app, supported by AI-powered smart investment advisory.</p>
-          <div class="metrics-row">
-            <div class="metric">
-              <div class="mval" style="color:#6366f1;">3</div>
-              <div class="mlab">Core Financial Scenarios<br>Investment · Payment · Stocks</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#6366f1;">2022</div>
-              <div class="mlab">Official Launch<br>Ongoing Iteration</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#6366f1;">Ongoing</div>
-              <div class="mlab">IT Build &amp;<br>Support Services</div>
-            </div>
-          </div>
-          <div class="tech-row">
-            <span>Ant mPaaS</span><span>Java</span><span>Node.JS</span><span>AWS</span><span>Cloudentity</span><span>N8N</span>
-          </div>
-          <div class="partner-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            Partner: Ant Group mPaaS
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ③ BNI Bank -->
-  <div class="case-block reveal" id="bni">
-    <div class="case-card" style="--accent:#0891b2;--accent-rgb:8,145,178;">
-      <div class="case-top">
-        <div class="case-info">
-          <div class="case-eyebrow">
-            <span class="flag-tag">🇮🇩 Indonesia</span>
-            <span class="status-tag" style="background:rgba(8,145,178,0.12);color:#0369a1;border-color:rgba(8,145,178,0.3);">
-              <i class="dot" style="background:#0891b2;"></i>Live · Significant Results
-            </span>
-          </div>
-          <h2>BNI Bank<br><em>Super App Digital Transformation</em></h2>
-          <div class="tag-row">
-            <span class="ctag cyan">Super App</span>
-            <span class="ctag cyan">Wealth Management</span>
-            <span class="ctag cyan">Custom Development</span>
-          </div>
-          <p class="case-desc">Indonesia's BNI Bank commissioned CSI to build a customized <strong>super-app solution</strong> integrating personal finance, wealth management, member loyalty, and customer engagement into a unified platform. In its first year, the app achieved 70% penetration among existing customers, surpassing 2.3 million monthly active users — a 55% year-on-year growth.</p>
-          <div class="metrics-row">
-            <div class="metric">
-              <div class="mval" style="color:#0891b2;">70%</div>
-              <div class="mlab">Existing Customer Penetration<br>First Year After Launch</div>
+        <!-- Browser screenshots: stacked -->
+        <div v-else-if="c.screenshotLayout === 'stacked'" class="case-screens web-screens">
+          <div
+            v-for="(src, si) in c.screenshots"
+            :key="si"
+            class="browser-wrap"
+            :style="si > 0 ? 'margin-top:12px;' : ''"
+          >
+            <div class="browser-bar">
+              <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
+              <span class="b-addr">{{ c.browserAddrs[si] }}</span>
             </div>
-            <div class="metric">
-              <div class="mval" style="color:#0891b2;">2.3M</div>
-              <div class="mlab">Monthly Active Users<br>MAU</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#0891b2;">55%</div>
-              <div class="mlab">YoY Growth Rate<br>New User Activation</div>
-            </div>
-          </div>
-          <div class="tech-row">
-            <span>Personal Finance</span><span>Wealth Mgmt</span><span>Loyalty Program</span><span>QRIS Payment</span><span>Fund Subscription</span>
-          </div>
-          <div class="partner-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            Independent end-to-end delivery
+            <img :src="src" :alt="c.title" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
           </div>
         </div>
-        <div class="case-screens phone-screens">
-          <div class="phone-wrap">
-            <img src="/cases/bni-funds.png" alt="BNI Fund List" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/bni-risk.png" alt="BNI Investment Profile" class="phone-img" />
-          </div>
-          <div class="phone-wrap">
-            <img src="/cases/bni-recap.png" alt="BNI Financial Overview" class="phone-img" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ④ AIIB ITP -->
-  <div class="case-block reveal" id="aiib">
-    <div class="case-card" style="--accent:#7c3aed;--accent-rgb:124,58,237;">
-      <div class="case-top reverse">
-        <div class="case-screens web-screens">
+        <!-- Browser screenshots: 1 + 2 grid -->
+        <div v-else-if="c.screenshotLayout === 'grid'" class="case-screens web-screens">
           <div class="browser-wrap">
             <div class="browser-bar">
               <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-              <span class="b-addr">infratech.aiib.org · Dashboard</span>
+              <span class="b-addr">{{ c.browserAddrs[0] }}</span>
             </div>
-            <img src="/cases/aiib-dashboard.png" alt="ITP Dashboard" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
+            <img :src="c.screenshots[0]" :alt="c.title" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
           </div>
-          <div class="browser-wrap" style="margin-top:12px;">
-            <div class="browser-bar">
-              <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-              <span class="b-addr">infratech.aiib.org · Solutions</span>
-            </div>
-            <img src="/cases/aiib-charts.png" alt="ITP Charts" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
-          </div>
-        </div>
-        <div class="case-info">
-          <div class="case-eyebrow">
-            <span class="flag-tag">🌏 AIIB</span>
-            <span class="status-tag" style="background:rgba(124,58,237,0.12);color:#6d28d9;border-color:rgba(124,58,237,0.3);">
-              <i class="dot" style="background:#7c3aed;"></i>Live · Feb 2024
-            </span>
-          </div>
-          <h2>AIIB<br><em>InfraTech Portal (ITP)</em></h2>
-          <div class="tag-row">
-            <span class="ctag purple">Digital Platform</span>
-            <span class="ctag purple">Full English Delivery</span>
-            <span class="ctag purple">Multilateral Institution</span>
-          </div>
-          <p class="case-desc">The Asian Infrastructure Investment Bank (AIIB) is the first multilateral development institution initiated by China, covering <strong>81% of the global population across 110 member states</strong>. Through Ant Group's JIGSAW project, CSI delivered the ITP infrastructure technology digital management platform — entirely in English — officially launched in February 2024.</p>
-          <div class="metrics-row">
-            <div class="metric">
-              <div class="mval" style="color:#7c3aed;">110</div>
-              <div class="mlab">Member States<br>Global Coverage</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#7c3aed;">81%</div>
-              <div class="mlab">World Population<br>65% of Global GDP</div>
-            </div>
-            <div class="metric">
-              <div class="mval" style="color:#7c3aed;">2024</div>
-              <div class="mlab">Official Launch<br>Ongoing O&amp;M</div>
-            </div>
-          </div>
-          <div class="tech-row">
-            <span>Azure AAD</span><span>SSO/IAM</span><span>AWS</span><span>MySQL</span><span>Redis</span><span>PowerBI</span>
-          </div>
-          <div class="partner-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            Partner: Ant Group (JIGSAW Project Backed)
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ⑤ World Aquatics -->
-  <div class="case-block reveal" id="fina">
-    <div class="case-card" style="--accent:#f59e0b;--accent-rgb:245,158,11;">
-      <div class="case-top">
-        <div class="case-info">
-          <div class="case-eyebrow">
-            <span class="flag-tag">🏊 Switzerland · Global Sports Organization</span>
-            <span class="status-tag" style="background:rgba(245,158,11,0.12);color:#b45309;border-color:rgba(245,158,11,0.3);">
-              <i class="dot" style="background:#f59e0b;"></i>In Progress · 2025
-            </span>
-          </div>
-          <h2>Alibaba × World Aquatics<br><em>World Aquatics Digital Operations Platform</em></h2>
-          <div class="tag-row">
-            <span class="ctag amber">Website Rebuild</span>
-            <span class="ctag amber">APP Development</span>
-            <span class="ctag amber">MPaaS</span>
-          </div>
-          <p class="case-desc">World Aquatics, headquartered in Switzerland, is the world's most influential aquatic sports organization. CSI collaborated with <strong>Ant Group and Alibaba</strong> to rebuild the official website and back-end systems and extend functionality to a mobile APP, enabling unified data connectivity between "website + APP" and integrated user operations management.</p>
-          <div class="feat-list">
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Responsive website rebuild · next-gen CMS · granular membership permissions</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Based on Ant MPaaS platform: push notifications · mini-programs · data analytics · smart targeting</div>
-            <div class="feat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Competition management · global membership services · precision marketing conversion</div>
-          </div>
-          <div class="tech-row">
-            <span>Ant MPaaS</span><span>Mini-Programs</span><span>CMS</span><span>Data Analytics</span><span>Smart Targeting</span>
-          </div>
-          <div class="partner-tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            Three-way collaboration: CSI · Ant Group · Alibaba
-          </div>
-        </div>
-        <div class="case-screens web-screens">
-          <div class="browser-wrap">
-            <div class="browser-bar">
-              <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-              <span class="b-addr">worldaquatics.com</span>
-            </div>
-            <img src="/cases/fina-home.png" alt="World Aquatics Official Website" style="width:100%;display:block;border-radius:0 0 10px 10px;" />
-          </div>
-          <div class="web-row" style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="browser-wrap">
               <div class="browser-bar" style="font-size:0.6rem;">
                 <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-                <span class="b-addr">World Records</span>
+                <span class="b-addr">{{ c.browserAddrs[1] }}</span>
               </div>
-              <img src="/cases/fina-records.png" alt="World Records" style="width:100%;display:block;border-radius:0 0 8px 8px;" />
+              <img :src="c.screenshots[1]" :alt="c.title" style="width:100%;display:block;border-radius:0 0 8px 8px;" />
             </div>
             <div class="browser-wrap">
               <div class="browser-bar" style="font-size:0.6rem;">
                 <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
-                <span class="b-addr">Highlights</span>
+                <span class="b-addr">{{ c.browserAddrs[2] }}</span>
               </div>
-              <img src="/cases/fina-highlights.png" alt="Olympics Highlights" style="width:100%;display:block;border-radius:0 0 8px 8px;" />
+              <img :src="c.screenshots[2]" :alt="c.title" style="width:100%;display:block;border-radius:0 0 8px 8px;" />
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- FOOTER -->
@@ -315,6 +145,15 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
+import { cases } from './data/cases.en.js'
+
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  return `${r},${g},${b}`
+}
+
 onMounted(() => {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) } })
