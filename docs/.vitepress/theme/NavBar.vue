@@ -1,12 +1,15 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter, useData } from 'vitepress'
+import PPTBuilderDrawer from './PPTBuilderDrawer.vue'
+
 defineProps({ active: String })
-const open = ref(false)
-const router = useRouter()
-const { page } = useData()
+const open       = ref(false)
+const drawerOpen = ref(false)
+const router     = useRouter()
+const { page }   = useData()
 const isEn = computed(() => page.value.relativePath.startsWith('en/'))
-const L = computed(() => isEn.value ? '/en/' : '/zh/')
+const L    = computed(() => isEn.value ? '/en/' : '/zh/')
 function switchLang() {
   const p = window.location.pathname
   router.go(p.startsWith('/zh/') ? p.replace('/zh/', '/en/') : p.replace('/en/', '/zh/'))
@@ -153,11 +156,23 @@ function switchLang() {
     </div>
   </div>
 
+  <button class="csi-ppt-btn" @click="drawerOpen = true" :title="isEn ? 'Export PPT' : '导出 PPT'">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="12" y1="18" x2="12" y2="12"/>
+      <polyline points="9 15 12 18 15 15"/>
+    </svg>
+    {{ isEn ? 'Export PPT' : '导出 PPT' }}
+  </button>
   <button @click="switchLang" class="csi-nav-en">{{ isEn ? '中文' : 'English' }}</button>
   <button class="csi-hamburger" :class="{ 'is-open': open }" @click="open = !open" aria-label="菜单">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- PPT Builder Drawer -->
+<PPTBuilderDrawer :open="drawerOpen" @close="drawerOpen = false" />
 
 <!-- Mobile Drawer -->
 <div class="csi-drawer" :class="{ 'is-open': open }">
@@ -176,6 +191,10 @@ function switchLang() {
   <a :href="L+'cases/cloud/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Cloud Native Cases' : '云原生迁移案例' }}</a>
   <a :href="L+'cases/campus/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'Smart Campus Cases' : '智慧园区案例' }}</a>
   <a :href="L+'cases/odc/'" class="csi-drawer-link csi-drawer-sub" @click="open=false">{{ isEn ? 'ODC Cases' : 'ODC 交付案例' }}</a>
+  <div class="csi-drawer-sep">{{ isEn ? 'Tools' : '工具' }}</div>
+  <button class="csi-drawer-link csi-drawer-ppt" @click="open=false; drawerOpen=true">
+    {{ isEn ? '📊 Export PPT' : '📊 导出 PPT' }}
+  </button>
 </div>
 </template>
 
@@ -297,6 +316,29 @@ function switchLang() {
 
 .csi-sol-item + .csi-sol-item {
   border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* ── Export PPT button ── */
+.csi-ppt-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 15px; border-radius: 10px;
+  border: 1.5px solid rgba(29,78,216,0.22);
+  background: rgba(29,78,216,0.05);
+  color: #1d4ed8; font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; white-space: nowrap; margin-right: 10px;
+  transition: background .18s, border-color .18s, box-shadow .18s;
+  font-family: 'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;
+}
+.csi-ppt-btn:hover {
+  background: rgba(29,78,216,0.10);
+  border-color: rgba(29,78,216,0.45);
+  box-shadow: 0 2px 10px rgba(29,78,216,0.15);
+}
+.csi-drawer-ppt {
+  width: 100%; background: none; border: none; text-align: left;
+  cursor: pointer; font-size: 0.95rem; font-weight: 600; color: #1d4ed8;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-family: 'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;
 }
 
 /* ── Lang switch button ── */
