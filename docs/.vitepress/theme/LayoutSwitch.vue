@@ -1,4 +1,5 @@
 <script setup>
+import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import HomeAurora from './HomeAurora.vue'
@@ -28,7 +29,56 @@ import HomeBSSEn from './HomeBSSEn.vue'
 import HomeMSZh from './HomeMSZh.vue'
 import HomeMSEn from './HomeMSEn.vue'
 
-const { frontmatter } = useData()
+const { frontmatter, page } = useData()
+
+let hideTimer = null
+let sidebarEl = null
+
+function showSidebar() {
+  clearTimeout(hideTimer)
+  document.documentElement.classList.add('sidebar-open')
+}
+
+function scheduleSidebarHide() {
+  clearTimeout(hideTimer)
+  hideTimer = setTimeout(() => {
+    document.documentElement.classList.remove('sidebar-open')
+  }, 300)
+}
+
+function cancelHide() {
+  clearTimeout(hideTimer)
+}
+
+function bindSidebarHover() {
+  sidebarEl = document.querySelector('.VPSidebar')
+  if (sidebarEl && !sidebarEl._hoverBound) {
+    sidebarEl.addEventListener('mouseenter', cancelHide)
+    sidebarEl.addEventListener('mouseleave', scheduleSidebarHide)
+    sidebarEl._hoverBound = true
+  }
+}
+
+onMounted(bindSidebarHover)
+
+onUnmounted(() => {
+  clearTimeout(hideTimer)
+  document.documentElement.classList.remove('sidebar-open')
+  if (sidebarEl) {
+    sidebarEl.removeEventListener('mouseenter', cancelHide)
+    sidebarEl.removeEventListener('mouseleave', scheduleSidebarHide)
+    sidebarEl._hoverBound = false
+    sidebarEl = null
+  }
+})
+
+// 导航后收起，并重新绑定新页面的 sidebar hover
+watch(() => page.value.relativePath, async () => {
+  clearTimeout(hideTimer)
+  document.documentElement.classList.remove('sidebar-open')
+  await nextTick()
+  bindSidebarHover()
+})
 </script>
 
 <template>
@@ -61,6 +111,15 @@ const { frontmatter } = useData()
   <DefaultTheme.Layout v-else>
     <template #nav-bar-title-before>
       <span class="vp-logo-chip">CSI</span>
+    </template>
+    <template #layout-top>
+      <!-- 鼠标移入左边缘触发侧边栏弹出 -->
+      <div
+        class="sidebar-trigger-zone"
+        @mouseenter="showSidebar"
+        @mouseleave="scheduleSidebarHide"
+        aria-hidden="true"
+      />
     </template>
   </DefaultTheme.Layout>
 </template>

@@ -69,7 +69,7 @@ export const REGISTRY = [
 ]
 
 async function resolveSectionRenderer(sectionId, locale) {
-  const mod = await import(`./slides/${sectionId}.js`)
+  const mod = await import(`./html/${sectionId}.js`)
   const dataFile = sectionId.split('-')[0]
   const dataLoader = () => import(`../data/${dataFile}.${locale}.js`)
   return { renderFn: mod.render, dataLoader }

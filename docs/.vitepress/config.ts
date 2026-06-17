@@ -51,5 +51,11 @@ export default defineConfig({
       prev: false,
       next: false,
     }
+  },
+  transformPageData(pageData) {
+    // Disable right-side TOC on all doc pages; home pages use their own full layouts
+    if (!pageData.frontmatter.layout) {
+      pageData.frontmatter.aside = false
+    }
   }
 })

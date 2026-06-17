@@ -6,8 +6,8 @@ defineProps({ open: Boolean })
 defineEmits(['close'])
 
 // Use import.meta.glob so Vite can statically analyse all possible modules
-const dataModules  = import.meta.glob('./data/*.js')
-const slideModules = import.meta.glob('./ppt/slides/*.js')
+const dataModules = import.meta.glob('./data/*.js')
+const htmlModules = import.meta.glob('./ppt/html/*.js')
 
 // ── State ───────────────────────────────────────────────────────────────────
 const uiLocale     = ref('en')   // controls left-panel labels
@@ -16,6 +16,7 @@ const selTheme     = ref('light')
 const clientName   = ref('')
 const generating   = ref(false)
 const genError     = ref('')
+const genProgress  = ref('')   // e.g. "Rendering slide 2/5…"
 
 const expandedGroups = ref([])             // groupId[]
 const caseData       = reactive({})        // { [dataFile]: case[] }
@@ -92,50 +93,72 @@ function removeItem(id) {
 async function generate() {
   if (generating.value || !selectedItems.value.length) return
   generating.value = true
-  genError.value = ''
+  genError.value   = ''
+  genProgress.value = ''
+
   try {
     const { default: PptxGenJS } = await import('pptxgenjs')
-    const { lightTheme }    = await import('./ppt/themes/light.js')
-    const { techDarkTheme } = await import('./ppt/themes/tech-dark.js')
+    const { renderSlide }        = await import('./ppt/render.js')
+    const { lightTheme }         = await import('./ppt/themes/light.js')
+    const { techDarkTheme }      = await import('./ppt/themes/tech-dark.js')
     const theme  = selTheme.value === 'tech-dark' ? techDarkTheme : lightTheme
     const locale = exportLocale.value
 
     const pptx = new PptxGenJS()
     pptx.layout = 'LAYOUT_WIDE'
 
-    // Cover (always first)
-    const coverMod = await slideModules['./ppt/slides/cover.js']()
-    coverMod.render(pptx, { clientName: clientName.value }, theme, locale)
+    // Helper: add one slide from HTML string
+    async function addHtmlSlide(html) {
+      const imgData = await renderSlide(html)
+      const s = pptx.addSlide()
+      s.addImage({ data: imgData, x: 0, y: 0, w: 13.33, h: 7.5 })
+    }
 
-    // User-selected sections, in order
-    for (const item of selectedItems.value) {
-      if (item.type === 'section') {
-        const slideKey = `./ppt/slides/${item.id}.js`
-        const domain   = item.id.split('-')[0]
-        const dataKey  = `./data/${domain}.${locale}.js`
-        if (!(slideKey in slideModules) || !(dataKey in dataModules)) continue
-        const [slideMod, dataMod] = await Promise.all([
-          slideModules[slideKey](),
+    // Build ordered slide list: cover + selected + closing
+    const slideList = [
+      { type: 'cover' },
+      ...selectedItems.value,
+      { type: 'closing' },
+    ]
+    const total = slideList.length
+
+    for (let i = 0; i < slideList.length; i++) {
+      const item = slideList[i]
+      genProgress.value = `Rendering slide ${i + 1}/${total}…`
+
+      if (item.type === 'cover') {
+        const mod = await htmlModules['./ppt/html/cover.js']()
+        await addHtmlSlide(mod.render({ clientName: clientName.value }, theme, locale))
+
+      } else if (item.type === 'closing') {
+        const mod = await htmlModules['./ppt/html/closing.js']()
+        await addHtmlSlide(mod.render({ clientName: clientName.value }, theme, locale))
+
+      } else if (item.type === 'section') {
+        const htmlKey = `./ppt/html/${item.id}.js`
+        const domain  = item.id.split('-')[0]
+        const dataKey = `./data/${domain}.${locale}.js`
+        if (!(htmlKey in htmlModules) || !(dataKey in dataModules)) continue
+        const [htmlMod, dataMod] = await Promise.all([
+          htmlModules[htmlKey](),
           dataModules[dataKey](),
         ])
-        slideMod.render(pptx, dataMod, theme, locale)
+        await addHtmlSlide(htmlMod.render(dataMod, theme, locale))
+
       } else if (item.type === 'case') {
+        const htmlKey = `./ppt/html/case.js`
         const dataKey = `./data/${item.dataFile}.${locale}.js`
-        if (!(dataKey in dataModules)) continue
-        const [caseMod, dataMod] = await Promise.all([
-          slideModules['./ppt/slides/case.js'](),
+        if (!((`./ppt/html/case.js`) in htmlModules) || !(dataKey in dataModules)) continue
+        const [htmlMod, dataMod] = await Promise.all([
+          htmlModules['./ppt/html/case.js'](),
           dataModules[dataKey](),
         ])
         const caseObj = dataMod.cases?.find(c => c.id === item.caseId)
-        if (caseObj) caseMod.render(pptx, caseObj, theme, locale)
+        if (caseObj) await addHtmlSlide(htmlMod.render(caseObj, theme, locale))
       }
     }
 
-    // Closing (always last)
-    const closingMod = await slideModules['./ppt/slides/closing.js']()
-    closingMod.render(pptx, { clientName: clientName.value }, theme, locale)
-
-    // Build file name
+    genProgress.value = 'Writing file…'
     const suffix   = locale === 'zh' ? '方案介绍_ZH' : 'Proposal_EN'
     const baseName = clientName.value
       ? `CSI_${clientName.value.replace(/\s+/g, '_')}_${suffix}`
@@ -145,7 +168,8 @@ async function generate() {
     genError.value = e.message || 'Generation failed'
     console.error('[PPTBuilder]', e)
   } finally {
-    generating.value = false
+    generating.value  = false
+    genProgress.value = ''
   }
 }
 </script>
@@ -313,7 +337,7 @@ async function generate() {
         >
           <span v-if="generating" class="ppt-spinner" />
           <span>{{ generating
-            ? (uiLocale === 'en' ? 'Generating…' : '生成中…')
+            ? (genProgress || (uiLocale === 'en' ? 'Generating…' : '生成中…'))
             : (uiLocale === 'en' ? 'Generate & Download' : '生成并下载')
           }}</span>
         </button>

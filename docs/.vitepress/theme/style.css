@@ -1138,6 +1138,122 @@ a.cms-subsystem-card:hover .cms-sub-arrow {
   color: var(--vp-c-text-2);
 }
 
+/* ════════════════════════════════════════
+   侧边栏抽屉 + 内容全宽居中（重构版）
+════════════════════════════════════════ */
+
+@media (min-width: 960px) {
+  /*
+   * 不覆盖 --vp-sidebar-width 变量：sidebar 自身及其内部元素依赖它做宽度计算，
+   * 归零会导致侧边栏内容为空。改为逐项用 !important 覆盖受影响的外层容器。
+   */
+
+  /* 导航栏左侧留给 sidebar 的缩进 → 归零，防止标题与搜索框重叠 */
+  .VPNavBar.has-sidebar .container {
+    padding-left: 24px !important;
+  }
+
+  /* 内容区不为侧边栏留位（sidebar 已以浮层方式脱离文档流） */
+  .VPContent.has-sidebar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* LocalNav 的侧边栏缩进也一并清除 */
+  .VPLocalNav.has-sidebar {
+    padding-left: 0 !important;
+  }
+
+  /*
+   * VitePress 只对 .VPDoc:not(.has-sidebar) 在 960px 处加 flex 居中，
+   * has-sidebar 页面要到 1280px 才居中。手动补上这段，让 960px 起就居中。
+   */
+  .VPDoc .container,
+  .VPDoc.has-sidebar .container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+  }
+
+  /* 内容区宽度保持不变 */
+  .VPDoc .content-container,
+  .VPDoc.has-sidebar .content-container,
+  .VPDoc.has-aside .content-container {
+    width: 100% !important;
+    max-width: 1100px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  /*
+   * 侧边栏：opacity + transform 隐藏，保持 Vue 完整渲染。
+   * position/left/top 显式固定在最左侧，防止宽屏下被 VitePress 重定位。
+   */
+  .VPSidebar {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 320px !important;
+    max-width: 320px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateX(-100%) !important;
+    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.19, 1, 0.22, 1) !important;
+    box-shadow: none !important;
+  }
+
+  /* 滑入时固定在最左侧 */
+  html.sidebar-open .VPSidebar {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateX(0) !important;
+    box-shadow: 4px 0 32px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  /* 左边缘感应条（20px 热区） */
+  .sidebar-trigger-zone {
+    position: fixed;
+    left: 0;
+    top: var(--vp-nav-height, 64px);
+    bottom: 0;
+    width: 20px;
+    z-index: 101;
+    background: linear-gradient(to right, rgba(29, 78, 216, 0.1), transparent);
+    cursor: pointer;
+  }
+}
+
+/* 1440px+ 断点：VitePress 会重新注入 padding，再次覆盖 */
+@media (min-width: 1440px) {
+  .VPContent.has-sidebar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  /* VitePress 在 1440px+ 会重新计算 sidebar 的 width 和 padding-left（基于视口宽度），
+     导致目录项被推离左边缘。全部锁定保持 320px + 32px padding。 */
+  .VPSidebar {
+    width: 320px !important;
+    max-width: 320px !important;
+    padding-left: 32px !important;
+    left: 0 !important;
+  }
+}
+
+/* 隐藏深色/浅色外观切换按钮（桌面端导航栏 & 移动端抽屉） */
+.VPNavBarAppearance,
+.VPNavScreenAppearance {
+  display: none !important;
+}
+
 /* ── 响应式 ── */
 @media(max-width:960px){
   .cms-position-grid,.cms-subsystem-grid,.cms-incentive-grid{grid-template-columns:repeat(2,1fr);}
