@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
-import { architectureLayers, deliverySteps, pmCards } from './data/miniapp.zh.js'
+import { architectureLayers, deliverySteps, pmCards, painPoints, valueFlywheel, flywheelCenter } from './data/miniapp.zh.js'
 
 onMounted(() => {
   initReveal()
@@ -195,6 +195,51 @@ function initIOCDashboard() {
 
 <!-- PAGE BODY -->
 <div class="mn-body">
+
+  <!-- 为什么现在要做小程序 -->
+  <section class="mn-sec reveal" id="why-now">
+    <div class="mn-sec-header">
+      <div class="mn-eyebrow">Why Now · 运营挑战与价值</div>
+      <h2 class="mn-sec-title">为什么现在要做小程序</h2>
+    </div>
+    <div class="mn-why-grid">
+      <div class="mn-why-col">
+        <div class="mn-why-col-hd mn-why-hd-pain">运营商痛点</div>
+        <div class="mn-pain-list">
+          <div v-for="p in painPoints" :key="p.title" class="mn-pain-item">
+            <div class="mn-pain-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            </div>
+            <div class="mn-pain-text">
+              <h4>{{ p.title }}</h4>
+              <p>{{ p.desc }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mn-why-arrow">→</div>
+      <div class="mn-why-col">
+        <div class="mn-why-col-hd mn-why-hd-value">小程序运营价值飞轮</div>
+        <div class="mn-flywheel">
+          <div class="mn-flywheel-center">
+            <div class="mn-flywheel-phone">
+              <div class="mn-flywheel-phone-label">Super App</div>
+              <div class="mn-flywheel-phone-chips">
+                <span v-for="m in flywheelCenter.miniPrograms" :key="m">{{ m }}</span>
+              </div>
+            </div>
+          </div>
+          <div v-for="(f, i) in valueFlywheel" :key="f.num" class="mn-flywheel-node" :class="`mn-flywheel-node-${i+1}`">
+            <div class="mn-flywheel-num">{{ f.num }}</div>
+            <div class="mn-flywheel-text">
+              <h5>{{ f.title }}</h5>
+              <p>{{ f.desc }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- 核心价值 -->
   <section class="mn-sec reveal" id="value">
@@ -2833,4 +2878,75 @@ function initIOCDashboard() {
 @media (max-width: 900px) { .mn-all-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .mn-all-grid { grid-template-columns: 1fr; } }
 
+/* ── WHY NOW ── */
+.mn-why-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 32px; align-items: start; }
+.mn-why-arrow { font-size: 1.6rem; color: #94a3b8; align-self: center; }
+.mn-why-col-hd {
+  font-size: 0.85rem; font-weight: 800; color: #fff; padding: 10px 18px;
+  border-radius: 10px; margin-bottom: 18px; text-align: center;
+}
+.mn-why-hd-pain { background: linear-gradient(135deg,#1d4ed8,#3b82f6); }
+.mn-why-hd-value { background: linear-gradient(135deg,#0891b2,#06b6d4); }
+.mn-pain-list { display: flex; flex-direction: column; gap: 14px; }
+.mn-pain-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; box-shadow: var(--shadow);
+}
+.mn-pain-icon {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg,#ef4444,#f87171);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(239,68,68,0.25);
+}
+.mn-pain-text h4 { font-size: 0.9rem; font-weight: 800; color: var(--text1); margin: 0 0 4px; }
+.mn-pain-text p { font-size: 0.8rem; color: var(--text2); line-height: 1.55; margin: 0; }
+
+.mn-flywheel { position: relative; width: 100%; max-width: 420px; aspect-ratio: 1 / 1; margin: 0 auto; }
+.mn-flywheel::before {
+  content: ''; position: absolute; inset: 16%;
+  border: 2px dashed rgba(124,58,237,0.35); border-radius: 50%;
+}
+.mn-flywheel-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2; }
+.mn-flywheel-phone {
+  width: 110px; min-height: 90px; border-radius: 14px; border: 2px solid var(--border);
+  background: var(--card-bg); box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; padding: 10px 8px;
+}
+.mn-flywheel-phone-label { font-size: 0.68rem; font-weight: 900; color: var(--text1); }
+.mn-flywheel-phone-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; }
+.mn-flywheel-phone-chips span {
+  font-size: 0.52rem; font-weight: 700; padding: 2px 5px; border-radius: 999px;
+  background: rgba(124,58,237,0.12); color: var(--text2);
+}
+.mn-flywheel-node { position: absolute; width: 130px; text-align: center; transform: translate(-50%,-50%); }
+.mn-flywheel-node-1 { left: 50%; top: 14%; }
+.mn-flywheel-node-2 { left: 84%; top: 39%; }
+.mn-flywheel-node-3 { left: 71%; top: 79%; }
+.mn-flywheel-node-4 { left: 29%; top: 79%; }
+.mn-flywheel-node-5 { left: 16%; top: 39%; }
+.mn-flywheel-num {
+  width: 26px; height: 26px; border-radius: 50%; margin: 0 auto 6px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg,#7c3aed,#a78bfa); color: #fff; font-weight: 900; font-size: 0.78rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+.mn-flywheel-text h5 { font-size: 0.8rem; font-weight: 800; color: var(--text1); margin: 0 0 3px; }
+.mn-flywheel-text p { font-size: 0.7rem; color: var(--text3); line-height: 1.4; margin: 0; }
+
+@media (max-width: 900px) {
+  .mn-why-grid { grid-template-columns: 1fr; }
+  .mn-why-arrow { display: none; }
+}
+@media (max-width: 640px) {
+  .mn-flywheel { position: static; aspect-ratio: auto; max-width: 100%; display: flex; flex-direction: column; gap: 14px; }
+  .mn-flywheel::before { display: none; }
+  .mn-flywheel-center { position: static; order: -1; }
+  .mn-flywheel-node {
+    position: static; width: auto; transform: none;
+    display: flex; align-items: center; gap: 12px; text-align: left;
+  }
+  .mn-flywheel-num { margin: 0; flex-shrink: 0; }
+}
 </style>
