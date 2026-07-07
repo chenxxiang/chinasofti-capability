@@ -53,6 +53,85 @@ export const pmCards = [
   { color: '#059669', grad: 'linear-gradient(135deg,#059669,#10b981)', title: '流程看护', desc: 'CP1/CP2/CP3 全周期检查点，准出准入标准，度量分析' },
 ]
 
+export const painPoints = [
+  { title: '开通频率低', desc: '用户较少打开 App，限制了互动与变现机会' },
+  { title: '服务体验割裂', desc: '功能分散在多个独立 App 中，用户切换成本高，体验割裂' },
+  { title: '新服务上线慢', desc: '发版周期长、应用商店审核滞后，新服务与营销活动难以快速触达用户' },
+  { title: '合作伙伴变现难', desc: '各服务相互独立，难以引入合作伙伴，也难以共享价值' },
+]
+
+export const valueFlywheel = [
+  { num: 1, title: '更多日常场景', desc: '小程序覆盖更多生活与金融场景' },
+  { num: 2, title: '更高打开频率', desc: '用户每天都有更多理由打开 App' },
+  { num: 3, title: '更强用户留存', desc: '体验粘性提升用户忠诚度与生命周期价值' },
+  { num: 4, title: '更快服务上线', desc: '小程序热更新，天级交付新服务而非月级' },
+  { num: 5, title: '合作伙伴生态收入', desc: '更多合作伙伴、更多交易、更多收入' },
+]
+
+export const flywheelCenter = {
+  miniPrograms: ['钱包', '账单', '交通卡', '积分', '商城', '伙伴应用'],
+  capabilities: ['账户', '数据', 'API'],
+}
+
+export const buildPaths = [
+  {
+    key: 'pathA',
+    title: 'Path A · 整合孤立 App 为 Super App',
+    grad: 'linear-gradient(135deg,#1d4ed8,#3b82f6)',
+    steps: [
+      { num: 0, title: '今天：孤立 App', chips: ['钱包 App', '充值 App', '账单 App', '客服 App'], isSilo: true },
+      { num: 1, title: '搭建 Super App 壳', chips: [] },
+      { num: 2, title: '服务小程序化', chips: ['钱包', '账单', '交通卡', '积分'] },
+    ],
+    benefits: ['统一入口', '运营一体化', '增强用户粘性'],
+  },
+  {
+    key: 'pathB',
+    title: 'Path B · 现有 App 渐进演进为小程序平台',
+    grad: 'linear-gradient(135deg,#7c3aed,#a78bfa)',
+    steps: [
+      { num: 1, title: '现有钱包 App', chips: ['余额', '转账', '缴费'] },
+      { num: 2, title: '试点 1–2 个小程序', chips: ['交通卡', '积分'] },
+      { num: 3, title: '集成 SDK / 容器', chips: ['交通卡', '积分', 'SDK / Open API'] },
+      { num: 4, title: 'Super App 基座 + 更多小程序', chips: ['钱包', '账单', '交通卡', '积分', '商城'] },
+      { num: 5, title: '合作伙伴生态扩展', chips: ['伙伴应用'] },
+    ],
+    benefits: ['变更风险更低', '上市更快', '生态持续增长'],
+  },
+]
+
+export const evolutionPhases = [
+  {
+    num: '01', title: '财务基础', tag: '获客建信任',
+    lc: '#3b82f6', lbg: 'rgba(59,130,246,0.08)', lbd: 'rgba(59,130,246,0.35)',
+    apps: ['钱包 App', '财富管理', 'eKYC', '积分'],
+    note: '小程序开放：第三方接入 → 转账，权益 → 身份',
+  },
+  {
+    num: '02', title: '生活消费', tag: '日常习惯培养 → ARPU 增长',
+    lc: '#a78bfa', lbg: 'rgba(167,139,250,0.08)', lbd: 'rgba(167,139,250,0.35)',
+    apps: ['游戏', '票务', '餐饮', '电商'],
+    note: '小程序开放性',
+  },
+  {
+    num: '03', title: '智能与基础设施', tag: '留存用户 → 开放伙伴生态',
+    lc: '#06b6d4', lbg: 'rgba(6,182,212,0.08)', lbd: 'rgba(6,182,212,0.35)',
+    apps: ['AI 智能体', '交通卡', '区块链', 'IM', 'EV 充电', '智能家居', '短视频'],
+  },
+]
+
+export const evolutionEcosystem = [
+  '政务服务 · 教育 · 保险 · 出行 · 农业',
+  '生态合作伙伴：内容 · 商户 · 服务 · 数据',
+]
+
+export const evolutionFooter = [
+  { title: '团队协作', desc: '市场、产品、运营联合团队' },
+  { title: '运作机制', desc: '月度例会 + 周度冲刺评审' },
+  { title: '生态布局', desc: '引入合作伙伴进入 AppCube 场景' },
+  { title: '专家资源', desc: '专属交付与运营专家' },
+]
+
 export const designBrand = {
   palette: [
     { name: 'CNEF 绿',  hex: '#439447', role: '主色'  },

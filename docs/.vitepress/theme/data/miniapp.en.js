@@ -53,6 +53,85 @@ export const pmCards = [
   { color: '#059669', grad: 'linear-gradient(135deg,#059669,#10b981)', title: 'Process Monitoring', desc: 'CP1 / CP2 / CP3 full-cycle checkpoints with entry/exit criteria and measurement analysis' },
 ]
 
+export const painPoints = [
+  { title: 'Low App Open Frequency', desc: 'Users open the app infrequently, limiting engagement and revenue opportunities.' },
+  { title: 'Fragmented Service Journeys', desc: 'Siloed apps create context switching, weakening the overall experience.' },
+  { title: 'Slow New-Service Rollout', desc: 'Long release cycles and store reviews delay time-to-market and campaigns.' },
+  { title: 'Limited Partner Monetization', desc: 'Hard to onboard partners and share value across disconnected services.' },
+]
+
+export const valueFlywheel = [
+  { num: 1, title: 'More Daily Scenarios', desc: 'Mini-programs cover more life and financial scenarios.' },
+  { num: 2, title: 'Higher Open Frequency', desc: 'More reasons to open the app every day.' },
+  { num: 3, title: 'Better Retention', desc: 'Stickier experience improves user loyalty and lifetime value.' },
+  { num: 4, title: 'Faster Service Launch', desc: 'Hot updates for mini-programs deliver services in days, not months.' },
+  { num: 5, title: 'Partner Ecosystem Revenue', desc: 'More partners, more transactions, more revenue.' },
+]
+
+export const flywheelCenter = {
+  miniPrograms: ['Wallet', 'Bills', 'Transit', 'Loyalty', 'Commerce', 'Partner Apps'],
+  capabilities: ['Account', 'Data', 'API'],
+}
+
+export const buildPaths = [
+  {
+    key: 'pathA',
+    title: 'Path A — Consolidate Silo Apps into One Super App',
+    grad: 'linear-gradient(135deg,#1d4ed8,#3b82f6)',
+    steps: [
+      { num: 0, title: 'Today: Siloed Apps', chips: ['Wallet App', 'Recharge App', 'Bills App', 'Care App'], isSilo: true },
+      { num: 1, title: 'Build Super App Shell', chips: [] },
+      { num: 2, title: 'Services as Mini-Programs', chips: ['Wallet', 'Bills', 'Transit', 'Loyalty'] },
+    ],
+    benefits: ['One app destination', 'Unified operations', 'Stronger engagement'],
+  },
+  {
+    key: 'pathB',
+    title: 'Path B — Evolve Existing App into Mini-Program Platform',
+    grad: 'linear-gradient(135deg,#7c3aed,#a78bfa)',
+    steps: [
+      { num: 1, title: 'Current Wallet App', chips: ['Balance', 'Transfer', 'Pay Bills'] },
+      { num: 2, title: 'Pilot 1–2 Mini-Programs', chips: ['Transit', 'Loyalty'] },
+      { num: 3, title: 'Integrate SDK / Container', chips: ['Transit', 'Loyalty', 'SDK / Open APIs'] },
+      { num: 4, title: 'Super App Base + More Mini-Programs', chips: ['Wallet', 'Bills', 'Transit', 'Loyalty', 'Commerce'] },
+      { num: 5, title: 'Partner Ecosystem Expansion', chips: ['Partner Apps'] },
+    ],
+    benefits: ['Lower change risk', 'Faster time-to-market', 'Continuous ecosystem growth'],
+  },
+]
+
+export const evolutionPhases = [
+  {
+    num: '01', title: 'Financial Foundation', tag: 'Acquire users → build trust',
+    lc: '#3b82f6', lbg: 'rgba(59,130,246,0.08)', lbd: 'rgba(59,130,246,0.35)',
+    apps: ['Wallet App', 'Wealth', 'eKYC', 'Loyalty'],
+    note: 'Mini-App Setup: 3rd Party → transfers, Rewards → identity',
+  },
+  {
+    num: '02', title: 'Life & Commerce', tag: 'Daily habit → ARPU growth',
+    lc: '#a78bfa', lbg: 'rgba(167,139,250,0.08)', lbd: 'rgba(167,139,250,0.35)',
+    apps: ['Gaming', 'Ticketing', 'F&B', 'E-Commerce'],
+    note: 'Mini-app openness',
+  },
+  {
+    num: '03', title: 'Intelligence & Infrastructure', tag: 'Retain users → open partner ecosystem',
+    lc: '#06b6d4', lbg: 'rgba(6,182,212,0.08)', lbd: 'rgba(6,182,212,0.35)',
+    apps: ['AI Agent', 'Transit', 'Blockchain', 'IM', 'EV Charging', 'Smart Home', 'Short Video'],
+  },
+]
+
+export const evolutionEcosystem = [
+  'Gov services · education · insurance · travel · agriculture',
+  'Ecosystem partners: content · merchants · services · data',
+]
+
+export const evolutionFooter = [
+  { title: 'Team Collaboration', desc: 'Joint market, product and operations team' },
+  { title: 'Operating Mechanism', desc: 'Monthly steering · weekly sprint review' },
+  { title: 'Ecosystem Layout', desc: 'Bring partners into AppCube scenarios' },
+  { title: 'Expert Resources', desc: 'Named delivery and operations specialists' },
+]
+
 export const designBrand = {
   palette: [
     { name: 'CNEF Green',   hex: '#439447', role: 'Primary'    },
