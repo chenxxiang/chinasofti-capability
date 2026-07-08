@@ -18,29 +18,14 @@
 
 ## 广汽诊断大师
 
-<div style="margin:24px 0;border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,0.08);box-shadow:0 4px 24px rgba(0,0,0,0.1);background:#000;">
-  <video
-    controls
-    preload="metadata"
-    style="width:100%;display:block;max-height:600px;"
-    poster=""
-  >
-    <source src="/solutions/ai-agent/videos/guangqi-diagnostics.mp4" type="video/mp4" />
-    您的浏览器不支持 HTML5 视频播放，请升级浏览器后重试。
-  </video>
+<div style="margin:24px 0;border-radius:16px;padding:48px 24px;text-align:center;border:1px solid rgba(0,0,0,0.08);background:#f8fafc;color:#64748b;">
+  演示视频暂时下线，敬请期待。
 </div>
 
 ---
 
 ## 中软电力两票
 
-<div style="margin:24px 0;border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,0.08);box-shadow:0 4px 24px rgba(0,0,0,0.1);background:#000;">
-  <video
-    controls
-    preload="metadata"
-    style="width:100%;display:block;max-height:600px;"
-  >
-    <source src="/solutions/ai-agent/videos/csi-power-tickets.mp4" type="video/mp4" />
-    您的浏览器不支持 HTML5 视频播放，请升级浏览器后重试。
-  </video>
+<div style="margin:24px 0;border-radius:16px;padding:48px 24px;text-align:center;border:1px solid rgba(0,0,0,0.08);background:#f8fafc;color:#64748b;">
+  演示视频暂时下线，敬请期待。
 </div>
