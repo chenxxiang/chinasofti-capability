@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
-import { architectureLayers, deliverySteps, pmCards, painPoints, valueFlywheel, flywheelCenter } from './data/miniapp.zh.js'
+import { architectureLayers, deliverySteps, pmCards, painPoints, valueFlywheel, flywheelCenter, buildPaths } from './data/miniapp.zh.js'
 
 onMounted(() => {
   initReveal()
@@ -237,6 +237,34 @@ function initIOCDashboard() {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two Build Paths -->
+  <section class="mn-sec reveal" id="build-paths">
+    <div class="mn-sec-header">
+      <div class="mn-eyebrow">Two Build Paths · 建设路径</div>
+      <h2 class="mn-sec-title">两条 Super App 建设路径</h2>
+    </div>
+    <div v-for="path in buildPaths" :key="path.key" class="mn-path-block">
+      <h3 class="mn-path-title">{{ path.title }}</h3>
+      <div class="mn-flow-steps mn-path-steps">
+        <template v-for="(step, i) in path.steps" :key="step.num">
+          <div class="mn-flow-arrow" v-if="i > 0">→</div>
+          <div class="mn-flow-step mn-path-step" :class="{ 'mn-path-step-silo': step.isSilo }">
+            <div class="mn-flow-num" :style="`background:${path.grad};`">{{ step.num }}</div>
+            <div class="mn-path-phone">
+              <span v-for="c in step.chips" :key="c" class="mn-path-phone-chip">{{ c }}</span>
+              <span v-if="!step.chips.length" class="mn-path-phone-empty"></span>
+            </div>
+            <div class="mn-flow-content"><h4>{{ step.title }}</h4></div>
+          </div>
+        </template>
+      </div>
+      <div class="mn-path-benefits">
+        <span class="mn-path-benefits-label">Operator Benefits</span>
+        <span v-for="b in path.benefits" :key="b" class="mn-path-benefit-chip">{{ b }}</span>
       </div>
     </div>
   </section>
@@ -2948,5 +2976,40 @@ function initIOCDashboard() {
     display: flex; align-items: center; gap: 12px; text-align: left;
   }
   .mn-flywheel-num { margin: 0; flex-shrink: 0; }
+}
+
+/* ── BUILD PATHS ── */
+.mn-path-block { margin-bottom: 48px; }
+.mn-path-block:last-child { margin-bottom: 0; }
+.mn-path-title { font-size: 1.05rem; font-weight: 800; color: var(--text1); margin: 0 0 22px; }
+.mn-path-phone {
+  width: 84px; min-height: 64px; margin: 10px auto 12px;
+  border: 2px solid var(--border); border-radius: 10px; background: var(--card-bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 3px; padding: 6px 5px; position: relative;
+}
+.mn-path-phone::after {
+  content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 2px; border-radius: 2px; background: var(--border);
+}
+.mn-path-phone-chip {
+  font-size: 0.58rem; font-weight: 700; line-height: 1.2;
+  padding: 2px 6px; border-radius: 999px;
+  background: rgba(29,78,216,0.08); color: var(--text2); white-space: nowrap;
+}
+.mn-path-phone-empty { width: 30px; height: 30px; border-radius: 6px; border: 1.5px dashed var(--border); }
+.mn-path-step-silo .mn-path-phone { border-style: dashed; }
+.mn-path-benefits {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-top: 8px; padding-top: 16px; border-top: 1px dashed var(--border);
+}
+.mn-path-benefits-label {
+  font-size: 0.72rem; font-weight: 800; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.mn-path-benefit-chip {
+  font-size: 0.78rem; font-weight: 600; color: var(--text2);
+  background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
+  padding: 4px 12px; border-radius: 999px;
 }
 </style>
