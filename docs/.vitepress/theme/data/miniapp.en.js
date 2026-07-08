@@ -78,6 +78,7 @@ export const buildPaths = [
     key: 'pathA',
     title: 'Path A — Consolidate Silo Apps into One Super App',
     grad: 'linear-gradient(135deg,#1d4ed8,#3b82f6)',
+    glow: '59,130,246',
     steps: [
       { num: 0, title: 'Today: Siloed Apps', chips: ['Wallet App', 'Recharge App', 'Bills App', 'Care App'], isSilo: true },
       { num: 1, title: 'Build Super App Shell', chips: [] },
@@ -89,6 +90,7 @@ export const buildPaths = [
     key: 'pathB',
     title: 'Path B — Evolve Existing App into Mini-Program Platform',
     grad: 'linear-gradient(135deg,#7c3aed,#a78bfa)',
+    glow: '167,139,250',
     steps: [
       { num: 1, title: 'Current Wallet App', chips: ['Balance', 'Transfer', 'Pay Bills'] },
       { num: 2, title: 'Pilot 1–2 Mini-Programs', chips: ['Transit', 'Loyalty'] },

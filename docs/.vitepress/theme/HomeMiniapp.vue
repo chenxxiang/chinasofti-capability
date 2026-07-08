@@ -250,14 +250,17 @@ function initIOCDashboard() {
       <div class="mn-eyebrow">Two Build Paths · 建设路径</div>
       <h2 class="mn-sec-title">两条 Super App 建设路径</h2>
     </div>
-    <div v-for="path in buildPaths" :key="path.key" class="mn-path-block">
+    <div v-for="path in buildPaths" :key="path.key" class="mn-path-block" :style="`--path-glow:${path.glow};`">
       <h3 class="mn-path-title">{{ path.title }}</h3>
       <div class="mn-flow-steps">
         <template v-for="(step, i) in path.steps" :key="step.num">
-          <div class="mn-flow-arrow" v-if="i > 0">→</div>
+          <div class="mn-flow-arrow" v-if="i > 0">
+            <span class="mn-path-arrow-line"></span><span class="mn-path-arrow-head">›</span>
+          </div>
           <div class="mn-flow-step mn-path-step" :class="{ 'mn-path-step-silo': step.isSilo }">
             <div class="mn-flow-num" :style="`background:${path.grad};`">{{ step.num }}</div>
             <div class="mn-path-phone">
+              <span class="mn-path-phone-notch"></span>
               <span v-for="c in step.chips" :key="c" class="mn-path-phone-chip">{{ c }}</span>
               <span v-if="!step.chips.length" class="mn-path-phone-empty"></span>
             </div>
@@ -3020,25 +3023,55 @@ function initIOCDashboard() {
 }
 
 /* ── BUILD PATHS ── */
-.mn-path-block { margin-bottom: 48px; }
+.mn-path-block {
+  position: relative; overflow: hidden;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 32px 34px 30px; margin-bottom: 28px;
+}
 .mn-path-block:last-child { margin-bottom: 0; }
+.mn-path-block::before {
+  content: ''; position: absolute; z-index: -1; top: -70px; right: -60px; width: 240px; height: 240px;
+  border-radius: 50%; background: rgba(var(--path-glow), 0.4); filter: blur(50px); pointer-events: none;
+}
+.mn-path-block::after {
+  content: ''; position: absolute; z-index: -1; bottom: -90px; left: -50px; width: 200px; height: 200px;
+  border-radius: 50%; background: rgba(var(--path-glow), 0.18); filter: blur(60px); pointer-events: none;
+}
 .mn-path-title { font-size: 1.05rem; font-weight: 800; color: var(--text1); margin: 0 0 22px; }
+.mn-path-block .mn-flow-num {
+  box-shadow: 0 0 0 5px rgba(var(--path-glow), 0.16), 0 8px 20px rgba(var(--path-glow), 0.45);
+}
+.mn-path-arrow-line {
+  display: block; width: 28px; height: 2px; margin: 0 auto;
+  background: linear-gradient(90deg, rgba(148,163,184,0.15), rgba(var(--path-glow), 0.75));
+  border-radius: 2px;
+}
+.mn-path-arrow-head {
+  display: block; margin-top: -9px; font-size: 1.1rem; line-height: 1;
+  color: rgba(var(--path-glow), 0.9); text-align: center;
+}
 .mn-path-phone {
-  width: 84px; min-height: 64px; margin: 10px auto 12px;
-  border: 2px solid var(--border); border-radius: 10px; background: var(--card-bg);
+  width: 84px; min-height: 66px; margin: 10px auto 12px;
+  border: 1.5px solid rgba(var(--path-glow), 0.35); border-radius: 16px;
+  background: rgba(255,255,255,0.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 16px rgba(var(--path-glow), 0.18), inset 0 1px 0 rgba(255,255,255,0.6);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  flex-wrap: wrap; gap: 3px; padding: 6px 5px; position: relative;
+  flex-wrap: wrap; gap: 3px; padding: 12px 5px 8px; position: relative;
+}
+.mn-path-phone-notch {
+  position: absolute; top: 5px; left: 50%; transform: translateX(-50%);
+  width: 22px; height: 3px; border-radius: 2px; background: rgba(var(--path-glow), 0.3);
 }
 .mn-path-phone::after {
   content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
-  width: 20px; height: 2px; border-radius: 2px; background: var(--border);
+  width: 20px; height: 2px; border-radius: 2px; background: rgba(var(--path-glow), 0.35);
 }
 .mn-path-phone-chip {
   font-size: 0.58rem; font-weight: 700; line-height: 1.2;
   padding: 2px 6px; border-radius: 999px;
-  background: rgba(29,78,216,0.08); color: var(--text2); white-space: nowrap;
+  background: rgba(var(--path-glow), 0.12); color: var(--text2); white-space: nowrap;
 }
-.mn-path-phone-empty { width: 30px; height: 30px; border-radius: 6px; border: 1.5px dashed var(--border); }
+.mn-path-phone-empty { width: 30px; height: 30px; border-radius: 6px; border: 1.5px dashed rgba(var(--path-glow), 0.4); }
 .mn-path-step-silo .mn-path-phone { border-style: dashed; }
 .mn-path-benefits {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
@@ -3050,7 +3083,8 @@ function initIOCDashboard() {
 }
 .mn-path-benefit-chip {
   font-size: 0.78rem; font-weight: 600; color: var(--text2);
-  background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
+  background: rgba(var(--path-glow), 0.12); border: 1px solid rgba(var(--path-glow), 0.3);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   padding: 4px 12px; border-radius: 999px;
 }
 

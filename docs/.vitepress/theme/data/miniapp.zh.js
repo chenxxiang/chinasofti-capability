@@ -78,6 +78,7 @@ export const buildPaths = [
     key: 'pathA',
     title: 'Path A · 整合孤立 App 为 Super App',
     grad: 'linear-gradient(135deg,#1d4ed8,#3b82f6)',
+    glow: '59,130,246',
     steps: [
       { num: 0, title: '今天：孤立 App', chips: ['钱包 App', '充值 App', '账单 App', '客服 App'], isSilo: true },
       { num: 1, title: '搭建 Super App 壳', chips: [] },
@@ -89,6 +90,7 @@ export const buildPaths = [
     key: 'pathB',
     title: 'Path B · 现有 App 渐进演进为小程序平台',
     grad: 'linear-gradient(135deg,#7c3aed,#a78bfa)',
+    glow: '167,139,250',
     steps: [
       { num: 1, title: '现有钱包 App', chips: ['余额', '转账', '缴费'] },
       { num: 2, title: '试点 1–2 个小程序', chips: ['交通卡', '积分'] },
