@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import NavBar from './NavBar.vue'
-import { architectureLayers, deliverySteps, pmCards, painPoints, valueFlywheel, flywheelCenter, buildPaths } from './data/miniapp.zh.js'
+import { architectureLayers, deliverySteps, pmCards, painPoints, valueFlywheel, flywheelCenter, buildPaths, evolutionPhases, evolutionEcosystem, evolutionFooter } from './data/miniapp.zh.js'
 
 onMounted(() => {
   initReveal()
@@ -265,6 +265,42 @@ function initIOCDashboard() {
       <div class="mn-path-benefits">
         <span class="mn-path-benefits-label">Operator Benefits</span>
         <span v-for="b in path.benefits" :key="b" class="mn-path-benefit-chip">{{ b }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三阶段演进路线图 -->
+  <section class="mn-sec reveal" id="evolution">
+    <div class="mn-sec-header">
+      <div class="mn-eyebrow">Roadmap · 演进路线</div>
+      <h2 class="mn-sec-title">三阶段 Super App 演进路线图</h2>
+    </div>
+    <div class="mn-evo-wrap">
+      <div
+        v-for="(phase, i) in evolutionPhases"
+        :key="phase.num"
+        class="mn-evo-phase"
+        :class="`mn-evo-phase-${i+1}`"
+        :style="`--pc:${phase.lc};background:${phase.lbg};border-color:${phase.lbd};`"
+      >
+        <div class="mn-evo-phase-hd">
+          <span class="mn-evo-phase-num">{{ phase.num }}</span>
+          <h4>{{ phase.title }}</h4>
+          <span class="mn-evo-phase-tag">{{ phase.tag }}</span>
+        </div>
+        <div class="mn-evo-chips">
+          <span v-for="a in phase.apps" :key="a">{{ a }}</span>
+        </div>
+        <div class="mn-evo-note" v-if="phase.note">{{ phase.note }}</div>
+      </div>
+    </div>
+    <div class="mn-evo-ecosystem">
+      <div v-for="e in evolutionEcosystem" :key="e" class="mn-evo-eco-pill">{{ e }}</div>
+    </div>
+    <div class="mn-evo-footer">
+      <div v-for="f in evolutionFooter" :key="f.title" class="mn-evo-footer-card">
+        <h4>{{ f.title }}</h4>
+        <p>{{ f.desc }}</p>
       </div>
     </div>
   </section>
@@ -3011,5 +3047,54 @@ function initIOCDashboard() {
   font-size: 0.78rem; font-weight: 600; color: var(--text2);
   background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
   padding: 4px 12px; border-radius: 999px;
+}
+
+/* ── EVOLUTION ROADMAP ── */
+.mn-evo-wrap { display: flex; align-items: stretch; justify-content: center; margin: 0 auto 32px; max-width: 1100px; }
+.mn-evo-phase {
+  flex: 1; position: relative; border: 1px solid; border-radius: 50% / 42%;
+  padding: 40px 30px 30px; min-height: 320px;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;
+}
+.mn-evo-phase-1 { z-index: 1; margin-right: -46px; }
+.mn-evo-phase-2 { z-index: 2; margin: -18px -46px 0; }
+.mn-evo-phase-3 { z-index: 1; margin-left: -46px; }
+.mn-evo-phase-hd { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.mn-evo-phase-num {
+  font-size: 0.72rem; font-weight: 900; color: #fff; background: var(--pc);
+  padding: 3px 10px; border-radius: 999px; letter-spacing: 0.05em;
+}
+.mn-evo-phase-hd h4 { font-size: 1.05rem; font-weight: 900; color: var(--text1); margin: 2px 0 0; }
+.mn-evo-phase-tag { font-size: 0.76rem; font-weight: 600; color: var(--text2); }
+.mn-evo-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 6px; }
+.mn-evo-chips span {
+  font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 999px;
+  background: var(--card-bg); border: 1px solid var(--border); color: var(--text2);
+}
+.mn-evo-note { font-size: 0.72rem; color: var(--text3); font-style: italic; margin-top: auto; padding-top: 10px; }
+
+.mn-evo-ecosystem { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 8px 0 32px; }
+.mn-evo-eco-pill {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 999px;
+  padding: 10px 22px; font-size: 0.82rem; font-weight: 600; color: var(--text2); box-shadow: var(--shadow);
+}
+
+.mn-evo-footer { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.mn-evo-footer-card {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px 18px; box-shadow: var(--shadow);
+}
+.mn-evo-footer-card h4 { font-size: 0.92rem; font-weight: 800; color: var(--text1); margin: 0 0 8px; }
+.mn-evo-footer-card p { font-size: 0.81rem; color: var(--text2); line-height: 1.6; margin: 0; }
+
+@media (max-width: 768px) {
+  .mn-evo-wrap { flex-direction: column; max-width: 480px; }
+  .mn-evo-phase-1, .mn-evo-phase-2, .mn-evo-phase-3 {
+    margin: 0 0 20px; border-radius: var(--radius); min-height: auto;
+  }
+  .mn-evo-footer { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 480px) {
+  .mn-evo-footer { grid-template-columns: 1fr; }
 }
 </style>
