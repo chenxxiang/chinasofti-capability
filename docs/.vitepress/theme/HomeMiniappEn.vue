@@ -227,6 +227,9 @@ function initIOCDashboard() {
               <div class="mn-flywheel-phone-chips">
                 <span v-for="m in flywheelCenter.miniPrograms" :key="m">{{ m }}</span>
               </div>
+              <div class="mn-flywheel-phone-chips mn-flywheel-phone-caps">
+                <span v-for="c in flywheelCenter.capabilities" :key="c">{{ c }}</span>
+              </div>
             </div>
           </div>
           <div v-for="(f, i) in valueFlywheel" :key="f.num" class="mn-flywheel-node" :class="`mn-flywheel-node-${i+1}`">
@@ -249,7 +252,7 @@ function initIOCDashboard() {
     </div>
     <div v-for="path in buildPaths" :key="path.key" class="mn-path-block">
       <h3 class="mn-path-title">{{ path.title }}</h3>
-      <div class="mn-flow-steps mn-path-steps">
+      <div class="mn-flow-steps">
         <template v-for="(step, i) in path.steps" :key="step.num">
           <div class="mn-flow-arrow" v-if="i > 0">→</div>
           <div class="mn-flow-step mn-path-step" :class="{ 'mn-path-step-silo': step.isSilo }">
@@ -2807,6 +2810,7 @@ function initIOCDashboard() {
   font-size: 0.52rem; font-weight: 700; padding: 2px 5px; border-radius: 999px;
   background: rgba(124,58,237,0.12); color: var(--text2);
 }
+.mn-flywheel-phone-caps span { background: rgba(6,182,212,0.12); }
 .mn-flywheel-node { position: absolute; width: 130px; text-align: center; transform: translate(-50%,-50%); }
 .mn-flywheel-node-1 { left: 50%; top: 14%; }
 .mn-flywheel-node-2 { left: 84%; top: 39%; }
