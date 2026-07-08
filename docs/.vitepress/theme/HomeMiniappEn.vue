@@ -311,6 +311,7 @@ function initIOCDashboard() {
       <div class="mn-eyebrow">Core Value · Our Advantage</div>
       <h2 class="mn-sec-title">Why Choose Super App Mini-Programs</h2>
     </div>
+    <p class="mn-value-lead">Building on the operator challenges and three-stage roadmap above, Super App mini-programs are the technical foundation that carries each phase's capabilities to life — outperforming native apps and plain H5 in development efficiency, native capability access, and ecosystem integration:</p>
     <div class="mn-compare-grid">
       <div class="mn-compare-card mn-compare-plain">
         <div class="mn-compare-icon" style="background:linear-gradient(135deg,#475569,#64748b);">
@@ -2919,4 +2920,5 @@ function initIOCDashboard() {
 @media (max-width: 480px) {
   .mn-evo-footer { grid-template-columns: 1fr; }
 }
+.mn-value-lead { font-size: 0.92rem; color: var(--text2); line-height: 1.75; max-width: 820px; margin: -16px 0 28px; }
 </style>

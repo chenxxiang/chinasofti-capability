@@ -311,6 +311,7 @@ function initIOCDashboard() {
       <div class="mn-eyebrow">Core Value · 核心价值</div>
       <h2 class="mn-sec-title">为什么选择 Super App 小程序</h2>
     </div>
+    <p class="mn-value-lead">从上方的运营挑战与三阶段演进路线出发，Super App 小程序是承接每一阶段能力落地的技术底座——相比原生 App 与纯 H5，它在开发效率、原生能力调用与生态整合上更具优势：</p>
     <div class="mn-compare-grid">
       <div class="mn-compare-card mn-compare-plain">
         <div class="mn-compare-icon" style="background:linear-gradient(135deg,#475569,#64748b);">
@@ -3097,4 +3098,5 @@ function initIOCDashboard() {
 @media (max-width: 480px) {
   .mn-evo-footer { grid-template-columns: 1fr; }
 }
+.mn-value-lead { font-size: 0.92rem; color: var(--text2); line-height: 1.75; max-width: 820px; margin: -16px 0 28px; }
 </style>
